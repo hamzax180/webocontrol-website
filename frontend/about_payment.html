@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="WEBOCONTROL — Our transparent 50/50 payment model. Pay half to start, half on launch. Simple, secure, and professional.">
+    <title>Payment Model | WEBOCONTROL — Futuristic Web Development Studio</title>
+    <link rel="stylesheet" href="/frontend/css/shared.css">
+    <link rel="stylesheet" href="/frontend/css/about-payment.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <script src="/js/i18n.js" defer></script>
+    <style>
+        body.payment-page {
+            background: #0b0f19;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .payment-page .section-title {
+            color: #ffffff;
+        }
+
+        .payment-page .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .payment-page .section-label {
+            color: rgba(0, 240, 255, 0.7);
+        }
+
+        /* Dark glass payment cards */
+        .payment-page .payment-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: #e2e8f0;
+        }
+
+        .payment-page .payment-card:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 240, 255, 0.05);
+            transform: translateY(-12px);
+        }
+
+        .payment-page .payment-card h3 {
+            color: #ffffff;
+        }
+
+        .payment-page .payment-card p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .payment-page .step-features li {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .payment-page .payment-card:hover .step-features li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .payment-page .phase-1 .step-badge {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: rgba(0, 240, 255, 0.25);
+            color: #00f0ff;
+        }
+
+        .payment-page .phase-2 .step-badge {
+            background: rgba(184, 41, 255, 0.1);
+            border-color: rgba(184, 41, 255, 0.25);
+            color: #b829ff;
+        }
+
+        .payment-page .phase-3 .step-badge {
+            background: rgba(255, 45, 117, 0.1);
+            border-color: rgba(255, 45, 117, 0.25);
+            color: #ff2d75;
+        }
+
+        .payment-page .phase-1 .step-features li::before {
+            color: #00f0ff;
+        }
+
+        .payment-page .phase-2 .step-features li::before {
+            color: #b829ff;
+        }
+
+        .payment-page .phase-3 .step-features li::before {
+            color: #ff2d75;
+        }
+
+        .payment-page .cta-dark {
+            margin-top: 80px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Keep section background dark */
+        .payment-page #payment-model {
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body class="payment-page">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/frontend/" class="nav-logo anim-forever-logo" style="text-decoration: none;">
+                <div class="logo-main">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L3 20H7.5L12 11L16.5 20H21L12 2Z" fill="url(#antigravity-grad)" />
+                        <defs>
+                            <linearGradient id="antigravity-grad" x1="3" y1="20" x2="21" y2="2"
+                                gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#4285F4" />
+                                <stop offset="50%" stop-color="#EA4335" />
+                                <stop offset="100%" stop-color="#FBBC05" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/frontend/" data-i18n="nav_home">Home</a></li>
+                <li><a href="/frontend/products.html" data-i18n="nav_products">Products</a></li>
+                <li><a href="/frontend/order.html#support" data-i18n="order_title">Support</a></li>
+                <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
+            </ul>
+            <div class="nav-center-group">
+                <div class="nav-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('ar')">AR</button>
+                    </div>
+                </div>
+                <div class="nav-cart" id="navCart">
+                    <button class="cart-btn" id="cartBtn">
+                        <span class="icon">🛒</span>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-auth" id="navAuth">
+                <a href="/frontend/login.html" class="btn btn-ghost" id="loginBtn" data-i18n="nav_login">Login</a>
+                <a href="/frontend/register.html" class="btn btn-primary" id="registerBtn" data-i18n="nav_register">Get
+                    Started</a>
+                <button class="btn btn-ghost" id="logoutBtn" style="display:none;"
+                    data-i18n="nav_logout">Logout</button>
+                <a href="/frontend/dashboard.html" class="btn btn-primary" id="dashboardBtn" style="display:none;"
+                    data-i18n="nav_dashboard">Dashboard</a>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Payment Model Section -->
+    <section class="section" id="payment-model" style="margin-top: 100px; background: transparent;">
+        <div class="container">
+            <div class="section-header reveal" style="text-align: center; margin-bottom: 60px;">
+                <span class="section-label" data-i18n="pay_label">// Transparency Redefined</span>
+                <h2 class="section-title" data-i18n="pay_guarantee_title">The <span class="gradient-text">50/50</span>
+                    Guarantee</h2>
+                <p class="section-subtitle" data-i18n="pay_guarantee_subtitle">We believe in trust, quality, and
+                    results. Our payment model reflects our
+                    commitment to your project's success.</p>
+            </div>
+
+            <div class="payment-steps-grid reveal">
+                <!-- Step 1 -->
+                <div class="payment-card phase-1">
+                    <div class="step-badge" data-i18n="pay_phase_1_title">Phase 01</div>
+                    <div class="payment-icon">🏁</div>
+                    <h3 data-i18n="pay_phase_1_full_title">50% Deposit</h3>
+                    <p data-i18n="pay_phase_1_full_desc">To secure your slot and kick off the design process, we
+                        require a 50% initial deposit. This
+                        covers the initial strategy and design phase.</p>
+                    <ul class="step-features">
+                        <li data-i18n="pay_phase_1_feat1">Concept Strategy</li>
+                        <li data-i18n="pay_phase_1_feat2">Wireframing</li>
+                        <li data-i18n="pay_phase_1_feat3">Initial Mockups</li>
+                    </ul>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="payment-card phase-2">
+                    <div class="step-badge" data-i18n="pay_phase_2_title">Phase 02</div>
+                    <div class="payment-icon">💻</div>
+                    <h3 data-i18n="pay_phase_2_full_title">Live Demo</h3>
+                    <p data-i18n="pay_phase_2_full_desc">Once the foundation is built, we host a live demo. You can
+                        interact with the site, test
+                        animations, and suggest any necessary revisions.</p>
+                    <ul class="step-features">
+                        <li data-i18n="pay_phase_2_feat1">Iterative Feedback</li>
+                        <li data-i18n="pay_phase_2_feat2">Live Interaction</li>
+                        <li data-i18n="pay_phase_2_feat3">Performance Testing</li>
+                    </ul>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="payment-card phase-3">
+                    <div class="step-badge" data-i18n="pay_phase_3_title">Phase 03</div>
+                    <div class="payment-icon">🚀</div>
+                    <h3 data-i18n="pay_phase_3_full_title">Final Launch</h3>
+                    <p data-i18n="pay_phase_3_full_desc">After your final approval, you pay the remaining 50%. We then
+                        transfer the code, set up your
+                        domain, and officially launch your site.</p>
+                    <ul class="step-features">
+                        <li data-i18n="pay_phase_3_feat1">Domain Setup</li>
+                        <li data-i18n="pay_phase_3_feat2">Full Handover</li>
+                        <li data-i18n="pay_phase_3_feat3">SEO Optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-dark reveal">
+                <h2 class="section-title" data-i18n="pay_cta_title">Ready to <span class="gradient-text">Start?</span>
+                </h2>
+                <p class="section-subtitle" data-i18n="pay_cta_subtitle">Let's build something extraordinary together.
+                </p>
+                <div style="margin-top: 30px;">
+                    <a href="/frontend/register.html" class="btn btn-primary btn-large" data-i18n="nav_register">Get Started
+                        Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding-top: 0; position: relative;">
+        <div class="container">
+            <div class="big-brand-text" id="bigBrandText">Webo<span class="brand-control">control</span></div>
+
+            <div class="footer-grid">
+                <!-- Navigation -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_nav">Navigation</h4>
+                    <ul>
+                        <li><a href="/frontend/" data-i18n="nav_home">Home</a></li>
+                        <li><a href="/frontend/products.html" data-i18n="nav_products">Products</a></li>
+                        <li><a href="/frontend/order.html#support" data-i18n="order_title">Support</a></li>
+                        <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_contact">Contact</h4>
+                    <div class="footer-contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>hello@webocontrol.dev</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span data-i18n="order_contact_istanbul">Istanbul, Turkey</span>
+                    </div>
+                </div>
+
+                <!-- Terms & Policies -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_terms_policies">Terms & Policies</h4>
+                    <ul>
+                        <li><a href="/frontend/about_payment.html" data-i18n="nav_about_payment">About Payment</a></li>
+                        <li><a href="/frontend/terms.html" data-i18n="footer_terms">Terms</a></li>
+                        <li><a href="/frontend/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom"
+                style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; margin-top: 40px; width: 100%;">
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); text-align: center; margin: 0 auto;"
+                    data-i18n="footer_copy">© 2026 WEBOCONTROL. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-i18n="cart_selection">Your Selection</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <ul class="cart-items" id="cartItems">
+            <!-- Items injected via JS -->
+        </ul>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-i18n="cart_total">Estimated Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button onclick="window.cart.confirmSelection()" class="btn btn-primary btn-large"
+                style="width: 100%; text-align: center;" data-i18n="cart_confirm">Confirm & Proceed →</button>
+        </div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

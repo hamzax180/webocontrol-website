@@ -1153,9 +1153,17 @@ async function fetchReviews() {
         const isAdmin = user && user.role === 'admin';
         const token = localStorage.getItem('webocontrol_token');
 
-        const response = await fetch('/api/reviews');
-        if (!response.ok) throw new Error('Failed to fetch reviews');
-        const reviews = await response.json();
+        let reviews = [];
+        try {
+            const response = await fetch('/api/reviews');
+            if (response.ok) {
+                reviews = await response.json();
+            } else {
+                console.warn('Backend API returned an error, using fallback reviews.');
+            }
+        } catch (e) {
+            console.warn('Backend API unavailable, using fallback reviews.', e);
+        }
 
         // Inject Mohammed's review
         reviews.unshift({

@@ -2,12 +2,12 @@
   "name": "webocontrol-website",
   "version": "1.0.0",
   "description": "WEBOCONTROL - Futuristic Software Company Website",
-  "main": "server/index.js",
+  "main": "backend/index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "server": "node server/index.js",
-    "start": "node server/index.js"
+    "server": "node backend/index.js",
+    "start": "node backend/index.js"
   },
   "keywords": [],
   "author": "",

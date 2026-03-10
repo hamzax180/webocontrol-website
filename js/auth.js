@@ -173,7 +173,14 @@ function initLoginForm() {
                 body: JSON.stringify({ email, password }),
             });
 
-            const data = await res.json();
+            let data;
+            const text = await res.text();
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                console.error("Non-JSON response received:", text);
+                throw new Error("Failed to parse JSON response");
+            }
 
             if (res.ok) {
                 localStorage.setItem('webocontrol_token', data.token);
@@ -184,6 +191,7 @@ function initLoginForm() {
                 showMessage('loginMessage', data.error || window.i18n.t('auth_invalid_credentials'), 'error');
             }
         } catch (err) {
+            console.error('Login failed in try-catch block:', err);
             showMessage('loginMessage', window.i18n.t('auth_network_error'), 'error');
         }
     });

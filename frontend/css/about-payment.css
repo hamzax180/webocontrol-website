@@ -1,0 +1,155 @@
+/* ============================================
+   WEBOCONTROL — About Payment
+   ============================================ */
+
+/* ============================================
+   ABOUT PAYMENT PAGE
+   ============================================ */
+.payment-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.payment-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  padding: 60px 40px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.payment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(0, 240, 255, 0.03), transparent 70%);
+  pointer-events: none;
+}
+
+.payment-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+.step-badge {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  padding: 8px 18px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.phase-1 .step-badge {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: #8b5cf6;
+}
+
+.phase-2 .step-badge {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: rgba(0, 240, 255, 0.3);
+  color: #00d2ff;
+}
+
+.phase-3 .step-badge {
+  background: rgba(255, 45, 85, 0.1);
+  border-color: rgba(255, 45, 85, 0.2);
+  color: #ff2d55;
+}
+
+.payment-icon {
+  font-size: 4.5rem;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.2));
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.phase-1 .payment-icon {
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
+}
+
+.phase-2 .payment-icon {
+  filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.4));
+}
+
+.phase-3 .payment-icon {
+  filter: drop-shadow(0 0 20px rgba(255, 45, 85, 0.4));
+}
+
+.payment-card:hover .payment-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.payment-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+  color: #1a1a2e;
+  letter-spacing: 1px;
+}
+
+.payment-card p {
+  color: #4a5568;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.step-features {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step-features li {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: #5a6577;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: color 0.3s ease;
+}
+
+.payment-card:hover .step-features li {
+  color: #1a1a2e;
+}
+
+.step-features li::before {
+  content: 'Γ£ª';
+  font-weight: bold;
+}
+
+.phase-1 .step-features li::before {
+  color: #8b5cf6;
+}
+
+.phase-2 .step-features li::before {
+  color: #00d2ff;
+}
+
+.phase-3 .step-features li::before {
+  color: #ff2d55;
+}
+

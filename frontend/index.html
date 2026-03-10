@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="WEBOCONTROL — We build stunning, futuristic websites for your business starting at $300. Based in Istanbul.">
+  <title>WEBOCONTROL — Futuristic Web Development Studio | Istanbul</title>
+  <link rel="stylesheet" href="/frontend/css/shared.css">
+  <link rel="stylesheet" href="/frontend/css/home.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <script src="/js/i18n.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="home-page has-video-bg is-home">
+
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/frontend/" class="nav-logo anim-forever-logo" style="text-decoration: none;">
+        <div class="logo-main">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L3 20H7.5L12 11L16.5 20H21L12 2Z" fill="url(#antigravity-grad)" />
+            <defs>
+              <linearGradient id="antigravity-grad" x1="3" y1="20" x2="21" y2="2" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#4285F4" />
+                <stop offset="50%" stop-color="#EA4335" />
+                <stop offset="100%" stop-color="#FBBC05" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/frontend/" class="active" data-i18n="nav_home">Home</a></li>
+        <li><a href="/frontend/products.html" data-i18n="nav_products">Products</a></li>
+        <li><a href="/frontend/order.html#support" data-i18n="order_title">Support</a></li>
+        <li><a href="/frontend/about.html" data-i18n="nav_about">About Payment</a></li>
+      </ul>
+      <div class="nav-center-group">
+        <div class="nav-lang">
+          <div class="lang-switcher">
+            <button class="lang-btn" onclick="window.i18n.setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="window.i18n.setLanguage('ar')">AR</button>
+          </div>
+        </div>
+        <div class="nav-cart" id="navCart">
+          <button class="cart-btn" id="cartBtn">
+            <span class="icon">🛒</span>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="nav-auth" id="navAuth">
+        <a href="/frontend/login.html" class="btn btn-ghost" id="loginBtn" data-i18n="nav_login">Login</a>
+        <a href="/frontend/register.html" class="btn btn-primary" id="registerBtn" data-i18n="nav_register">Get
+          Started</a>
+        <button class="btn btn-ghost" id="logoutBtn" style="display:none;" data-i18n="nav_logout">Logout</button>
+        <a href="/frontend/dashboard.html" class="btn btn-primary" id="dashboardBtn" style="display:none;"
+          data-i18n="nav_dashboard">Dashboard</a>
+      </div>
+      <div class="mobile-toggle" id="mobileToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
+
+    <div class="hero-background-coin">
+      <video autoplay loop muted playsinline class="coin-vid">
+        <source src="/public/home%20html.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-content" style="max-width: 800px; padding: 120px 20px 160px; text-align: center;">
+      <p style="font-family: var(--font-heading); color: #fff; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 25px; font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,0.5);"
+        data-i18n="hero_subtitle_fiverr">Become a Webo<span style="color: #ff3b3b;">control</span> Partner</p>
+      <h1 class="fiverr-hero-title"
+        style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(2.5rem, 5vw, 4.8rem); color: #ffffff; line-height: 1.1; letter-spacing: -2px; margin-bottom: 35px; text-shadow: 0 4px 25px rgba(0,0,0,0.5);"
+        data-i18n="hero_title_fiverr">
+        Grow a global digital presence from your vision and expertise
+      </h1>
+      <div style="margin-bottom: 60px;">
+        <a href="/frontend/products.html"
+          style="background-color: #ffffff; color: #111111; padding: 18px 45px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.4); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255,255,255,0.1);"
+          onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.backgroundColor='#f8f9fa';"
+          onmouseout="this.style.transform='none'; this.style.backgroundColor='#ffffff';">Create your
+          project</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+      <span class="scroll-text" data-i18n="scroll_down">Scroll Down</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- Technologies Showcase (Fiverr / OpenAI Style logo bar) -->
+  <section
+    style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, #ffffff 100%); padding: 150px 20px 120px 20px; text-align: center; position: relative; z-index: 5; margin-top: -100px;">
+    <div class="container">
+
+
+
+
+      <!-- Rotating Animated Text 5 Columns -->
+      <div
+        style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: space-between; width: 100vw; margin-left: calc(-50vw + 50%); padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px;">
+
+        <!-- Column 1 -->
+        <div
+          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsVercel 8s infinite cubic-bezier(0.16, 1, 0.3, 1);">
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vue.js</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Terraform</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">SQL</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Linux</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vue.js</span>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div
+          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsVercel 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.1s;">
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">React</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Terraform</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Docker</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Next.js</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">React</span>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div
+          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsVercel 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.2s;">
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Node.js</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">JavaScript</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Kubernetes</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Postgres</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Node.js</span>
+          </div>
+        </div>
+
+        <!-- Column 4 -->
+        <div
+          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsVercel 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.3s;">
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Python</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Golang</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">AWS</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Rust</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Python</span>
+          </div>
+        </div>
+
+        <!-- Column 5 -->
+        <div
+          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsVercel 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.4s;">
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vite.js</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">MongoDB</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">MySQL</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Redis</span>
+            <span
+              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vite.js</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Products Showcase -->
+  <section class="section" id="products" style="background: #ffffff; padding: 120px 0 20px;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 80px; text-align: center; width: 100%;">
+        <h2
+          style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; color: #020202; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 20px;">
+          A smarter way to work<br>and grow globally
+        </h2>
+        <p class="section-subtitle" data-i18n="products_subtitle"
+          style="font-size: 1.2rem; color: #4a5568; margin-bottom: 0;">Stunning
+          websites in every category. Interactive previews below.</p>
+      </div>
+
+      <div class="showcase-grid">
+        <!-- Portfolio Category -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="/public/portfolio-preview/pic1p.png" alt="Portfolio Preview 1" class="active">
+            <img src="/public/portfolio-preview/pic2p.png" alt="Portfolio Preview 2">
+            <img src="/public/portfolio-preview/pic3p.png" alt="Portfolio Preview 3">
+            <div class="card-nav">
+              <span class="nav-dot active"></span>
+              <span class="nav-dot"></span>
+              <span class="nav-dot"></span>
+            </div>
+          </div>
+          <div class="product-content">
+            <span class="product-category" data-i18n="category_portfolio">Portfolio Websites</span>
+            <h3 class="product-title" data-i18n="prod_portfolio_title">Portfolio Website</h3>
+            <p class="product-desc" data-i18n="prod_portfolio_subtitle">Minimalist, high-speed portfolios
+              with your own AI assistant
+              integration. Customizable for creators and developers.</p>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-label" data-i18n="price_label">STARTING<br>AT</span>
+                <span class="price-value">$300</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.cart.add({
+                            type: 'portfolio',
+                            name: 'Personal Portfolio',
+                            price: 300,
+                            image: '/public/portfolio-preview/pic1p.png'
+                        })" data-i18n="btn_select_portfolio">Select Personal</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company Category -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="/public/company-preview/company_ceo.png" alt="Company Preview 1" class="active">
+            <img src="/public/company-preview/travel_illustration.png" alt="Company Preview 2">
+            <div class="card-nav">
+              <span class="nav-dot active"></span>
+              <span class="nav-dot"></span>
+            </div>
+          </div>
+          <div class="product-content">
+            <span class="product-category" data-i18n="category_company">Corporate & Startup</span>
+            <h3 class="product-title" data-i18n="prod_company_title">Company Website</h3>
+            <p class="product-desc" data-i18n="prod_company_subtitle">Professional corporate sites with
+              custom animations and CMS
+              integration. Elevate your brand.</p>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-label" data-i18n="price_label">STARTING<br>AT</span>
+                <span class="price-value">$500</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.cart.add({
+                                type: 'company',
+                                name: 'Company Website',
+                                price: 500,
+                                image: '/public/company-preview/company_ceo.png'
+                            })" data-i18n="btn_select_company">Select Company</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-Commerce Category (ONEMOE) -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="/public/ecommerce-preview/screen5.png" alt="E-commerce Preview 1" class="active">
+            <img src="/public/ecommerce-preview/screen7.png" alt="E-commerce Preview 2">
+            <img src="/public/ecommerce-preview/screen3.png" alt="E-commerce Preview 3">
+            <img src="/public/ecommerce-preview/screen1.png" alt="E-commerce Preview 4">
+            <div class="card-nav">
+              <span class="nav-dot active"></span>
+              <span class="nav-dot"></span>
+              <span class="nav-dot"></span>
+              <span class="nav-dot"></span>
+            </div>
+          </div>
+          <div class="product-content">
+            <span class="product-category" data-i18n="category_ecommerce">E-Commerce & High-End</span>
+            <h3 class="product-title" data-i18n="prod_ecommerce_title">E-commerce Website</h3>
+            <p class="product-desc" data-i18n="prod_ecommerce_subtitle">Full-scale digital stores with
+              custom shopping logic, AI
+              integration,
+              and premium streetwear aesthetic.</p>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-label" data-i18n="price_label">STARTING<br>AT</span>
+                <span class="price-value">$500</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.cart.add({
+                                type: 'ecommerce',
+                                name: 'E-Commerce Store',
+                                price: 500,
+                                image: '/public/ecommerce-preview/screen5.png'
+                            })" data-i18n="btn_select_ecommerce">Select E-Commerce</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <!-- Technologies We Use -->
+  <section class="tech-logos-section" id="techLogos" style="padding-top: 0; margin-top: -20px; background: #ffffff;">
+    <div class="container">
+      <h3 class="tech-logos-title" data-i18n="tech_title" style="margin-bottom: 20px;">Technologies We Use</h3>
+      <div class="tech-logos-grid" style="gap: 30px;">
+        <!-- React -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 256 228" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path
+              d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621 6.238-30.281 2.16-54.676-11.769-62.708-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848 155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233 50.33 10.957 46.379 33.89 51.986 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165 167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266 13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923 168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586 13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488 29.348-9.723 48.443-25.443 48.443-41.52 0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345-3.24-10.257-7.612-21.163-12.963-32.432 5.106-11 9.31-21.767 12.459-31.957 2.619.758 5.16 1.557 7.61 2.4 23.69 8.156 38.14 20.213 38.14 29.504 0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787-1.524 8.219-4.59 13.698-8.382 15.893-8.067 4.66-25.084-1.4-43.077-16.4a157.744 157.744 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246 12.376-1.098 24.068-2.894 34.671-5.345a132.182 132.182 0 0 1 .536 5.181Zm-65.536 59.89c-5.78 5.64-11.432 10.14-16.728 13.33-4.756 2.865-8.964 4.278-12.134 4.278-.667 0-1.303-.077-1.903-.226-7.876-2.068-12.464-13.206-12.58-30.53-.026-3.91.286-8.227.934-12.843 10.576 2.005 22.034 3.283 34.015 3.862 7.178 10.228 14.556 19.37 21.804 27.06a153.432 153.432 0 0 1-13.408 15.07ZM32.317 144.576c-12.246-4.088-21.974-9.654-28.075-15.728-5.48-5.458-8.242-10.854-8.242-15.18 0-9.094 13.6-20.926 36.564-29.254 2.836-1.028 5.8-1.97 8.854-2.852 3.364 10.48 7.73 21.498 13 32.728-5.382 11.437-9.828 22.564-13.197 33.084a132.823 132.823 0 0 1-8.904-2.798Zm8.168 21.174c3.073-9.536 7.165-19.764 12.179-30.278 4.703 9.057 9.94 17.939 15.634 26.482-9.542 1.3-18.625 2.72-27.037 4.27-.279-1.155-.525-2.314-.776-3.474Zm67.783 53.317c-1.085-.646-2.178-1.39-3.28-2.24l-1.27.75Zm-19.657-27.18c-4.752-7.7-9.328-15.88-13.658-24.41 8.626-.403 17.694-.61 27.016-.61 9.637 0 18.987.236 27.85.68-4.452 8.616-9.11 16.826-13.918 24.486a254.01 254.01 0 0 1-27.29-.146Zm59.258-37.24c-3.36-.154-6.818-.27-10.356-.357l-3.37.054c3.607-.01 7.115.086 10.493.277l3.233.026Zm-71.867-.55a339.8 339.8 0 0 1-1.28-2.588l1.28 2.588Zm74.83-2.15l-.1.202a323.088 323.088 0 0 0-6.136-12.093c5.919-9.776 11.068-19.78 15.326-29.68 4.26 9.901 7.724 19.468 10.407 28.496-6.174 1.66-12.712 3.088-19.497 4.185l-.001-.001v.001l.001.89ZM82.573 113.668c0-8.13 6.585-14.726 14.71-14.726 8.127 0 14.716 6.595 14.716 14.726 0 8.125-6.59 14.716-14.716 14.716-8.125 0-14.71-6.59-14.71-14.716Zm45.097 0c0-8.13 6.585-14.726 14.716-14.726 8.124 0 14.71 6.595 14.71 14.726 0 8.125-6.586 14.716-14.71 14.716-8.131 0-14.716-6.59-14.716-14.716Z"
+              fill="#61DAFB" />
+          </svg>
+          <span>React</span>
+        </div>
+        <!-- Node.js -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 256 289" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path
+              d="M128 288.464c-3.975 0-7.685-1.06-11.13-2.915l-35.247-20.936c-5.3-2.915-2.65-3.975-1.06-4.505 7.155-2.385 8.48-2.915 15.9-7.155.796-.53 1.856-.265 2.65.265l27.032 16.166c1.06.53 2.385.53 3.18 0l105.74-61.217c1.06-.53 1.59-1.59 1.59-2.915V83.08c0-1.325-.53-2.385-1.59-2.915L129.06 19.213c-1.06-.53-2.385-.53-3.18 0L20.14 80.43c-1.06.53-1.59 1.855-1.59 2.915v122.17c0 1.06.53 2.385 1.59 2.915l28.887 16.695c15.636 7.95 25.44-1.325 25.44-10.6V93.68c0-1.59 1.325-3.18 3.18-3.18h13.516c1.59 0 3.18 1.325 3.18 3.18v120.58c0 20.936-11.395 33.127-31.27 33.127-6.095 0-10.865 0-24.38-6.625L11.66 224.597C4.505 220.622 0 212.937 0 204.722V82.55c0-8.215 4.505-15.9 11.66-19.876L117.4 1.457c6.89-3.71 16.17-3.71 23.06 0L246.34 62.94c7.155 3.975 11.66 11.66 11.66 19.876v122.17c0 8.215-4.505 15.9-11.66 19.876l-105.74 61.217c-3.445 1.59-7.42 2.385-11.6 2.385"
+              fill="#539E43" />
+            <path
+              d="M160.066 204.722c-44.257 0-53.532-20.406-53.532-37.367 0-1.59 1.325-3.18 3.18-3.18h13.78c1.59 0 2.916 1.06 2.916 2.65 2.12 14.31 8.215 21.2 36.187 21.2 22.26 0 31.8-5.035 31.8-16.96 0-6.89-2.65-11.925-37.247-15.37-28.887-2.916-46.847-9.276-46.847-32.332 0-21.466 18.02-34.187 48.23-34.187 33.922 0 50.617 11.66 52.737 37.102 0 .795-.265 1.59-.795 2.385-.53.53-1.325 1.06-2.12 1.06h-13.78c-1.325 0-2.65-1.06-2.916-2.385-3.18-14.575-11.395-19.345-33.126-19.345-24.38 0-27.297 8.48-27.297 14.84 0 7.685 3.445 10.07 36.187 14.31 32.477 4.24 47.847 10.335 47.847 33.127-.265 23.325-19.345 36.452-53.003 36.452"
+              fill="#539E43" />
+          </svg>
+          <span>Node.js</span>
+        </div>
+        <!-- PostgreSQL -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 256 264" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path
+              d="M255.008 158.086c-1.535-4.649-5.556-7.887-10.756-8.664-2.452-.366-5.26-.21-8.583.475-5.792 1.195-10.089 1.65-13.225 1.738 11.837-19.985 21.462-42.775 27.003-64.228 8.96-34.689 4.172-50.492-1.423-57.64C233.217 10.847 211.614.683 185.552.372c-13.903-.17-26.108 2.575-32.475 4.549-5.928-1.046-12.302-1.63-18.99-1.738-12.537-.203-23.47 2.937-32.48 9.309-4.005-1.588-9.342-3.497-15.594-5.032-9.32-2.289-27.91-4.108-48.315 4.973-21.108 9.391-33.62 27.283-37.26 53.18-3.716 26.45 5.359 59.238 25.574 92.42l.106.168c7.658 12.156 17.203 17.3 27.744 15.072 3.475-.736 6.636-2.287 9.46-4.337 1.4 3.282 3.27 7.132 5.593 11.39.076.124.152.25.232.367 6.39 8.993 13.054 12.217 20.137 11.083 5.58-.894 10.389-4.548 14.588-9.55.063.273.128.544.196.815l.165.74c3.236 12.887 6.455 18.584 12.278 22.636l.076.05c2.704 1.765 5.642 2.474 8.185 2.474 6.427 0 11.6-4.564 14.387-7.467 3.454-3.593 6.093-8.265 8.048-13.453 2.065-5.48 3.476-11.738 4.295-18.594.394-3.312.66-6.792.835-10.41 5.537-.702 11.68-2.206 18.216-4.672 3.375-1.275 7.256-3.166 11.026-5.686 4.865-3.253 8.706-7.448 10.97-12.296a31.543 31.543 0 0 0 2.197-7.323c.614-3.504.694-7.498.064-12.26Z"
+              fill="#336791" />
+          </svg>
+          <span>PostgreSQL</span>
+        </div>
+        <!-- Java -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 256 346" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path
+              d="M82.554 267.473s-13.198 7.675 9.393 10.272c27.369 3.122 41.356 2.675 71.517-3.034 0 0 7.93 4.972 19.003 9.279-67.611 28.977-153.019-1.679-99.913-16.517M74.292 229.659s-14.803 10.958 7.805 13.296c29.236 3.016 52.324 3.263 92.276-4.43 0 0 5.526 5.602 14.215 8.666-81.747 23.904-172.842 1.885-114.296-17.532"
+              fill="#5382A1" />
+            <path
+              d="M143.942 165.515c16.66 19.18-4.377 36.44-4.377 36.44s42.301-21.837 22.874-49.183c-18.144-25.5-32.059-38.172 43.268-81.858 0 0-118.238 29.53-61.765 94.6"
+              fill="#E76F00" />
+            <path
+              d="M233.364 295.442s9.767 8.047-10.757 14.273c-39.026 11.823-162.432 15.393-196.714.471-12.323-5.36 10.787-12.8 18.056-14.362 7.581-1.644 11.914-1.337 11.914-1.337-13.705-9.655-88.583 18.957-38.034 27.15 137.853 22.356 251.292-10.066 215.535-26.195M88.9 190.48s-62.771 14.91-22.228 20.323c17.118 2.292 51.243 1.774 83.03-.89 25.978-2.19 52.063-6.85 52.063-6.85s-9.16 3.923-15.787 8.448c-63.744 16.765-186.886 8.966-151.435-8.183 29.981-14.492 54.358-12.848 54.358-12.848M201.506 253.422c64.8-33.672 34.839-66.03 13.927-61.67-5.126 1.066-7.411 1.99-7.411 1.99s1.903-2.98 5.537-4.27c41.37-14.545 73.187 42.897-13.355 65.647 0 0 1.003-.896 1.302-1.697"
+              fill="#5382A1" />
+            <path
+              d="M162.439.371s35.887 35.9-34.037 91.101c-56.071 44.282-12.786 69.53-.023 98.377-32.73-29.53-56.75-55.526-40.635-79.72C111.395 74.612 176.918 57.393 162.439.37"
+              fill="#E76F00" />
+          </svg>
+          <span>Java</span>
+        </div>
+        <!-- Python -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path
+              d="M126.914.007c-66.21 0-62.066 28.724-62.066 28.724l.053 29.756h63.238v8.948H40.236s-38.93-.418-38.93 55.43c0 55.85 34.464 53.766 34.464 53.766h20.574v-29.135c0-32.33 26.541-60.59 58.74-60.59h61.71c26.755 0 48.435-21.68 48.435-48.423V40.276C225.229 13.52 203.111.007 136.315.007h-9.401Zm-34.195 18.04c5.035 0 9.117 4.08 9.117 9.123 0 5.043-4.082 9.123-9.117 9.123-5.04 0-9.123-4.08-9.123-9.123 0-5.042 4.082-9.123 9.123-9.123ZM254.7 110.156c0-55.85-34.465-53.765-34.465-53.765h-20.575v29.135c0 32.33-26.54 60.59-58.739 60.59h-61.71c-26.754 0-48.434 21.68-48.434 48.434v38.2c0 26.756 22.118 40.269 88.913 40.269h9.402c66.21 0 62.066-28.724 62.066-28.724l-.053-29.756h-63.238v-8.948h87.906s38.93.418 38.93-55.434Zm-91.133 126.69c-5.04 0-9.123-4.08-9.123-9.123 0-5.043 4.082-9.123 9.123-9.123 5.036 0 9.117 4.08 9.117 9.123 0 5.042-4.08 9.123-9.117 9.123Z"
+              fill="#3776AB" />
+          </svg>
+          <span>Python</span>
+        </div>
+        <!-- MySQL -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 256 252" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path
+              d="M124.62 10.871c-16.126-5.842-34.904-4.225-45.92 7.828-3.078 3.366-5.467 7.749-6.494 13.91l.135.253c5.385-2.074 16.425-4.435 24.316-2.67.66.147 1.25.437 1.68.847 1.487 1.423 3.303 3.655 4.904 6.784 10.375 20.263 7.55 58.784-6.307 86.41-11.398 22.72-27.42 41.5-44.577 52.887l.21.36c8.537.493 17.587-1.156 26.965-4.549C110.15 159.263 128.6 111.41 123.633 60.106c-1.353-13.961 17.394-14.887 18.784-1.026 5.8 57.901-16.7 114.218-50.603 151.724 10.2 13.434 23.36 24.167 36.91 32.13l.3.266c16.1-23.733 34.62-52.661 24.57-118.062-2.126-13.864 19.387-13.626 21.306.28 10.05 72.827-22.396 113.886-45.244 125.12 19.673-10.74 41.09-28.71 59.816-52.924 37.64-48.67 47.96-101.996 46.173-120.31-1.284-13.16-9.722-24.156-23.515-28.98L211.95 38.2c2.094 5.921 2.227 12.181-.133 18.52-5.412 14.544-19.167 17.157-30.718 5.808-11.55-11.35-11.166-31.545-2.167-46.06l-.234-.413c-15.01-8.541-35.8-9.457-54.08-5.184ZM183.1 41.44c-3.14 0-6.074 2.228-8.1 6.1-3.66 7.02-3.134 16.51 1.253 21.2 4.388 4.69 11.084 2.508 14.737-4.512 3.653-7.02 1.34-19 1.34-19l-.3-.728c-2.333-2.033-5.5-3.06-8.93-3.06Z"
+              fill="#00758F" />
+          </svg>
+          <span>MySQL</span>
+        </div>
+        <!-- MongoDB -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path
+              d="M17.193 24c-1.648 0-4.501-.735-6.289-3.235C9.117 18.265 8.163 15.112 8.056 11.235c-.035-1.218.064-2.424.298-3.601C8.75 5.56 9.53 4.14 10.632 3.16a7.46 7.46 0 0 1 4.706-1.636c1.547.001 3.018.52 4.143 1.465a6.45 6.45 0 0 1 2.21 4.414c.159 1.139.117 2.296-.123 3.424-.545 2.56-1.65 4.96-3.236 7.042-2.333 3.064-5.385 5.48-8.992 7.104-.473.21-.926.33-1.347.33-.213 0-.411-.03-.591-.09l-.409.61c.42.316.924.477 1.492.477 1.545 0 4.192-.615 5.922-3.033 1.258-1.756 2.155-3.763 2.624-5.876.195-.87.23-1.764.103-2.645a4.91 4.91 0 0 0-1.68-3.38 5.62 5.62 0 0 0-3.614-1.272 5.95 5.95 0 0 0-3.75 1.298c-.836.744-1.428 1.832-1.737 3.193-.18.91-.257 1.838-.23 2.768.082 2.943.805 5.346 2.149 7.143 1.353 1.812 3.513 2.372 4.766 2.372.261 0 .507-.024.732-.073V.92c-.171-.036-.367-.056-.583-.056A.73.73 0 0 0 14.544 0c-.063 0-.124.004-.183.011l.011-.011c-.066-.003-.133-.011-.203-.011-.476 0-.862.386-.862.862V23.904c.14.06.294.096.458.096.425 0 .783-.242.923-.594.137-.34.02-.733-.272-.943-.223-.153-.41-.355-.54-.59-.207-.374-.19-.781.047-1.144 1.192.453 2.33 1.01 3.402 1.66l.872-.872z"
+              fill="#47A248" />
+          </svg>
+          <span>MongoDB</span>
+        </div>
+        <!-- JavaScript -->
+        <div class="tech-logo-item">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+            <path d="M0 0h24v24H0z" fill="#F7DF1E" />
+            <path
+              d="M6.312 21.335l1.959-1.185c.378.67.721 1.234 1.843 1.234 1.083 0 1.632-.498 1.632-2.234V10.247h2.543v9.041c0 3.076-1.753 4.485-4.09 4.485-2.217 0-3.506-1.169-4.253-2.358M15.238 22.802l1.959-1.134c1.102 1.811 3.11 2.654 4.933 2.654 2.165 0 3.489-1.048 3.489-2.502s-1.033-2.256-3.453-3.286l-1.117-.481c-2.904-1.255-4.674-2.939-4.674-5.62 0-2.62 2.114-4.57 5.293-4.57 2.722 0 4.537 1.117 5.362 3.11l-1.873 1.202c-.705-1.341-1.684-1.873-3.402-1.873-1.512 0-2.713.824-2.713 2.147 0 1.152.808 1.857 2.696 2.663l1.117.481c3.301 1.41 5.534 3.197 5.534 6.601 0 3.06-24.08 5.156-5.842 5.156-3.3 0-5.466-1.563-6.621-3.142" />
+          </svg>
+          <span>JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+  <!-- Add-Ons & Upgrades Section -->
+  <section class="section" id="addons" style="background: #ffffff; padding: 120px 0;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 80px; text-align: center; width: 100%;">
+        <h2
+          style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; color: #020202; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 20px;">
+          We the best, in securing and<br>expanding your servers too
+        </h2>
+        <p class="section-subtitle" data-i18n="addons_subtitle"
+          style="font-size: 1.2rem; color: #4a5568; margin-bottom: 0;">Enterprise-grade expansions to scale and protect
+          your digital assets.</p>
+      </div>
+
+      <div class="addons-showcase">
+        <!-- Testing Security Category -->
+        <div class="product-card">
+          <div class="product-image-container white-bg-image">
+            <img src="/public/addons-preview/security_logos.png" alt="Testing Security Preview 1" class="active">
+          </div>
+          <div class="product-content">
+            <h3 class="product-title" data-i18n="prod_security_title">Testing Security Package</h3>
+            <p class="product-desc" data-i18n="prod_security_subtitle">Military-grade protection, rigorous
+              penetration testing, and zero-bug test architectures for your digital assets.</p>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-label" data-i18n="price_label">STARTING<br>AT</span>
+                <span class="price-value">$250</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.cart.add({
+                                type: 'security',
+                                name: 'Testing Security Package',
+                                price: 250,
+                                image: '/public/addons-preview/security_logos.png'
+                            })" data-i18n="btn_select_security">Select Security</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Server Expanding with Fintech DevOps -->
+        <div class="product-card">
+          <div class="product-image-container white-bg-image">
+            <img src="/public/addons-preview/devops_logos.png" alt="DevOps Preview 1" class="active">
+          </div>
+          <div class="product-content">
+            <h3 class="product-title" data-i18n="prod_devops_title">Server Expanding with Fintech DevOps
+            </h3>
+            <p class="product-desc" data-i18n="prod_devops_subtitle">Enterprise-grade Kubernetes scaling,
+              advanced CI/CD pipelines, and robust cloud configurations tailored for fintech platforms.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-label" data-i18n="price_label">STARTING<br>AT</span>
+                <span class="price-value">$250</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.cart.add({
+                                type: 'devops',
+                                name: 'Server Expanding with Fintech DevOps',
+                                price: 250,
+                                image: '/public/addons-preview/devops_logos.png'
+                            })" data-i18n="btn_select_devops">Select DevOps</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infrastructure Technologies Integration -->
+      <div class="tech-logos-section" id="infraTechLogos"
+        style="margin-top: 10px; padding-top: 0; border-top: 1px solid rgba(0,0,0,0.05);">
+        <h3 class="tech-logos-title"
+          style="font-size: 0.9rem; letter-spacing: 0.2em; opacity: 0.5; margin-bottom: 12px;"
+          data-i18n="footer_powered_by">POWERED BY</h3>
+        <div class="tech-logos-grid" id="homeInfraLogos">
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 153" xmlns="http://www.w3.org/2000/svg" width="56" height="34">
+              <path
+                d="M72.392 55.438c0 3.137.34 5.68.933 7.545.68 1.866 1.527 3.908 2.717 6.12.425.68.595 1.36.595 1.952 0 .85-.51 1.7-1.615 2.55l-5.338 3.56c-.765.51-1.53.765-2.21.765-.85 0-1.7-.425-2.55-1.19a26.085 26.085 0 0 1-3.052-3.985c-.85-1.444-1.7-3.052-2.635-5.168-6.628 7.817-14.96 11.726-24.994 11.726-7.138 0-12.836-2.04-16.99-6.12-4.155-4.08-6.29-9.523-6.29-16.318 0-7.224 2.55-13.09 7.65-17.585 5.1-4.494 11.896-6.714 20.48-6.714 2.804 0 5.693.255 8.752.68 3.058.425 6.204 1.105 9.523 1.87V29.34c0-6.46-1.36-10.99-3.985-13.685-2.72-2.695-7.308-3.985-13.855-3.985-2.975 0-6.035.34-9.183 1.105-3.148.765-6.205 1.7-9.183 2.89-.68.34-1.275.51-1.7.595-.425.085-.765.17-.935.17-1.275 0-1.7-1.105-1.7-2.21v-4.155c0-1.275.17-2.21.51-2.72.34-.5 1.105-1.105 2.295-1.7 3.055-1.7 6.714-3.055 10.99-4.07C30.95 1.19 35.445.68 40.11.68c9.523 0 16.49 2.21 21.08 6.715 4.494 4.494 6.8 11.316 6.8 20.48v27.563h.4Zm-34.5 12.92c2.72 0 5.524-.51 8.497-1.53 2.975-1.02 5.61-2.89 7.82-5.44 1.275-1.53 2.21-3.225 2.635-5.185.425-1.955.68-4.324.68-7.054v-3.4c-2.38-.595-4.93-1.105-7.566-1.444-2.635-.34-5.185-.51-7.735-.51-5.608 0-9.693 1.105-12.582 3.4-2.89 2.296-4.24 5.608-4.24 9.95 0 4.07 1.02 7.054 3.14 9.013 2.04 2.04 5.015 3.055 8.752 3.055l-.4.255v-.11Z"
+                fill="#252F3E" />
+              <path
+                d="M120.963 73.678c-1.615 0-2.72-.255-3.4-.85-.68-.51-1.275-1.7-1.785-3.31L99.548 7.735c-.51-1.7-.765-2.804-.765-3.4 0-1.36.68-2.125 2.04-2.125h8.327c1.7 0 2.89.255 3.485.85.68.51 1.19 1.7 1.7 3.31l11.303 44.574L136.6 6.37c.425-1.7.935-2.804 1.615-3.31.68-.51 1.955-.85 3.57-.85h6.8c1.7 0 2.89.255 3.57.85.68.51 1.275 1.7 1.615 3.31l11.046 45.168L176.6 6.37c.51-1.7 1.105-2.804 1.7-3.31.68-.51 1.87-.85 3.485-.85h7.905c1.36 0 2.125.68 2.125 2.04 0 .425-.085.85-.17 1.36-.085.51-.255 1.19-.595 2.04L174.39 69.518c-.51 1.7-1.105-2.804-1.785 3.31-.68.51-1.87.85-3.4.85h-7.308c-1.7 0-2.89-.255-3.57-.85-.68-.595-1.275-1.7-1.615-3.395l-10.876-43.47-10.795 43.385c-.425 1.7-.935 2.804-1.615 3.395-.68.595-1.955.85-3.57.85h-7.308l-.595.085Z"
+                fill="#252F3E" />
+              <path
+                d="M213.452 75.8c-4.324 0-8.667-.51-12.92-1.53-4.24-1.02-7.565-2.125-9.78-3.4-1.36-.765-2.295-1.615-2.635-2.38a6.156 6.156 0 0 1-.51-2.38v-4.325c0-1.275.51-1.955 1.445-1.955.385 0 .765.085 1.19.17.425.085 1.02.34 1.7.595 2.295 1.02 4.76 1.87 7.48 2.465 2.635.595 5.27.85 7.82.85 4.155 0 7.395-.765 9.608-2.21 2.21-1.444 3.4-3.57 3.4-6.375 0-1.87-.595-3.4-1.785-4.665-1.19-1.275-3.4-2.38-6.63-3.485l-9.523-2.975c-4.76-1.53-8.327-3.74-10.54-6.715-2.21-2.89-3.4-6.12-3.4-9.523 0-2.72.595-5.185 1.785-7.308 1.19-2.125 2.804-3.985 4.845-5.44 2.04-1.53 4.324-2.635 7.054-3.4 2.72-.765 5.608-1.105 8.667-1.105 1.53 0 3.14.085 4.665.34 1.615.255 3.055.51 4.494.85 1.36.425 2.635.85 3.815 1.275 1.19.425 2.125.85 2.804 1.275.935.51 1.615 1.02 2.04 1.615.425.51.595 1.19.595 2.125v3.985c0 1.275-.51 1.955-1.445 1.955-.51 0-1.275-.255-2.295-.765-3.4-1.53-7.224-2.38-11.473-2.38-3.74 0-6.715.595-8.752 1.87-2.04 1.275-3.055 3.225-3.055 5.95 0 1.87.68 3.485 2.04 4.754 1.36 1.275 3.815 2.55 7.308 3.74l9.35 2.975c4.665 1.53 8.072 3.655 10.115 6.375 2.04 2.72 3.055 5.863 3.055 9.35 0 2.805-.595 5.355-1.7 7.565-1.19 2.21-2.804 4.155-4.845 5.78-2.04 1.7-4.495 2.89-7.308 3.74-2.975.935-6.035 1.36-9.353 1.36Z"
+                fill="#252F3E" />
+              <path
+                d="M230.993 120.964c-27.087 20.054-66.388 30.728-100.2 30.728-47.39 0-90.083-17.51-122.337-46.624-2.55-2.295-.255-5.44 2.72-3.655 34.862 20.31 77.895 32.462 122.337 32.462 29.984 0 62.98-6.205 93.372-19.125 4.58-1.955 8.412 2.975 4.108 6.214Z"
+                fill="#FF9900" />
+              <path
+                d="M240.448 110.104c-3.485-4.494-23.052-2.125-31.808-1.105-2.635.34-3.055-1.955-.68-3.655 15.555-10.96 41.085-7.82 44.053-4.155 2.975 3.74-.765 29.534-15.385 41.856-2.21 1.87-4.324.85-3.315-1.53 3.225-7.99 10.45-26.873 7.135-31.41Z"
+                fill="#FF9900" />
+            </svg>
+            <span>AWS</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 242" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+              <path d="M85.343 0.003L0 214.794l62.899 26.598L170.339 0.012 85.343 0.003z" fill="#0089D6" />
+              <path d="M195.815 56.263L123.768 162.085l78.566 79.317H256L195.815 56.263z" fill="#0089D6" />
+              <path d="M123.768 162.085L86.787 214.128l36.981 27.274 76.798.001-76.798-79.318z" fill="#0089D6" />
+            </svg>
+            <span>Azure</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 222" xmlns="http://www.w3.org/2000/svg" width="48" height="42">
+              <path d="M128 0L256 221.705H0z" fill="#000" />
+            </svg>
+            <span>Vercel</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 249" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+              <path
+                d="M127.279.004c-4.225.107-8.158 2.347-10.4 5.877L10.395 170.315a12.478 12.478 0 0 0-.906 10.932l38.505 74.258c2.464 4.759 7.252 7.864 12.515 8.13l85.036 4.267c5.286.265 10.356-2.328 13.237-6.83l69.484-108.72a12.479 12.479 0 0 0 1.487-10.726L196.124 22.58c-1.707-5.01-5.9-8.797-10.98-9.93L133.82.68a12.618 12.618 0 0 0-6.541-.676Z"
+                fill="#326CE5" />
+              <path
+                d="M128.004 71.016c-1.36.011-2.566.755-3.223 1.973-.264.49-.406 1.032-.478 1.578l-.186 3.401c-.162 2.155-.376 4.303-.765 6.43-.448 1.825-1.373 3.4-2.26 5.088l-.345.465c-.653.895-1.298 1.794-1.57 2.87-.163.64-.131 1.324.069 1.983.103.34.256.66.444.954l.059.084c4.183 5.923 6.808 12.745 7.555 19.87l.035.636c.173 1.105.355 2.197 1.127 3.071a3.56 3.56 0 0 0 1.686 1.15l.53.12c1.766.275 3.543.491 5.32.568l3.31.285 1.584.25c1.172.317 2.005 1.318 2.14 2.479-.005.82-.317 1.498-.912 2.15-.735.647-1.655.881-2.608.934l-3.399.034c-2.02.086-4.014.262-6.008.441l-.66.125c-1.076.248-2.077.696-2.831 1.548-.454.51-.789 1.115-.987 1.767l-.033.101c-2.162 7.28-6.118 13.89-11.498 18.95l-.462.485c-.744.857-1.515 1.697-1.949 2.754a3.561 3.561 0 0 0-.17 2.015c.104.395.269.768.484 1.11l1.764 2.903c1.153 1.81 2.233 3.665 3.215 5.574.774 1.752.848 3.481.9 5.322l-.005.576c-.043 1.218-.017 2.16-.947 3.104-.76.691-1.714.84-2.738.57l-.17-.053c-1.07-.458-1.804-1.38-2.39-2.37l-1.64-2.955c-.96-1.84-1.945-3.647-3.103-5.37l-.415-.461c-.769-.787-1.603-1.448-2.666-1.82-.639-.172-1.322-.157-1.987.015a3.7 3.7 0 0 0-.977.41l-.082.055c-6.526 3.696-13.855 5.68-21.294 5.78l-.64-.013c-1.092-.03-2.195-.037-3.161.595a3.551 3.551 0 0 0-1.327 1.553l-.183.52c-.397 1.736-.723 3.486-.917 5.25l-.453 3.303-.326 1.563c-.393 1.143-1.437 1.915-2.608 1.98-.812-.04-1.466-.395-2.073-1.027-.596-.771-.768-1.724-.74-2.68l.28-3.406c.2-2.024.368-4.045.375-6.075l-.068-.673c-.144-1.097-.457-2.117-1.189-2.954a3.564 3.564 0 0 0-1.545-1.101l-.108-.037c-7.133-2.55-13.514-6.876-18.418-12.416l-.449-.443c-.881-.758-1.737-1.553-2.817-2a3.56 3.56 0 0 0-2.016-.19c-.396.1-.77.259-1.115.469l-2.932 1.714c-1.817 1.14-3.688 2.2-5.606 3.165-1.76.757-3.487.815-5.327.849l-.576-.015c-1.218-.06-2.157-.049-3.08-.994-.672-.775-.8-1.733-.511-2.752l.058-.168c.476-1.063 1.412-1.782 2.414-2.35l2.983-1.583c1.851-.938 3.67-1.898 5.413-3.02l.48-.403c.814-.747 1.504-1.56 1.905-2.609.187-.632.186-1.314.04-1.984a3.683 3.683 0 0 0-.375-.994l-.05-.08c-3.312-6.699-5.01-14.05-4.82-21.475l.04-.639c.068-1.1.087-2.207-.483-3.196a3.558 3.558 0 0 0-1.479-1.41l-.508-.221c-1.697-.499-3.422-.923-5.166-1.216l-3.349-.34-1.59-.225c-1.172-.34-1.942-1.39-1.996-2.566.063-.815.441-1.449 1.097-2.033.79-.57 1.752-.708 2.706-.643l3.397.182c2.027.037 4.049.02 6.07-.121l.67-.116c1.085-.225 2.095-.636 2.874-1.462a3.564 3.564 0 0 0 1.014-1.724l.031-.105c2.42-7.125 6.636-13.424 12.172-18.158l.474-.465c.768-.837 1.558-1.659 2.04-2.705.24-.524.367-1.219.237-1.908a3.776 3.776 0 0 0-.392-.99l-.054-.082-1.82-2.867c-1.178-1.792-2.284-3.63-3.298-5.519-.8-1.738-.904-3.467-.98-5.307l-.003-.576c.028-1.218-.003-2.158.91-3.117.746-.709 1.697-.87 2.725-.622l.17.05c1.08.44 1.83 1.35 2.436 2.328l1.695 2.924c.987 1.822 2 3.605 3.19 5.308l.398.476c.748.809 1.565 1.49 2.62 1.891.637.183 1.32.178 1.988.028a3.683 3.683 0 0 0 .99-.38l.085-.053c6.37-3.548 13.532-5.636 20.73-5.913l.641-.015c1.09-.069 2.187-.123 3.12-.756a3.562 3.562 0 0 0 1.294-1.595l.159-.529c.333-1.75.607-3.508.754-5.28l.346-3.314.276-1.575c.328-1.165 1.34-1.978 2.514-2.097Z"
+                fill="#FFF" />
+            </svg>
+            <span>Kubernetes</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 185" xmlns="http://www.w3.org/2000/svg" width="56" height="40">
+              <path
+                d="M250.716 70.497c-5.227-3.564-17.24-4.863-26.449-3.076-1.218-8.818-6.2-16.512-15.237-23.44l-5.188-3.564-3.56 5.192c-4.51 6.78-6.82 16.218-6.083 25.378.37 3.394 1.487 9.467 5.16 14.795-3.607 2.003-10.741 4.74-20.157 4.567H.313l-.314 1.795c-1.472 8.72-1.46 35.916 16.143 56.808 13.398 15.888 33.456 23.953 59.606 23.953 56.753 0 98.76-26.225 118.476-73.88 7.73.16 24.39.095 32.935-16.35.22-.38 2.97-6.17 3.557-7.984v-.243Z"
+                fill="#2496ED" />
+              <path
+                d="M38.738 44.622h24.818v24.818H38.738zM38.738 6.522h24.818V31.34H38.738zM76.838 44.622h24.818v24.818H76.838zM114.938 44.622h24.818v24.818h-24.818zM76.838 6.522h24.818V31.34H76.838zM0 44.622h24.818v24.818H0zM153.038 44.622h24.818v24.818h-24.818zM114.938 6.522h24.818V31.34h-24.818z"
+                fill="#2496ED" />
+            </svg>
+            <span>Docker</span>
+          </div>
+          <div>
+            <div>
+            </div>
+          </div>
+  </section>
+
+  <!-- Real Reviews Section -->
+  <section class="section" id="reviews" style="background: #ffffff; padding: 120px 0;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 60px; text-align: center; width: 100%;">
+        <h2
+          style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; color: #000000; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 20px;">
+          <span data-i18n="reviews_title_real">Real</span> <span data-i18n="reviews_title_reviews">Reviews</span>
+        </h2>
+        <p class="section-subtitle" data-i18n="reviews_subtitle"
+          style="font-size: 1.2rem; color: #4a5568; margin-bottom: 0;">Read what our verified clients have to say about
+          their experience with WEBOCONTROL.</p>
+      </div>
+
+      <div class="reviews-container">
+        <div id="reviewsList" class="reviews-grid">
+          <!-- Reviews will be loaded here -->
+          <div class="loading-spinner" data-i18n="reviews_loading">Loading reviews...</div>
+        </div>
+
+        <div id="addReviewSection" class="add-review-card" style="display:none; margin-top:40px;">
+          <h3 data-i18n="reviews_share_title">Share Your Experience</h3>
+          <form id="reviewForm">
+            <div class="form-group">
+              <label for="reviewContent" data-i18n="reviews_label_content">Your Review</label>
+              <textarea id="reviewContent" class="form-control" data-i18n-placeholder="chat_placeholder"
+                placeholder="How was your experience?" required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="reviewRating" data-i18n="reviews_label_rating">Rating (1-5)</label>
+                <select id="reviewRating" class="form-control">
+                  <option value="5" data-i18n="rating_5">5 Stars - Excellent</option>
+                  <option value="4" data-i18n="rating_4">4 Stars - Very Good</option>
+                  <option value="3" data-i18n="rating_3">3 Stars - Good</option>
+                  <option value="2" data-i18n="rating_2">2 Stars - Fair</option>
+                  <option value="1" data-i18n="rating_1">1 Star - Poor</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary" id="submitReviewBtn" data-i18n="reviews_btn_submit">Post
+                Review</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="loginToReview" class="review-login-prompt" style="display:none; text-align:center; margin-top:40px;">
+          <p data-i18n="reviews_login_prompt">Please <a href="/frontend/login.html" class="gradient-text">login</a> to
+            share your
+            feedback.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Footer -->
+  <footer class="footer" style="padding-top: 0; position: relative;">
+    <div
+      style="background: linear-gradient(180deg, #ffffff 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%); padding: 150px 20px 120px 20px; text-align: center; position: relative; z-index: 5; margin-top: -100px;">
+      <div class="container" style="max-width: 1300px; margin: 0 auto;">
+        <!-- Rotating Animated Text 5 Columns -->
+        <div
+          style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: space-between; width: 100vw; margin-left: calc(-50vw + 50%); padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px;">
+
+          <!-- Column 1 -->
+          <div
+            style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+            <div class="rotating-text-wrapper"
+              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1);">
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vue.js</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Terraform</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">SQL</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Linux</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vue.js</span>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div
+            style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+            <div class="rotating-text-wrapper"
+              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.1s;">
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">React</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Terraform</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Docker</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Next.js</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">React</span>
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div
+            style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+            <div class="rotating-text-wrapper"
+              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.2s;">
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Node.js</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">JavaScript</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Kubernetes</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Postgres</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Node.js</span>
+            </div>
+          </div>
+
+          <!-- Column 4 -->
+          <div
+            style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+            <div class="rotating-text-wrapper"
+              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.3s;">
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Python</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Golang</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">AWS</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Rust</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Python</span>
+            </div>
+          </div>
+
+          <!-- Column 5 -->
+          <div
+            style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+            <div class="rotating-text-wrapper"
+              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.4s;">
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vite.js</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">MongoDB</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">MySQL</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Redis</span>
+              <span
+                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vite.js</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="big-brand-text" id="bigBrandText">Webo<span class="brand-control">control</span></div>
+
+      <div class="footer-grid">
+        <!-- Navigation -->
+        <div class="footer-links">
+          <h4 data-i18n="footer_nav">Navigation</h4>
+          <ul>
+            <li><a href="/frontend/" data-i18n="nav_home">Home</a></li>
+            <li><a href="/frontend/products.html" data-i18n="nav_products">Products</a></li>
+            <li><a href="/frontend/order.html#support" data-i18n="order_title">Support</a></li>
+            <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-links">
+          <h4 data-i18n="footer_contact">Contact</h4>
+          <div class="footer-contact-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>hello@webocontrol.dev</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span data-i18n="order_contact_istanbul">Istanbul, Turkey</span>
+          </div>
+        </div>
+
+        <!-- Terms & Policies -->
+        <div class="footer-links">
+          <h4 data-i18n="footer_terms_policies">Terms & Policies</h4>
+          <ul>
+            <li><a href="/frontend/about_payment.html" data-i18n="nav_about_payment">About Payment</a></li>
+            <li><a href="/frontend/terms.html" data-i18n="footer_terms">Terms</a></li>
+            <li><a href="/frontend/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">© 2026 WEBOCONTROL. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3 data-i18n="cart_selection">Your Selection</h3>
+      <button class="close-cart" id="closeCart">&times;</button>
+    </div>
+    <ul class="cart-items" id="cartItems">
+      <!-- Items injected via JS -->
+    </ul>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span data-i18n="cart_total">Estimated Total:</span>
+        <span id="cartTotal">$0</span>
+      </div>
+      <button onclick="window.cart.confirmSelection()" class="btn btn-primary btn-large"
+        style="width: 100%; text-align: center;" data-i18n="cart_confirm">Confirm & Proceed →</button>
+    </div>
+  </div>
+
+  <!-- Image Zoom Modal -->
+  <div class="image-modal" id="imageModal" onclick="this.classList.remove('open')">
+    <span class="modal-close">&times;</span>
+    <img src="" alt="Full Preview" id="modalImg">
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

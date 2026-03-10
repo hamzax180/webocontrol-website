@@ -1,0 +1,251 @@
+/* ============================================
+   WEBOCONTROL — Intro
+   ============================================ */
+
+/* ============================================
+   INTRO SCENES BACKGROUND ORBS
+   ============================================ */
+.video-bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.vid-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
+
+.vid-orb.vo1 {
+  width: 500px;
+  height: 500px;
+  top: -10%;
+  left: -5%;
+  background: rgba(66, 133, 244, 0.4);
+  animation: floatOrb 8s ease-in-out infinite;
+}
+
+.vid-orb.vo2 {
+  width: 400px;
+  height: 400px;
+  bottom: -10%;
+  right: -5%;
+  background: rgba(168, 85, 247, 0.3);
+  animation: floatOrb2 11s ease-in-out infinite;
+}
+
+.vid-orb.vo3 {
+  width: 350px;
+  height: 350px;
+  top: 40%;
+  left: 50%;
+  background: rgba(236, 72, 153, 0.25);
+  animation: floatOrb 14s ease-in-out infinite reverse;
+}
+
+@keyframes floatOrb {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(60px, -40px) scale(1.1);
+  }
+}
+
+@keyframes floatOrb2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-50px, 30px) scale(1.15);
+  }
+}
+
+/* ============================================
+   INTRO SCENES SECTION
+   ============================================ */
+.intro-scenes-section {
+  position: relative;
+  z-index: 2;
+}
+
+.intro-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.intro-scene {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 80px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.intro-scene.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-scene .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.intro-scene.active .word {
+  animation: wordReveal 0.6s ease forwards;
+}
+
+.intro-scene.active .word:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.intro-scene.active .word:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.intro-scene.active .word:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.intro-scene.active .word:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.intro-scene.active .word:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes wordReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro-scene.active .word.rainbow-anim {
+  animation: wordReveal 0.6s ease forwards, rainbowShift 4s linear infinite;
+}
+
+.intro-scene .intro-sub {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+}
+
+.intro-scene.active .intro-sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-big {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  color: #1a1a2e;
+  letter-spacing: -2px;
+  line-height: 1.4;
+  /* Increased from 1.15 to prevent Arabic clipping */
+  padding: 10px 0;
+}
+
+body.lang-ar .intro-big {
+  line-height: 1.6;
+}
+
+.intro-sub {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #777;
+  max-width: 600px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.intro-cyan {
+  color: #22d3ee;
+}
+
+.intro-purple {
+  color: #a855f7;
+}
+
+.intro-pink {
+  color: #ec4899;
+}
+
+.intro-line-accent {
+  width: 60px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #4285f4, #a855f7);
+}
+
+.intro-line-accent.pink {
+  background: linear-gradient(90deg, #ec4899, #f97316);
+}
+
+.intro-line-accent.rainbow {
+  background: linear-gradient(90deg, #22c55e, #4285f4, #a855f7, #ec4899);
+  width: 80px;
+}
+
+.intro-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.intro-pills span {
+  padding: 8px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: #555;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.intro-stats {
+  display: flex;
+  gap: 50px;
+  margin-top: 10px;
+}
+
+.intro-stat {
+  text-align: center;
+}
+
+.intro-stat-num {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+}
+
+.intro-stat-label {
+  font-size: 0.85rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+

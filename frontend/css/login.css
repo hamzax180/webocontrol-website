@@ -1,0 +1,655 @@
+/* ============================================
+   WEBOCONTROL — Auth Pages
+   ============================================ */
+
+/* ============================================
+   AUTH PAGES (Premium Light Glass)
+   ============================================ */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  /* Make page transparent so moon/aurora elements show through */
+  background: transparent;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(11, 15, 25, 0.65);
+  /* Premium dark glass */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 48px 40px;
+  backdrop-filter: blur(60px) saturate(200%);
+  -webkit-backdrop-filter: blur(60px) saturate(200%);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(0, 240, 255, 0.05);
+  color: #fff;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 50px 120px rgba(0, 0, 0, 0.12),
+    0 0 40px rgba(0, 240, 255, 0.2),
+    0 0 100px rgba(184, 41, 255, 0.15);
+}
+
+.auth-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.auth-card .auth-subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.92rem;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.auth-card .form-group label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.auth-card .form-control {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.auth-card .btn-primary {
+  background: #d4d4d4 !important;
+  color: #111 !important;
+  border: none;
+  box-shadow: none;
+  font-family: var(--font-body);
+  letter-spacing: 0;
+  border-radius: 8px;
+}
+
+.auth-card .btn-primary:hover {
+  background: #b5b5b5 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1);
+}
+
+.auth-card .form-control:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.1) !important;
+  transform: translateY(-1px);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.auth-footer a {
+  color: var(--cyan);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.auth-footer a:hover {
+  filter: brightness(1.2);
+  text-decoration: underline;
+}
+
+.auth-footer a:hover {
+  color: #3b5bdb;
+  text-decoration: underline;
+}
+
+/* Side Marketing Text for Auth Pages */
+.auth-side-text {
+  position: absolute;
+  /* Changed from fixed */
+  left: 0;
+  width: 35vw;
+  padding: 0 2vw;
+  box-sizing: border-box;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: opacity, transform;
+}
+
+.auth-side-text h2 {
+  font-family: var(--font-body);
+  font-size: clamp(3.5rem, 6.5vw, 8.5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 0.95;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  margin: 0;
+  width: 100%;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.word-stack {
+  display: block;
+  margin-bottom: 0.25em;
+  /* Precisely tuned space "after every word" */
+}
+
+.auth-side-text h2 span,
+.auth-right-text h2 span {
+  font-size: 0.8em;
+  /* Slightly smaller to prevent overlap */
+  display: inline-block;
+}
+
+/* Enhanced style for "SMOOTHLY" to fit space and look cool */
+.auth-side-text .word-stack span {
+  font-size: 1.25em !important;
+  /* Significantly larger to fill space */
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 30px rgba(255, 45, 85, 0.5), 0 10px 40px rgba(0, 0, 0, 0.9);
+  display: block;
+  width: 100%;
+}
+
+.auth-right-text {
+  position: absolute;
+  /* Changed from fixed */
+  right: 0;
+  width: 35vw;
+  padding: 0 2vw;
+  box-sizing: border-box;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: opacity, transform;
+}
+
+.auth-right-text h2 {
+  font-family: var(--font-body);
+  font-size: clamp(3.5rem, 6.5vw, 8.5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 0.95;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  margin: 0;
+  width: 100%;
+  word-wrap: normal;
+  white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+
+  .auth-side-text h2,
+  .auth-right-text h2 {
+    font-size: clamp(2.5rem, 5vw, 6.5rem);
+  }
+}
+
+@media (max-width: 992px) {
+
+  .auth-side-text,
+  .auth-right-text {
+    display: none;
+  }
+}
+
+/* 3D Glassmorphic Card - Exact Size as Video Box */
+.auth-card {
+  opacity: 0;
+  /* JS will reveal this */
+  visibility: hidden;
+  /* Prevent interaction while hidden */
+  position: absolute;
+  /* Changed from fixed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  max-width: 600px;
+  /* Default wide enough to cover background elements */
+  aspect-ratio: 1 / 1;
+  /* Perfectly square like the video box */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  will-change: opacity, transform;
+
+  /* See-through glass background */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  /* Lighter blur so the box behind it stands out */
+  -webkit-backdrop-filter: blur(12px);
+
+  padding: 20px;
+  border-radius: 4px;
+  /* Sharp corners matching the video grid */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* 3D Depth shadows */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 20px 60px rgba(0, 0, 0, 0.6);
+
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Specific fit for login - encapsulated look */
+.login-body .auth-card {
+  max-width: 630px;
+  /* Slightly larger for a more comfortable fit */
+  aspect-ratio: 1 / 1;
+}
+
+/* Allow registration card to grow and cover fingerprints + text */
+.register-body .auth-card {
+  max-width: 650px;
+  /* Wider for a better landscape fit */
+  top: 53%;
+  /* Shifted down slightly per user request */
+  aspect-ratio: auto;
+  min-height: 0;
+  padding: 15px 35px;
+  /* Shorter vertical padding */
+  backdrop-filter: blur(16px);
+  /* Slightly more blur for register */
+}
+
+/* Tighter internal spacing for register only */
+.register-body .auth-subtitle {
+  margin-bottom: 10px;
+  /* Reduced from 12px for compactness */
+}
+
+.register-body .form-group {
+  margin-bottom: 8px;
+  /* Reduced from 10px for compactness */
+}
+
+.register-body .form-control {
+  padding: 6px 12px;
+  /* Shorter input padding */
+}
+
+.register-body .btn-primary {
+  padding: 8px 20px;
+  /* Shorter button padding */
+  margin-top: 2px;
+}
+
+/* Style for security question dropdown */
+select.form-control {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  padding-right: 45px;
+}
+
+select.form-control option {
+  background: #0b0f19;
+  color: #fff;
+}
+
+/* Wrapper for form constraints */
+.auth-form-wrapper {
+  width: 100%;
+  max-width: 440px;
+  padding: 0;
+  background: transparent;
+  /* Removed background since card is square */
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  transform-style: preserve-3d;
+}
+
+/* 3D Hover Float */
+.auth-card:hover {
+  transform: translate(-50%, calc(-50% - 8px)) scale(1.02);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    /* Even deeper shadow on float */
+    0 0 30px rgba(0, 240, 255, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-color: rgba(0, 240, 255, 0.2);
+  border-top-color: rgba(0, 240, 255, 0.4);
+}
+
+/* Card headings */
+.auth-card h2 {
+  font-family: var(--font-body);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 4px;
+  /* Reduced from 8px for compactness */
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  /* 3D text pop */
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 20px;
+  /* Reduced from 32px for compactness */
+  font-family: var(--font-body);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Digital Reveal Styling */
+.auth-card h2,
+.auth-subtitle,
+.form-group label,
+.btn-primary,
+.auth-footer span,
+.auth-footer a {
+  transition: text-shadow 0.3s ease, letter-spacing 0.3s ease, color 0.3s ease;
+}
+
+.auth-card h2.is-revealing,
+.auth-subtitle.is-revealing,
+.form-group label.is-revealing,
+.btn-primary.is-revealing,
+.auth-footer span.is-revealing,
+.auth-footer a.is-revealing {
+  letter-spacing: 1.5px;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 14px;
+  /* Reduced from 22px for compactness */
+  transform-style: preserve-3d;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Digital Reveal Additions --- */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 240, 255, 0.5) 50%,
+      transparent 100%);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.auth-card.is-initializing {
+  animation: auth-flicker 0.4s infinite;
+}
+
+@keyframes auth-flicker {
+  0% {
+    opacity: 0.1;
+    filter: blur(10px) brightness(1.5);
+  }
+
+  25% {
+    opacity: 0.3;
+    filter: blur(5px) brightness(1);
+  }
+
+  50% {
+    opacity: 0.15;
+    filter: blur(12px) brightness(1.8);
+  }
+
+  75% {
+    opacity: 0.4;
+    filter: blur(3px) brightness(1.2);
+  }
+
+  100% {
+    opacity: 0.1;
+    filter: blur(10px) brightness(1.5);
+  }
+}
+
+@keyframes scan-move {
+  0% {
+    top: 0%;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+/* Inputs - Glassmorphic / Transparent */
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  /* Reduced from 14px 18px for compactness */
+  background: rgba(0, 0, 0, 0.3);
+  /* Darker transparent recess */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  /* Inset 3D shadow effect */
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-control:focus {
+  border-color: var(--cyan);
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 0 15px rgba(0, 240, 255, 0.3),
+    inset 0 4px 8px rgba(0, 0, 0, 0.5);
+  transform: translateZ(5px);
+  /* Bring forward slightly in 3D */
+}
+
+/* Glass Button - "3D Type Shit" Float */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  /* 3D pop light edge */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  /* 3D bottom dark edge */
+  color: #fff;
+  border-radius: 12px;
+  padding: 11px 24px;
+  /* Reduced from 14px 28px for compactness */
+  font-size: 1rem;
+  /* Slightly smaller button text */
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    /* Drop shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  /* Inset light */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Button Hover - Floating Hologram effect */
+.btn-primary:hover {
+  transform: translateY(-4px) translateZ(10px);
+  background: rgba(0, 240, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.4);
+  border-top-color: rgba(0, 240, 255, 0.7);
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.5),
+    /* Deep hover shadow */
+    0 0 25px rgba(0, 240, 255, 0.5),
+    /* Cyan glow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 5px rgba(0, 240, 255, 0.2);
+  /* Internal glow below */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) translateZ(0);
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.4),
+    inset 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Pressing inward 3D effect */
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.btn-large {
+  padding: 15px 32px;
+  font-size: 1rem;
+}
+
+/* Form feedback message */
+.form-message {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-align: center;
+  min-height: 0;
+  transition: all 0.3s ease;
+}
+
+.form-message.error {
+  background: rgba(255, 45, 117, 0.2);
+  border: 1px solid rgba(255, 45, 117, 0.4);
+  color: #ffb3c6;
+  backdrop-filter: blur(5px);
+}
+
+.form-message.success {
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  color: #b3ffda;
+  backdrop-filter: blur(5px);
+}
+
+/* Footer link */
+.auth-footer {
+  text-align: center;
+  margin-top: 26px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.auth-footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  /* explicitly matching the home footer font */
+}
+
+.auth-footer a:hover {
+  color: #fff;
+  background: rgba(0, 240, 255, 0.15);
+  text-shadow: 0 0 15px rgba(0, 240, 255, 1);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+/* Logo centering */
+.auth-card .nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  /* Floating 3D logo */
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 36px 24px 32px;
+    border-radius: 20px;
+  }
+
+  .auth-card h2 {
+    font-size: 1.6rem;
+  }
+}
