@@ -4564,11 +4564,6 @@ body.auth-body .footer {
   margin-top: -0.05em;
 }
 
-.footer-background-vid,
-.footer-video-overlay {
-  display: none !important;
-}
-
 @keyframes shine {
   to {
     background-position: 200% center;
