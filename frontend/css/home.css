@@ -450,6 +450,41 @@ body.lang-ar .stat-label {
   color: #1a1a2e;
 }
 
+.add-review-card .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.add-review-card .form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.add-review-card .form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast);
+  background: #f9f9f9;
+}
+
+.add-review-card .form-control:focus {
+  outline: none;
+  border-color: #111;
+  background: #fff;
+}
+
+.add-review-card textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
 .review-login-prompt {
   padding: 40px;
   border: 1px dashed rgba(0, 0, 0, 0.2);

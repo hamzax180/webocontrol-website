@@ -1089,9 +1089,13 @@ class CartManager {
         let total = 0;
         list.innerHTML = this.items.map(item => {
             total += parseInt(item.price);
+            let imgSrc = item.image || '';
+            if (imgSrc.startsWith('/public/')) {
+                imgSrc = imgSrc.replace('/public/', '/');
+            }
             return `
                 <li class="cart-item">
-                    <img src="${item.image}" class="cart-item-img">
+                    <img src="${imgSrc}" class="cart-item-img">
                     <div class="cart-item-info">
                         <div class="cart-item-title">${window.i18n.t('prod_' + item.type + '_title') || item.name}</div>
                         <div class="cart-item-price">$${item.price}</div>

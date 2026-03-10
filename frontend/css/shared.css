@@ -366,7 +366,7 @@ img {
 
 /* Scrolled State for all pages */
 .navbar.scrolled {
-  background: rgba(11, 15, 25, 0.95);
+  background: rgba(11, 15, 25, 0.4);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
