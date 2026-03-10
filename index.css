@@ -9602,14 +9602,13 @@ body.auth-body .video-background-container .bg-vid {
 .auth-side-text {
   position: absolute;
   left: 0;
-  width: calc(50vw - 290px);
-  padding: 0 40px;
+  width: 40vw;
+  padding: 0 5vw;
   box-sizing: border-box;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
-  /* Let clicks pass through if needed */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9617,27 +9616,28 @@ body.auth-body .video-background-container .bg-vid {
 
 .auth-side-text h2 {
   font-family: var(--font-body);
-  font-size: clamp(2.5rem, 5vw, 6.5rem);
-  font-weight: 800;
+  font-size: clamp(4rem, 8vw, 12rem);
+  font-weight: 900;
   color: #fff;
-  line-height: 1.1;
+  line-height: 0.95;
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
   margin: 0;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .auth-right-text {
   position: absolute;
   right: 0;
-  width: calc(50vw - 290px);
-  padding: 0 40px;
+  width: 40vw;
+  padding: 0 5vw;
   box-sizing: border-box;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
-  /* Let clicks pass through if needed */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9645,21 +9645,23 @@ body.auth-body .video-background-container .bg-vid {
 
 .auth-right-text h2 {
   font-family: var(--font-body);
-  font-size: clamp(2.5rem, 5vw, 6.5rem);
-  font-weight: 800;
+  font-size: clamp(4rem, 8vw, 12rem);
+  font-weight: 900;
   color: #fff;
-  line-height: 1.1;
+  line-height: 0.95;
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
   margin: 0;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 @media (max-width: 1200px) {
 
   .auth-side-text h2,
   .auth-right-text h2 {
-    font-size: 4.5rem;
+    font-size: clamp(3rem, 6vw, 8rem);
   }
 }
 
@@ -9668,7 +9670,6 @@ body.auth-body .video-background-container .bg-vid {
   .auth-side-text,
   .auth-right-text {
     display: none;
-    /* Hide on smaller screens where there isn't enough space left of the card */
   }
 }
 
