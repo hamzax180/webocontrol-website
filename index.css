@@ -9535,17 +9535,25 @@ body.auth-body .video-background-container .bg-vid {
   /* Comfortably dark so it doesn't blind visitors */
 }
 
-/* Full-screen centered layout */
+/* Full-screen centered layout wrapper */
 .auth-page {
+  position: relative;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   z-index: 1;
-  padding: 40px 20px;
+  padding: 40px 20px 100px;
   perspective: 1200px;
   /* For 3D effects */
+}
+
+body.auth-body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #000;
 }
 
 /* Override the global anim-forever-logo gradient to force solid red */
