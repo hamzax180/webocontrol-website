@@ -9,14 +9,14 @@ function initAuthAnimations() {
     // Premium entrance for the auth card
     gsap.fromTo('.auth-card',
         { opacity: 0, y: 40, scale: 0.95, filter: 'blur(15px)' },
-        { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.2, ease: 'expo.out', delay: 0.1 }
+        { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.2, ease: 'expo.out', delay: 3.0 }
     );
 
     // Staggered entrance for inner elements
     const innerElements = document.querySelectorAll('.auth-card > a, .auth-card > h2, .auth-card > p, .auth-card form > div, .auth-card form > button, .auth-footer');
     gsap.fromTo(innerElements,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.3 }
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 3.2 }
     );
 
     // Floating hero glows

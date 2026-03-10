@@ -9748,7 +9748,7 @@ body.auth-body {
 
 /* 3D Hover Float */
 .auth-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translate(-50%, calc(-50% - 8px)) scale(1.02);
   box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.7),
     /* Even deeper shadow on float */
