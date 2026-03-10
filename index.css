@@ -9598,6 +9598,42 @@ body.auth-body .video-background-container .bg-vid {
   }
 }
 
+/* Side Marketing Text for Auth Pages */
+.auth-side-text {
+  position: absolute;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 450px;
+  z-index: 2;
+  pointer-events: none;
+  /* Let clicks pass through if needed */
+}
+
+.auth-side-text h2 {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .auth-side-text h2 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .auth-side-text {
+    display: none;
+    /* Hide on smaller screens where there isn't enough space left of the card */
+  }
+}
+
 /* 3D Glassmorphic Card - Exact Size as Video Box */
 .auth-card {
   position: relative;
