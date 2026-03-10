@@ -9839,12 +9839,14 @@ body.auth-body .video-background-container .bg-vid {
 }
 
 .auth-footer a {
-  color: var(--cyan);
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   padding: 4px 8px;
   border-radius: 6px;
+  font-family: var(--font-body);
+  /* explicitly matching the home footer font */
 }
 
 .auth-footer a:hover {
