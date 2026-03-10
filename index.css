@@ -9532,6 +9532,7 @@ body.lang-ar .pillar-title {
 /* Darken the video bg more on auth pages for readability */
 body.auth-body .video-background-container .bg-vid {
   filter: brightness(0.2);
+  /* Comfortably dark so it doesn't blind visitors */
 }
 
 /* Full-screen centered layout */
@@ -9545,6 +9546,13 @@ body.auth-body .video-background-container .bg-vid {
   padding: 40px 20px;
   perspective: 1200px;
   /* For 3D effects */
+}
+
+/* Override the global anim-forever-logo gradient to force solid red */
+.auth-page .nav-logo.anim-forever-logo .logo-main span {
+  background: none !important;
+  -webkit-text-fill-color: #ff2d55 !important;
+  color: #ff2d55 !important;
 }
 
 /* Ambient glow orbs behind card (Optional, nice for 3D depth) */
