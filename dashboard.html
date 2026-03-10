@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — WEBOCONTROL</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <script src="/js/i18n.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+    <canvas id="bg-aurora"></canvas>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Moon Graphics -->
+    <div class="moon-graphics">
+        <div class="moon moon-1"></div>
+        <div class="moon moon-2"></div>
+        <div class="moon moon-3"></div>
+        <div class="moon moon-4"></div>
+        <div class="moon moon-5"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-logo anim-forever-logo" style="text-decoration: none;">
+                <div class="logo-main">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L3 20H7.5L12 11L16.5 20H21L12 2Z" fill="url(#antigravity-grad)" />
+                        <defs>
+                            <linearGradient id="antigravity-grad" x1="3" y1="20" x2="21" y2="2"
+                                gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#4285F4" />
+                                <stop offset="50%" stop-color="#EA4335" />
+                                <stop offset="100%" stop-color="#FBBC05" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" data-i18n="nav_home">Home</a></li>
+                <li><a href="/products.html" data-i18n="nav_products">Products</a></li>
+                <li><a href="/order.html#support" data-i18n="order_title">Support</a></li>
+                <li><a href="/about.html" data-i18n="nav_about">About Payment</a></li>
+            </ul>
+            <div class="nav-center-group">
+                <div class="nav-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('ar')">AR</button>
+                    </div>
+                </div>
+                <div class="nav-cart" id="navCart">
+                    <button class="cart-btn" id="cartBtn">
+                        <span class="icon">🛒</span>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-auth">
+                <button class="btn btn-ghost" id="logoutBtn" data-i18n="nav_logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Animated Background Orbs -->
+    <div class="video-bg-orbs">
+        <div class="vid-orb vo1"></div>
+        <div class="vid-orb vo2"></div>
+        <div class="vid-orb vo3"></div>
+    </div>
+
+    <div class="dashboard-page">
+        <div class="container">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h1><span data-i18n="dash_welcome">Welcome</span>, <span class="gradient-text"
+                            id="userName">User</span></h1>
+                    <p class="dash-subtitle" data-i18n="dash_subtitle">Here's an overview of your projects and orders.
+                    </p>
+                </div>
+                <a href="/order.html" class="btn btn-primary" data-i18n="dash_new_order">+ New Order</a>
+            </div>
+
+            <!-- Stat Cards -->
+            <div class="dash-stats">
+                <div class="dash-stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4285f4, #5e9eff);">📦</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="statTotal">0</span>
+                        <span class="stat-label" data-i18n="dash_stat_total">Total Orders</span>
+                    </div>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">⏳</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="statPending">0</span>
+                        <span class="stat-label" data-i18n="dash_stat_pending">Pending</span>
+                    </div>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #22c55e, #4ade80);">✅</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="statCompleted">0</span>
+                        <span class="stat-label" data-i18n="dash_stat_completed">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid: Orders + Product Sidebar -->
+            <div class="dash-content-grid">
+                <!-- Orders Column -->
+                <div class="dash-orders-col">
+                    <div class="dash-section-header">
+                        <h2 data-i18n="dash_your_orders">Your Orders</h2>
+                    </div>
+                    <div class="dash-order-list" id="orderList">
+                        <div class="dash-loading" data-i18n="dash_loading">Loading orders...</div>
+                    </div>
+                </div>
+
+                <!-- Product Ad Slider -->
+                <div class="dash-product-sidebar">
+                    <div class="dash-section-header">
+                        <h2 data-i18n="dash_recommended">Recommended For You</h2>
+                    </div>
+                    <div class="hero-slider" id="heroSlider">
+                        <div class="slider-track" id="sliderTrack">
+                            <!-- Injected by JS -->
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn slider-prev" id="sliderPrev">‹</button>
+                            <div class="slider-dots" id="sliderDots"></div>
+                            <button class="slider-btn slider-next" id="sliderNext">›</button>
+                        </div>
+                    </div>
+                    <a href="/products.html" class="btn btn-ghost sidebar-view-all" data-i18n="dash_view_all">View All
+                        Products →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-i18n="cart_selection">Your Selection</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <ul class="cart-items" id="cartItems">
+            <!-- Items injected via JS -->
+        </ul>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-i18n="cart_total">Estimated Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button onclick="window.cart.confirmSelection()" class="btn btn-primary btn-large"
+                style="width: 100%; text-align: center;" data-i18n="cart_confirm">Confirm & Proceed →</button>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div class="image-modal" id="imageModal" onclick="this.classList.remove('open')">
+        <span class="modal-close">&times;</span>
+        <img src="" alt="Full Preview" id="modalImg">
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/dashboard.js"></script>
+</body>
+
+</html>

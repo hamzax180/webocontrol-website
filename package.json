@@ -1,0 +1,28 @@
+{
+  "name": "webocontrol-website",
+  "version": "1.0.0",
+  "description": "WEBOCONTROL - Futuristic Software Company Website",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "server": "node server/index.js",
+    "start": "node server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0",
+    "stripe": "^20.3.1"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+*.db
+*.db-shm
+*.db-wal
+
+# Large video/media files (too big for GitHub — host separately)
+images/*.mp4
+images/*.mov
+images/*.webm
+images/*.avi

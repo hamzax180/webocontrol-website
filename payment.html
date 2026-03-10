@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WEBOCONTROL — Secure payment checkout for your web development order.">
+    <title>Payment | WEBOCONTROL — Futuristic Web Development Studio</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <script src="/js/i18n.js" defer></script>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+    <canvas id="bg-aurora"></canvas>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Moon Graphics -->
+    <div class="moon-graphics">
+        <div class="moon moon-1"></div>
+        <div class="moon moon-2"></div>
+        <div class="moon moon-3"></div>
+        <div class="moon moon-4"></div>
+        <div class="moon moon-5"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-logo anim-forever-logo" style="text-decoration: none;">
+                <div class="logo-main">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L3 20H7.5L12 11L16.5 20H21L12 2Z" fill="url(#antigravity-grad)" />
+                        <defs>
+                            <linearGradient id="antigravity-grad" x1="3" y1="20" x2="21" y2="2"
+                                gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#4285F4" />
+                                <stop offset="50%" stop-color="#EA4335" />
+                                <stop offset="100%" stop-color="#FBBC05" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" data-i18n="nav_home">Home</a></li>
+                <li><a href="/products.html" data-i18n="nav_products">Products</a></li>
+                <li><a href="/order.html#support" data-i18n="order_title">Support</a></li>
+                <li><a href="/about.html" data-i18n="nav_about">About Us</a></li>
+            </ul>
+            <div class="nav-center-group">
+                <div class="nav-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('ar')">AR</button>
+                    </div>
+                </div>
+                <div class="nav-cart" id="navCart">
+                    <button class="cart-btn" id="cartBtn">
+                        <span class="icon">🛒</span>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-auth" id="navAuth">
+                <a href="/login.html" class="btn btn-ghost" id="loginBtn" data-i18n="nav_login">Login</a>
+                <a href="/register.html" class="btn btn-primary" id="registerBtn" data-i18n="nav_register">Get
+                    Started</a>
+                <button class="btn btn-ghost" id="logoutBtn" style="display:none;"
+                    data-i18n="nav_logout">Logout</button>
+                <a href="/dashboard.html" class="btn btn-primary" id="dashboardBtn" style="display:none;"
+                    data-i18n="nav_dashboard">Dashboard</a>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Animated Background Orbs -->
+    <div class="video-bg-orbs">
+        <div class="vid-orb vo1"></div>
+        <div class="vid-orb vo2"></div>
+        <div class="vid-orb vo3"></div>
+    </div>
+
+    <!-- Payment Content -->
+    <section class="section" style="margin-top: 100px; min-height: 70vh;">
+        <div class="container">
+
+            <!-- Project Requirements Before Payment -->
+            <div id="customerDetailsForm">
+                <div class="section-header reveal">
+                    <span class="section-label" data-i18n="pay_step1">// Step 1</span>
+                    <h2 class="section-title"><span data-i18n="pay_req_title">Project Requirements</span></h2>
+                    <p class="section-subtitle" data-i18n="pay_req_subtitle">Tell us about your project so we can
+                        deliver exactly what you need.</p>
+                </div>
+
+                <div class="requirements-form-wrapper">
+                    <form id="customerForm" class="customer-form">
+                        <!-- Client Details Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title" data-i18n="pay_client_info">👤 Client Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName" data-i18n="full_name">FULL NAME *</label>
+                                    <input type="text" id="fullName" name="fullName" required
+                                        data-i18n-placeholder="ph_company_name" placeholder="Your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" data-i18n="form_email_label">EMAIL ADDRESS *</label>
+                                    <input type="email" id="email" name="email" required
+                                        data-i18n-placeholder="ph_email" placeholder="your@email.com">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone" data-i18n="req_phone">PHONE NUMBER *</label>
+                                    <input type="tel" id="phone" name="phone" required data-i18n-placeholder="ph_phone"
+                                        placeholder="+1 (555) 000-0000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="company" data-i18n="req_company_name">COMPANY NAME *</label>
+                                    <input type="text" id="company" name="company" required
+                                        data-i18n-placeholder="ph_company_name" placeholder="Your company name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="website-only">
+                            <!-- Project Details Section -->
+                            <div class="form-section">
+                                <h3 class="form-section-title" data-i18n="pay_project_details">📋 Project Details</h3>
+                                <div class="form-group">
+                                    <label for="projectDescription" data-i18n="pay_proj_desc">Project Description
+                                        *</label>
+                                    <textarea id="projectDescription" name="projectDescription"
+                                        data-i18n-placeholder="ph_company_desc"
+                                        placeholder="Describe your project in detail..." rows="4"></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="timeline" data-i18n="pay_timeline">TIMELINE *</label>
+                                        <select id="timeline" name="timeline">
+                                            <option value="" data-i18n="opt_select_type">Select timeline</option>
+                                            <option value="rush" data-i18n="pay_timeline_rush">Rush (1-2 weeks)</option>
+                                            <option value="standard" data-i18n="pay_timeline_standard">Standard (2-4
+                                                weeks)</option>
+                                            <option value="flexible" data-i18n="pay_timeline_flexible">Flexible (4+
+                                                weeks)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="industry" data-i18n="pay_industry">INDUSTRY/NICHE *</label>
+                                        <input type="text" id="industry" name="industry" required
+                                            data-i18n-placeholder="ph_industry"
+                                            placeholder="e.g., E-commerce, SaaS, Blog">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Features Section -->
+                            <div class="form-section">
+                                <h3 class="form-section-title" data-i18n="pay_features_title">⚡ Features & Add-ons</h3>
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="ai-agent"> <span
+                                            data-i18n="order_ai">AI Agent Integration</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="seo"> <span
+                                            data-i18n="pay_phase_3_feat3">SEO Optimization</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="ecommerce"> <span
+                                            data-i18n="category_ecommerce">E-Commerce Integration</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="analytics"> <span
+                                            data-i18n="pay_feat_analytics">Analytics & Tracking</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="cms"> <span
+                                            data-i18n="pay_feat_cms">CMS/Admin Panel</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="features" value="mobile"> <span
+                                            data-i18n="pay_feat_mobile">Mobile App</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Design & Branding Section -->
+                            <div class="form-section">
+                                <h3 class="form-section-title" data-i18n="pay_design_title">🎨 Design & Branding</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="brandColors" data-i18n="pay_brand_colors">BRAND COLORS
+                                            (OPTIONAL)</label>
+                                        <input type="text" id="brandColors" name="brandColors"
+                                            data-i18n-placeholder="ph_colors" placeholder="e.g., Blue, Gold, White">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="designStyle" data-i18n="pay_design_style">DESIGN STYLE *</label>
+                                        <select id="designStyle" name="designStyle" required>
+                                            <option value="" data-i18n="opt_select_type">Select style</option>
+                                            <option value="modern" data-i18n="pay_style_modern">Modern & Minimalist
+                                            </option>
+                                            <option value="bold" data-i18n="pay_style_bold">Bold & Creative</option>
+                                            <option value="corporate" data-i18n="pay_style_corp">Corporate &
+                                                Professional</option>
+                                            <option value="playful" data-i18n="pay_style_playful">Playful & Fun</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="logoFile" data-i18n="pay_logo_upload">COMPANY LOGO (OPTIONAL)</label>
+                                    <input type="file" id="logoFile" name="logoFile" accept="image/*"
+                                        placeholder="Upload your logo">
+                                    <small data-i18n="pay_logo_hint">Accepted formats: PNG, JPG, SVG (Max 5MB)</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Requirements -->
+                        <div class="form-section security-only" style="display: none;">
+                            <h3 class="form-section-title"><span class="icon">🛡️</span> <span
+                                    data-i18n="req_section_security">SECURITY REQUIREMENTS</span></h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-i18n="req_security_type">TYPE OF SECURITY TEST</label>
+                                    <input type="text" id="reqSecurityType" class="form-control"
+                                        data-i18n-placeholder="ph_security_type"
+                                        placeholder="e.g. Penetration Testing, Audit, Compliance">
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="req_target_url">TARGET URL / IP</label>
+                                    <input type="text" id="reqTargetUrl" class="form-control"
+                                        data-i18n-placeholder="ph_target_url" placeholder="e.g. https://mywebsite.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="req_auth_details">AUTHENTICATION DETAILS</label>
+                                <textarea id="reqAuthDetails" class="form-control"
+                                    data-i18n-placeholder="ph_auth_details"
+                                    placeholder="Do we need credentials to test inner pages?" rows="2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="req_security_goals">MAIN CONCERNS / GOALS</label>
+                                <textarea id="reqSecurityGoals" class="form-control"
+                                    data-i18n-placeholder="ph_security_goals"
+                                    placeholder="What specific threats are you most concerned about?"
+                                    rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- DevOps Requirements -->
+                        <div class="form-section devops-only" style="display: none;">
+                            <h3 class="form-section-title"><span class="icon">☁️</span> <span
+                                    data-i18n="req_section_devops">FINTECH DEVOPS & INFRASTRUCTURE</span></h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-i18n="req_cloud_provider">CLOUD INFRASTRUCTURE</label>
+                                    <input type="text" id="reqCloudProvider" class="form-control"
+                                        data-i18n-placeholder="ph_cloud_provider"
+                                        placeholder="e.g. AWS, Azure, Google Cloud (Fintech-ready)">
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="req_k8s_status">KUBERNETES & CONTAINERS</label>
+                                    <input type="text" id="reqK8sStatus" class="form-control"
+                                        data-i18n-placeholder="ph_k8s_status"
+                                        placeholder="e.g. Docker, K8s cluster setup, Helm charts">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="req_cicd_pipeline">CI/CD PIPELINE NEEDS</label>
+                                <textarea id="reqCicdPipeline" class="form-control"
+                                    data-i18n-placeholder="ph_cicd_pipeline"
+                                    placeholder="e.g. Automated testing, GitHub Actions, Blue/Green deployment"
+                                    rows="2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="req_fintech_compliance">FINTECH & COMPLIANCE GOALS</label>
+                                <textarea id="reqFintechCompliance" class="form-control"
+                                    data-i18n-placeholder="ph_fintech_compliance"
+                                    placeholder="e.g. PCI-DSS, SOC2, High Availability (99.9% Uptime)"
+                                    rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Additional Requirements -->
+                        <div class="form-section">
+                            <h3 class="form-section-title" data-i18n="pay_additional_title">📝 Additional Requirements
+                            </h3>
+                            <div class="form-group">
+                                <label for="specialRequirements" data-i18n="pay_special_req">SPECIAL REQUIREMENTS OR
+                                    COMMENTS</label>
+                                <textarea id="specialRequirements" name="specialRequirements"
+                                    data-i18n-placeholder="ph_special_details"
+                                    placeholder="Any other details we should know?" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Agreement — Must read terms -->
+                        <div class="form-group checkbox" style="display: flex; align-items: flex-start; gap: 10px;">
+                            <input type="checkbox" id="termsAccept" name="termsAccept" required disabled
+                                style="margin-top: 4px; cursor: not-allowed; opacity: 0.5;">
+                            <label for="termsAccept" style="font-size: 0.85rem; line-height: 1.5;">
+                                <span data-i18n="pay_terms_agree">I have read and agree to the</span>
+                                <a href="/terms.html" target="_blank" id="termsLink"
+                                    style="color: #4285f4; text-decoration: underline; font-weight: 600;"
+                                    data-i18n="footer_terms">Terms of
+                                    Service</a>
+                                <span data-i18n="and">and</span>
+                                <a href="/privacy.html" target="_blank" id="privacyLink"
+                                    style="color: #4285f4; text-decoration: underline; font-weight: 600;"
+                                    data-i18n="footer_privacy">Privacy
+                                    Policy</a>,
+                                <span data-i18n="pay_confirm_accurate">and confirm all information is accurate. *</span>
+                            </label>
+                        </div>
+                        <p id="termsHint"
+                            style="font-size: 0.75rem; color: #f59e0b; margin: -8px 0 12px 28px; display: block;"
+                            data-i18n="pay_terms_hint">
+                            ⚠️ Please read the Terms of Service before proceeding
+                        </p>
+
+                        <button type="button" class="btn btn-primary btn-large" id="proceedToPaymentBtn"
+                            style="width: 100%; text-align: center;" data-i18n="pay_proceed_btn">
+                            Proceed to Payment →
+                        </button>
+
+                        <script>
+                            // Enable checkbox only after user clicks/reads terms
+                            document.getElementById('termsLink').addEventListener('click', function () {
+                                const cb = document.getElementById('termsAccept');
+                                cb.disabled = false;
+                                cb.style.cursor = 'pointer';
+                                cb.style.opacity = '1';
+                                document.getElementById('termsHint').style.display = 'none';
+                            });
+                            document.getElementById('privacyLink').addEventListener('click', function () {
+                                const cb = document.getElementById('termsAccept');
+                                cb.disabled = false;
+                                cb.style.cursor = 'pointer';
+                                cb.style.opacity = '1';
+                                document.getElementById('termsHint').style.display = 'none';
+                            });
+                        </script>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Default: Order Summary + Pay (shown after customer details) -->
+            <div id="paymentCheckout" style="display:none;">
+                <div class="section-header reveal">
+                    <span class="section-label" data-i18n="pay_checkout">// Checkout</span>
+                    <div class="intro-big" style="text-align: center; margin-bottom: 10px;">
+                        <span class="word" style="opacity: 1; transform: none;" data-i18n="pay_complete">COMPLETE
+                            YOUR</span>
+                        <span class="word rainbow-anim" style="opacity: 1; transform: none;"
+                            data-i18n="pay_order">ORDER</span>
+                    </div>
+                    <p class="section-subtitle" style="text-align: center; margin-bottom: 40px;"
+                        data-i18n="pay_review_msg">Review your order and
+                        proceed to secure payment.</p>
+                </div>
+
+                <div class="payment-layout">
+                    <!-- Order Summary Card -->
+                    <div class="payment-summary-card">
+                        <h3 class="payment-card-title"><span class="icon">📦</span> <span
+                                data-i18n="pay_order_summary">ORDER SUMMARY</span></h3>
+                        <div id="paymentItems" class="payment-items">
+                            <!-- Items injected by JS -->
+                        </div>
+                        <div class="payment-divider"></div>
+                        <div class="payment-total-row">
+                            <span class="price-label-thin"
+                                style="font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 3px; color: #999; text-transform: uppercase; font-weight: 400;"
+                                data-i18n="pay_total">TOTAL</span>
+                            <span id="paymentTotal" class="payment-total-amount">$0</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Action Card -->
+                    <div class="payment-action-card">
+                        <h3 class="payment-card-title"><span class="icon">💳</span> <span
+                                data-i18n="pay_checkout_title">SECURE PAYMENT</span></h3>
+                        <p class="payment-secure-text" data-i18n="pay_secure_msg">
+                            Your payment is processed securely by <strong>Visa & PayPal</strong>. We never see or
+                            store your
+                            card or account details.
+                        </p>
+                        <div class="payment-badges">
+                            <span class="payment-badge" data-i18n="pay_badge_ssl">🔒 SSL Encrypted</span>
+                            <span class="payment-badge" data-i18n="pay_badge_visa">💳 Visa / Mastercard</span>
+                            <span class="payment-badge" data-i18n="pay_badge_paypal">🅿️ PayPal</span>
+                            <span class="payment-badge" data-i18n="pay_badge_intl">🌍 International</span>
+                        </div>
+
+                        <!-- Payment Method Selector -->
+                        <div class="payment-method-selector" style="margin: 24px 0;">
+                            <h4 style="font-size: 0.9rem; margin-bottom: 12px; color: var(--text-secondary); font-weight: 500;"
+                                data-i18n="pay_select_method">
+                                SELECT PAYMENT METHOD</h4>
+                            <div class="payment-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="card" checked
+                                        style="accent-color: var(--primary);">
+                                    <span style="display: flex; flex-direction: column;">
+                                        <span style="font-weight: 600; font-size: 0.95rem;"
+                                            data-i18n="pay_method_card">Credit Card</span>
+                                        <span style="font-size: 0.8rem; color: #666;"
+                                            data-i18n="pay_method_card_desc">Visa, Mastercard</span>
+                                    </span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="paypal"
+                                        style="accent-color: var(--primary);">
+                                    <span style="display: flex; flex-direction: column;">
+                                        <span style="font-weight: 600; font-size: 0.95rem;">PayPal</span>
+                                        <span style="font-size: 0.8rem; color: #666;"
+                                            data-i18n="pay_method_paypal_desc">Secure checkout</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button id="payBtn" class="btn btn-primary btn-large payment-btn" disabled
+                            data-i18n="pay_pay_btn">
+                            Confirm & Pay Now
+                        </button>
+                        <p class="payment-note" data-i18n="pay_note">You'll be redirected to a secure checkout
+                            page.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div id="paymentSuccess" style="display:none;">
+                <div class="payment-status-card payment-status-success">
+                    <div class="payment-status-icon">✅</div>
+                    <h2 data-i18n="pay_success_title">Payment Successful!</h2>
+                    <p data-i18n="pay_success_desc">Thank you for your order. Your payment has been processed
+                        successfully.</p>
+                    <div id="successDetails" class="payment-status-details">
+                        <!-- Details injected by JS -->
+                    </div>
+                    <div class="payment-status-actions">
+                        <a href="/dashboard.html" class="btn btn-primary" data-i18n="nav_dashboard">Go to Dashboard
+                            →</a>
+                        <a href="/" class="btn btn-ghost" data-i18n="nav_home">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cancelled State -->
+            <div id="paymentCancelled" style="display:none;">
+                <div class="payment-status-card payment-status-cancelled">
+                    <div class="payment-status-icon">❌</div>
+                    <h2 data-i18n="pay_cancel_title">Payment Cancelled</h2>
+                    <p data-i18n="pay_cancel_desc">Your payment was cancelled. No charges were made.</p>
+                    <div class="payment-status-actions">
+                        <a href="/products.html" class="btn btn-primary" data-i18n="nav_products">Back to Products →</a>
+                        <a href="/" class="btn btn-ghost" data-i18n="nav_home">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="big-brand-text" id="bigBrandText">Webo<span class="brand-control">control</span></div>
+
+            <div class="footer-grid">
+                <!-- Navigation -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_nav">Navigation</h4>
+                    <ul>
+                        <li><a href="/" data-i18n="nav_home">Home</a></li>
+                        <li><a href="/products.html" data-i18n="nav_products">Products</a></li>
+                        <li><a href="/order.html#support" data-i18n="order_title">Support</a></li>
+                        <li><a href="/about.html" data-i18n="nav_about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_contact">Contact</h4>
+                    <div class="footer-contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>hello@webocontrol.dev</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span data-i18n="order_contact_istanbul">Istanbul, Turkey</span>
+                    </div>
+                </div>
+
+                <!-- Terms & Policies -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_terms_policies">Terms & Policies</h4>
+                    <ul>
+                        <li><a href="/about_payment.html" data-i18n="nav_about_payment">About Payment</a></li>
+                        <li><a href="/terms.html" data-i18n="footer_terms">Terms</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom"
+                style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; margin-top: 40px;">
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4);" data-i18n="footer_copy">© 2026 WEBOCONTROL.
+                    All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/payment.js"></script>
+</body>
+
+</html>
