@@ -9617,7 +9617,35 @@ body.auth-body .video-background-container .bg-vid {
 
 .auth-side-text h2 {
   font-family: var(--font-body);
-  font-size: 6.5rem;
+  font-size: clamp(2.5rem, 5vw, 6.5rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+.auth-right-text {
+  position: absolute;
+  right: 0;
+  width: calc(50vw - 290px);
+  padding: 0 40px;
+  box-sizing: border-box;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+  /* Let clicks pass through if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-right-text h2 {
+  font-family: var(--font-body);
+  font-size: clamp(2.5rem, 5vw, 6.5rem);
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
@@ -9628,13 +9656,17 @@ body.auth-body .video-background-container .bg-vid {
 }
 
 @media (max-width: 1200px) {
-  .auth-side-text h2 {
+
+  .auth-side-text h2,
+  .auth-right-text h2 {
     font-size: 4.5rem;
   }
 }
 
 @media (max-width: 992px) {
-  .auth-side-text {
+
+  .auth-side-text,
+  .auth-right-text {
     display: none;
     /* Hide on smaller screens where there isn't enough space left of the card */
   }
