@@ -9524,3 +9524,348 @@ body.lang-ar .pillar-title {
 .has-video-bg {
   background: transparent !important;
 }
+
+/* ============================================
+   AUTH PAGES — Login & Register (See-Through 3D)
+   ============================================ */
+
+/* Darken the video bg more on auth pages for readability */
+.auth-page~.video-background-container .bg-vid,
+body.auth .video-background-container .bg-vid {
+  filter: brightness(0.12);
+  /* Comfortably dark so it doesn't blind visitors */
+}
+
+/* Full-screen centered layout */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding: 40px 20px;
+  perspective: 1200px;
+  /* For 3D effects */
+}
+
+/* Ambient glow orbs behind card (Optional, nice for 3D depth) */
+.hero-glow {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(100px);
+  opacity: 0.25;
+  animation: glowDrift 10s ease-in-out infinite alternate;
+}
+
+.hero-glow-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #00f0ff, transparent 70%);
+  top: -100px;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.hero-glow-2 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #b829ff, transparent 70%);
+  bottom: -80px;
+  right: -100px;
+  animation-delay: -5s;
+}
+
+@keyframes glowDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -20px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+}
+
+/* 3D Glassmorphic Card - Exact Size as Video Box */
+.auth-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 580px;
+  /* Matches the physical size of the video box */
+  aspect-ratio: 1 / 1;
+  /* Perfectly square like the video box */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* See-through glass background */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  /* Lighter blur so the box behind it stands out */
+  -webkit-backdrop-filter: blur(12px);
+
+  padding: 20px;
+  border-radius: 4px;
+  /* Sharp corners matching the video grid */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* 3D Depth shadows */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 20px 60px rgba(0, 0, 0, 0.6);
+
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Wrapper for form constraints */
+.auth-form-wrapper {
+  width: 100%;
+  max-width: 440px;
+  padding: 0;
+  background: transparent;
+  /* Removed background since card is square */
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  transform-style: preserve-3d;
+}
+
+/* 3D Hover Float */
+.auth-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    /* Even deeper shadow on float */
+    0 0 30px rgba(0, 240, 255, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-color: rgba(0, 240, 255, 0.2);
+  border-top-color: rgba(0, 240, 255, 0.4);
+}
+
+/* Card headings */
+.auth-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  /* 3D text pop */
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+  font-family: var(--font-body);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 22px;
+  transform-style: preserve-3d;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Inputs - Glassmorphic / Transparent */
+.form-control {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.3);
+  /* Darker transparent recess */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  /* Inset 3D shadow effect */
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-control:focus {
+  border-color: var(--cyan);
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 0 15px rgba(0, 240, 255, 0.3),
+    inset 0 4px 8px rgba(0, 0, 0, 0.5);
+  transform: translateZ(5px);
+  /* Bring forward slightly in 3D */
+}
+
+/* Glass Button - "3D Type Shit" Float */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  /* 3D pop light edge */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  /* 3D bottom dark edge */
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    /* Drop shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  /* Inset light */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Button Hover - Floating Hologram effect */
+.btn-primary:hover {
+  transform: translateY(-4px) translateZ(10px);
+  background: rgba(0, 240, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.4);
+  border-top-color: rgba(0, 240, 255, 0.7);
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.5),
+    /* Deep hover shadow */
+    0 0 25px rgba(0, 240, 255, 0.5),
+    /* Cyan glow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 5px rgba(0, 240, 255, 0.2);
+  /* Internal glow below */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) translateZ(0);
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.4),
+    inset 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Pressing inward 3D effect */
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.btn-large {
+  padding: 15px 32px;
+  font-size: 1rem;
+}
+
+/* Form feedback message */
+.form-message {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-align: center;
+  min-height: 0;
+  transition: all 0.3s ease;
+}
+
+.form-message.error {
+  background: rgba(255, 45, 117, 0.2);
+  border: 1px solid rgba(255, 45, 117, 0.4);
+  color: #ffb3c6;
+  backdrop-filter: blur(5px);
+}
+
+.form-message.success {
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  color: #b3ffda;
+  backdrop-filter: blur(5px);
+}
+
+/* Footer link */
+.auth-footer {
+  text-align: center;
+  margin-top: 26px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.auth-footer a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.auth-footer a:hover {
+  color: #fff;
+  background: rgba(0, 240, 255, 0.15);
+  text-shadow: 0 0 15px rgba(0, 240, 255, 1);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+/* Logo centering */
+.auth-card .nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  /* Floating 3D logo */
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 36px 24px 32px;
+    border-radius: 20px;
+  }
+
+  .auth-card h2 {
+    font-size: 1.6rem;
+  }
+}
