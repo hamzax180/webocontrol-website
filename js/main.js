@@ -268,44 +268,6 @@ function initNavbar() {
 
         lastScrollY = currentScrollY;
         updateStickyHeaderFade();
-
-        // Fade out moon graphics when scrolling down
-        const moonGraphics = document.querySelector('.moon-graphics');
-        if (moonGraphics) {
-            const scrollPercent = Math.min(window.scrollY / 500, 1);
-        }
-
-        // Fade out hero content when scrolling down
-        const heroContent = document.querySelector('.hero-content');
-        const authCard = document.querySelector('.auth-card');
-        const authSideText = document.querySelector('.auth-side-text');
-        const authRightText = document.querySelector('.auth-right-text');
-
-        if (heroContent || authCard || authSideText || authRightText) {
-            const scrollPercent = Math.min(window.scrollY / 400, 1);
-            const opacity = Math.max(1 - scrollPercent, 0);
-            const yShift = scrollPercent * 60;
-
-            if (heroContent) {
-                heroContent.style.opacity = opacity;
-                heroContent.style.transform = `translate(-50%, calc(-50% - ${yShift}px))`;
-            }
-
-            if (authCard) {
-                authCard.style.opacity = opacity;
-                authCard.style.transform = `translate(-50%, calc(-50% - ${yShift}px))`;
-            }
-
-            if (authSideText) {
-                authSideText.style.opacity = opacity;
-                authSideText.style.transform = `translateY(calc(-50% - ${yShift}px))`;
-            }
-
-            if (authRightText) {
-                authRightText.style.opacity = opacity;
-                authRightText.style.transform = `translateY(calc(-50% - ${yShift}px))`;
-            }
-        }
     });
 }
 

@@ -571,6 +571,23 @@ img {
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
+/* Navigation Register Button - Match Hero Button Style */
+#registerBtn {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+#registerBtn:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  background-color: #f8f9fa !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -4373,7 +4390,8 @@ input:checked+.slider:before {
 body.is-home .footer,
 body.auth-body .footer {
   background: #000;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+  /* Removed the 1px white line */
 }
 
 .footer-background-vid {
@@ -9532,17 +9550,22 @@ body.lang-ar .pillar-title {
 
 /* Darken the video bg more on auth pages for readability */
 body.auth-body .video-background-container {
-  position: fixed !important;
+  position: absolute !important;
+  /* Changed from fixed */
   top: 0 !important;
   left: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  z-index: -10 !important;
+  z-index: 1 !important;
+  /* Above body background, below content */
   transform: translateZ(0);
 }
 
 body.auth-body .video-background-container .bg-vid {
-  filter: brightness(0.2);
+  filter: brightness(0.4);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   /* Comfortably dark so it doesn't blind visitors */
 }
 
@@ -9554,17 +9577,19 @@ body.auth-body .video-background-container .bg-vid {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
+  /* Above the video background (z-index: 1) */
   padding: 0;
-  overflow: clip;
-  /* Prevent horizontal scroll from fixed children if any */
+  overflow-x: clip;
+  /* Prevent horizontal scroll, keep overflow for footer */
 }
 
 body.auth-body {
   margin: 0;
   padding: 0;
   overflow-x: clip !important;
-  background: transparent !important;
+  background: #000 !important;
+  /* Unified black level */
 }
 
 /* Override the global anim-forever-logo gradient to force solid red */
@@ -9619,10 +9644,11 @@ body.auth-body {
 
 /* Side Marketing Text for Auth Pages */
 .auth-side-text {
-  position: fixed;
+  position: absolute;
+  /* Changed from fixed */
   left: 0;
-  width: 40vw;
-  padding: 0 5vw;
+  width: 35vw;
+  padding: 0 2vw;
   box-sizing: border-box;
   top: 50%;
   transform: translateY(-50%);
@@ -9645,14 +9671,39 @@ body.auth-body {
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
   margin: 0;
   width: 100%;
-  word-wrap: break-word;
+  word-wrap: normal;
+  white-space: normal;
+}
+
+.word-stack {
+  display: block;
+  margin-bottom: 0.25em;
+  /* Precisely tuned space "after every word" */
+}
+
+.auth-side-text h2 span,
+.auth-right-text h2 span {
+  font-size: 0.8em;
+  /* Slightly smaller to prevent overlap */
+  display: inline-block;
+}
+
+/* Enhanced style for "SMOOTHLY" to fit space and look cool */
+.auth-side-text .word-stack span {
+  font-size: 1.25em !important;
+  /* Significantly larger to fill space */
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 30px rgba(255, 45, 85, 0.5), 0 10px 40px rgba(0, 0, 0, 0.9);
+  display: block;
+  width: 100%;
 }
 
 .auth-right-text {
-  position: fixed;
+  position: absolute;
+  /* Changed from fixed */
   right: 0;
-  width: 40vw;
-  padding: 0 5vw;
+  width: 35vw;
+  padding: 0 2vw;
   box-sizing: border-box;
   top: 50%;
   transform: translateY(-50%);
@@ -9675,7 +9726,8 @@ body.auth-body {
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
   margin: 0;
   width: 100%;
-  word-wrap: break-word;
+  word-wrap: normal;
+  white-space: nowrap;
 }
 
 @media (max-width: 1200px) {
@@ -9696,14 +9748,19 @@ body.auth-body {
 
 /* 3D Glassmorphic Card - Exact Size as Video Box */
 .auth-card {
-  position: fixed;
+  opacity: 0;
+  /* JS will reveal this */
+  visibility: hidden;
+  /* Prevent interaction while hidden */
+  position: absolute;
+  /* Changed from fixed */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 100%;
-  max-width: 580px;
-  /* Matches the physical size of the video box */
+  max-width: 600px;
+  /* Default wide enough to cover background elements */
   aspect-ratio: 1 / 1;
   /* Perfectly square like the video box */
   display: flex;
@@ -9731,6 +9788,64 @@ body.auth-body {
 
   transform-style: preserve-3d;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Specific fit for login - encapsulated look */
+.login-body .auth-card {
+  max-width: 630px;
+  /* Slightly larger for a more comfortable fit */
+  aspect-ratio: 1 / 1;
+}
+
+/* Allow registration card to grow and cover fingerprints + text */
+.register-body .auth-card {
+  max-width: 650px;
+  /* Wider for a better landscape fit */
+  top: 53%;
+  /* Shifted down slightly per user request */
+  aspect-ratio: auto;
+  min-height: 0;
+  padding: 15px 35px;
+  /* Shorter vertical padding */
+  backdrop-filter: blur(16px);
+  /* Slightly more blur for register */
+}
+
+/* Tighter internal spacing for register only */
+.register-body .auth-subtitle {
+  margin-bottom: 10px;
+  /* Reduced from 12px for compactness */
+}
+
+.register-body .form-group {
+  margin-bottom: 8px;
+  /* Reduced from 10px for compactness */
+}
+
+.register-body .form-control {
+  padding: 6px 12px;
+  /* Shorter input padding */
+}
+
+.register-body .btn-primary {
+  padding: 8px 20px;
+  /* Shorter button padding */
+  margin-top: 2px;
+}
+
+/* Style for security question dropdown */
+select.form-control {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  padding-right: 45px;
+}
+
+select.form-control option {
+  background: #0b0f19;
+  color: #fff;
 }
 
 /* Wrapper for form constraints */
@@ -9766,7 +9881,8 @@ body.auth-body {
   font-weight: 700;
   color: #fff;
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  /* Reduced from 8px for compactness */
   letter-spacing: -0.02em;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
   /* 3D text pop */
@@ -9776,14 +9892,35 @@ body.auth-body {
   text-align: center;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
+  /* Reduced from 32px for compactness */
   font-family: var(--font-body);
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Digital Reveal Styling */
+.auth-card h2,
+.auth-subtitle,
+.form-group label,
+.btn-primary,
+.auth-footer span,
+.auth-footer a {
+  transition: text-shadow 0.3s ease, letter-spacing 0.3s ease, color 0.3s ease;
+}
+
+.auth-card h2.is-revealing,
+.auth-subtitle.is-revealing,
+.form-group label.is-revealing,
+.btn-primary.is-revealing,
+.auth-footer span.is-revealing,
+.auth-footer a.is-revealing {
+  letter-spacing: 1.5px;
+}
+
 /* Form group */
 .form-group {
-  margin-bottom: 22px;
+  margin-bottom: 14px;
+  /* Reduced from 22px for compactness */
   transform-style: preserve-3d;
 }
 
@@ -9799,10 +9936,69 @@ body.auth-body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
+/* --- Digital Reveal Additions --- */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 240, 255, 0.5) 50%,
+      transparent 100%);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.auth-card.is-initializing {
+  animation: auth-flicker 0.4s infinite;
+}
+
+@keyframes auth-flicker {
+  0% {
+    opacity: 0.1;
+    filter: blur(10px) brightness(1.5);
+  }
+
+  25% {
+    opacity: 0.3;
+    filter: blur(5px) brightness(1);
+  }
+
+  50% {
+    opacity: 0.15;
+    filter: blur(12px) brightness(1.8);
+  }
+
+  75% {
+    opacity: 0.4;
+    filter: blur(3px) brightness(1.2);
+  }
+
+  100% {
+    opacity: 0.1;
+    filter: blur(10px) brightness(1.5);
+  }
+}
+
+@keyframes scan-move {
+  0% {
+    top: 0%;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
 /* Inputs - Glassmorphic / Transparent */
 .form-control {
   width: 100%;
-  padding: 14px 18px;
+  padding: 10px 14px;
+  /* Reduced from 14px 18px for compactness */
   background: rgba(0, 0, 0, 0.3);
   /* Darker transparent recess */
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -9857,8 +10053,10 @@ body.auth-body {
   /* 3D bottom dark edge */
   color: #fff;
   border-radius: 12px;
-  padding: 14px 28px;
-  font-size: 1.05rem;
+  padding: 11px 24px;
+  /* Reduced from 14px 28px for compactness */
+  font-size: 1rem;
+  /* Slightly smaller button text */
   letter-spacing: 0.02em;
   position: relative;
   overflow: hidden;

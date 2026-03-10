@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
-<body class="home-page has-video-bg auth-body">
+<body class="home-page has-video-bg auth-body register-body">
     <!-- Register Video Background -->
     <div class="video-background-container">
         <video autoplay loop muted playsinline class="bg-vid" id="register-bg-vid">
@@ -79,14 +79,20 @@
         <div class="hero-glow hero-glow-2"></div>
 
         <div class="auth-side-text">
-            <h2>WE SECURE<br>DATA<br><span style="color: #ff2d55;">SMOOTHLY</span></h2>
+            <h2>
+                <span class="word-stack">WE&nbsp;</span>
+                <span class="word-stack">SECURE&nbsp;</span>
+                <span class="word-stack">DATA&nbsp;</span>
+                <span class="word-stack"><span style="color: #ff2d55;">SMOOTHLY&nbsp;</span></span>
+            </h2>
         </div>
 
         <div class="auth-right-text">
-            <h2>UPTODATE<br>STYLING<br>AND<br><span style="color: #ff2d55;">TECHNOLOGIES</span></h2>
+            <h2>UPTO<br>DATE<br>STYLING<br>AND<br><span style="color: #ff2d55;">TECH<br>NOLOGIES</span></h2>
         </div>
 
         <div class="auth-card">
+            <div class="scan-line"></div>
             <div class="auth-form-wrapper">
                 <h2 data-i18n="register_title">Create Account</h2>
                 <p class="auth-subtitle" data-i18n="register_subtitle">Sign up to start ordering your website</p>
@@ -111,6 +117,25 @@
                         <label for="confirmPassword" data-i18n="confirm_password">Confirm Password</label>
                         <input type="password" id="confirmPassword" class="form-control"
                             data-i18n-placeholder="ph_confirm_password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="securityQuestion" data-i18n="security_question_label">Secret Question</label>
+                        <select id="securityQuestion" class="form-control" required
+                            style="background: rgba(0, 0, 0, 0.3); color: #fff; appearance: none;">
+                            <option value="" disabled selected data-i18n="select_question">Select a question...</option>
+                            <option value="maiden_name" data-i18n="q_mother_maiden">What is your mother's maiden name?
+                            </option>
+                            <option value="first_pet" data-i18n="q_first_pet">What was the name of your first pet?
+                            </option>
+                            <option value="first_school" data-i18n="q_first_school">What was the name of your first
+                                school?</option>
+                            <option value="birth_city" data-i18n="q_birth_city">In what city were you born?</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="securityAnswer" data-i18n="secret_answer_label">Your Answer</label>
+                        <input type="text" id="securityAnswer" class="form-control" data-i18n-placeholder="ph_answer"
+                            placeholder="Your secret answer" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-large" style="width:100%; margin-top:8px;"
                         data-i18n="btn_create_account">
@@ -188,7 +213,7 @@
             </div>
 
             <div class="footer-bottom"
-                style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; margin-top: 40px; width: 100%;">
+                style="text-align: center; border-top: none; padding-top: 30px; margin-top: 40px; width: 100%;">
                 <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); text-align: center; margin: 0 auto;"
                     data-i18n="footer_copy">© 2026 WEBOCONTROL. All rights reserved.</p>
             </div>

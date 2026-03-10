@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
-<body class="home-page has-video-bg auth-body">
+<body class="home-page has-video-bg auth-body login-body">
     <!-- Login Video Background -->
     <div class="video-background-container">
         <video autoplay loop muted playsinline class="bg-vid" id="login-bg-vid">
@@ -79,14 +79,20 @@
         <div class="hero-glow hero-glow-2"></div>
 
         <div class="auth-side-text">
-            <h2>WE SECURE<br>DATA<br><span style="color: #ff2d55;">SMOOTHLY</span></h2>
+            <h2>
+                <span class="word-stack">WE&nbsp;</span>
+                <span class="word-stack">SECURE&nbsp;</span>
+                <span class="word-stack">DATA&nbsp;</span>
+                <span class="word-stack"><span style="color: #ff2d55;">SMOOTHLY&nbsp;</span></span>
+            </h2>
         </div>
 
         <div class="auth-right-text">
-            <h2>UPTODATE<br>STYLING<br>AND<br><span style="color: #ff2d55;">TECHNOLOGIES</span></h2>
+            <h2>UPTO<br>DATE<br>STYLING<br>AND<br><span style="color: #ff2d55;">TECH<br>NOLOGIES</span></h2>
         </div>
 
         <div class="auth-card">
+            <div class="scan-line"></div>
             <div class="auth-form-wrapper">
                 <h2 data-i18n="login_welcome">Welcome Back</h2>
                 <p class="auth-subtitle" data-i18n="login_subtitle">Sign in to manage your orders</p>
@@ -177,7 +183,7 @@
             </div>
 
             <div class="footer-bottom"
-                style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; margin-top: 40px; width: 100%;">
+                style="text-align: center; border-top: none; padding-top: 30px; margin-top: 40px; width: 100%;">
                 <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); text-align: center; margin: 0 auto;"
                     data-i18n="footer_copy">© 2026 WEBOCONTROL. All rights reserved.</p>
             </div>
