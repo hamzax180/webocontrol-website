@@ -9530,10 +9530,8 @@ body.lang-ar .pillar-title {
    ============================================ */
 
 /* Darken the video bg more on auth pages for readability */
-.auth-page~.video-background-container .bg-vid,
-body.auth .video-background-container .bg-vid {
-  filter: brightness(0.12);
-  /* Comfortably dark so it doesn't blind visitors */
+body.auth-body .video-background-container .bg-vid {
+  filter: brightness(0.2);
 }
 
 /* Full-screen centered layout */
