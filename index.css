@@ -9601,21 +9601,27 @@ body.auth-body .video-background-container .bg-vid {
 /* Side Marketing Text for Auth Pages */
 .auth-side-text {
   position: absolute;
-  left: 8%;
+  left: 0;
+  width: calc(50vw - 290px);
+  padding: 0 40px;
+  box-sizing: border-box;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 450px;
   z-index: 2;
   pointer-events: none;
   /* Let clicks pass through if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .auth-side-text h2 {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 6.5rem;
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
+  text-align: center;
   text-transform: uppercase;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   margin: 0;
