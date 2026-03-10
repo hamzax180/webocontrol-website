@@ -9616,7 +9616,7 @@ body.auth-body .video-background-container .bg-vid {
 
 .auth-side-text h2 {
   font-family: var(--font-body);
-  font-size: clamp(4rem, 8vw, 12rem);
+  font-size: clamp(3.5rem, 6.5vw, 8.5rem);
   font-weight: 900;
   color: #fff;
   line-height: 0.95;
@@ -9645,7 +9645,7 @@ body.auth-body .video-background-container .bg-vid {
 
 .auth-right-text h2 {
   font-family: var(--font-body);
-  font-size: clamp(4rem, 8vw, 12rem);
+  font-size: clamp(3.5rem, 6.5vw, 8.5rem);
   font-weight: 900;
   color: #fff;
   line-height: 0.95;
@@ -9661,7 +9661,7 @@ body.auth-body .video-background-container .bg-vid {
 
   .auth-side-text h2,
   .auth-right-text h2 {
-    font-size: clamp(3rem, 6vw, 8rem);
+    font-size: clamp(2.5rem, 5vw, 6.5rem);
   }
 }
 
