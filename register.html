@@ -39,14 +39,6 @@
         </div>
 
         <div class="auth-card">
-            <a href="/" class="nav-logo anim-forever-logo"
-                style="justify-content:center; margin-bottom:32px; text-decoration: none;">
-                <div class="logo-main"
-                    style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: 1px;">
-                    WEBO<span style="color: #ff2d55;">CONTROL</span>
-                </div>
-            </a>
-
             <div class="auth-form-wrapper">
                 <h2 data-i18n="register_title">Create Account</h2>
                 <p class="auth-subtitle" data-i18n="register_subtitle">Sign up to start ordering your website</p>
@@ -79,15 +71,83 @@
                     <div class="form-message" id="registerMessage"></div>
                 </form>
 
-                <div class="auth-footer">
+                <div class="auth-footer" style="padding-bottom: 20px;">
                     <span data-i18n="have_account">Already have an account?</span> <a href="/login.html"
-                        data-i18n="signin_here">Sign in</a>
+                        data-i18n="signin_here"
+                        style="color: white; font-family: var(--font-body); font-weight: 600;">Sign in</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script type="module" src="/js/main.js"></script>
-        <script type="module" src="/js/auth.js"></script>
+    <!-- Footer -->
+    <footer class="footer" style="padding-top: 0; position: relative;">
+
+        <div class="footer-background-vid">
+            <video autoplay loop muted playsinline class="coin-vid">
+                <source src="/images/home html.mp4" type="video/mp4">
+            </video>
+            <div class="footer-video-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="big-brand-text" id="bigBrandText">Webo<span class="brand-control">control</span></div>
+
+            <div class="footer-grid">
+                <!-- Navigation -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_nav">Navigation</h4>
+                    <ul>
+                        <li><a href="/" data-i18n="nav_home">Home</a></li>
+                        <li><a href="/products.html" data-i18n="nav_products">Products</a></li>
+                        <li><a href="/order.html#support" data-i18n="order_title">Support</a></li>
+                        <li><a href="/about.html" data-i18n="nav_about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_contact">Contact</h4>
+                    <div class="footer-contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>hello@webocontrol.dev</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span data-i18n="order_contact_istanbul">Istanbul, Turkey</span>
+                    </div>
+                </div>
+
+                <!-- Terms & Policies -->
+                <div class="footer-links">
+                    <h4 data-i18n="footer_terms_policies">Terms & Policies</h4>
+                    <ul>
+                        <li><a href="/about_payment.html" data-i18n="nav_about_payment">About Payment</a></li>
+                        <li><a href="/terms.html" data-i18n="footer_terms">Terms</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom"
+                style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; margin-top: 40px; width: 100%;">
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); text-align: center; margin: 0 auto;"
+                    data-i18n="footer_copy">© 2026 WEBOCONTROL. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/auth.js"></script>
 </body>
 
 </html>
