@@ -9612,7 +9612,7 @@ body.auth-body .video-background-container .bg-vid {
 
 .auth-side-text h2 {
   font-family: var(--font-heading);
-  font-size: 4rem;
+  font-size: 6.5rem;
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
@@ -9623,7 +9623,7 @@ body.auth-body .video-background-container .bg-vid {
 
 @media (max-width: 1200px) {
   .auth-side-text h2 {
-    font-size: 3rem;
+    font-size: 4.5rem;
   }
 }
 
