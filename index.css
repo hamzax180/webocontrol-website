@@ -9530,6 +9530,15 @@ body.lang-ar .pillar-title {
    ============================================ */
 
 /* Darken the video bg more on auth pages for readability */
+body.auth-body .video-background-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -10 !important;
+}
+
 body.auth-body .video-background-container .bg-vid {
   filter: brightness(0.2);
   /* Comfortably dark so it doesn't blind visitors */
@@ -9553,7 +9562,7 @@ body.auth-body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #000;
+  background: #000 !important;
 }
 
 /* Override the global anim-forever-logo gradient to force solid red */
