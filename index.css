@@ -9546,15 +9546,17 @@ body.auth-body .video-background-container .bg-vid {
 
 /* Full-screen centered layout wrapper */
 .auth-page {
-  position: relative;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   width: 100%;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  padding: 40px 20px 100px;
+  padding: 40px 20px;
   perspective: 1200px;
+  overflow: hidden;
   /* For 3D effects */
 }
 
