@@ -15,10 +15,14 @@
 
 <body class="home-page has-video-bg">
     <!-- Login Video Background -->
-    <div class="video-background-container">
+    <div class="video-background-container" style="position: relative;">
         <video autoplay loop muted playsinline class="bg-vid" id="login-bg-vid">
             <source src="/images/login%20html.mp4" type="video/mp4">
         </video>
+        <!-- Physical dark overlay to guarantee it doesn't blind visitors -->
+        <div class="video-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1; pointer-events: none;">
+        </div>
     </div>
     <script>
         // Slow down the video playback to make it less distracting
