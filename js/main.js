@@ -277,16 +277,34 @@ function initNavbar() {
 
         // Fade out hero content when scrolling down
         const heroContent = document.querySelector('.hero-content');
-        if (heroContent) {
-            // Fade out smoothly based on scroll. Start fading near 50px, completely fade by 400px.
-            const scrollPercentHero = Math.min(window.scrollY / 400, 1);
+        const authCard = document.querySelector('.auth-card');
+        const authSideText = document.querySelector('.auth-side-text');
+        const authRightText = document.querySelector('.auth-right-text');
 
-            heroContent.style.opacity = Math.max(1 - scrollPercentHero, 0);
+        if (heroContent || authCard || authSideText || authRightText) {
+            const scrollPercent = Math.min(window.scrollY / 400, 1);
+            const opacity = Math.max(1 - scrollPercent, 0);
+            const yShift = scrollPercent * 60;
 
-            // To prevent interfering with our fixed centering, we translate down 50% first
-            // and then shift UP slightly via scroll physics
-            const yShift = scrollPercentHero * 60; // moves up 60px over the scroll
-            heroContent.style.transform = `translate(-50%, calc(-50% - ${yShift}px))`;
+            if (heroContent) {
+                heroContent.style.opacity = opacity;
+                heroContent.style.transform = `translate(-50%, calc(-50% - ${yShift}px))`;
+            }
+
+            if (authCard) {
+                authCard.style.opacity = opacity;
+                authCard.style.transform = `translate(-50%, calc(-50% - ${yShift}px))`;
+            }
+
+            if (authSideText) {
+                authSideText.style.opacity = opacity;
+                authSideText.style.transform = `translateY(calc(-50% - ${yShift}px))`;
+            }
+
+            if (authRightText) {
+                authRightText.style.opacity = opacity;
+                authRightText.style.transform = `translateY(calc(-50% - ${yShift}px))`;
+            }
         }
     });
 }

@@ -4370,7 +4370,8 @@ input:checked+.slider:before {
   border-top: none;
 }
 
-body.is-home .footer {
+body.is-home .footer,
+body.auth-body .footer {
   background: #000;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -9537,6 +9538,7 @@ body.auth-body .video-background-container {
   width: 100vw !important;
   height: 100vh !important;
   z-index: -10 !important;
+  transform: translateZ(0);
 }
 
 body.auth-body .video-background-container .bg-vid {
@@ -9546,24 +9548,22 @@ body.auth-body .video-background-container .bg-vid {
 
 /* Full-screen centered layout wrapper */
 .auth-page {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  padding: 40px 20px;
-  perspective: 1200px;
-  overflow: hidden;
-  /* For 3D effects */
+  padding: 0;
+  overflow: clip;
+  /* Prevent horizontal scroll from fixed children if any */
 }
 
 body.auth-body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip !important;
   background: transparent !important;
 }
 
@@ -9619,7 +9619,7 @@ body.auth-body {
 
 /* Side Marketing Text for Auth Pages */
 .auth-side-text {
-  position: absolute;
+  position: fixed;
   left: 0;
   width: 40vw;
   padding: 0 5vw;
@@ -9631,6 +9631,7 @@ body.auth-body {
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: opacity, transform;
 }
 
 .auth-side-text h2 {
@@ -9648,7 +9649,7 @@ body.auth-body {
 }
 
 .auth-right-text {
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 40vw;
   padding: 0 5vw;
@@ -9660,6 +9661,7 @@ body.auth-body {
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: opacity, transform;
 }
 
 .auth-right-text h2 {
@@ -9694,7 +9696,10 @@ body.auth-body {
 
 /* 3D Glassmorphic Card - Exact Size as Video Box */
 .auth-card {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   width: 100%;
   max-width: 580px;
@@ -9705,6 +9710,7 @@ body.auth-body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  will-change: opacity, transform;
 
   /* See-through glass background */
   background: rgba(255, 255, 255, 0.02);
