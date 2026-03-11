@@ -27,7 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="/frontend/" class="nav-logo anim-forever-logo" style="text-decoration: none;">
+            <a href="/frontend/" class="nav-logo" style="text-decoration: none;">
                 <div class="logo-main">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2L3 20H7.5L12 11L16.5 20H21L12 2Z" fill="url(#antigravity-grad)" />
@@ -46,8 +46,8 @@
                 <li><a href="/frontend/" data-i18n="nav_home">Home</a></li>
                 <li><a href="/frontend/products.html" class="active" data-i18n="nav_products">Products</a></li>
                 <li><a href="/frontend/order.html#support" data-i18n="order_title">Support</a></li>
-                <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
                 <li><a href="/frontend/technology_fiverr.html" data-i18n="nav_tech">Tech</a></li>
+                <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
             </ul>
             <div class="nav-center-group">
                 <div class="nav-lang">
@@ -182,6 +182,34 @@
                                 price: 500,
                                 image: '/ecommerce-preview/screen5.png'
                             })" data-i18n="btn_select_ecommerce">Select E-commerce</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Menu Web Category -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/qr-preview/qr1.png?v=1" alt="QR Menu Preview 1" class="active">
+                        <img src="/qr-preview/qr2.png?v=1" alt="QR Menu Preview 2">
+                        <div class="card-nav">
+                            <span class="nav-dot active"></span>
+                            <span class="nav-dot"></span>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title" data-i18n="prod_qr_title">QR Menu Web</h3>
+                        <p class="product-desc" data-i18n="prod_qr_subtitle">Modern, contactless digital menus for restaurants and cafes. Fast loading, interactive, and beautifully designed.</p>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label" data-i18n="price_label">STARTING<br>AT</span>
+                                <span class="price-value">$200</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="window.cart.add({
+                                type: 'qr',
+                                name: 'QR Menu Web',
+                                price: 200,
+                                image: '/qr-preview/qr1.png?v=1'
+                            })" data-i18n="btn_select_qr">Select QR Menu</button>
                         </div>
                     </div>
                 </div>
@@ -426,8 +454,8 @@
                         <li><a href="/frontend/" data-i18n="nav_home">Home</a></li>
                         <li><a href="/frontend/products.html" data-i18n="nav_products">Products</a></li>
                         <li><a href="/frontend/order.html#support" data-i18n="order_title">Support</a></li>
-                        <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
                         <li><a href="/frontend/technology_fiverr.html" data-i18n="nav_tech">Tech</a></li>
+                        <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
                     </ul>
                 </div>
 

@@ -15,6 +15,12 @@
 </head>
 
 <body>
+    <div class="video-bg-container video-background-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+        <video autoplay muted playsinline class="bg-vid" style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="/public/dashboard html.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <div class="bg-grid"></div>
     <div class="bg-noise"></div>
     <canvas id="bg-aurora"></canvas>
@@ -32,7 +38,7 @@
     <!-- Navbar -->
     <nav class="navbar scrolled" id="navbar">
         <div class="container">
-            <a href="/frontend/" class="nav-logo anim-forever-logo" style="text-decoration: none;">
+            <a href="/frontend/" class="nav-logo" style="text-decoration: none;">
                 <div class="logo-main">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2L3 20H7.5L12 11L16.5 20H21L12 2Z" fill="url(#antigravity-grad)" />
@@ -51,8 +57,8 @@
                 <li><a href="/frontend/" data-i18n="nav_home">Home</a></li>
                 <li><a href="/frontend/products.html" data-i18n="nav_products">Products</a></li>
                 <li><a href="/frontend/order.html#support" data-i18n="order_title">Support</a></li>
-                <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
                 <li><a href="/frontend/technology_fiverr.html" data-i18n="nav_tech">Tech</a></li>
+                <li><a href="/frontend/about.html" data-i18n="nav_about">About Us</a></li>
             </ul>
             <div class="nav-center-group">
                 <div class="nav-lang">
@@ -131,25 +137,7 @@
                     </div>
                 </div>
 
-                <!-- Product Ad Slider -->
-                <div class="dash-product-sidebar">
-                    <div class="dash-section-header">
-                        <h2 data-i18n="dash_recommended">Recommended For You</h2>
-                    </div>
-                    <div class="hero-slider" id="heroSlider">
-                        <div class="slider-track" id="sliderTrack">
-                            <!-- Injected by JS -->
-                        </div>
-                        <div class="slider-controls">
-                            <button class="slider-btn slider-prev" id="sliderPrev">‹</button>
-                            <div class="slider-dots" id="sliderDots"></div>
-                            <button class="slider-btn slider-next" id="sliderNext">›</button>
-                        </div>
-                    </div>
-                    <a href="/frontend/products.html" class="btn btn-ghost sidebar-view-all"
-                        data-i18n="dash_view_all">View All
-                        Products →</a>
-                </div>
+
             </div>
         </div>
     </div>

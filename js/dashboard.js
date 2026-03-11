@@ -144,43 +144,28 @@ function renderProductSidebar() {
             name: window.i18n.t('type_portfolio'),
             price: '$300',
             desc: window.i18n.t('service_portfolio_desc'),
-            image: '/images/portfolio-preview/pic1p.png',
+            image: '/portfolio-preview/pic1p.png',
             tag: window.i18n.t('tag_popular')
         },
         {
             name: window.i18n.t('type_company'),
             price: '$500',
             desc: window.i18n.t('service_company_desc'),
-            image: '/images/company-preview/company_ceo.png',
+            image: '/company-preview/company_ceo.png',
             tag: window.i18n.t('tag_best_value')
         },
         {
             name: window.i18n.t('type_ecommerce'),
             price: '$500',
             desc: window.i18n.t('service_ecommerce_desc'),
-            image: '/images/ecommerce-preview/screen5.png',
+            image: '/ecommerce-preview/screen5.png',
             tag: window.i18n.t('tag_top_seller')
-        },
-        {
-            name: window.i18n.t('type_security'),
-            price: '$250',
-            desc: window.i18n.t('prod_security_subtitle'),
-            image: '/images/addons-preview/security_logos.png',
-            tag: window.i18n.t('tag_enterprise')
-        },
-        {
-            name: window.i18n.t('type_devops'),
-            price: '$250',
-            desc: window.i18n.t('prod_devops_subtitle'),
-            image: '/images/addons-preview/devops_logos.png',
-            tag: window.i18n.t('tag_scale_up')
         }
     ];
 
     // Render all slides
     track.innerHTML = products.map((p, i) => `
         <a href="/products.html" class="slider-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
-            <div class="slide-tag">${p.tag}</div>
             <img src="${p.image}" alt="${p.name}" class="slide-img" loading="lazy">
             <div class="slide-info">
                 <div class="slide-name">${p.name}</div>
@@ -291,7 +276,13 @@ async function loadOrders(token) {
         if (!orders || !orders.length) {
             orderList.innerHTML = `
                 <div class="no-orders-dash">
-                    <span class="empty-icon">📂</span>
+                    <span class="empty-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                            <line x1="12" y1="11" x2="12" y2="17"></line>
+                            <line x1="9" y1="14" x2="15" y2="14"></line>
+                        </svg>
+                    </span>
                     <p>${window.i18n.t('dash_no_orders')}</p>
                     <a href="/order.html" class="btn btn-primary" style="margin-top: 16px;">${window.i18n.t('dash_place_first')}</a>
                 </div>
@@ -422,7 +413,7 @@ async function loadOrders(token) {
             `;
         }).join('');
     } catch (err) {
-        orderList.innerHTML = `<div class="no-orders-dash"><span class="empty-icon">❌</span><p>${window.i18n.t('dash_load_error')}</p></div>`;
+        orderList.innerHTML = `<div class="no-orders-dash"><span class="empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span><p>${window.i18n.t('dash_load_error')}</p></div>`;
         console.error('Load orders error:', err);
     }
 }
