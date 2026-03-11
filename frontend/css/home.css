@@ -396,7 +396,7 @@ body.lang-ar .stat-label {
 }
 
 .review-card:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }

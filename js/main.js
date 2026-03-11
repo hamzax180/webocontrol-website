@@ -309,8 +309,7 @@ function initScrollReveal() {
 
             // Specialized stagger animations for grid-like lists
             const childStaggerClass = el.classList.contains('features-list') ? '.feature-item' :
-                el.classList.contains('products-grid') ? '.product-card' :
-                    el.classList.contains('reviews-grid') ? '.review-card' : null;
+                el.classList.contains('products-grid') ? '.product-card' : null;
 
             if (childStaggerClass) {
                 const children = el.querySelectorAll(childStaggerClass);
@@ -612,7 +611,7 @@ function updateAuthUI() {
 function handleLogout() {
     localStorage.removeItem('webocontrol_token');
     localStorage.removeItem('webocontrol_user');
-    window.location.href = '/login.html';
+    window.location.href = '/frontend/login.html';
 }
 
 // --- Image Zoom Modal ---
@@ -925,7 +924,7 @@ function initOrderForm() {
 
             if (!token) {
                 window.showNotification(window.i18n.t('order_login_required'), 'warning');
-                setTimeout(() => { window.location.href = '/login.html'; }, 1500);
+                setTimeout(() => { window.location.href = '/frontend/login.html'; }, 1500);
                 return;
             }
 
@@ -988,7 +987,7 @@ function initOrderForm() {
                 if (res.ok) {
                     window.showNotification(window.i18n.t('order_success') || 'Order placed!', 'success');
                     reqForm.reset();
-                    setTimeout(() => { window.location.href = '/dashboard.html'; }, 2000);
+                    setTimeout(() => { window.location.href = '/frontend/dashboard.html'; }, 2000);
                 } else {
                     const result = await res.json();
                     window.showNotification(result.error || window.i18n.t('order_error'), 'error');
@@ -1067,7 +1066,7 @@ class CartManager {
             })),
         };
         localStorage.setItem('webocontrol_payment_data', JSON.stringify(paymentData));
-        window.location.href = '/payment.html';
+        window.location.href = '/frontend/payment.html';
     }
 
     updateBadge() {
@@ -1111,7 +1110,7 @@ class CartManager {
         const proceedBtn = document.querySelector('.cart-footer a');
         if (proceedBtn && this.items.length > 0) {
             const first = this.items[0];
-            proceedBtn.href = `/order.html?type=${first.type}&budget=${first.price}`;
+            proceedBtn.href = `/frontend/order.html?type=${first.type}&budget=${first.price}`;
         }
     }
 
@@ -1238,26 +1237,7 @@ async function fetchReviews() {
             });
         }
 
-        // Observe new elements
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-            const children = list.querySelectorAll('.reveal');
-            children.forEach(child => child.style.transition = 'none');
-            gsap.fromTo(children,
-                { opacity: 0, y: 40 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    stagger: 0.15,
-                    duration: 0.8,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: list,
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        } else if (window.revealObserver) {
+        if (window.revealObserver) {
             list.querySelectorAll('.reveal').forEach(el => window.revealObserver.observe(el));
         }
     } catch (err) {

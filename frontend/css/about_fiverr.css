@@ -201,6 +201,10 @@ body.about-page {
     color: rgba(255, 255, 255, 0.1) !important;
 }
 
+.brand-control {
+    color: #ff3b3b !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .fiverr-section, .fiverr-section.reverse {

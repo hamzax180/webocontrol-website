@@ -56,7 +56,7 @@ function initParticles() {
 function checkAuth() {
     const token = localStorage.getItem('webocontrol_token');
     if (!token) {
-        window.location.href = '/login.html';
+        window.location.href = '/frontend/login.html';
         return null;
     }
     return token;
@@ -159,7 +159,7 @@ function renderProductSidebar() {
 
     // Render all slides
     track.innerHTML = products.map((p, i) => `
-        <a href="/products.html" class="slider-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
+        <a href="/frontend/products.html" class="slider-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
             <img src="${p.image}" alt="${p.name}" class="slide-img" loading="lazy">
             <div class="slide-info">
                 <div class="slide-name">${p.name}</div>
@@ -256,7 +256,7 @@ async function loadOrders(token) {
         if (res.status === 401) {
             localStorage.removeItem('webocontrol_token');
             localStorage.removeItem('webocontrol_user');
-            window.location.href = '/login.html';
+            window.location.href = '/frontend/login.html';
             return;
         }
 
@@ -278,7 +278,7 @@ async function loadOrders(token) {
                         </svg>
                     </span>
                     <p>${window.i18n.t('dash_no_orders')}</p>
-                    <a href="/order.html" class="btn btn-primary" style="margin-top: 16px;">${window.i18n.t('dash_place_first')}</a>
+                    <a href="/frontend/products.html" class="btn btn-primary" style="margin-top: 16px;">${window.i18n.t('dash_place_first')}</a>
                 </div>
             `;
             return;
@@ -445,7 +445,7 @@ function initLogout() {
     btn.addEventListener('click', () => {
         localStorage.removeItem('webocontrol_token');
         localStorage.removeItem('webocontrol_user');
-        window.location.href = '/';
+        window.location.href = '/frontend/index.html';
     });
 }
 

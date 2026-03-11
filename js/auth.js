@@ -143,7 +143,7 @@ function initAuthAnimations() {
 function checkExistingAuth() {
     const token = localStorage.getItem('webocontrol_token');
     if (token) {
-        window.location.href = '/dashboard.html';
+        window.location.href = '/frontend/dashboard.html';
     }
 }
 
@@ -186,7 +186,7 @@ function initLoginForm() {
                 localStorage.setItem('webocontrol_token', data.token);
                 localStorage.setItem('webocontrol_user', JSON.stringify(data.user));
                 showMessage('loginMessage', window.i18n.t('auth_login_success'), 'success');
-                setTimeout(() => { window.location.href = '/dashboard.html'; }, 800);
+                setTimeout(() => { window.location.href = '/frontend/dashboard.html'; }, 800);
             } else {
                 showMessage('loginMessage', data.error || window.i18n.t('auth_invalid_credentials'), 'error');
             }
@@ -228,7 +228,7 @@ function initRegisterForm() {
                 localStorage.setItem('webocontrol_token', data.token);
                 localStorage.setItem('webocontrol_user', JSON.stringify(data.user));
                 showMessage('registerMessage', window.i18n.t('auth_account_created'), 'success');
-                setTimeout(() => { window.location.href = '/dashboard.html'; }, 800);
+                setTimeout(() => { window.location.href = '/frontend/dashboard.html'; }, 800);
             } else {
                 showMessage('registerMessage', data.error || window.i18n.t('auth_reg_failed'), 'error');
             }

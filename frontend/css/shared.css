@@ -87,7 +87,7 @@
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -97,7 +97,7 @@
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-4px);
-  box-shadow: 
+  box-shadow:
     0 12px 48px rgba(0, 0, 0, 0.4),
     0 0 20px rgba(0, 240, 255, 0.1);
 }
@@ -131,14 +131,28 @@
   cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ff0000' stroke='%23ffffff' stroke-width='1.5' d='M8 4l12 12-6 1 4 7-2.5 1-4-7-5 5V4z'/%3E%3C/svg%3E"), auto;
 }
 
-a, a *, button, button *, [role="button"], [role="button"] *, .btn, .btn *, .cart-btn, .close-cart, .product-image-container, .product-image-container *, .pillar-select-card, .pillar-select-card * {
+a,
+a *,
+button,
+button *,
+[role="button"],
+[role="button"] *,
+.btn,
+.btn *,
+.cart-btn,
+.close-cart,
+.product-image-container,
+.product-image-container *,
+.pillar-select-card,
+.pillar-select-card * {
   cursor: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='8' fill='%23ff0000' stroke='%23ffffff' stroke-width='1.5'/%3E%3C/svg%3E"), pointer !important;
 }
 
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #ff3b3b #000000; /* Firefox: thumb track */
+  scrollbar-color: #ff3b3b #000000;
+  /* Firefox: thumb track */
   background: #000;
 }
 
@@ -603,7 +617,6 @@ img {
 .btn-primary:hover {
   background: #b5b5b5;
   color: #000;
-  transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
@@ -624,7 +637,7 @@ img {
 #registerBtn:hover,
 #trackBtn:hover,
 .chat-input-area .btn-primary:hover {
-  transform: translateY(-3px) scale(1.02) !important;
+  /* transform: translateY(-3px) scale(1.02) !important; */
   background-color: #f8f9fa !important;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5) !important;
 }
@@ -1000,7 +1013,7 @@ body.lang-ar .section-subtitle {
 .portfolio-item:hover .browser-frame {
   border-color: rgba(0, 240, 255, 0.25);
   box-shadow: 0 16px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 240, 255, 0.08);
-  transform: translateY(-6px);
+  /* transform: translateY(-6px); */
 }
 
 .browser-bar {
@@ -1344,7 +1357,7 @@ body.lang-ar .section-subtitle {
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  /* transform: translateY(-4px); */
   border-color: rgba(184, 41, 255, 0.2);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
@@ -1828,7 +1841,8 @@ body.auth-body .footer {
 }
 
 /* --- Product Showcase Cards --- */
-#products .container, #showcase .container {
+#products .container,
+#showcase .container {
   max-width: 1600px;
 }
 
@@ -2473,7 +2487,7 @@ body.lang-ar .message.user {
 .resource-card:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: var(--cyan);
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
 }
 
 .resource-card .icon {
@@ -3172,10 +3186,10 @@ body.cart-open .scroll-indicator {
 
 .scroll-arrow {
   font-family: var(--font-body);
-  /* Force thick Inter font for arrow */
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #ff2d55;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ff0000;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.9), 0 0 20px rgba(255, 0, 0, 0.6);
   animation: bounceDown 1.5s ease-in-out infinite;
   will-change: transform;
 }
@@ -3187,13 +3201,16 @@ body.cart-open .scroll-indicator {
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes bounceDown {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(15px);
   }
@@ -3461,17 +3478,21 @@ body.auth-body {
   right: -100%;
   width: 400px;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(40px) !important;
+  -webkit-backdrop-filter: blur(40px) !important;
   z-index: 2000;
   padding: 40px;
   transition: right 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
-  color: #1a1a2e;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+  color: #fff !important;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.brand-control {
+  color: #ff3b3b !important;
 }
 
 .cart-sidebar.open {
@@ -3486,23 +3507,25 @@ body.auth-body {
 }
 
 .cart-header h3 {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  letter-spacing: 1px;
-  color: #1a1a2e;
+  font-family: var(--font-heading) !important;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: #fff !important;
+  text-transform: uppercase;
 }
 
 .close-cart {
   background: transparent;
   border: none;
-  color: #4a5568;
+  color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .close-cart:hover {
-  color: #000;
+  opacity: 0.7;
 }
 
 .cart-items {
@@ -3517,7 +3540,7 @@ body.auth-body {
   display: flex;
   gap: 15px;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .cart-item-img {
@@ -3533,15 +3556,17 @@ body.auth-body {
 }
 
 .cart-item-title {
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-family: var(--font-heading) !important;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
   margin-bottom: 4px;
-  color: #1a1a2e;
+  color: #fff !important;
 }
 
 .cart-item-price {
   font-family: var(--font-body);
-  color: #000;
+  color: #eee;
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: -1px;
@@ -3577,16 +3602,19 @@ body.auth-body {
 .cart-footer {
   margin-top: 30px;
   padding-top: 30px;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .cart-total {
   display: flex;
   justify-content: space-between;
-  font-weight: 700;
-  font-size: 1.15rem;
+  font-family: var(--font-heading) !important;
+  font-weight: 800;
+  font-size: 1.5rem;
   margin-bottom: 25px;
-  color: #1a1a2e;
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: -1px;
 }
 
 .cart-total span:last-child {
@@ -3766,6 +3794,66 @@ body.auth-body {
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.2px;
+}
+
+body.lang-ar {
+  font-family: var(--font-arabic) !important;
+}
+
+body.lang-ar h1,
+body.lang-ar h2,
+body.lang-ar h3,
+body.lang-ar h4,
+body.lang-ar h5,
+body.lang-ar h6,
+body.lang-ar .btn,
+body.lang-ar [data-i18n]:not([data-i18n^='tech_']) {
+  font-family: var(--font-arabic) !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* Ensure WEBO pinching English style in Arabic title/footer */
+body.lang-ar span[style*='color: #ff3b3b'],
+body.lang-ar .brand-control,
+body.lang-ar [data-i18n='hero_subtitle_fiverr'] {
+  font-family: 'Inter', sans-serif !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+}
+
+/* Fix tech name position and visibility in Arabic */
+body.lang-ar .rotating-text-wrapper span {
+  font-family: 'Inter', sans-serif !important;
+  letter-spacing: -1px !important;
+  text-transform: none !important;
+  height: 1.2em !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.lang-ar .scroll-text {
+  font-family: var(--font-arabic) !important;
+  letter-spacing: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+}
+
+/* Force LTR and fix width for tech bar in RTL to avoid overlap/reversal */
+body.lang-ar .hero + section > .container > div[style*='display: flex'] {
+  direction: ltr !important;
+  width: 100vw !important;
+  margin-right: calc(-50vw + 50%) !important;
+  margin-left: calc(-50vw + 50%) !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+body.lang-ar .big-brand-text {
+  font-family: 'Inter', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 4px !important;
 }
 
 body.lang-ar .pillar-title {
