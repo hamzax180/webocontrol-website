@@ -691,8 +691,8 @@ body.lang-ar .order-details strong {
 
 .dash-stat-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 
   border-radius: 20px;
@@ -784,8 +784,8 @@ body.lang-ar .order-details strong {
 /* Individual Order Cards */
 .dash-order-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -793,7 +793,7 @@ body.lang-ar .order-details strong {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .dash-order-card::before {

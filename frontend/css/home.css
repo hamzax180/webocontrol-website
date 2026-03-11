@@ -381,11 +381,13 @@ body.lang-ar .stat-label {
 }
 
 .review-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   padding: 30px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -504,11 +506,12 @@ body.lang-ar .stat-label {
 }
 
 .scaling-card {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 32px 28px;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   transition: all 0.35s ease;
   position: relative;
   overflow: hidden;

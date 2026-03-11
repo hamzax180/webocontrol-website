@@ -2189,10 +2189,10 @@ body.lang-ar .about-grid.reverse>* {
 }
 
 .scaling-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 32px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2217,10 +2217,10 @@ body.lang-ar .about-grid.reverse>* {
 }
 
 .scaling-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(0, 240, 255, 0.4);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.15);
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 240, 255, 0.15);
 }
 
 .scaling-card:hover::before {

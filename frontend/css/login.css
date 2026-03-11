@@ -249,14 +249,14 @@
   will-change: opacity, transform;
 
   /* See-through glass background */
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  /* Lighter blur so the box behind it stands out */
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px);
+  /* Deeper blur for premium feel */
+  -webkit-backdrop-filter: blur(24px);
 
-  padding: 20px;
-  border-radius: 4px;
-  /* Sharp corners matching the video grid */
+  padding: 40px;
+  border-radius: 24px;
+  /* Rounded corners for better glass look */
   border: 1px solid rgba(255, 255, 255, 0.1);
 
   /* 3D Depth shadows */
