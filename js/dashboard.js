@@ -86,13 +86,7 @@ function displayUser() {
                     ordersTitle.textContent = window.i18n.t('dash_all_orders');
                 }
 
-                // Hide sidebar for admin
-                const sidebar = document.querySelector('.dash-product-sidebar');
-                if (sidebar) sidebar.style.display = 'none';
 
-                // Full-width orders
-                const grid = document.querySelector('.dash-content-grid');
-                if (grid) grid.style.gridTemplateColumns = '1fr';
             }
         }
     } catch { /* ignore */ }
@@ -463,6 +457,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayUser();
     loadOrders(token);
-    renderProductSidebar();
     initLogout();
 });
