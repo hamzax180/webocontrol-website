@@ -809,7 +809,7 @@ body.lang-ar .order-details strong {
 }
 
 .dash-order-card.pending::before {
-  background: linear-gradient(180deg, #f59e0b, #fbbf24);
+  background: transparent;
 }
 
 .dash-order-card.in-progress::before {
@@ -824,7 +824,6 @@ body.lang-ar .order-details strong {
   transform: translateY(-3px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
-
 .order-card-top {
   display: flex;
   justify-content: space-between;

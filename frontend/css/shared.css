@@ -1581,8 +1581,9 @@ body.auth-body .footer {
 
 .big-brand-text {
   font-family: var(--font-heading);
-  font-size: clamp(8rem, 30vw, 28rem);
-  /* Massive size for WOW factor */
+  text-transform: uppercase;
+  font-size: clamp(4rem, 22vw, 22rem);
+  /* Scaled up but restricted to fit most screens */
   font-weight: 900;
   line-height: 0.75;
   letter-spacing: -0.05em;
@@ -2100,12 +2101,12 @@ body.auth-body .footer {
 
 .lang-switcher {
   display: flex;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
+  border: none;
   padding: 3px;
   border-radius: 6px;
   gap: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .lang-btn {
@@ -3815,11 +3816,10 @@ body.lang-ar [data-i18n]:not([data-i18n^='tech_']) {
 
 /* Ensure WEBO pinching English style in Arabic title/footer */
 body.lang-ar span[style*='color: #ff3b3b'],
-body.lang-ar .brand-control,
 body.lang-ar [data-i18n='hero_subtitle_fiverr'] {
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-heading) !important;
   text-transform: uppercase !important;
-  font-weight: 700 !important;
+  font-weight: 900 !important;
 }
 
 /* Fix tech name position and visibility in Arabic */
@@ -3850,10 +3850,12 @@ body.lang-ar .hero + section > .container > div[style*='display: flex'] {
   right: 0 !important;
 }
 
-body.lang-ar .big-brand-text {
-  font-family: 'Inter', sans-serif !important;
+body.lang-ar .big-brand-text,
+body.lang-ar .big-brand-text * {
+  font-family: var(--font-heading) !important;
   text-transform: uppercase !important;
-  letter-spacing: 4px !important;
+  letter-spacing: -0.05em !important;
+  direction: ltr !important;
 }
 
 body.lang-ar .pillar-title {

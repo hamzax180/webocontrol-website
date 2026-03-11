@@ -77,16 +77,19 @@ function displayUser() {
 
                 const headerH1 = document.querySelector('.dashboard-header h1');
                 if (headerH1) {
-                    headerH1.innerHTML = `<span class="gradient-text">${window.i18n.t('dash_admin_title')}</span>`;
+                    headerH1.innerHTML = `<span class="gradient-text">${window.i18n.t('dash_admin_title') || 'Admin Dashboard'}</span>`;
                 }
 
                 const ordersTitle = document.querySelector('.dash-section-header h2[data-i18n="dash_your_orders"]');
                 if (ordersTitle) {
                     ordersTitle.setAttribute('data-i18n', 'dash_all_orders');
-                    ordersTitle.textContent = window.i18n.t('dash_all_orders');
+                    ordersTitle.textContent = window.i18n.t('dash_all_orders') || 'Admin: All Client Orders';
                 }
 
-
+                const newOrderBtn = document.querySelector('.dashboard-header a.btn-primary');
+                if (newOrderBtn) {
+                    newOrderBtn.style.display = 'none';
+                }
             }
         }
     } catch { /* ignore */ }
@@ -278,9 +281,10 @@ async function loadOrders(token) {
                         </svg>
                     </span>
                     <p>${window.i18n.t('dash_no_orders')}</p>
-                    <a href="/frontend/products.html" class="btn btn-primary" style="margin-top: 16px;">${window.i18n.t('dash_place_first')}</a>
+                    ${isAdmin ? '' : `<a href="/frontend/products.html" class="btn btn-primary" style="margin-top: 16px;">${window.i18n.t('dash_place_first')}</a>`}
                 </div>
             `;
+            if (isAdmin) loadReviews(token);
             return;
         }
 
@@ -410,7 +414,84 @@ async function loadOrders(token) {
         orderList.innerHTML = `<div class="no-orders-dash"><span class="empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span><p>${window.i18n.t('dash_load_error')}</p></div>`;
         console.error('Load orders error:', err);
     }
+    
+    // Always load reviews if admin
+    const userRoleObj = JSON.parse(localStorage.getItem('webocontrol_user') || '{}');
+    if (userRoleObj && userRoleObj.role === 'admin') {
+        loadReviews(token);
+    }
 }
+
+async function loadReviews(token) {
+    try {
+        const res = await fetch('/api/reviews', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) return;
+        const reviews = await res.json();
+        
+        let grid = document.querySelector('.dash-content-grid');
+        let reviewsCol = document.getElementById('adminReviewsCol');
+        if (!reviewsCol) {
+            reviewsCol = document.createElement('div');
+            reviewsCol.id = 'adminReviewsCol';
+            reviewsCol.className = 'dash-orders-col';
+            reviewsCol.style.marginTop = '3rem';
+            reviewsCol.innerHTML = `
+                <div class="dash-section-header">
+                    <h2>All User Reviews</h2>
+                </div>
+                <div class="dash-order-list" id="reviewList">
+                    <div class="dash-loading">Loading reviews...</div>
+                </div>
+            `;
+            grid.appendChild(reviewsCol);
+        }
+        
+        const reviewList = document.getElementById('reviewList');
+        if (!reviews || !reviews.length) {
+        reviewList.innerHTML = `<div class="no-orders-dash"><p style="color: #9ca3af;">No reviews have been posted yet.</p></div>`;
+        return;
+    }
+    
+    reviewList.innerHTML = reviews.map(r => {
+        const date = new Date(r.created_at).toLocaleDateString('en-US');
+        return `
+        <div class="admin-order-card" style="display:flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: 600; color: white;">${r.user_name} <span style="color:#fbbf24; margin-left: 8px;">${'★'.repeat(r.rating || 5)}${'☆'.repeat(5 - (r.rating || 5))}</span></div>
+                <div style="color: #cbd5e1; margin: 8px 0; font-style: italic;">"${r.content}"</div>
+                <div style="font-size: 0.8rem; color: #6b7280;">ID: ${r.id} • Posted: ${date}</div>
+            </div>
+            <button onclick="window.deleteReview('${r.id}')" class="btn" style="background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 0.5rem 1rem; cursor: pointer; border-radius: 8px; font-weight: 500;">Delete</button>
+        </div>
+        `;
+    }).join('');
+} catch(err) {
+    console.error('Failed to load reviews:', err);
+}
+}
+
+async function deleteReview(id) {
+if (!confirm('Are you sure you want to delete this review?')) return;
+const token = localStorage.getItem('webocontrol_token');
+try {
+    const res = await fetch(`/api/reviews/${id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (res.ok) {
+        window.showNotification ? window.showNotification('Review deleted successfully', 'success') : alert('Review deleted');
+        loadReviews(token);
+    } else {
+        const err = await res.json();
+        alert(err.error || 'Failed to delete review');
+    }
+} catch(err) {
+    alert('Error deleting review');
+}
+}
+window.deleteReview = deleteReview;
 
 async function updateOrderStatus(orderId, newStatus) {
     const token = localStorage.getItem('webocontrol_token');

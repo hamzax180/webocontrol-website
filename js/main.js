@@ -55,11 +55,12 @@ class NotificationManager {
 
     remove(notification) {
         notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 400).then(() => {
+        setTimeout(() => {
+            notification.remove();
             if (this.container.children.length === 0) {
-                // Keep container but maybe handle cleanup if needed
+                // Potential cleanup
             }
-        }).catch(() => { }); // ignore if already removed
+        }, 400);
     }
 }
 
