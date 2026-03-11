@@ -115,20 +115,14 @@
   text-decoration: underline;
 }
 
-.auth-footer a:hover {
-  color: #3b5bdb;
-  text-decoration: underline;
-}
-
 /* Side Marketing Text for Auth Pages */
 .auth-side-text {
   position: absolute;
-  /* Changed from fixed */
   left: 0;
   width: 35vw;
   padding: 0 2vw;
   box-sizing: border-box;
-  top: 50%;
+  top: 58%;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
@@ -140,50 +134,52 @@
 
 .auth-side-text h2 {
   font-family: var(--font-body);
-  font-size: clamp(3.5rem, 6.5vw, 8.5rem);
+  font-size: clamp(3rem, 5.5vw, 6.5rem);
   font-weight: 900;
   color: #fff;
-  line-height: 0.95;
+  line-height: 1.0;
   text-align: center;
   text-transform: uppercase;
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
   margin: 0;
   width: 100%;
-  word-wrap: normal;
-  white-space: normal;
 }
 
 .word-stack {
-  display: block;
-  margin-bottom: 0.25em;
-  /* Precisely tuned space "after every word" */
+  display: block !important;
+  margin-bottom: 0.1em;
+  width: 100%;
 }
 
 .auth-side-text h2 span,
 .auth-right-text h2 span {
-  font-size: 0.8em;
-  /* Slightly smaller to prevent overlap */
   display: inline-block;
 }
 
-/* Enhanced style for "SMOOTHLY" to fit space and look cool */
 .auth-side-text .word-stack span {
-  font-size: 1.25em !important;
-  /* Significantly larger to fill space */
+  font-size: 1em !important;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 30px rgba(255, 45, 85, 0.5), 0 10px 40px rgba(0, 0, 0, 0.9);
   display: block;
   width: 100%;
 }
 
+/* Cute Color Palette */
+.auth-side-text .word-stack:nth-child(1) span { color: #00f0ff; text-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+.auth-side-text .word-stack:nth-child(2) span { color: #ff2d75; text-shadow: 0 0 20px rgba(255, 45, 117, 0.4); }
+.auth-side-text .word-stack:nth-child(3) span { color: #b829ff; text-shadow: 0 0 20px rgba(184, 41, 255, 0.4); }
+.auth-side-text .word-stack:nth-child(4) span { 
+  color: #fbbc05; 
+  text-shadow: 0 0 25px rgba(251, 188, 5, 0.5);
+  font-size: 1.1em !important; /* Slightly larger but not too big */
+}
+
 .auth-right-text {
   position: absolute;
-  /* Changed from fixed */
   right: 0;
   width: 35vw;
   padding: 0 2vw;
   box-sizing: border-box;
-  top: 50%;
+  top: 58%;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
@@ -195,21 +191,27 @@
 
 .auth-right-text h2 {
   font-family: var(--font-body);
-  font-size: clamp(3.5rem, 6.5vw, 8.5rem);
+  font-size: clamp(2.5rem, 4.5vw, 5.5rem);
   font-weight: 900;
   color: #fff;
-  line-height: 0.95;
+  line-height: 1.0;
   text-align: center;
   text-transform: uppercase;
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
   margin: 0;
   width: 100%;
-  word-wrap: normal;
-  white-space: nowrap;
+}
+
+.auth-right-text h2 .word-stack:nth-child(1) span { color: #00f0ff; }
+.auth-right-text h2 .word-stack:nth-child(2) span { color: #ff2d75; }
+.auth-right-text h2 .word-stack:nth-child(3) span { color: #b829ff; }
+.auth-right-text h2 .word-stack:nth-child(4) span { color: #fbbc05; }
+.auth-right-text h2 .accent-tech {
+  color: #00f0ff;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
 }
 
 @media (max-width: 1200px) {
-
   .auth-side-text h2,
   .auth-right-text h2 {
     font-size: clamp(2.5rem, 5vw, 6.5rem);
@@ -217,7 +219,6 @@
 }
 
 @media (max-width: 992px) {
-
   .auth-side-text,
   .auth-right-text {
     display: none;

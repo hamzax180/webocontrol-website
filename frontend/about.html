@@ -5,18 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us — WEBOCONTROL</title>
     <link rel="stylesheet" href="/frontend/css/shared.css">
-    <link rel="stylesheet" href="/frontend/css/about_premium.css">
+    <link rel="stylesheet" href="/frontend/css/about_fiverr.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <script src="/js/i18n.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body class="about-page">
-    <div class="video-bg-container">
-        <video autoplay loop muted playsinline>
-            <source src="/about%20us%20html.mp4" type="video/mp4">
-        </video>
-    </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -45,34 +40,41 @@
         </div>
     </nav>
 
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="about-hero">
-            <span class="hero-subtitle reveal" data-i18n="about_subtitle">Our Mission</span>
-            <h1 class="hero-title reveal" data-i18n="about_hero_title">4 Engineers. One Vision.</h1>
-            <p class="hero-description reveal" data-i18n="about_hero_desc">
-                We are a team of passionate engineers redefining web technology. We don't just write code; we build digital ecosystems from Istanbul to the world.
-            </p>
-        </section>
+    <main>
+        <div class="container">
+            <!-- Hero Section (Fiverr Style) -->
+            <section class="hero-centered reveal" style="opacity: 0; transform: translateY(30px);">
+                <h1 data-i18n="about_fiverr_hero">At WeboControl, we’re connecting every business to the world’s most skilled digital freelancers, in the simplest way possible.</h1>
+            </section>
 
-        <!-- Versatility Section -->
-        <section class="story-grid">
-            <div class="story-card reveal">
-                <span class="card-icon">⚡</span>
-                <h3 class="card-title" data-i18n="about_versatility_title">Full Versatility</h3>
-                <p class="card-text" data-i18n="about_versatility_desc">"We can do everything" isn't a boast—it's our standard. From front-end artistry to server-side logic and AI integration, our skills scale with your ambition.</p>
-            </div>
-            <div class="story-card reveal">
-                <span class="card-icon">🚀</span>
-                <h3 class="card-title" data-i18n="about_startup_title">Startup DNA</h3>
-                <p class="card-text" data-i18n="about_startup_desc">Driven by student curiosity and professional execution, we move faster and dream bigger than traditional studios. Your project is our next masterpiece.</p>
-            </div>
-            <div class="story-card reveal">
-                <span class="card-icon">🌍</span>
-                <h3 class="card-title" data-i18n="about_global_title">Global Standards</h3>
-                <p class="card-text" data-i18n="about_global_desc">Based in Istanbul but connected everywhere. We apply the latest frameworks (Next.js, Python, AWS) to ensure your business stays ahead of the curve.</p>
-            </div>
-        </section>
+            <!-- Section 1: Team & Global Reach (Text Left, Image Right) -->
+            <section class="fiverr-section reveal" style="opacity: 0; transform: translateY(40px);">
+                <div class="section-text">
+                    <p data-i18n="about_fiverr_section1_text">WeboControl operates all over the world with freelancers and businesses spanning an estimated 160 countries. The company was founded in 2026, is headquartered in Istanbul, and has satellite offices in London, Kyiv, Berlin, and Orlando.</p>
+                </div>
+                <div class="section-image">
+                    <img src="/public/about_team_office.png" alt="WeboControl Team">
+                </div>
+            </section>
+
+            <!-- Section 2: AI Platform & Skills (Image Left, Text Right) -->
+            <section class="fiverr-section reverse reveal" style="opacity: 0; transform: translateY(40px);">
+                <div class="section-text">
+                    <p data-i18n="about_fiverr_section2_text">Today, WeboControl is a leading digital freelance solution on a global scale, providing you with access to high-quality, specialized, and diverse human talent on an AI‑enhanced platform. You can find over 700 skills, ranging from AI to Programming, from Digital Marketing to Content Creation, from Video Editing to Architecture. We pride ourselves on being the best place to get the most value for your budget—whether you’re part of a startup or Fortune 500, whether you need help on a simple task or complex project.</p>
+                </div>
+                <div class="section-image">
+                    <img src="/public/about_platform_laptop.png" alt="WeboControl Platform">
+                </div>
+            </section>
+
+            <!-- Impact Section -->
+            <section class="impact-section reveal" style="opacity: 0; transform: translateY(40px);">
+                <p data-i18n="about_fiverr_impact_text">WeboControl helps businesses use freelance to flex in a whole new way. Speeding up growth. Changing the game. Making way for breakthroughs.</p>
+                <div style="margin-top: 30px;">
+                    <a href="/frontend/order.html" class="btn-fiverr" data-i18n="about_fiverr_cta">How WeboControl works</a>
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->
