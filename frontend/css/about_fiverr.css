@@ -7,6 +7,11 @@
     --fiverr-white: #ffffff;
 }
 
+::selection {
+    background-color: var(--fiverr-green);
+    color: #ffffff;
+}
+
 body.about-page {
     background-color: transparent !important;
     color: #ffffff;
@@ -89,8 +94,20 @@ body.about-page {
 
 .section-image img {
     width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.txt-highlight {
+    background: rgba(29, 191, 115, 0.2);
+    padding: 2px 8px;
     border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    border-bottom: 2px solid var(--fiverr-green);
+    color: #fff;
+    font-weight: 600;
 }
 
 /* Impact Section */
