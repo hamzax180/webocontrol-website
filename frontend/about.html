@@ -222,30 +222,17 @@
     <script src="/js/main.js" type="module"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Animate on reveal
-            gsap.utils.toArray('.reveal').forEach((elem, i) => {
-                gsap.to(elem, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: "top 85%",
-                    }
+            // Let main.js handle the standard .reveal animations
+            // We only keep the page-specific video motion here
+            if (typeof gsap !== 'undefined') {
+                gsap.to('.video-bg-container video', {
+                    scale: 1.05,
+                    duration: 15,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
                 });
-            });
-
-            // Smooth background subtle motion
-            gsap.to('.video-bg-container video', {
-                scale: 1.1,
-                duration: 20,
-                repeat: -1,
-                yoyo: true,
-                ease: "none"
-            });
+            }
         });
     </script>
 </body>
