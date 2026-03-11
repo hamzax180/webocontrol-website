@@ -296,11 +296,9 @@
 
                         <!-- Additional Requirements -->
                         <div class="form-section">
-                            <h3 class="form-section-title" data-i18n="pay_additional_title">📝 Additional Requirements
-                            </h3>
+                            <h3 class="form-section-title" data-i18n="pay_additional_title">📝 Additional Requirements</h3>
                             <div class="form-group">
-                                <label for="specialRequirements" data-i18n="pay_special_req">SPECIAL REQUIREMENTS OR
-                                    COMMENTS</label>
+                                <label for="specialRequirements" data-i18n="pay_special_req">SPECIAL REQUIREMENTS OR COMMENTS</label>
                                 <textarea id="specialRequirements" name="specialRequirements"
                                     data-i18n-placeholder="ph_special_details"
                                     placeholder="Any other details we should know?" rows="3"></textarea>
@@ -308,31 +306,21 @@
                         </div>
 
                         <!-- Agreement — Must read terms -->
-                        <div class="form-group checkbox" style="display: flex; align-items: flex-start; gap: 10px;">
-                            <input type="checkbox" id="termsAccept" name="termsAccept" required disabled
-                                style="margin-top: 4px; cursor: not-allowed; opacity: 0.5;">
-                            <label for="termsAccept" style="font-size: 0.85rem; line-height: 1.5;">
+                        <div class="form-group checkbox-consent">
+                            <input type="checkbox" id="termsAccept" name="termsAccept" required disabled>
+                            <label for="termsAccept">
                                 <span data-i18n="pay_terms_agree">I have read and agree to the</span>
-                                <a href="/frontend/terms.html" target="_blank" id="termsLink"
-                                    style="color: #4285f4; text-decoration: underline; font-weight: 600;"
-                                    data-i18n="footer_terms">Terms of
-                                    Service</a>
+                                <a href="/frontend/terms.html" target="_blank" id="termsLink" data-i18n="footer_terms">Terms of Service</a>
                                 <span data-i18n="and">and</span>
-                                <a href="/frontend/privacy.html" target="_blank" id="privacyLink"
-                                    style="color: #4285f4; text-decoration: underline; font-weight: 600;"
-                                    data-i18n="footer_privacy">Privacy
-                                    Policy</a>,
+                                <a href="/frontend/privacy.html" target="_blank" id="privacyLink" data-i18n="footer_privacy">Privacy Policy</a>,
                                 <span data-i18n="pay_confirm_accurate">and confirm all information is accurate. *</span>
                             </label>
                         </div>
-                        <p id="termsHint"
-                            style="font-size: 0.75rem; color: #f59e0b; margin: -8px 0 12px 28px; display: block;"
-                            data-i18n="pay_terms_hint">
+                        <p id="termsHint" data-i18n="pay_terms_hint">
                             ⚠️ Please read the Terms of Service before proceeding
                         </p>
 
-                        <button type="button" class="btn btn-primary btn-large" id="proceedToPaymentBtn"
-                            style="width: 100%; text-align: center;" data-i18n="pay_proceed_btn">
+                        <button type="button" class="btn btn-primary btn-large" id="proceedToPaymentBtn" data-i18n="pay_proceed_btn">
                             Proceed to Payment →
                         </button>
 
