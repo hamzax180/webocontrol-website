@@ -3,15 +3,30 @@ const { Pool } = require('pg');
 let pool;
 
 function getDB() {
+  if (!process.env.DATABASE_URL) {
+    console.error('❌ DATABASE_URL is not defined in environment variables.');
+    return {
+      query: async () => ({ rows: [], rowCount: 0 }),
+      on: () => {},
+      connect: async () => ({ release: () => {}, query: async () => ({ rows: [], rowCount: 0 }) })
+    };
+  }
   if (!pool) {
     pool = new Pool({
       connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
     });
   }
   return pool;
 }
 
 async function initDB() {
+  if (!process.env.DATABASE_URL) {
+    console.warn('⚠️ Skipping DB init: DATABASE_URL not set.');
+    return;
+  }
   const db = getDB();
 
   await db.query(`

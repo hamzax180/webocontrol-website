@@ -530,20 +530,19 @@ img {
 }
 
 .nav-center-group {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   z-index: 10;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
   list-style: none;
+  flex-shrink: 0;
 }
 
 .nav-links a {
@@ -566,9 +565,9 @@ img {
 
 .nav-auth {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .btn {
