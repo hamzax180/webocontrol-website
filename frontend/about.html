@@ -20,7 +20,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="/frontend/" class="nav-logo anim-forever-logo">
+            <a href="/frontend/" class="nav-logo anim-forever-logo" style="text-decoration: none;">
                 <div class="logo-main">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2L3 20H7.5L12 11L16.5 20H21L12 2Z" fill="url(#antigravity-grad)" />
@@ -34,6 +34,7 @@
                     </svg>
                 </div>
             </a>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="/frontend/" data-i18n="nav_home">Home</a></li>
                 <li><a href="/frontend/products.html" data-i18n="nav_products">Products</a></li>
@@ -41,6 +42,29 @@
                 <li><a href="/frontend/about.html" class="active" data-i18n="nav_about">About Us</a></li>
                 <li><a href="/frontend/technology_fiverr.html" data-i18n="nav_tech">Tech</a></li>
             </ul>
+            <div class="nav-center-group">
+                <div class="nav-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="window.i18n.setLanguage('ar')">AR</button>
+                    </div>
+                </div>
+                <div class="nav-cart" id="navCart">
+                    <button class="cart-btn" id="cartBtn">
+                        <span class="icon">🛒</span>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-auth" id="navAuth">
+                <a href="/frontend/login.html" class="btn btn-ghost" id="loginBtn" data-i18n="nav_login">Login</a>
+                <a href="/frontend/register.html" class="btn btn-primary" id="registerBtn" data-i18n="nav_register">Get Started</a>
+                <button class="btn btn-ghost" id="logoutBtn" style="display:none;" data-i18n="nav_logout">Logout</button>
+                <a href="/frontend/dashboard.html" class="btn btn-primary" id="dashboardBtn" style="display:none;" data-i18n="nav_dashboard">Dashboard</a>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </nav>
 
@@ -83,6 +107,44 @@
 
     <!-- Footer -->
     <footer class="footer about-footer" style="padding-top: 0; position: relative;">
+        <!-- Rotating Animated Text 5 Columns (Premium Shell) -->
+        <div style="background: linear-gradient(180deg, #ffffff 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%); padding: 150px 20px 120px 20px; text-align: center; position: relative; z-index: 5; margin-top: -100px;">
+            <div class="container" style="max-width: 1300px; margin: 0 auto;">
+                <div style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: space-between; width: 100vw; margin-left: calc(-50vw + 50%); padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px;">
+                    <!-- Column 1 -->
+                    <div style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+                        <div class="rotating-text-wrapper" style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1);">
+                            <span>Vue.js</span><span>Terraform</span><span>SQL</span><span>Linux</span><span>Vue.js</span>
+                        </div>
+                    </div>
+                    <!-- Column 2 -->
+                    <div style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+                        <div class="rotating-text-wrapper" style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.1s;">
+                            <span>React</span><span>Terraform</span><span>Docker</span><span>Next.js</span><span>React</span>
+                        </div>
+                    </div>
+                    <!-- Column 3 -->
+                    <div style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+                        <div class="rotating-text-wrapper" style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.2s;">
+                            <span>Node.js</span><span>JavaScript</span><span>Kubernetes</span><span>Postgres</span><span>Node.js</span>
+                        </div>
+                    </div>
+                    <!-- Column 4 -->
+                    <div style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+                        <div class="rotating-text-wrapper" style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.3s;">
+                            <span>Python</span><span>Golang</span><span>AWS</span><span>Rust</span><span>Python</span>
+                        </div>
+                    </div>
+                    <!-- Column 5 -->
+                    <div style="position: relative; height: 1.3em; flex: 1; min-width: 220px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+                        <div class="rotating-text-wrapper" style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsVercelFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.4s;">
+                            <span>Vite.js</span><span>MongoDB</span><span>MySQL</span><span>Redis</span><span>Vite.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div class="big-brand-text" id="bigBrandText">Webo<span class="brand-control">control</span></div>
             <div class="footer-grid">
@@ -134,6 +196,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cart Sidebar (Premium Shell) -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-i18n="cart_selection">Your Selection</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <ul class="cart-items" id="cartItems"></ul>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-i18n="cart_total">Estimated Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button onclick="window.cart.confirmSelection()" class="btn btn-primary btn-large" style="width: 100%; text-align: center;" data-i18n="cart_confirm">Confirm & Proceed →</button>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal (Premium Shell) -->
+    <div class="image-modal" id="imageModal" onclick="this.classList.remove('open')">
+        <span class="modal-close">&times;</span>
+        <img src="" alt="Full Preview" id="modalImg">
+    </div>
 
     <script src="/js/main.js" type="module"></script>
     <script>
