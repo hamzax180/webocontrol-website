@@ -37,15 +37,21 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Initialize database and start server
-(async () => {
-    try {
-        await initDB();
-        app.listen(PORT, '127.0.0.1', () => {
-            console.log(`⚡ WEBOCONTROL API Server running on http://127.0.0.1:${PORT}`);
-        });
-    } catch (err) {
-        console.error('❌ Failed to initialize database:', err);
-        process.exit(1);
-    }
-})();
+// Export the app for Vercel
+module.exports = app;
+
+// Initialize database and start server (only if not running as a serverless function)
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    (async () => {
+        try {
+            await initDB();
+            app.listen(PORT, '127.0.0.1', () => {
+                console.log(`⚡ WEBOCONTROL API Server running on http://127.0.0.1:${PORT}`);
+            });
+        } catch (err) {
+            console.error('❌ Failed to initialize database:', err);
+            // Don't exit if in production/vercel, it might be handled differently
+            if (process.env.NODE_ENV !== 'production') process.exit(1);
+        }
+    })();
+}
