@@ -12,6 +12,19 @@ const paymentRoutes = require('./routes/payments');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Essential Environment Variables Validation
+if (!process.env.JWT_SECRET) {
+    console.error('❌ CRITICAL: JWT_SECRET is missing! Authentication will fail.');
+    if (process.env.NODE_ENV !== 'production') {
+        console.warn('⚠️ Using fallback development secret for local testing.');
+        process.env.JWT_SECRET = 'dev_secret_only_for_testing';
+    }
+}
+
+if (!process.env.DATABASE_URL) {
+    console.warn('⚠️ WARNING: DATABASE_URL is missing. DB operations will be simulated via mock objects.');
+}
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -40,18 +53,21 @@ app.get('/api/health', (req, res) => {
 // Export the app for Vercel
 module.exports = app;
 
-// Initialize database and start server (only if not running as a serverless function)
-if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
-    (async () => {
-        try {
-            await initDB();
+// Initialize database and start server
+(async () => {
+    try {
+        // Run database initialization (tables creation)
+        await initDB();
+        
+        // Start listening only if not in a serverless environment (VERCEL)
+        if (!process.env.VERCEL) {
             app.listen(PORT, '127.0.0.1', () => {
                 console.log(`⚡ WEBOCONTROL API Server running on http://127.0.0.1:${PORT}`);
             });
-        } catch (err) {
-            console.error('❌ Failed to initialize database:', err);
-            // Don't exit if in production/vercel, it might be handled differently
-            if (process.env.NODE_ENV !== 'production') process.exit(1);
         }
-    })();
-}
+    } catch (err) {
+        console.error('❌ Database initialization failed:', err);
+        // On local dev, exit if DB is critical. On Vercel, the function starts anyway.
+        if (!process.env.VERCEL) process.exit(1);
+    }
+})();

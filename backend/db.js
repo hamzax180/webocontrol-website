@@ -12,12 +12,19 @@ function getDB() {
     };
   }
   if (!pool) {
-    pool = new Pool({
+    const isLocalhost = process.env.DATABASE_URL.includes('localhost') || process.env.DATABASE_URL.includes('127.0.0.1');
+    const config = {
       connectionString: process.env.DATABASE_URL,
-      ssl: {
+    };
+
+    // Vercel / Production DBs (like Neon) require SSL, but local ones often don't
+    if (!isLocalhost || process.env.VERCEL === '1') {
+      config.ssl = {
         rejectUnauthorized: false
-      }
-    });
+      };
+    }
+
+    pool = new Pool(config);
   }
   return pool;
 }
