@@ -827,6 +827,12 @@ const translations = {
         dash_network_error: "Network error",
         tech_title: "Technologies We Use",
         reviews_loading: "Loading reviews...",
+        prod_ai_agents_title: "Advanced AI Agents",
+        prod_ai_agents_subtitle: "Autonomous, self-learning AI agents designed to automate complex workflows and handle customer logic for your startup.",
+        btn_select_ai_agents: "Select AI Agents",
+        type_ai_agents: "Advanced AI Agents",
+        ai_section_title: "Next-Gen AI & <span class=\"gradient-text\">Autonomy</span>",
+        ai_section_subtitle: "Autonomous intelligence systems that transform how startups handle logic and operations.",
     },
     ar: {
         nav_home: "الرئيسية",
@@ -1651,6 +1657,12 @@ const translations = {
         footer_copy: "© 2026 WEBOCONTROL. جميع الحقوق محفوظة.",
         scroll_down: "انزل للأسفل",
         ph_special_details: "هل هناك تفاصيل أخرى يجب أن نعرفها؟",
+        prod_ai_agents_title: "وكلاء ذكاء اصطناعي متقدمون",
+        prod_ai_agents_subtitle: "وكلاء ذكاء اصطناعي مستقلون تعلم ذاتياً، مصممون لأتمتة سير العمل المعقد ومعالجة منطق العملاء لشركتك الناشئة.",
+        btn_select_ai_agents: "اختر وكلاء الذكاء",
+        type_ai_agents: "وكلاء ذكاء اصطناعي متقدمون",
+        ai_section_title: "الذكاء الاصطناعي من الجيل القادم و<span class=\"gradient-text\">الاستقلالية</span>",
+        ai_section_subtitle: "أنظمة ذكاء مستقلة تغير كيفية تعامل الشركات الناشئة مع المنطق والعمليات.",
     }
 };
 
