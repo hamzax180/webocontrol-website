@@ -833,6 +833,8 @@ const translations = {
         type_ai_agents: "Advanced AI Agents",
         ai_section_title: "Next-Gen AI & <span class=\"gradient-text\">Autonomy</span>",
         ai_section_subtitle: "Autonomous intelligence systems that transform how startups handle logic and operations.",
+        ai_home_title: "Neural AI Growth Engine",
+        ai_home_subtitle: "The ultimate competitive advantage for startups. Deploy autonomous agents that live in your cloud and automate your logic 24/7.",
     },
     ar: {
         nav_home: "الرئيسية",
@@ -1663,6 +1665,8 @@ const translations = {
         type_ai_agents: "وكلاء ذكاء اصطناعي متقدمون",
         ai_section_title: "الذكاء الاصطناعي من الجيل القادم و<span class=\"gradient-text\">الاستقلالية</span>",
         ai_section_subtitle: "أنظمة ذكاء مستقلة تغير كيفية تعامل الشركات الناشئة مع المنطق والعمليات.",
+        ai_home_title: "محرك النمو بالذكاء الاصطناعي العصبي",
+        ai_home_subtitle: "الميزة التنافسية القصوى للشركات الناشئة. انشر وكلاء مستقلين يعيشون في سحابتك ويؤتمتون منطق عملك على مدار الساعة.",
     }
 };
 
