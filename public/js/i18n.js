@@ -624,7 +624,7 @@ const translations = {
         pay_logo_upload: "COMPANY LOGO (OPTIONAL)",
         pay_logo_hint: "Accepted formats: PNG, JPG, SVG (Max 5MB)",
         pay_additional_title: "📝 Additional Requirements",
-        pay_terms_agree: "I accept the Terms & Conditions",
+        pay_terms_agree: "I have read and agree to the",
         pay_terms_hint: "⚠️ Please read the Terms of Service before proceeding",
         pay_proceed_btn: "Proceed to Payment →",
         pay_success_desc: "Thank you for your order. Your payment has been processed successfully.",
