@@ -171,17 +171,52 @@ function handleCancelReturn() {
     document.getElementById('paymentCancelled').style.display = 'block';
 }
 
-// Update visibility based on product type
-function updateVisibility(type) {
+// Update visibility based on product types
+function updateVisibility(types = []) {
     const websiteElements = document.querySelectorAll('.website-only');
+    const aiElements = document.querySelectorAll('.ai-only');
     const securityElements = document.querySelectorAll('.security-only');
     const devopsElements = document.querySelectorAll('.devops-only');
 
-    const isWebsite = type === 'portfolio' || type === 'company' || type === 'ecommerce' || !type;
+    const hasWebsite = types.some(t => t === 'portfolio' || t === 'company' || t === 'ecommerce' || t === 'startup' || t === 'brand' || t === 'webapp' || t === 'saas' || t === 'blog');
+    const hasAI = types.some(t => t === 'ai_agents' || t === 'ai-agent');
+    const hasSecurity = types.some(t => t === 'security');
+    const hasDevops = types.some(t => t === 'devops');
 
-    websiteElements.forEach(el => el.style.display = isWebsite ? 'block' : 'none');
-    securityElements.forEach(el => el.style.display = type === 'security' ? 'block' : 'none');
-    devopsElements.forEach(el => el.style.display = type === 'devops' ? 'block' : 'none');
+    // Default to website if nothing else matches (fallback)
+    const showWebsite = hasWebsite || types.length === 0;
+
+    websiteElements.forEach(el => {
+        el.style.display = showWebsite ? 'block' : 'none';
+        // Toggle required for all inputs/textareas/selects inside
+        el.querySelectorAll('input, textarea, select').forEach(input => {
+            if (input.id === 'brandColors' || input.id === 'designStyle') return; // Optional fields
+            input.required = showWebsite;
+        });
+    });
+
+    aiElements.forEach(el => {
+        el.style.display = hasAI ? 'block' : 'none';
+        el.querySelectorAll('input, textarea').forEach(input => {
+            if (input.id === 'aiModel') return; // Optional fields
+            input.required = hasAI;
+        });
+    });
+
+    securityElements.forEach(el => {
+        el.style.display = hasSecurity ? 'block' : 'none';
+        el.querySelectorAll('input, textarea').forEach(input => {
+            if (input.id === 'reqAuthDetails') return; // Optional fields
+            input.required = hasSecurity;
+        });
+    });
+
+    devopsElements.forEach(el => {
+        el.style.display = hasDevops ? 'block' : 'none';
+        el.querySelectorAll('input, textarea').forEach(input => {
+            input.required = hasDevops;
+        });
+    });
 }
 
 // Init
@@ -199,11 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = getCartData();
         renderOrderSummary(data);
 
-        // Update requirements visibility based on the first item
+        // Update requirements visibility based on all items in cart
         if (data && data.items && data.items.length > 0) {
-            updateVisibility(data.items[0].type);
+            const types = data.items.map(item => item.type);
+            updateVisibility(types);
         } else {
-            updateVisibility('company'); // Default to company if no data
+            updateVisibility(['company']); // Default if no data
         }
 
         const payBtn = document.getElementById('payBtn');
@@ -226,21 +262,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Determine type for data collection
                 const data = getCartData();
-                const type = data?.items?.[0]?.type || 'company';
-
+                const types = data?.items?.map(item => item.type) || ['company'];
+                
                 const formData = {
                     fullName: document.getElementById('fullName').value,
                     email: document.getElementById('email').value,
                     phone: document.getElementById('phone').value,
+                    location: document.getElementById('location').value,
                     company: document.getElementById('company').value,
                     specialRequirements: document.getElementById('specialRequirements').value,
                     submittedAt: new Date().toISOString()
                 };
 
-                // Add website specific data
-                if (type === 'portfolio' || type === 'company' || type === 'ecommerce') {
+                // Helper to check if a type belongs to a category
+                const isWeb = (t) => ['portfolio', 'company', 'ecommerce', 'startup', 'brand', 'webapp', 'saas', 'blog'].includes(t);
+                const isAI = (t) => ['ai_agents', 'ai-agent'].includes(t);
+
+                // Add website specific data if any item is a website
+                if (types.some(isWeb)) {
                     formData.projectDescription = document.getElementById('projectDescription').value;
                     formData.timeline = document.getElementById('timeline').value;
                     formData.industry = document.getElementById('industry').value;
@@ -249,8 +289,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     formData.designStyle = document.getElementById('designStyle').value;
                 }
 
+                // Add AI specific data
+                if (types.some(isAI)) {
+                    formData.ai_context = document.getElementById('aiContext').value;
+                    formData.ai_model = document.getElementById('aiModel').value;
+                    formData.ai_goals = document.getElementById('aiGoals').value;
+                    // Secondary AI fields
+                    const aiFeats = Array.from(document.querySelectorAll('input[name="ai_features"]:checked')).map(cb => cb.value);
+                    if (aiFeats.length > 0) formData.ai_features = aiFeats;
+                    formData.ai_persona = document.getElementById('aiPersona').value;
+                    formData.ai_training_sources = document.getElementById('aiTrainingSources').value;
+                }
+
                 // Add security specific data
-                if (type === 'security') {
+                if (types.includes('security')) {
                     formData.security_type = document.getElementById('reqSecurityType').value;
                     formData.target_url = document.getElementById('reqTargetUrl').value;
                     formData.auth_details = document.getElementById('reqAuthDetails').value;
@@ -258,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Add devops specific data
-                if (type === 'devops') {
+                if (types.includes('devops')) {
                     formData.cloud_provider = document.getElementById('reqCloudProvider').value;
                     formData.k8s_status = document.getElementById('reqK8sStatus').value;
                     formData.cicd_pipeline = document.getElementById('reqCicdPipeline').value;

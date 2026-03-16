@@ -183,68 +183,204 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-sections-grid">
-                            <!-- Features Section -->
-                            <div class="form-section form-card">
-                                <h3 class="form-section-title" data-i18n="pay_features_title">⚡ Features & Add-ons</h3>
-                                <div class="form-group checkbox-group">
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="ai-agent"> <span
-                                            data-i18n="order_ai">AI Agent Integration</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="seo"> <span
-                                            data-i18n="pay_phase_3_feat3">SEO Optimization</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="ecommerce"> <span
-                                            data-i18n="category_ecommerce">E-Commerce Integration</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="analytics"> <span
-                                            data-i18n="pay_feat_analytics">Analytics & Tracking</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="cms"> <span
-                                            data-i18n="pay_feat_cms">CMS/Admin Panel</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="mobile"> <span
-                                            data-i18n="pay_feat_mobile">Mobile App</span>
-                                    </label>
+                            <div class="ai-only" style="display:none;">
+                                <!-- AI Agent Section -->
+                                <div class="form-section form-card">
+                                    <h3 class="form-section-title" data-i18n="req_section_ai">🤖 AI Agent Requirements</h3>
+                                    <div class="form-group">
+                                        <label for="aiContext" data-i18n="req_ai_context">AI CONTEXT & KNOWLEDGE *</label>
+                                        <textarea id="aiContext" name="aiContext"
+                                            data-i18n-placeholder="ph_ai_context"
+                                            placeholder="What data or documents should the AI be trained on?" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="aiModel" data-i18n="req_ai_model">PREFERRED AI MODEL</label>
+                                            <input type="text" id="aiModel" name="aiModel"
+                                                data-i18n-placeholder="ph_ai_model"
+                                                placeholder="e.g. OpenAI (GPT-4), Claude 3, Llama 3">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="aiGoals" data-i18n="req_ai_goals">AI OBJECTIVES & GOALS *</label>
+                                            <input type="text" id="aiGoals" name="aiGoals"
+                                                data-i18n-placeholder="ph_ai_goals"
+                                                placeholder="What do you want the AI to achieve?">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Design & Branding Section -->
-                            <div class="form-section form-card">
-                                <h3 class="form-section-title" data-i18n="pay_design_title">🎨 Design & Branding</h3>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="brandColors" data-i18n="pay_brand_colors">BRAND COLORS
-                                            (OPTIONAL)</label>
-                                        <input type="text" id="brandColors" name="brandColors"
-                                            data-i18n-placeholder="ph_colors" placeholder="e.g., Blue, Gold, White">
+                            <div class="security-only" style="display:none;">
+                                <!-- Security Section -->
+                                <div class="form-section form-card">
+                                    <h3 class="form-section-title" data-i18n="req_section_security">🛡️ Security Requirements</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="reqSecurityType" data-i18n="req_security_type">TYPE OF SECURITY TEST *</label>
+                                            <input type="text" id="reqSecurityType" name="security_type"
+                                                data-i18n-placeholder="ph_security_type"
+                                                placeholder="e.g. Penetration Testing, Audit, Compliance">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reqTargetUrl" data-i18n="req_target_url">TARGET URL / IP *</label>
+                                            <input type="text" id="reqTargetUrl" name="target_url"
+                                                data-i18n-placeholder="ph_target_url"
+                                                placeholder="e.g. https://mywebsite.com">
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="designStyle" data-i18n="pay_design_style">DESIGN STYLE *</label>
-                                        <select id="designStyle" name="designStyle" required>
-                                            <option value="" data-i18n="opt_select_type">Select style</option>
-                                            <option value="modern" data-i18n="pay_style_modern">Modern & Minimalist
-                                            </option>
-                                            <option value="bold" data-i18n="pay_style_bold">Bold & Creative</option>
-                                            <option value="corporate" data-i18n="pay_style_corp">Corporate &
-                                                Professional</option>
-                                            <option value="playful" data-i18n="pay_style_playful">Playful & Fun</option>
-                                        </select>
+                                        <label for="reqAuthDetails" data-i18n="req_auth_details">AUTHENTICATION DETAILS</label>
+                                        <textarea id="reqAuthDetails" name="auth_details"
+                                            data-i18n-placeholder="ph_auth_details"
+                                            placeholder="Do we need credentials to test inner pages?" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reqSecurityGoals" data-i18n="req_security_goals">MAIN CONCERNS / GOALS *</label>
+                                        <input type="text" id="reqSecurityGoals" name="security_goals"
+                                            data-i18n-placeholder="ph_security_goals"
+                                            placeholder="What specific threats are you most concerned about?">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="logoFile" data-i18n="pay_logo_upload">COMPANY LOGO (OPTIONAL)</label>
-                                    <input type="file" id="logoFile" name="logoFile" accept="image/*"
-                                        placeholder="Upload your logo">
-                                    <small data-i18n="pay_logo_hint">Accepted formats: PNG, JPG, SVG (Max 5MB)</small>
+                            </div>
+
+                            <div class="devops-only" style="display:none;">
+                                <!-- DevOps Section -->
+                                <div class="form-section form-card">
+                                    <h3 class="form-section-title" data-i18n="req_section_devops">🚀 DevOps & Infrastructure</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="reqCloudProvider" data-i18n="req_cloud_provider">CLOUD INFRASTRUCTURE *</label>
+                                            <input type="text" id="reqCloudProvider" name="cloud_provider"
+                                                data-i18n-placeholder="ph_cloud_provider"
+                                                placeholder="e.g. AWS, Azure, Google Cloud">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reqK8sStatus" data-i18n="req_k8s_status">KUBERNETES & CONTAINERS *</label>
+                                            <input type="text" id="reqK8sStatus" name="k8s_status"
+                                                data-i18n-placeholder="ph_k8s_status"
+                                                placeholder="e.g. Docker, K8s cluster setup, Helm charts">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reqCicdPipeline" data-i18n="req_cicd_pipeline">CI/CD PIPELINE NEEDS *</label>
+                                        <input type="text" id="reqCicdPipeline" name="cicd_pipeline"
+                                            data-i18n-placeholder="ph_cicd_pipeline"
+                                            placeholder="e.g. Automated testing, GitHub Actions">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reqFintechCompliance" data-i18n="req_fintech_compliance">COMPLIANCE GOALS *</label>
+                                        <input type="text" id="reqFintechCompliance" name="compliance_goals"
+                                            data-i18n-placeholder="ph_fintech_compliance"
+                                            placeholder="e.g. PCI-DSS, SOC2, High Availability">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="website-only">
+                            <div class="form-sections-grid">
+                                <!-- Features Section -->
+                                <div class="form-section form-card">
+                                    <h3 class="form-section-title" data-i18n="pay_features_title">⚡ Features & Add-ons</h3>
+                                    <div class="form-group checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="features" value="ai-agent"> <span
+                                                data-i18n="order_ai">AI Agent Integration</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="features" value="seo"> <span
+                                                data-i18n="pay_phase_3_feat3">SEO Optimization</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="features" value="ecommerce"> <span
+                                                data-i18n="category_ecommerce">E-Commerce Integration</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="features" value="analytics"> <span
+                                                data-i18n="pay_feat_analytics">Analytics & Tracking</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="features" value="cms"> <span
+                                                data-i18n="pay_feat_cms">CMS/Admin Panel</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="features" value="mobile"> <span
+                                                data-i18n="pay_feat_mobile">Mobile App</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Design & Branding Section -->
+                                <div class="form-section form-card">
+                                    <h3 class="form-section-title" data-i18n="pay_design_title">🎨 Design & Branding</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="brandColors" data-i18n="pay_brand_colors">BRAND COLORS (OPTIONAL)</label>
+                                            <input type="text" id="brandColors" name="brandColors"
+                                                data-i18n-placeholder="ph_colors" placeholder="e.g., Blue, Gold, White">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="designStyle" data-i18n="pay_design_style">DESIGN STYLE *</label>
+                                            <select id="designStyle" name="designStyle">
+                                                <option value="" data-i18n="opt_select_type">Select type...</option>
+                                                <option value="modern" data-i18n="pay_style_modern">Modern & Minimalist</option>
+                                                <option value="bold" data-i18n="pay_style_bold">Bold & Creative</option>
+                                                <option value="corporate" data-i18n="pay_style_corp">Corporate & Professional</option>
+                                                <option value="playful" data-i18n="pay_style_playful">Playful & Fun</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="logoFile" data-i18n="pay_logo_upload">COMPANY LOGO (OPTIONAL)</label>
+                                        <input type="file" id="logoFile" name="logoFile" accept="image/*"
+                                            placeholder="Upload your logo">
+                                        <small data-i18n="pay_logo_hint">Accepted formats: PNG, JPG, SVG (Max 5MB)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ai-only" style="display:none;">
+                            <div class="form-sections-grid">
+                                <!-- AI Features & Integrations -->
+                                <div class="form-section form-card">
+                                    <h3 class="form-section-title" data-i18n="req_section_ai_features">🤖 AI INTEGRATIONS & FEATURES</h3>
+                                    <div class="form-group checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="ai_features" value="chat-widget"> <span
+                                                data-i18n="req_ai_feat_chat">Custom Chat Widget</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="ai_features" value="api-access"> <span
+                                                data-i18n="req_ai_feat_api">API Access</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="ai_features" value="discord"> <span
+                                                data-i18n="req_ai_feat_discord">Discord Integration</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="ai_features" value="whatsapp"> <span
+                                                data-i18n="req_ai_feat_whatsapp">WhatsApp Integration</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- AI Persona & Training -->
+                                <div class="form-section form-card">
+                                    <h3 class="form-section-title" data-i18n="req_section_ai_persona">🧠 PERSONA & TRAINING</h3>
+                                    <div class="form-group">
+                                        <label for="aiPersona" data-i18n="req_ai_persona">AI PERSONA / TONE *</label>
+                                        <input type="text" id="aiPersona" name="aiPersona"
+                                            data-i18n-placeholder="ph_ai_persona"
+                                            placeholder="e.g. Professional, Friendly, Technical">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="aiTrainingSources" data-i18n="req_ai_training_sources">TRAINING DATA SOURCES</label>
+                                        <textarea id="aiTrainingSources" name="aiTrainingSources"
+                                            data-i18n-placeholder="ph_ai_training_sources"
+                                            placeholder="e.g. Website URLs, PDF docs" rows="2"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>

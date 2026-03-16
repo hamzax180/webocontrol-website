@@ -171,7 +171,7 @@
 
 /* Ensure wrappers like .website-only stretch and pass height to their children */
 .form-sections-grid > div {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   height: 100%;
 }
