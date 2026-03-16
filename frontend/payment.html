@@ -13,7 +13,12 @@
     <script src="/js/i18n.js" defer></script>
 </head>
 
-<body>
+<body class="has-video-bg">
+    <div class="video-background-container">
+        <video autoplay loop muted playsinline class="bg-vid">
+            <source src="/product%20html.mp4" type="video/mp4">
+        </video>
+    </div>
     <div class="bg-grid"></div>
     <div class="bg-noise"></div>
     <canvas id="bg-aurora"></canvas>
@@ -104,97 +109,74 @@
 
                 <div class="requirements-form-wrapper">
                     <form id="customerForm" class="customer-form">
-                        <!-- Client Details Section -->
-                        <div class="form-section">
-                            <h3 class="form-section-title" data-i18n="pay_client_info">👤 Client Information</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="fullName" data-i18n="full_name">FULL NAME *</label>
-                                    <input type="text" id="fullName" name="fullName" required
-                                        data-i18n-placeholder="ph_company_name" placeholder="Your full name">
+                        <div class="form-sections-grid">
+                            <!-- Client Details Section -->
+                            <div class="form-section">
+                                <h3 class="form-section-title" data-i18n="pay_client_info">👤 Client Information</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fullName" data-i18n="full_name">FULL NAME *</label>
+                                        <input type="text" id="fullName" name="fullName" required
+                                            data-i18n-placeholder="ph_company_name" placeholder="Your full name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" data-i18n="form_email_label">EMAIL ADDRESS *</label>
+                                        <input type="email" id="email" name="email" required
+                                            data-i18n-placeholder="ph_email" placeholder="your@email.com">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="email" data-i18n="form_email_label">EMAIL ADDRESS *</label>
-                                    <input type="email" id="email" name="email" required
-                                        data-i18n-placeholder="ph_email" placeholder="your@email.com">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="phone" data-i18n="req_phone">PHONE NUMBER *</label>
+                                        <input type="tel" id="phone" name="phone" required data-i18n-placeholder="ph_phone"
+                                            placeholder="+1 (555) 000-0000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company" data-i18n="req_company_name">COMPANY NAME *</label>
+                                        <input type="text" id="company" name="company" required
+                                            data-i18n-placeholder="ph_company_name" placeholder="Your company name">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="phone" data-i18n="req_phone">PHONE NUMBER *</label>
-                                    <input type="tel" id="phone" name="phone" required data-i18n-placeholder="ph_phone"
-                                        placeholder="+1 (555) 000-0000">
-                                </div>
-                                <div class="form-group">
-                                    <label for="company" data-i18n="req_company_name">COMPANY NAME *</label>
-                                    <input type="text" id="company" name="company" required
-                                        data-i18n-placeholder="ph_company_name" placeholder="Your company name">
+
+                            <div class="website-only">
+                                <!-- Project Details Section -->
+                                <div class="form-section">
+                                    <h3 class="form-section-title" data-i18n="pay_project_details">📋 Project Details</h3>
+                                    <div class="form-group">
+                                        <label for="projectDescription" data-i18n="pay_proj_desc">Project Description
+                                            *</label>
+                                        <textarea id="projectDescription" name="projectDescription"
+                                            data-i18n-placeholder="ph_company_desc"
+                                            placeholder="Describe your project in detail..." rows="4"></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="timeline" data-i18n="pay_timeline">TIMELINE *</label>
+                                            <select id="timeline" name="timeline">
+                                                <option value="" data-i18n="opt_select_type">Select timeline</option>
+                                                <option value="rush" data-i18n="pay_timeline_rush">Rush (1-2 weeks)</option>
+                                                <option value="standard" data-i18n="pay_timeline_standard">Standard (2-4
+                                                    weeks)</option>
+                                                <option value="flexible" data-i18n="pay_timeline_flexible">Flexible (4+
+                                                    weeks)</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="industry" data-i18n="pay_industry">INDUSTRY/NICHE *</label>
+                                            <input type="text" id="industry" name="industry" required
+                                                data-i18n-placeholder="ph_industry"
+                                                placeholder="e.g., E-commerce, SaaS, Blog">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="website-only">
-                            <!-- Project Details Section -->
-                            <div class="form-section">
-                                <h3 class="form-section-title" data-i18n="pay_project_details">📋 Project Details</h3>
-                                <div class="form-group">
-                                    <label for="projectDescription" data-i18n="pay_proj_desc">Project Description
-                                        *</label>
-                                    <textarea id="projectDescription" name="projectDescription"
-                                        data-i18n-placeholder="ph_company_desc"
-                                        placeholder="Describe your project in detail..." rows="4"></textarea>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="timeline" data-i18n="pay_timeline">TIMELINE *</label>
-                                        <select id="timeline" name="timeline">
-                                            <option value="" data-i18n="opt_select_type">Select timeline</option>
-                                            <option value="rush" data-i18n="pay_timeline_rush">Rush (1-2 weeks)</option>
-                                            <option value="standard" data-i18n="pay_timeline_standard">Standard (2-4
-                                                weeks)</option>
-                                            <option value="flexible" data-i18n="pay_timeline_flexible">Flexible (4+
-                                                weeks)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="industry" data-i18n="pay_industry">INDUSTRY/NICHE *</label>
-                                        <input type="text" id="industry" name="industry" required
-                                            data-i18n-placeholder="ph_industry"
-                                            placeholder="e.g., E-commerce, SaaS, Blog">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Features Section -->
-                            <div class="form-section">
-                                <h3 class="form-section-title" data-i18n="pay_features_title">⚡ Features & Add-ons</h3>
-                                <div class="form-group checkbox-group">
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="ai-agent"> <span
-                                            data-i18n="order_ai">AI Agent Integration</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="seo"> <span
-                                            data-i18n="pay_phase_3_feat3">SEO Optimization</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="ecommerce"> <span
-                                            data-i18n="category_ecommerce">E-Commerce Integration</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="analytics"> <span
-                                            data-i18n="pay_feat_analytics">Analytics & Tracking</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="cms"> <span
-                                            data-i18n="pay_feat_cms">CMS/Admin Panel</span>
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="features" value="mobile"> <span
-                                            data-i18n="pay_feat_mobile">Mobile App</span>
-                                    </label>
-                                </div>
-                            </div>
+                        <!-- Features Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title" data-i18n="pay_features_title">⚡ Features & Add-ons</h3>
+                            <div class="form-group checkbox-group">
 
                             <!-- Design & Branding Section -->
                             <div class="form-section">

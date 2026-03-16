@@ -691,8 +691,12 @@ input:checked+.slider:before {
   background: rgba(0, 0, 0, 0.02);
 }
 
-body.lang-ar .faq-item {
-  direction: ltr;
-  text-align: left;
+
+/* Navbar Hover Override for Support Page */
+.nav-links a:hover {
+  color: #ffffff !important;
 }
-
+
+.navbar.scrolled .nav-links a:hover {
+  color: #e2e8f0 !important;
+}

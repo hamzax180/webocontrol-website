@@ -163,15 +163,43 @@
   box-shadow: 
     0 20px 80px rgba(0, 0, 0, 0.3),
     inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-  max-width: 900px;
+  max-width: 1200px; /* Widened for horizontal look */
   margin: 0 auto;
   position: relative;
   overflow: hidden;
 }
 
+.form-sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px; /* Increased to push sections further apart */
+  align-items: start;
+}
+
+.form-sections-grid .form-section {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+  .form-sections-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .form-sections-grid .form-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 32px;
+    margin-bottom: 16px;
+  }
+  .form-sections-grid .form-section:last-child {
+    border-bottom: none;
+  }
+}
+
 .form-section {
-  margin-bottom: 48px;
-  padding-bottom: 48px;
+  margin-bottom: 32px; /* Reduced from 48px */
+  padding-bottom: 32px; /* Reduced from 48px */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
