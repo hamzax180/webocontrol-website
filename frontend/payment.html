@@ -388,12 +388,13 @@
 
                         <!-- Agreement — Must read terms -->
                         <div class="checkbox-consent-wrapper">
-                            <div class="form-group checkbox-consent">
+                            <div class="form-group checkbox-consent" id="termsConsentContainer">
                                 <input type="checkbox" id="termsAccept" name="termsAccept" required disabled>
                                 <label for="termsAccept">
                                     <span data-i18n="pay_terms_agree">I HAVE READ AND AGREE TO THE</span>
-                                    <a href="/frontend/terms.html" target="_blank" id="termsLink" data-i18n="footer_terms">TERMS AND PRIVACY</a>,
-                                    <span data-i18n="pay_confirm_accurate">AND CONFIRM ALL INFORMATION IS ACCURATE. *</span>
+                                    <a href="/frontend/terms.html" target="_blank" id="termsLink" data-i18n="footer_terms">TERMS AND PRIVACY</a>
+                                    <span data-i18n="pay_confirm_accurate">AND CONFIRM ALL INFORMATION IS ACCURATE.</span>
+                                    <span style="color: #ff3b3b; font-weight: 900; margin-left: 2px;">*</span>
                                 </label>
                             </div>
                         </div>
@@ -410,13 +411,6 @@
                         <script>
                             // Enable checkbox only after user clicks/reads terms
                             document.getElementById('termsLink').addEventListener('click', function () {
-                                const cb = document.getElementById('termsAccept');
-                                cb.disabled = false;
-                                cb.style.cursor = 'pointer';
-                                cb.style.opacity = '1';
-                                document.getElementById('termsHint').style.display = 'none';
-                            });
-                            document.getElementById('privacyLink').addEventListener('click', function () {
                                 const cb = document.getElementById('termsAccept');
                                 cb.disabled = false;
                                 cb.style.cursor = 'pointer';

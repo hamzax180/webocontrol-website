@@ -344,10 +344,63 @@
 
 .checkbox-consent {
   margin-bottom: 0;
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
   gap: 12px;
-  text-align: center;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  max-width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkbox-consent:hover:not(:has(input:disabled)) {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 240, 255, 0.2);
+}
+
+.checkbox-consent input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox-consent input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox-consent label {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.checkbox-consent label a {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  padding: 2px 4px;
+  border-radius: 4px;
+  position: relative;
+  z-index: 10; /* Ensure it's clickable */
+}
+
+.checkbox-consent label a:hover {
+  background: rgba(0, 240, 255, 0.1);
+  color: #fff;
 }
 
 .form-actions {

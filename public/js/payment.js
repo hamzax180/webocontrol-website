@@ -266,7 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const types = data?.items?.map(item => item.type) || ['company'];
                 
                 const formData = {
-                    fullName: document.getElementById('fullName').value,
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
                     email: document.getElementById('email').value,
                     phone: document.getElementById('phone').value,
                     location: document.getElementById('location').value,
