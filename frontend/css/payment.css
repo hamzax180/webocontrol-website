@@ -172,8 +172,12 @@
 .form-sections-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 100px; /* Increased to push sections further apart */
+  gap: 60px; /* Adjusted based on feedback */
   align-items: start;
+}
+
+.form-sections-grid .form-row {
+  grid-template-columns: 1fr; /* Stack fields to fill the widened column space */
 }
 
 .form-sections-grid .form-section {
