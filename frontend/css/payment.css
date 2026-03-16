@@ -334,8 +334,37 @@
 .checkbox-consent-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
+}
+
+.checkbox-consent {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.form-actions .btn {
+  width: auto;
+  min-width: 280px;
+}
+
+#termsHint {
+  text-align: center;
+  width: 100%;
 }
 
 .form-group input::placeholder,

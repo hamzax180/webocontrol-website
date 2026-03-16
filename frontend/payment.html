@@ -143,6 +143,11 @@
                                         <input type="text" id="location" name="location" required
                                             data-i18n-placeholder="ph_location" placeholder="City, Country">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="company" data-i18n="req_company_name">COMPANY NAME *</label>
+                                        <input type="text" id="company" name="company" required
+                                            data-i18n-placeholder="ph_company_name" placeholder="Your company name">
+                                    </div>
                                 </div>
                             </div>
 
@@ -150,11 +155,6 @@
                                 <!-- Project Details Section -->
                                 <div class="form-section form-card">
                                     <h3 class="form-section-title" data-i18n="pay_project_details">📋 Project Details</h3>
-                                    <div class="form-group">
-                                        <label for="company" data-i18n="req_company_name">COMPANY NAME *</label>
-                                        <input type="text" id="company" name="company" required
-                                            data-i18n-placeholder="ph_company_name" placeholder="Your company name">
-                                    </div>
                                     <div class="form-group">
                                         <label for="projectDescription" data-i18n="pay_proj_desc">Project Description
                                             *</label>
@@ -249,74 +249,6 @@
                             </div>
                         </div>
 
-                        <div class="form-sections-grid">
-                            <!-- Security Requirements -->
-                            <div class="form-section security-only form-card" style="display: none;">
-                                <h3 class="form-section-title"><span class="icon">🛡️</span> <span
-                                        data-i18n="req_section_security">SECURITY REQUIREMENTS</span></h3>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label data-i18n="req_security_type">TYPE OF SECURITY TEST</label>
-                                        <input type="text" id="reqSecurityType" class="form-control"
-                                            data-i18n-placeholder="ph_security_type"
-                                            placeholder="e.g. Penetration Testing, Audit, Compliance">
-                                    </div>
-                                    <div class="form-group">
-                                        <label data-i18n="req_target_url">TARGET URL / IP</label>
-                                        <input type="text" id="reqTargetUrl" class="form-control"
-                                            data-i18n-placeholder="ph_target_url" placeholder="e.g. https://mywebsite.com">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label data-i18n="req_auth_details">AUTHENTICATION DETAILS</label>
-                                    <textarea id="reqAuthDetails" class="form-control"
-                                        data-i18n-placeholder="ph_auth_details"
-                                        placeholder="Do we need credentials to test inner pages?" rows="2"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label data-i18n="req_security_goals">MAIN CONCERNS / GOALS</label>
-                                    <textarea id="reqSecurityGoals" class="form-control"
-                                        data-i18n-placeholder="ph_security_goals"
-                                        placeholder="What specific threats are you most concerned about?"
-                                        rows="3"></textarea>
-                                </div>
-                            </div>
-
-                            <!-- DevOps Requirements -->
-                            <div class="form-section devops-only form-card" style="display: none;">
-                                <h3 class="form-section-title"><span class="icon">☁️</span> <span
-                                        data-i18n="req_section_devops">FINTECH DEVOPS & INFRASTRUCTURE</span></h3>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label data-i18n="req_cloud_provider">CLOUD INFRASTRUCTURE</label>
-                                        <input type="text" id="reqCloudProvider" class="form-control"
-                                            data-i18n-placeholder="ph_cloud_provider"
-                                            placeholder="e.g. AWS, Azure, Google Cloud (Fintech-ready)">
-                                    </div>
-                                    <div class="form-group">
-                                        <label data-i18n="req_k8s_status">KUBERNETES & CONTAINERS</label>
-                                        <input type="text" id="reqK8sStatus" class="form-control"
-                                            data-i18n-placeholder="ph_k8s_status"
-                                            placeholder="e.g. Docker, K8s cluster setup, Helm charts">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label data-i18n="req_cicd_pipeline">CI/CD PIPELINE NEEDS</label>
-                                    <textarea id="reqCicdPipeline" class="form-control"
-                                        data-i18n-placeholder="ph_cicd_pipeline"
-                                        placeholder="e.g. Automated testing, GitHub Actions, Blue/Green deployment"
-                                        rows="2"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label data-i18n="req_fintech_compliance">FINTECH & COMPLIANCE GOALS</label>
-                                    <textarea id="reqFintechCompliance" class="form-control"
-                                        data-i18n-placeholder="ph_fintech_compliance"
-                                        placeholder="e.g. PCI-DSS, SOC2, High Availability (99.9% Uptime)"
-                                        rows="3"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Additional Requirements -->
                         <div class="form-section form-card form-card-centered">
                             <h3 class="form-section-title" data-i18n="pay_additional_title">📝 Additional Requirements</h3>
@@ -333,25 +265,21 @@
                             <div class="form-group checkbox-consent">
                                 <input type="checkbox" id="termsAccept" name="termsAccept" required disabled>
                                 <label for="termsAccept">
-                                    <span data-i18n="pay_terms_agree">I have read and agree to the</span>
-                                    <a href="/frontend/terms.html" target="_blank" id="termsLink" data-i18n="footer_terms">Terms of Service</a>
-                                    <span data-i18n="and">and</span>
-                                    <a href="/frontend/privacy.html" target="_blank" id="privacyLink" data-i18n="footer_privacy">Privacy Policy</a>,
-                                    <span data-i18n="pay_confirm_accurate">and confirm all information is accurate. *</span>
+                                    <span data-i18n="pay_terms_agree">I HAVE READ AND AGREE TO THE</span>
+                                    <a href="/frontend/terms.html" target="_blank" id="termsLink" data-i18n="footer_terms">TERMS AND PRIVACY</a>,
+                                    <span data-i18n="pay_confirm_accurate">AND CONFIRM ALL INFORMATION IS ACCURATE. *</span>
                                 </label>
                             </div>
                         </div>
 
                         <div class="form-actions reveal">
-
+                            <button type="submit" id="proceedToPaymentBtn" class="btn btn-primary btn-large" data-i18n="pay_proceed_btn">
+                                Proceed to Payment →
+                            </button>
+                            <p id="termsHint" data-i18n="pay_terms_hint">
+                                ⚠️ Please read the Terms of Service before proceeding
+                            </p>
                         </div>
-                        <p id="termsHint" data-i18n="pay_terms_hint">
-                            ⚠️ Please read the Terms of Service before proceeding
-                        </p>
-
-                        <button type="button" class="btn btn-primary btn-large" id="proceedToPaymentBtn" data-i18n="pay_proceed_btn">
-                            Proceed to Payment →
-                        </button>
 
                         <script>
                             // Enable checkbox only after user clicks/reads terms
