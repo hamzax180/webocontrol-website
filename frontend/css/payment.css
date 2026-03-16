@@ -29,13 +29,13 @@
 }
 
 .payment-card-title {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 32px;
-  color: var(--cyan);
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -138,6 +138,8 @@
 .payment-btn {
   width: 100%;
   text-align: center;
+  font-family: var(--font-body);
+  font-weight: 700;
   font-size: 1.1rem;
   padding: 20px;
   border-radius: 14px;
@@ -237,12 +239,12 @@
 }
 
 .form-section-title {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--cyan);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
   margin-bottom: 32px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -270,11 +272,12 @@
 
 .form-group label {
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   color: var(--text-secondary);
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
+  opacity: 0.9;
 }
 
 .form-group input[type="text"],
