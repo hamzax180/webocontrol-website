@@ -154,26 +154,28 @@
    CUSTOMER FORM & REQUIREMENTS
    ============================================ */
 .requirements-form-wrapper {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 48px;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  box-shadow: 
-    0 20px 80px rgba(0, 0, 0, 0.3),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-  max-width: 1200px; /* Widened for horizontal look */
+  max-width: 1300px; /* Widened to accommodate separated cards and larger gap */
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
 }
 
 .form-sections-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px; /* Adjusted based on feedback */
-  align-items: start;
+  gap: 120px; /* Further increased to separate containers clearly */
+  align-items: stretch; /* Cards should have equal height */
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: 
+    0 20px 80px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 .form-sections-grid .form-row {
