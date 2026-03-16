@@ -162,19 +162,18 @@
 .form-sections-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px; /* Reduced for better visual cohesion */
-  align-items: stretch; /* Cards should have equal height for balance */
+  gap: 80px;
+  align-items: start; /* Each card takes height based on content to stay compact */
   margin-bottom: 40px;
 }
 
-/* Ensure wrappers like .website-only also stretch to fill the grid */
+/* Standard flex wrappers */
 .form-sections-grid > div {
   display: flex;
   flex-direction: column;
 }
 
 .form-card {
-  flex: 1; /* Force card to fill available vertical space */
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 24px;
@@ -197,7 +196,7 @@
 }
 
 .form-sections-grid .form-row {
-  grid-template-columns: 1fr; /* Stack fields to fill the widened column space */
+  grid-template-columns: 1fr 1fr; /* Allow two columns again for a more compact, shorter look */
 }
 
 .form-sections-grid .form-section {
