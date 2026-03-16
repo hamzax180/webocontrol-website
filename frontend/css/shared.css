@@ -468,8 +468,9 @@ img {
   color: #e2e8f0 !important;
 }
 
-.navbar.scrolled .nav-links a:hover {
-  color: var(--cyan) !important;
+.navbar.scrolled .nav-links a:hover,
+.navbar.scrolled .nav-links a.active {
+  color: #ff3b3b !important;
 }
 
 .navbar.scrolled .logo-main span,
@@ -508,6 +509,14 @@ img {
   font-size: 1.25rem;
   font-weight: 600;
   color: #1a1a2e;
+}
+
+.logo-main img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  border-radius: 4px; /* Maintain subtle rounding if the jpeg has sharp edges */
 }
 
 .nav-logo.anim-forever-logo .logo-main span {
@@ -559,8 +568,9 @@ img {
   display: none;
 }
 
-.nav-links a:hover {
-  color: var(--cyan);
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ff3b3b;
 }
 
 .nav-auth {
