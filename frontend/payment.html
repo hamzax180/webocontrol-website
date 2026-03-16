@@ -115,22 +115,29 @@
                                 <h3 class="form-section-title" data-i18n="pay_client_info">👤 Client Information</h3>
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="fullName" data-i18n="full_name">FULL NAME *</label>
-                                        <input type="text" id="fullName" name="fullName" required
-                                            data-i18n-placeholder="ph_company_name" placeholder="Your full name">
+                                        <label for="firstName" data-i18n="first_name">FIRST NAME *</label>
+                                        <input type="text" id="firstName" name="firstName" required
+                                            data-i18n-placeholder="ph_first_name" placeholder="Your first name">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="lastName" data-i18n="last_name">LAST NAME (SURNAME) *</label>
+                                        <input type="text" id="lastName" name="lastName" required
+                                            data-i18n-placeholder="ph_last_name" placeholder="Your last name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group">
                                         <label for="email" data-i18n="form_email_label">EMAIL ADDRESS *</label>
                                         <input type="email" id="email" name="email" required
                                             data-i18n-placeholder="ph_email" placeholder="your@email.com">
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group">
                                         <label for="phone" data-i18n="req_phone">PHONE NUMBER *</label>
                                         <input type="tel" id="phone" name="phone" required data-i18n-placeholder="ph_phone"
                                             placeholder="+1 (555) 000-0000">
                                     </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group">
                                         <label for="location" data-i18n="pay_location">LOCATION *</label>
                                         <input type="text" id="location" name="location" required

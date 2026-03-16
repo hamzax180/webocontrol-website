@@ -163,17 +163,20 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: start; /* Each card takes height based on content to stay compact */
+  align-items: stretch; /* Direct children will stretch to same height */
   margin-bottom: 40px;
 }
 
-/* Standard flex wrappers */
+/* Ensure wrappers like .website-only stretch and pass height to their children */
 .form-sections-grid > div {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
+  height: 100%;
 }
 
 .form-card {
+  width: 100%;
+  flex: 1; /* Key: Make card grow to fill the stretched wrapper or grid cell */
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 24px;
@@ -186,6 +189,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 0 !important; /* Remove margin that breaks grid alignment */
 }
 
 .form-card:hover {
