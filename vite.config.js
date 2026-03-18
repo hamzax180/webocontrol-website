@@ -11,6 +11,10 @@ export default defineConfig({
             req.url = '/frontend/home.html';
             return next();
           }
+          if (req.url.startsWith('/css/') || req.url.startsWith('/assets/')) {
+            req.url = `/frontend${req.url}`;
+            return next();
+          }
           if (!req.url.startsWith('/api') && !req.url.includes('.') && req.url.length > 1) {
             req.url = `/frontend${req.url}.html`;
           }
