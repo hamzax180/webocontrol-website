@@ -336,7 +336,19 @@ html, body {
     }
 
     .tech-logos-section {
-        margin-top: 5px !important;
+        margin-top: -15px !important;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Hide invisible text that forces uneven flex-wrap gaps */
+    .tech-logo-item span {
+        display: none !important;
+    }
+
+    /* Add bigger gap to nicely distribute logos */
+    .tech-logos-grid, [id*="Logos"] {
+        gap: 20px !important;
     }
 
     /* Pricing */
