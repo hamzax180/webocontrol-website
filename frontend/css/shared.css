@@ -3764,7 +3764,7 @@ body.auth-body {
 }
 
 /* ============================================
-   PILLAR SELECTION GRID (shared: about.html + index.html)
+   PILLAR SELECTION GRID (shared: about.html + home.html)
    ============================================ */
 .select-pillar-grid {
   display: grid;

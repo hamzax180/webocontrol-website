@@ -112,7 +112,7 @@ console.log(`✅ shared.css → ${sharedOut.split('\n').length} lines`);
 
 // Write page CSS files
 const fileHeaders = {
-  'home.css':          'Home Page (index.html)',
+  'home.css':          'Home Page (home.html)',
   'login.css':         'Auth Pages (login.html + register.html)',
   'register.css':      'Register Page (register.html)',
   'dashboard.css':     'Dashboard (dashboard.html)',

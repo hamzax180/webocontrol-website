@@ -22,7 +22,7 @@ async function updateBrandColor(filePath) {
 
 async function main() {
     const files = [
-        'index.html',
+        'home.html',
         'about.html',
         'products.html',
         'order.html',

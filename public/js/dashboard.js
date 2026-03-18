@@ -526,7 +526,7 @@ function initLogout() {
     btn.addEventListener('click', () => {
         localStorage.removeItem('webocontrol_token');
         localStorage.removeItem('webocontrol_user');
-        window.location.href = '/frontend/index.html';
+        window.location.href = '/frontend/home.html';
     });
 }
 

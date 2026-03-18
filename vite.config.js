@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'frontend/index.html'),
+        main: resolve(__dirname, 'frontend/home.html'),
         login: resolve(__dirname, 'frontend/login.html'),
         register: resolve(__dirname, 'frontend/register.html'),
         dashboard: resolve(__dirname, 'frontend/dashboard.html'),

@@ -20,11 +20,11 @@
     },
     {
       "source": "/",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/home.html"
     },
     {
       "source": "/frontend",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/home.html"
     }
   ],
   "env": {

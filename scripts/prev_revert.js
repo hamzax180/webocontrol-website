@@ -100,7 +100,7 @@ const originalTechLogosHTML = `      <div class="tech-logos-grid">
 370:         </div>
 371:       </div>`;
 
-for (const file of ['index.html', 'products.html']) {
+for (const file of ['home.html', 'products.html']) {
     let content = fs.readFileSync(file, 'utf8');
     let infraStr = '<div class="tech-logos-grid">';
 

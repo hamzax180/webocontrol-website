@@ -29,7 +29,7 @@ mkdirSafe(path.join(ROOT, 'public'));
 
 // ─── STEP 2: Move HTML files → frontend/ ──────────────────────────────────────
 const htmlFiles = [
-  'index.html', 'login.html', 'register.html', 'dashboard.html',
+  'home.html', 'login.html', 'register.html', 'dashboard.html',
   'order.html', 'payment.html', 'about.html', 'about_payment.html',
   'products.html', 'privacy.html', 'terms.html', 'intro.html'
 ];
@@ -109,7 +109,7 @@ for (const file of utilScripts) {
 // ─── STEP 7: Update path references in all HTML files ─────────────────────────
 // Pages that exist (for nav link updates)
 const pages = [
-  'index.html', 'login.html', 'register.html', 'dashboard.html',
+  'home.html', 'login.html', 'register.html', 'dashboard.html',
   'order.html', 'payment.html', 'about.html', 'about_payment.html',
   'products.html', 'privacy.html', 'terms.html', 'intro.html'
 ];
@@ -157,7 +157,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'frontend/index.html'),
+        main: resolve(__dirname, 'frontend/home.html'),
         login: resolve(__dirname, 'frontend/login.html'),
         register: resolve(__dirname, 'frontend/register.html'),
         dashboard: resolve(__dirname, 'frontend/dashboard.html'),

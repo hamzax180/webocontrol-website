@@ -26,7 +26,7 @@ if (fs.existsSync(sharedSrc)) {
 
 // Page → CSS file name mapping
 const pages = [
-  { html: 'index.html',         css: 'home.css',           comment: 'Home / Landing Page' },
+  { html: 'home.html',          css: 'home.css',           comment: 'Home / Landing Page' },
   { html: 'login.html',         css: 'login.css',          comment: 'Login Page' },
   { html: 'register.html',      css: 'register.css',       comment: 'Register Page' },
   { html: 'dashboard.html',     css: 'dashboard.css',      comment: 'Dashboard Page' },
