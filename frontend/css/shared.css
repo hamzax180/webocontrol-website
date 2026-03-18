@@ -516,7 +516,8 @@ img {
   height: 35px;
   object-fit: contain;
   transition: all 0.3s ease;
-  border-radius: 4px; /* Maintain subtle rounding if the jpeg has sharp edges */
+  border-radius: 4px;
+  /* Maintain subtle rounding if the jpeg has sharp edges */
 }
 
 .nav-logo.anim-forever-logo .logo-main span {
