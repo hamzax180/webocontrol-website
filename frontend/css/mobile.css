@@ -1,0 +1,456 @@
+/* mobile.css - Mobile Compatibility Overrides */
+
+:root {
+    --mobile-padding: 16px;
+    --primary-glow: rgba(0, 150, 255, 0.9);
+}
+
+/* =============================================
+   GLOBAL — Prevent ALL horizontal overflow
+   ============================================= */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes rotateWordsMobile {
+    0%, 15%  { transform: translateY(0); }
+    20%, 35% { transform: translateY(-1.5em); }
+    40%, 55% { transform: translateY(-3em); }
+    60%, 75% { transform: translateY(-4.5em); }
+    80%, 100%{ transform: translateY(-6em); }
+}
+
+@keyframes premiumPulseGlow {
+    0%   { box-shadow: 0 0 15px var(--primary-glow), 0 0 30px rgba(0,150,255,0.4); border-color: rgba(255,255,255,0.8); }
+    50%  { box-shadow: 0 0 40px var(--primary-glow), 0 0 70px rgba(0,150,255,0.6); border-color: #fff; }
+    100% { box-shadow: 0 0 15px var(--primary-glow), 0 0 30px rgba(0,150,255,0.4); border-color: rgba(255,255,255,0.8); }
+}
+
+/* =============================================
+   MOBILE BREAKPOINT (≤ 768px)
+   ============================================= */
+@media screen and (max-width: 768px) {
+
+    /* --- Containers --- */
+    .container {
+        padding-left: var(--mobile-padding) !important;
+        padding-right: var(--mobile-padding) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* --- Fix ALL 100vw inline-styled elements --- */
+    /* The rotating text banners use width:100vw + left:50% + translateX(-50%)
+       which causes horizontal scrollbar on mobile. Reset them. */
+    [style*="width: 100vw"],
+    [style*="width:100vw"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        transform: none !important;
+        position: relative !important;
+        padding-left: var(--mobile-padding) !important;
+        padding-right: var(--mobile-padding) !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    /* ---- NAVBAR ---- */
+    header .navbar, .navbar {
+        padding: 12px 0 !important;
+        background: rgba(0, 0, 0, 0.98) !important;
+        backdrop-filter: blur(25px) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    }
+
+    .navbar .container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 var(--mobile-padding) !important;
+        gap: 8px !important;
+    }
+
+    .nav-links {
+        display: none !important;
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        margin-top: 15px !important;
+        padding-top: 15px !important;
+        border-top: 1px solid rgba(255,255,255,0.1) !important;
+        text-align: center !important;
+    }
+    
+    .nav-links.mobile-open {
+        display: flex !important;
+    }
+
+    .nav-auth {
+        display: none !important;
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        margin-top: 10px !important;
+        padding-bottom: 10px !important;
+        text-align: center !important;
+    }
+
+    .nav-auth.mobile-open {
+        display: flex !important;
+    }
+
+    .nav-center-group, #nav-center-group {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        flex-shrink: 0 !important;
+        position: static !important;
+    }
+
+    .nav-lang, .lang-switcher {
+        display: flex !important;
+        gap: 6px !important;
+    }
+
+    .lang-btn {
+        font-size: 0.7rem !important;
+        padding: 4px 8px !important;
+    }
+
+    .nav-cart, #navCart {
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Hamburger menu */
+    .mobile-toggle, #mobileToggle {
+        display: flex !important;
+        position: static !important;
+        transform: none !important;
+        width: 32px !important;
+        height: 32px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        z-index: 10001 !important;
+        flex-shrink: 0 !important;
+        background: rgba(255,255,255,0.1) !important;
+        border-radius: 6px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        padding: 5px !important;
+    }
+
+    .mobile-toggle span {
+        background: #ffffff !important;
+        width: 20px !important;
+    }
+
+    #mobileToggle svg {
+        display: block !important;
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* ---- HERO SECTION ---- */
+    .hero {
+        min-height: 100svh !important;
+        padding-top: 80px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .hero-content {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        padding: 80px 20px 40px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    /* Hero heading – tighten the font */
+    .fiverr-hero-title,
+    .hero h1 {
+        font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
+        line-height: 1.15 !important;
+        letter-spacing: -1px !important;
+        margin-bottom: 24px !important;
+    }
+
+    /* Hero subtitle / partner badge */
+    .hero-content > p {
+        font-size: 0.75rem !important;
+        margin-bottom: 16px !important;
+    }
+
+    /* CTA button */
+    .hero-content a[data-i18n="hero_cta_create"],
+    .hero-content > div > a {
+        padding: 16px 32px !important;
+        font-size: 1rem !important;
+        border-radius: 10px !important;
+        display: inline-block !important;
+        width: auto !important;
+        max-width: 90% !important;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+        display: flex !important;
+        bottom: 20px !important;
+    }
+
+    /* ---- ROTATING TEXT ANIMATION SECTION ---- */
+    /* Parent: stack vertically (column) and make fonts larger */
+    .rotating-text-wrapper-parent,
+    [style*="display: flex"][style*="justify-content: space-between"][style*="width: 100vw"],
+    [style*="display:flex"][style*="width:100vw"] {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 24px !important;
+        font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+        padding: 40px 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        transform: none !important;
+        left: 0 !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+        letter-spacing: -1px !important;
+        overflow: hidden !important;
+    }
+
+    /* Each column: full width, center text */
+    [style*="display: flex"][style*="justify-content: space-between"][style*="width: 100vw"] > div {
+        width: 100% !important;
+        flex: unset !important;
+        position: relative !important;
+        height: 1.4em !important;
+        overflow: hidden !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* Hide columns 4 and 5 — show only 3 words */
+    [style*="display: flex"][style*="justify-content: space-between"][style*="width: 100vw"] > div:nth-child(n+4) {
+        display: none !important;
+    }
+
+    /* Animated word-list inside each column */
+    .rotating-text-wrapper {
+        line-height: 1.4em !important;
+        height: 1.4em !important;
+        animation: rotateWordsMobile 8s infinite cubic-bezier(0.16, 1, 0.3, 1) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        position: absolute !important;
+        width: 100% !important;
+        top: 0 !important;
+    }
+
+    .rotating-text-wrapper span {
+        height: 1.4em !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+        width: 100% !important;
+    }
+
+    /* ---- PRODUCT CARDS (Showcase grid) ---- */
+    .showcase-grid,
+    .addons-showcase,
+    #ecosystem [style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 var(--mobile-padding) !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Force all ecosystem grid children to span full width and set logical visual order for mobile */
+    #ecosystem [style*="display: grid"] > div {
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    /* Hide the empty spacer columns in ecosystem grid */
+    #ecosystem [style*="display: grid"] > div:empty {
+        display: none !important;
+    }
+
+    /* Re-order elements logically since DOM order is horizontal for desktop grid */
+    #ecosystem [style*="display: grid"] > div:nth-child(1) { order: 1; } /* Infra Header */
+    #ecosystem [style*="display: grid"] > div:nth-child(4) { order: 2; margin-top: 10px !important; } /* Infra Card 1 */
+    #ecosystem [style*="display: grid"] > div:nth-child(8) { order: 3; margin-bottom: 20px !important; } /* Infra Stack 1 */
+    #ecosystem [style*="display: grid"] > div:nth-child(5) { order: 4; } /* Infra Card 2 */
+    #ecosystem [style*="display: grid"] > div:nth-child(9) { order: 5; margin-bottom: 40px !important; } /* Infra Stack 2 */
+    
+    #ecosystem [style*="display: grid"] > div:nth-child(3) { order: 6; padding-top: 20px !important; border-top: 1px solid rgba(255,255,255,0.1) !important;} /* AI Header */
+    #ecosystem [style*="display: grid"] > div:nth-child(7) { order: 7; margin-top: 10px !important; } /* AI Card */
+    #ecosystem [style*="display: grid"] > div:nth-child(11) { order: 8; } /* AI Stack */
+
+    .product-card {
+        margin: 0 !important;
+        background: #fff !important;
+        border: 1px solid rgba(0,0,0,0.1) !important;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .product-content {
+        padding: 16px !important;
+    }
+
+    .product-footer {
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+    }
+
+    /* Pricing */
+    .price-label {
+        font-size: 0.75rem !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+        margin-bottom: 4px !important;
+        opacity: 0.8 !important;
+    }
+
+    .price-label br { display: none !important; }
+    /* Add a space when the <br> is hidden */
+    .price-label::after { content: " "; white-space: pre; }
+
+    .price-value {
+        font-size: 2rem !important;
+        font-weight: 900 !important;
+        display: block !important;
+    }
+
+    .btn-sm {
+        padding: 10px 20px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* ---- TECH LOGOS GRIDS ---- */
+    .tech-logos-grid,
+    #homeAiLogos,
+    #homeInfraLogos {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 20px !important;
+        padding: 0 var(--mobile-padding) !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* ---- SCALING SECTION ---- */
+    .scaling-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ---- SECTION SPACING ---- */
+    .section {
+        padding: 60px 0 !important;
+    }
+
+    /* ---- SECTION HEADERS ---- */
+    .section-header h2,
+    [style*="font-size: clamp"] {
+        font-size: clamp(1.8rem, 6vw, 2.4rem) !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.03em !important;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem !important;
+        padding: 0 4px !important;
+    }
+
+    /* ---- AI ENGINE SECTION ---- */
+    #ai-engine .showcase-grid,
+    [style*="display: flex"][style*="flex-direction: column"] .product-card {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* ---- FOOTER ROTATING TEXT ---- */
+    footer .container [style*="width: 100vw"],
+    footer [style*="width: 100vw"] {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        transform: none !important;
+        left: 0 !important;
+        padding: 20px var(--mobile-padding) !important;
+        font-size: 1.3rem !important;
+        overflow: hidden !important;
+    }
+
+    /* ---- REVIEWS GRID ---- */
+    .reviews-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ---- TESTIMONIALS ---- */
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ---- ECOSYSTEM LOGOS OVERFLOW FIX ---- */
+    #ecosystem [style*="display: flex"] {
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+        justify-content: center !important;
+    }
+}
+
+/* =============================================
+   EXTRA SMALL (≤ 480px) — Tighten further
+   ============================================= */
+@media screen and (max-width: 480px) {
+    .fiverr-hero-title,
+    .hero h1 {
+        font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    }
+
+    .tech-logos-grid,
+    #homeAiLogos,
+    #homeInfraLogos {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+
+    [style*="width: 100vw"],
+    [style*="width:100vw"] {
+        font-size: 1.1rem !important;
+    }
+}
