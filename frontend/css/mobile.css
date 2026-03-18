@@ -335,6 +335,10 @@ html, body {
         gap: 12px !important;
     }
 
+    .tech-logos-section {
+        margin-top: 5px !important;
+    }
+
     /* Pricing */
     .price-label {
         font-size: 0.75rem !important;
@@ -426,7 +430,11 @@ html, body {
     }
 
     /* ---- ECOSYSTEM LOGOS OVERFLOW FIX ---- */
-    #ecosystem [style*="display: flex"] {
+    #ecosystem [style*="display: flex"],
+    .addons-showcase [style*="display: flex"],
+    [id*="Logos"],
+    .tech-logos-grid {
+        display: flex !important;
         flex-wrap: wrap !important;
         gap: 15px !important;
         justify-content: center !important;
@@ -440,13 +448,6 @@ html, body {
     .fiverr-hero-title,
     .hero h1 {
         font-size: clamp(1.6rem, 6vw, 2rem) !important;
-    }
-
-    .tech-logos-grid,
-    #homeAiLogos,
-    #homeInfraLogos {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 16px !important;
     }
 
     [style*="width: 100vw"],
