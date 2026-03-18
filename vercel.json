@@ -21,11 +21,11 @@
     },
     {
       "source": "/",
-      "destination": "/frontend/home.html"
+      "destination": "/frontend/home"
     },
     {
       "source": "/(about|about_payment|dashboard|home|intro|login|order|payment|privacy|products|register|technology|technology_fiverr|terms)",
-      "destination": "/frontend/$1.html"
+      "destination": "/frontend/$1"
     }
   ],
   "env": {
