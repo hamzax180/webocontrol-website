@@ -54,7 +54,7 @@ for (const { css, comment, html } of pages) {
   }
 }
 
-// Update each HTML file: replace /frontend/index.css with shared.css + page CSS
+// Update each HTML file: replace /index.css with shared.css + page CSS
 for (const { html, css } of pages) {
   const htmlPath = path.join(FRONTEND, html);
   if (!fs.existsSync(htmlPath)) continue;
@@ -63,16 +63,16 @@ for (const { html, css } of pages) {
   let changed = false;
 
   // Replace the old shared link and insert page link after it
-  const sharedLinkNew = `<link rel="stylesheet" href="/frontend/css/shared.css">`;
-  const pageLinkTag = `\n    <link rel="stylesheet" href="/frontend/css/${css}">`;
+  const sharedLinkNew = `<link rel="stylesheet" href="/css/shared.css">`;
+  const pageLinkTag = `\n    <link rel="stylesheet" href="/css/${css}">`;
 
-  if (content.includes('href="/frontend/index.css"')) {
+  if (content.includes('href="/index.css"')) {
     content = content.replace(
-      `<link rel="stylesheet" href="/frontend/index.css">`,
+      `<link rel="stylesheet" href="/index.css">`,
       sharedLinkNew + pageLinkTag
     );
     changed = true;
-  } else if (content.includes('href="/frontend/css/shared.css"') && !content.includes(`href="/frontend/css/${css}"`)) {
+  } else if (content.includes('href="/css/shared.css"') && !content.includes(`href="/css/${css}"`)) {
     content = content.replace(
       sharedLinkNew,
       sharedLinkNew + pageLinkTag

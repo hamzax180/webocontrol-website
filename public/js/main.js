@@ -612,7 +612,7 @@ function updateAuthUI() {
 function handleLogout() {
     localStorage.removeItem('webocontrol_token');
     localStorage.removeItem('webocontrol_user');
-    window.location.href = '/frontend/login.html';
+    window.location.href = '/login';
 }
 
 // --- Image Zoom Modal ---
@@ -925,7 +925,7 @@ function initOrderForm() {
 
             if (!token) {
                 window.showNotification(window.i18n.t('order_login_required'), 'warning');
-                setTimeout(() => { window.location.href = '/frontend/login.html'; }, 1500);
+                setTimeout(() => { window.location.href = '/login'; }, 1500);
                 return;
             }
 
@@ -988,7 +988,7 @@ function initOrderForm() {
                 if (res.ok) {
                     window.showNotification(window.i18n.t('order_success') || 'Order placed!', 'success');
                     reqForm.reset();
-                    setTimeout(() => { window.location.href = '/frontend/dashboard.html'; }, 2000);
+                    setTimeout(() => { window.location.href = '/dashboard'; }, 2000);
                 } else {
                     const result = await res.json();
                     window.showNotification(result.error || window.i18n.t('order_error'), 'error');
@@ -1067,7 +1067,7 @@ class CartManager {
             })),
         };
         localStorage.setItem('webocontrol_payment_data', JSON.stringify(paymentData));
-        window.location.href = '/frontend/payment.html';
+        window.location.href = '/payment';
     }
 
     updateBadge() {
@@ -1111,7 +1111,7 @@ class CartManager {
         const proceedBtn = document.querySelector('.cart-footer a');
         if (proceedBtn && this.items.length > 0) {
             const first = this.items[0];
-            proceedBtn.href = `/frontend/order.html?type=${first.type}&budget=${first.price}`;
+            proceedBtn.href = `/order?type=${first.type}&budget=${first.price}`;
         }
     }
 

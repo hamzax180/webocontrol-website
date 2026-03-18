@@ -13,6 +13,7 @@
       "use": "@vercel/node"
     }
   ],
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -23,8 +24,8 @@
       "destination": "/frontend/home.html"
     },
     {
-      "source": "/frontend",
-      "destination": "/frontend/home.html"
+      "source": "/(about|about_payment|dashboard|home|intro|login|order|payment|privacy|products|register|technology|technology_fiverr|terms)",
+      "destination": "/frontend/$1.html"
     }
   ],
   "env": {

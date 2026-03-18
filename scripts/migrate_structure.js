@@ -119,20 +119,20 @@ function updateHtmlPaths(filePath) {
   const original = content;
 
   // 1. CSS reference
-  content = content.replace(/href="\/index\.css"/g, 'href="/frontend/index.css"');
+  content = content.replace(/href="\/index\.css"/g, 'href="/index.css"');
 
   // 2. Images → public
   content = content.replace(/\/images\//g, '/public/');
 
-  // 3. Page nav links: href="/xxx.html" → href="/frontend/xxx.html"
-  //    But NOT external URLs, NOT #anchors, NOT already /frontend/ prefixed
+  // 3. Page nav links: href="/xxx.html" → href="/xxx"
+  //    But NOT external URLs, NOT #anchors, NOT already / prefixed
   content = content.replace(
     /href="\/(?!frontend\/)(?!api\/)(?!#)([\w-]+\.html(?:#[\w-]*)?)"/g,
-    (match, page) => `href="/frontend/${page}"`
+    (match, page) => `href="/${page}"`
   );
 
-  // 4. href="/" → href="/frontend/"
-  content = content.replace(/href="\/"/g, 'href="/frontend/"');
+  // 4. href="/" → href="/"
+  content = content.replace(/href="\/"/g, 'href="/"');
 
   // 5. source src="/images/..." → "/public/..."  (video sources)
   content = content.replace(/src="\/images\//g, 'src="/public/');

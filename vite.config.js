@@ -2,6 +2,23 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
+  plugins: [
+    {
+      name: 'clean-urls-dev',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url === '/') {
+            req.url = '/frontend/home.html';
+            return next();
+          }
+          if (!req.url.startsWith('/api') && !req.url.includes('.') && req.url.length > 1) {
+            req.url = `/frontend${req.url}.html`;
+          }
+          next();
+        });
+      }
+    }
+  ],
   root: '.',
   build: {
     rollupOptions: {
