@@ -50,7 +50,7 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Export the app for Vercel
+// Export the app for Serverless Hosting
 module.exports = app;
 
 // Initialize database and start server
@@ -67,7 +67,7 @@ module.exports = app;
         }
     } catch (err) {
         console.error('❌ Database initialization failed:', err);
-        // On local dev, exit if DB is critical. On Vercel, the function starts anyway.
+        // On local dev, exit if DB is critical. On Serverless Cloud, the function starts anyway.
         if (!process.env.VERCEL) process.exit(1);
     }
 })();

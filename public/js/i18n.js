@@ -392,7 +392,7 @@ const translations = {
         ph_other_pages: "Specify other pages...",
         ph_company_desc: "Briefly describe your business and mission...",
         ph_domain: "e.g. MyBrand.com or 'Need to buy'",
-        ph_hosting: "e.g. Vercel, Hostinger, No preference",
+        ph_hosting: "e.g. Cloudflare, AWS, No preference",
         login_welcome: "Welcome Back",
         login_subtitle: "Sign in to manage your orders",
         email_label: "Email Address",

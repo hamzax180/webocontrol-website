@@ -17,7 +17,7 @@ function getDB() {
       connectionString: process.env.DATABASE_URL,
     };
 
-    // Vercel / Production DBs (like Neon) require SSL, but local ones often don't
+    // Production DBs (like Neon) require SSL, but local ones often don't
     if (!isLocalhost || process.env.VERCEL === '1') {
       config.ssl = {
         rejectUnauthorized: false

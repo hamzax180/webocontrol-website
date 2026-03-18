@@ -703,7 +703,7 @@ img {
   /* the transition from 100 to 0 will jump but there's a trick to make it smooth, normally involving a duplicate first node. However translating back to 0 abruptly at 100% works visually when timing is 0% = translateY(0) */
 }
 
-@keyframes rotateWordsVercel {
+@keyframes rotateWordsTheme {
 
   0%,
   20% {
@@ -730,7 +730,7 @@ img {
   }
 }
 
-@keyframes rotateWordsVercelFooter {
+@keyframes rotateWordsThemeFooter {
 
   0%,
   20% {

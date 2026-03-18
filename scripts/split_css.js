@@ -41,7 +41,7 @@ const pageRules = [
       'partner-logos', 'client-logos', 'logo-row', 'logo-item',
       'floating-', 'float-card', 'device-mockup', 'browser-mockup',
       'section-header', 'section-title', 'section-subtitle', 'section-tag',
-      'rotateWords', 'rotateWordsVercel', 'rotateWordsVercelFooter',
+      'rotateWords', 'rotateWordsTheme', 'rotateWordsThemeFooter',
       'word-rotate', 'highlight-text', 'gradient-title',
       'preview-', 'addons-', 'ecommerce-', 'company-', 'portfolio-preview',
       'home-hero', '.moon '

@@ -1,6 +1,6 @@
 # 🚀 WEBOCONTROL - Advanced Software Solutions for Startups
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel&style=flat-square)](https://webocontrol.vercel.app)
+
 [![Tech Stack](https://img.shields.io/badge/Stack-Full--Stack-blue?style=flat-square)](https://github.com/hamzax180/webocontrol-website)
 
 **WEBOCONTROL** is a specialized software development agency platform designed to accelerate startups. It features a robust order management system, secure authentication, and seamless payment integration.
@@ -11,7 +11,7 @@
 
 ## 🏗 Architecture Overview
 
-The application follows a **Decoupled Monolith** pattern, where the frontend (Vite/Static) communicates with a Node/Express API, both hosted on Vercel.
+The application follows a **Decoupled Monolith** pattern, where the frontend (Vite/Static) communicates with a Node/Express API, both hosted on the cloud.
 
 ```mermaid
 graph TD
