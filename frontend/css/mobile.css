@@ -106,6 +106,12 @@ body {
         padding: 12px 0 !important;
     }
 
+    .navbar.scrolled {
+        background: rgba(11, 15, 25, 0.4) !important;
+        backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+
     .navbar .container {
         display: flex !important;
         justify-content: space-between !important;

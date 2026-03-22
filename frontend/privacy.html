@@ -22,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         .privacy-page {
-            padding-top: 120px;
+            padding-top: 150px;
             padding-bottom: 80px;
             min-height: 100vh;
             position: relative;
@@ -31,20 +31,22 @@
 
         .privacy-hero {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 60px;
         }
 
         .privacy-hero h1 {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 8px;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
         }
 
         .privacy-hero p {
-            color: #6b7280;
-            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            font-family: var(--font-body);
         }
 
         .privacy-content {
@@ -52,73 +54,89 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 28px;
+            gap: 40px;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: var(--font-body);
         }
 
         .privacy-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 16px;
-            padding: 32px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Removing the white containers as requested, just making spacing */
+            padding: 0;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+            box-shadow: none;
         }
 
         .privacy-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+            transform: none;
+            box-shadow: none;
         }
 
         .privacy-card h2 {
             font-family: var(--font-heading);
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 12px;
+            color: #ffffff;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: -0.5px;
         }
 
         .privacy-card h2 .privacy-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #1a1a2e, #2d2b55);
-            font-size: 0.9rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            font-size: 1.2rem;
             flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .privacy-card p,
         .privacy-card li {
-            color: #4b5563;
-            font-size: 0.9rem;
-            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
 
         .privacy-card ul {
             padding-left: 20px;
-            margin-top: 8px;
+            margin-top: 12px;
         }
 
         .privacy-card li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .privacy-card strong {
-            color: #1a1a2e;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, rgba(255,255,255,0.4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         @media (max-width: 640px) {
-            .privacy-hero h1 {
-                font-size: 1.6rem;
+            .privacy-card h2 {
+                font-size: 1.4rem;
             }
-
-            .privacy-card {
-                padding: 20px;
+            .privacy-card p, .privacy-card li {
+                font-size: 0.95rem;
+            }
+            .privacy-content {
+                gap: 30px;
+                padding: 0 15px;
             }
         }
     </style>
