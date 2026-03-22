@@ -1374,75 +1374,74 @@ function initVideoBackgrounds() {
     if (!videos.length) return;
 
     const forcePlay = (video) => {
-        // Standardize attributes for mobile compliance
-        video.setAttribute('muted', '');
+        // Redundant attribute enforcement
         video.muted = true;
+        video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
         video.setAttribute('autoplay', '');
-        
-        // If the video is not playing, try several methods
-        if (video.paused && video.autoplay) {
+        video.defaultMuted = true;
+
+        if (video.paused) {
             const playPromise = video.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
                     video.classList.add('playing-verified');
                 }).catch(() => {
-                    // Try refreshing the source once as a last resort
-                    if (!video.dataset.refreshed) {
-                        video.dataset.refreshed = "true";
-                        const originalSrc = video.currentSrc || video.src;
-                        if (originalSrc) {
-                            video.src = originalSrc.split('?')[0] + '?v=' + Date.now();
-                            video.load();
-                            video.play().catch(() => {});
-                        }
-                    }
+                    // Fail silently, heartbeat will retry
                 });
             }
         }
     };
 
-    // 1. Immediate attempt and periodic heartbeat (aggressive 500ms for first 5s)
+    // 1. High-Frequency Heartbeat (100ms for first 10s)
     let checks = 0;
-    const interval = setInterval(() => {
+    const fastInterval = setInterval(() => {
         videos.forEach(forcePlay);
         checks++;
-        if (checks > 10) clearInterval(interval); // Stay aggressive only for the first 5 seconds
-    }, 500);
+        if (checks > 100) { 
+            clearInterval(fastInterval);
+            // Fallback to slower heartbeat for insurance
+            setInterval(() => videos.forEach(v => { if(v.paused) forcePlay(v); }), 2000);
+        }
+    }, 100);
 
-    // Continue checking at 2s interval for insurance
-    setInterval(() => {
+    // 2. Node Re-insertion (The "Kickstart")
+    // If after 3 seconds a video is still paused, clone and replace it
+    setTimeout(() => {
         videos.forEach(v => {
-            if (v.paused && v.autoplay) forcePlay(v);
+            if (v.paused && !v.classList.contains('playing-verified')) {
+                const clone = v.cloneNode(true);
+                v.parentNode.replaceChild(clone, v);
+                forcePlay(clone);
+                // Also add listeners to the new clone
+                ['touchstart', 'mousedown', 'pointermove', 'scroll', 'wheel'].forEach(evt => {
+                    window.addEventListener(evt, () => clone.play().catch(() => {}), { passive: true, once: true });
+                });
+            }
         });
-    }, 2000);
+    }, 3000);
 
-    // 2. Global "Wake Up" on first interaction (anywhere on the screen)
+    // 3. Ultra-Broad Interaction Wakeup
     const wakeUp = () => {
         videos.forEach(v => {
             if (v.paused) v.play().catch(() => {});
         });
-        // We don't remove this listener immediately in case multiple videos need different gestures
     };
 
-    ['touchstart', 'mousedown', 'scroll', 'click', 'keydown'].forEach(evt => {
-        window.addEventListener(evt, wakeUp, { passive: true, once: false });
+    ['touchstart', 'mousedown', 'scroll', 'click', 'keydown', 'pointermove', 'wheel', 'touchstart'].forEach(evt => {
+        window.addEventListener(evt, wakeUp, { passive: true });
     });
 
-    // 3. Document visibility change
+    // 4. Persistence
     document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) {
-            videos.forEach(v => {
-                if (v.paused && v.autoplay) forcePlay(v);
-            });
-        }
+        if (!document.hidden) videos.forEach(forcePlay);
     });
 
-    // 4. Per-video ready listeners
-    videos.forEach(video => {
-        ['canplay', 'loadedmetadata', 'play'].forEach(evt => {
-            video.addEventListener(evt, () => forcePlay(video));
+    // 5. Per-video events
+    videos.forEach(v => {
+        ['canplay', 'loadedmetadata', 'canplaythrough', 'playing'].forEach(evt => {
+            v.addEventListener(evt, () => forcePlay(v));
         });
     });
 }
