@@ -224,6 +224,16 @@
   .form-sections-grid .form-section:last-child {
     border-bottom: none;
   }
+  /* Override the 2-col form-row inside grid on tablet/mobile */
+  .form-sections-grid .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .form-section {
