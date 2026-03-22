@@ -126,10 +126,14 @@ body {
         padding-top: 15px !important;
         border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
         text-align: center !important;
+        order: 10 !important;
     }
 
     .nav-links.mobile-open {
         display: flex !important;
+        position: static !important;
+        height: auto !important;
+        background: transparent !important;
     }
 
     .nav-auth {
@@ -140,10 +144,33 @@ body {
         margin-top: 10px !important;
         padding-bottom: 10px !important;
         text-align: center !important;
+        order: 11 !important;
     }
 
     .nav-auth.mobile-open {
         display: flex !important;
+        position: static !important;
+        transform: none !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    /* Wrap the entire navbar with a solid background when toggled open so the links aren't transparent over content */
+    .navbar:has(#navLinks.mobile-open) {
+        background: rgba(6, 6, 14, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        height: 100vh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        overflow-y: auto !important;
+        z-index: 1000 !important;
+    }
+    
+    .navbar:has(#navLinks.mobile-open) .container {
+        align-items: flex-start !important;
     }
 
     .nav-center-group,
