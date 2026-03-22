@@ -744,7 +744,19 @@ body.lang-ar .hero-content {
 /* Rotating text banner — prevent RTL clip on left side */
 body.lang-ar [style*="width: 100vw"],
 body.lang-ar [style*="width:100vw"] {
-    direction: ltr !important; /* Keep LTR so overflow:hidden clips correctly on both sides */
+    direction: ltr !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    -webkit-transform: translateX(-50%) !important;
+}
+
+/* Rotating text columns container — force LTR centering */
+body.lang-ar .rotating-text-columns {
+    direction: ltr !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
 }
 
 /* Rotating text columns — fix overflow clipping in RTL */
