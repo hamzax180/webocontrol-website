@@ -123,6 +123,20 @@ body {
         gap: 8px !important;
     }
 
+  /* Video Background Fix for Mobile */
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video {
+  pointer-events: none; /* Prevent accidental pauses on tap */
+}
+
     .nav-links {
         display: none !important;
         width: 100% !important;
@@ -174,6 +188,23 @@ body {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         margin-top: 18vh !important; /* center it vertically relative to viewport */
+    }
+
+    .nav-links.mobile-open .mobile-search-item {
+        display: block !important;
+        order: -1;
+        margin-bottom: 30px;
+        padding: 0 40px; /* More side padding for mobile menu flow */
+    }
+
+    .mobile-menu-search {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        height: 50px !important; /* Slightly larger for mobile tap targets */
+    }
+
+    .mobile-menu-search .search-input {
+        font-size: 1.1rem !important;
     }
 
     .nav-auth.mobile-open {

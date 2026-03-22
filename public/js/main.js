@@ -1395,6 +1395,24 @@ function initVideoBackgrounds() {
         }
     }
 
+    // Global interaction listener to bypass aggressive autoplay blocks
+    const playAllOnInteraction = () => {
+        videos.forEach(v => {
+            if (v.paused) v.play().catch(() => {});
+        });
+        // Remove all listeners once one is triggered
+        ['touchstart', 'mousedown', 'keydown', 'scroll', 'click'].forEach(evt => {
+            document.removeEventListener(evt, playAllOnInteraction);
+        });
+    };
+
+    ['touchstart', 'mousedown', 'keydown', 'scroll', 'click'].forEach(evt => {
+        document.addEventListener(evt, playAllOnInteraction, { passive: true });
+    });
+
+    // Try once on load as well
+    window.addEventListener('load', playAllOnInteraction);
+
     videos.forEach(video => {
         forcePlay(video);
 
@@ -1414,6 +1432,13 @@ function initVideoBackgrounds() {
             }
         });
 
+        // Periodic check for stuck videos (aggressive fallback)
+        setInterval(() => {
+            if (video.paused && video.readyState >= 2) {
+                video.play().catch(() => {});
+            }
+        }, 2000);
+
         // Restart if the video somehow ends (in case loop attr doesn't trigger)
         video.addEventListener('ended', () => {
             video.currentTime = 0;
@@ -1422,8 +1447,139 @@ function initVideoBackgrounds() {
     });
 }
 
+// --- Product Search & Filtering ---
+function initProductSearch() {
+    const searchInputNav = document.getElementById('productSearchNav');
+    const searchInputHero = document.getElementById('productSearchHero');
+    const searchInputSection = document.getElementById('productSearch');
+    const searchInputMobile = document.getElementById('productSearchMobile');
+    const allInputs = [searchInputNav, searchInputHero, searchInputSection, searchInputMobile].filter(i => i);
+    
+    if (allInputs.length === 0) return;
+
+    const cards = document.querySelectorAll('.product-card');
+    const productsSection = document.getElementById('products');
+
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        // Synchronize all search inputs
+        allInputs.forEach(input => {
+            if (input !== e.target) input.value = e.target.value;
+        });
+
+        // Only filter cards if NOT on the home page (where we want suggestions only)
+        const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('home.html');
+        
+        if (!isHomePage) {
+            cards.forEach(card => {
+                const title = card.querySelector('.product-title')?.textContent.toLowerCase() || '';
+                const desc = card.querySelector('.product-desc')?.textContent.toLowerCase() || '';
+                const category = card.querySelector('.product-category')?.textContent.toLowerCase() || '';
+                const tags = card.getAttribute('data-search-tags')?.toLowerCase() || '';
+                
+                const isMatch = title.includes(query) || 
+                              desc.includes(query) || 
+                              category.includes(query) ||
+                              tags.includes(query);
+
+                if (isMatch || query === '') {
+                    card.classList.remove('hidden');
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- Search Suggestions Logic ---
+        const suggestionsContainer = (e.target === searchInputNav) 
+            ? document.getElementById('searchSuggestions')
+            : (e.target === searchInputMobile)
+                ? document.getElementById('searchSuggestionsMobile')
+                : null;
+
+        if (suggestionsContainer) {
+            if (query.length > 0) {
+                const matches = Array.from(cards).filter(card => {
+                    const title = card.querySelector('.product-title')?.textContent.toLowerCase() || '';
+                    const tags = card.getAttribute('data-search-tags')?.toLowerCase() || '';
+                    return title.includes(query) || tags.includes(query);
+                }).slice(0, 5); // Limit to top 5 matches
+
+                if (matches.length > 0) {
+                    suggestionsContainer.innerHTML = matches.map(card => {
+                        const title = card.querySelector('.product-title')?.textContent || 'Service';
+                        const category = card.querySelector('.product-category')?.textContent || 'Category';
+                        const price = card.querySelector('.price-value')?.textContent || '';
+                        const imgSrc = card.querySelector('.product-image-container img.active')?.getAttribute('src') || '';
+                        
+                        return `
+                            <div class="suggestion-item" data-id="${title}">
+                                ${imgSrc ? `<img src="${imgSrc}" class="suggestion-thumb" alt="${title}">` : ''}
+                                <div class="suggestion-info">
+                                    <span class="suggestion-title">${title}</span>
+                                    <span class="suggestion-category">${category}</span>
+                                </div>
+                                ${price ? `<div class="suggestion-price">${price}</div>` : ''}
+                            </div>
+                        `;
+                    }).join('');
+                    suggestionsContainer.classList.add('active');
+
+                    // Add click handlers to suggestions
+                    suggestionsContainer.querySelectorAll('.suggestion-item').forEach(item => {
+                        item.addEventListener('click', () => {
+                            const targetTitle = item.getAttribute('data-id');
+                            const targetCard = Array.from(cards).find(c => 
+                                c.querySelector('.product-title')?.textContent === targetTitle
+                            );
+                            if (targetCard && productsSection) {
+                                productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                setTimeout(() => {
+                                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    targetCard.style.boxShadow = '0 0 30px rgba(255, 59, 59, 0.4)';
+                                    setTimeout(() => targetCard.style.boxShadow = '', 2000);
+                                }, 500);
+                            }
+                            suggestionsContainer.classList.remove('active');
+                            searchInputNav.value = targetTitle;
+                            if (searchInputMobile) searchInputMobile.value = targetTitle;
+                        });
+                    });
+                } else {
+                    suggestionsContainer.classList.remove('active');
+                }
+            } else {
+                suggestionsContainer.classList.remove('active');
+            }
+        }
+    };
+
+    allInputs.forEach(input => input.addEventListener('input', handleSearch));
+
+    // Close suggestions when clicking outside
+    document.addEventListener('click', (e) => {
+        const suggNav = document.getElementById('searchSuggestions');
+        const suggMob = document.getElementById('searchSuggestionsMobile');
+        if (suggNav && !e.target.closest('.navbar-search')) {
+            suggNav.classList.remove('active');
+        }
+        if (suggMob && !e.target.closest('.mobile-menu-search')) {
+            suggMob.classList.remove('active');
+        }
+    });
+}
+
+function handleNoResults(cards) {
+    const visibleCards = Array.from(cards).filter(c => !c.classList.contains('hidden'));
+    // We could show a "No results" message here if needed.
+}
+
 // --- Init All ---
 document.addEventListener('DOMContentLoaded', () => {
+    initProductSearch();
     initVideoBackgrounds();
     initAuroraBackground();
     initParticles();
@@ -1435,6 +1591,32 @@ document.addEventListener('DOMContentLoaded', () => {
     initProductSliders();
     updateAuthUI();
     initOrderForm();
+// --- Mobile Video Autoplay Fix ---
+const forceVideoAutoplay = () => {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        video.muted = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {});
+        }
+    });
+};
+
+// Start trying immediately
+forceVideoAutoplay();
+
+// Also try on full window load
+window.addEventListener('load', forceVideoAutoplay);
+
+// Also trigger once on first interaction just in case
+const triggerPlayOnInteraction = () => {
+    forceVideoAutoplay();
+    window.removeEventListener('touchstart', triggerPlayOnInteraction);
+    window.removeEventListener('click', triggerPlayOnInteraction);
+};
+window.addEventListener('touchstart', triggerPlayOnInteraction, { passive: true });
+window.addEventListener('click', triggerPlayOnInteraction, { passive: true });
     initReviews();
     initSupportHub();
     new HeroTypewriter();

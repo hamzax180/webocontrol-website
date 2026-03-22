@@ -91,16 +91,8 @@
       "destination": "/backend/index.js"
     },
     {
-      "source": "/",
-      "destination": "/frontend/home.html"
-    },
-    {
       "source": "/home",
-      "destination": "/frontend/home.html"
-    },
-    {
-      "source": "/frontend",
-      "destination": "/frontend/home.html"
+      "destination": "/index.html"
     },
     {
       "source": "/products",

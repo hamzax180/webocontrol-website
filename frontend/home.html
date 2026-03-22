@@ -30,6 +30,13 @@
       </a>
 
       <ul class="nav-links" id="navLinks">
+        <li class="mobile-search-item">
+          <div class="search-wrapper mobile-menu-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="productSearchMobile" data-i18n-placeholder="search_placeholder" placeholder="Search services...">
+            <div class="search-suggestions" id="searchSuggestionsMobile"></div>
+          </div>
+        </li>
         <li><a href="/" class="active" data-i18n="nav_home">Home</a></li>
         <li><a href="/products" data-i18n="nav_products">Products</a></li>
         <li><a href="/order#support" data-i18n="order_title">Support</a></li>
@@ -37,6 +44,15 @@
         <li><a href="/about" data-i18n="nav_about">About Us</a></li>
       </ul>
       <div class="nav-center-group">
+        <!-- Centered Search Bar in Navbar -->
+        <div class="nav-search-navbar">
+          <div class="search-wrapper navbar-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="productSearchNav" data-i18n-placeholder="search_placeholder" placeholder="Search services...">
+            <div class="search-suggestions" id="searchSuggestions"></div>
+          </div>
+        </div>
+
         <div class="nav-lang">
           <div class="lang-switcher">
             <button class="lang-btn" onclick="window.i18n.setLanguage('en')">EN</button>
@@ -71,7 +87,7 @@
     <div class="hero-glow hero-glow-3"></div>
 
     <div class="hero-background-coin">
-      <video autoplay loop muted playsinline class="coin-vid">
+      <video autoplay muted loop playsinline preload="auto" class="coin-vid">
         <source src="/home%20html.mp4" type="video/mp4">
       </video>
     </div>
@@ -246,7 +262,7 @@
 
       <div class="showcase-grid">
         <!-- Portfolio Category -->
-        <div class="product-card">
+        <div class="product-card" data-search-tags="portfolio web personal website cv creative">
           <div class="product-image-container">
             <img src="/portfolio-preview/pic1p.png" alt="Portfolio Preview 1" class="active">
             <img src="/portfolio-preview/pic2p.png" alt="Portfolio Preview 2">
@@ -279,7 +295,7 @@
         </div>
 
         <!-- Company Category -->
-        <div class="product-card">
+        <div class="product-card" data-search-tags="company web brand business startup corporate professional">
           <div class="product-image-container">
             <img src="/company-preview/company_ceo.png" alt="Company Preview 1" class="active">
             <img src="/company-preview/travel_illustration.png" alt="Company Preview 2">
@@ -310,7 +326,7 @@
         </div>
 
         <!-- E-Commerce Category (ONEMOE) -->
-        <div class="product-card">
+        <div class="product-card" data-search-tags="ecommerce web store shop catalog selling products business">
           <div class="product-image-container">
             <img src="/ecommerce-preview/screen5.png" alt="E-commerce Preview 1" class="active">
             <img src="/ecommerce-preview/screen7.png" alt="E-commerce Preview 2">
@@ -346,7 +362,7 @@
         </div>
 
         <!-- QR Menu Web Category -->
-        <div class="product-card">
+        <div class="product-card" data-search-tags="qr menu restaurant cafe food digital contactless">
           <div class="product-image-container">
             <img src="/qr-preview/qr1.png?v=1" alt="QR Menu Preview 1" class="active">
             <img src="/qr-preview/qr2.png?v=1" alt="QR Menu Preview 2">
