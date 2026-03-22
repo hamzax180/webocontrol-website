@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -10,6 +14,7 @@
     <link rel="stylesheet" href="/frontend/css/shared.css">
     <link rel="stylesheet" href="/frontend/css/mobile.css">
     <link rel="stylesheet" href="/frontend/css/terms.css">
+    <link rel="stylesheet" href="/frontend/css/about_fiverr.css">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <script src="/js/i18n.js" defer></script>
@@ -117,20 +122,11 @@
     </style>
 </head>
 
-<body>
-    <!-- Background grid -->
-    <div class="bg-grid"></div>
-    <div class="bg-noise"></div>
-    <canvas id="bg-aurora"></canvas>
-    <canvas id="particles-canvas"></canvas>
-
-    <!-- Moon Graphics -->
-    <div class="moon-graphics">
-        <div class="moon moon-1"></div>
-        <div class="moon moon-2"></div>
-        <div class="moon moon-3"></div>
-        <div class="moon moon-4"></div>
-        <div class="moon moon-5"></div>
+<body class="about-page">
+    <div class="video-bg-container">
+        <video autoplay loop muted playsinline>
+            <source src="/about%20us%20html.mp4" type="video/mp4">
+        </video>
     </div>
 
     <!-- Navigation -->
@@ -176,13 +172,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Animated Background Orbs -->
-    <div class="video-bg-orbs">
-        <div class="vid-orb vo1"></div>
-        <div class="vid-orb vo2"></div>
-        <div class="vid-orb vo3"></div>
-    </div>
 
     <!-- Terms Content -->
     <div class="terms-page">
@@ -377,6 +366,19 @@
     </div>
 
     <script type="module" src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof gsap !== 'undefined') {
+                gsap.to('.video-bg-container video', {
+                    scale: 1.05,
+                    duration: 15,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'none'
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
