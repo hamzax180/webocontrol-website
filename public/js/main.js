@@ -1373,77 +1373,74 @@ function initVideoBackgrounds() {
     const videos = document.querySelectorAll('video');
     if (!videos.length) return;
 
-    function forcePlay(video) {
-        // Ensure all required attributes are set for mobile autoplay
-        video.muted = true;
-        video.playsInline = true;
-
-        // Set preload to auto so mobile browsers start buffering immediately
-        if (video.getAttribute('preload') === 'none' || !video.getAttribute('preload')) {
-            video.setAttribute('preload', 'auto');
+    const attemptPlay = (video) => {
+        // Ensure standard attributes are present
+        if (!video.hasAttribute('playsinline')) video.setAttribute('playsinline', '');
+        if (!video.hasAttribute('muted')) video.muted = true;
+        
+        // If not loaded at all, force a load
+        if (video.readyState === 0) {
+            video.load();
         }
 
-        // Attempt to play; catch and retry on failure (common on iOS low-power mode)
         const playPromise = video.play();
         if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // Retry once the video has enough data
-                video.addEventListener('canplay', () => {
-                    video.play().catch(() => {});
-                }, { once: true });
+            playPromise.then(() => {
+                // Success! We can potentially stop some listeners here if we wanted.
+                video.classList.add('video-playing');
+            }).catch(error => {
+                // Autoplay was prevented or search for a user gesture
+                console.log("Autoplay prevented, waiting for interaction");
             });
         }
-    }
+    };
 
-    // Global interaction listener to bypass aggressive autoplay blocks
-    const playAllOnInteraction = () => {
+    // 1. Initial attempt
+    videos.forEach(attemptPlay);
+
+    // 2. Continuous monitoring (be more aggressive)
+    const checkInterval = setInterval(() => {
+        let allPlaying = true;
+        videos.forEach(video => {
+            if (video.paused && video.autoplay) {
+                attemptPlay(video);
+                allPlaying = false;
+            }
+        });
+        // If all are playing, we can slow down the interval but keep it for insurance
+    }, 1000);
+
+    // 3. Robust Interaction Fallback
+    const interactionEvents = ['touchstart', 'mousedown', 'keydown', 'scroll', 'click'];
+    const onUserInteraction = () => {
         videos.forEach(v => {
             if (v.paused) v.play().catch(() => {});
         });
-        // Remove all listeners once one is triggered
-        ['touchstart', 'mousedown', 'keydown', 'scroll', 'click'].forEach(evt => {
-            document.removeEventListener(evt, playAllOnInteraction);
-        });
+        
+        // Check if we should remove listeners
+        const stillPaused = Array.from(videos).some(v => v.paused && v.autoplay);
+        if (!stillPaused) {
+            interactionEvents.forEach(evt => document.removeEventListener(evt, onUserInteraction));
+        }
     };
 
-    ['touchstart', 'mousedown', 'keydown', 'scroll', 'click'].forEach(evt => {
-        document.addEventListener(evt, playAllOnInteraction, { passive: true });
+    interactionEvents.forEach(evt => {
+        document.addEventListener(evt, onUserInteraction, { passive: true });
     });
 
-    // Try once on load as well
-    window.addEventListener('load', playAllOnInteraction);
+    // 4. Persistence & Visibility
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            videos.forEach(v => {
+                if (v.paused && v.autoplay) v.play().catch(() => {});
+            });
+        }
+    });
 
+    // 5. Special events for each video
     videos.forEach(video => {
-        forcePlay(video);
-
-        // Resume playback on visibility change (tab switching, screen lock)
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible') {
-                if (video.paused) {
-                    forcePlay(video);
-                }
-            }
-        });
-
-        // Also resume on page focus (handles some Android browsers)
-        window.addEventListener('focus', () => {
-            if (video.paused) {
-                forcePlay(video);
-            }
-        });
-
-        // Periodic check for stuck videos (aggressive fallback)
-        setInterval(() => {
-            if (video.paused && video.readyState >= 2) {
-                video.play().catch(() => {});
-            }
-        }, 2000);
-
-        // Restart if the video somehow ends (in case loop attr doesn't trigger)
-        video.addEventListener('ended', () => {
-            video.currentTime = 0;
-            forcePlay(video);
-        });
+        video.addEventListener('canplay', () => attemptPlay(video));
+        video.addEventListener('loadedmetadata', () => attemptPlay(video));
     });
 }
 
@@ -1591,32 +1588,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProductSliders();
     updateAuthUI();
     initOrderForm();
-// --- Mobile Video Autoplay Fix ---
-const forceVideoAutoplay = () => {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        video.muted = true;
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {});
-        }
-    });
-};
-
-// Start trying immediately
-forceVideoAutoplay();
-
-// Also try on full window load
-window.addEventListener('load', forceVideoAutoplay);
-
-// Also trigger once on first interaction just in case
-const triggerPlayOnInteraction = () => {
-    forceVideoAutoplay();
-    window.removeEventListener('touchstart', triggerPlayOnInteraction);
-    window.removeEventListener('click', triggerPlayOnInteraction);
-};
-window.addEventListener('touchstart', triggerPlayOnInteraction, { passive: true });
-window.addEventListener('click', triggerPlayOnInteraction, { passive: true });
+    // Init all services
     initReviews();
     initSupportHub();
     new HeroTypewriter();
