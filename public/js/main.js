@@ -1368,8 +1368,63 @@ class HeroTypewriter {
     }
 }
 
+// --- Mobile Video Background Autoplay Fix ---
+function initVideoBackgrounds() {
+    const videos = document.querySelectorAll('video');
+    if (!videos.length) return;
+
+    function forcePlay(video) {
+        // Ensure all required attributes are set for mobile autoplay
+        video.muted = true;
+        video.playsInline = true;
+
+        // Set preload to auto so mobile browsers start buffering immediately
+        if (video.getAttribute('preload') === 'none' || !video.getAttribute('preload')) {
+            video.setAttribute('preload', 'auto');
+        }
+
+        // Attempt to play; catch and retry on failure (common on iOS low-power mode)
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Retry once the video has enough data
+                video.addEventListener('canplay', () => {
+                    video.play().catch(() => {});
+                }, { once: true });
+            });
+        }
+    }
+
+    videos.forEach(video => {
+        forcePlay(video);
+
+        // Resume playback on visibility change (tab switching, screen lock)
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                if (video.paused) {
+                    forcePlay(video);
+                }
+            }
+        });
+
+        // Also resume on page focus (handles some Android browsers)
+        window.addEventListener('focus', () => {
+            if (video.paused) {
+                forcePlay(video);
+            }
+        });
+
+        // Restart if the video somehow ends (in case loop attr doesn't trigger)
+        video.addEventListener('ended', () => {
+            video.currentTime = 0;
+            forcePlay(video);
+        });
+    });
+}
+
 // --- Init All ---
 document.addEventListener('DOMContentLoaded', () => {
+    initVideoBackgrounds();
     initAuroraBackground();
     initParticles();
     initNavbar();

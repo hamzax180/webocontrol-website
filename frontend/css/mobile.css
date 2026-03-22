@@ -695,3 +695,198 @@ body {
         font-size: 1.1rem !important;
     }
 }
+
+/* =============================================
+   RTL / ARABIC MODE — All screens
+   ============================================= */
+body.lang-ar {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navbar RTL: keep hamburger on right, logo on left (standard Arabic UX) */
+body.lang-ar .navbar .container {
+    flex-direction: row; /* Do NOT reverse — hamburger stays on far right */
+}
+
+body.lang-ar .mobile-toggle,
+body.lang-ar #mobileToggle {
+    order: unset;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+body.lang-ar .nav-logo {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Nav links RTL alignment */
+body.lang-ar .nav-links {
+    direction: rtl;
+}
+
+body.lang-ar .nav-links li a {
+    text-align: right;
+}
+
+/* Nav center group: flip order for RTL */
+body.lang-ar .nav-center-group {
+    flex-direction: row-reverse;
+}
+
+/* Hero content RTL */
+body.lang-ar .hero-content {
+    direction: rtl;
+    text-align: center;
+}
+
+/* Rotating text banner — prevent RTL clip on left side */
+body.lang-ar [style*="width: 100vw"],
+body.lang-ar [style*="width:100vw"] {
+    direction: ltr !important; /* Keep LTR so overflow:hidden clips correctly on both sides */
+}
+
+/* Rotating text columns — fix overflow clipping in RTL */
+body.lang-ar [style*="display: flex"][style*="justify-content: space-between"] > div,
+body.lang-ar [style*="display:flex"][style*="justify-content:space-between"] > div {
+    direction: ltr !important;
+}
+
+/* Product cards RTL */
+body.lang-ar .product-content {
+    text-align: right;
+    direction: rtl;
+}
+
+body.lang-ar .product-footer {
+    flex-direction: row-reverse;
+}
+
+/* Sections */
+body.lang-ar .section-header {
+    text-align: right;
+}
+
+body.lang-ar .section-subtitle {
+    text-align: right;
+}
+
+/* Reviews RTL */
+body.lang-ar .review-card {
+    text-align: right;
+    direction: rtl;
+}
+
+body.lang-ar .review-author {
+    flex-direction: row-reverse;
+}
+
+/* Cart sidebar RTL */
+body.lang-ar .cart-sidebar {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+}
+
+body.lang-ar .cart-sidebar.open {
+    transform: translateX(0);
+}
+
+body.lang-ar .cart-header {
+    direction: rtl;
+}
+
+body.lang-ar .cart-item {
+    direction: rtl;
+}
+
+/* Footer RTL */
+body.lang-ar .footer {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Dashboard RTL */
+body.lang-ar .dashboard-header {
+    flex-direction: row-reverse;
+}
+
+body.lang-ar .dash-section-header {
+    text-align: right;
+}
+
+body.lang-ar .order-history-card {
+    direction: rtl;
+    text-align: right;
+}
+
+body.lang-ar .order-header {
+    flex-direction: row-reverse;
+}
+
+/* Tech logos: keep LTR for logo grid, just center them */
+body.lang-ar .tech-logos-grid,
+body.lang-ar .tech-logo-item {
+    direction: ltr;
+}
+
+/* Stat cards RTL */
+body.lang-ar .dash-stat-card {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+body.lang-ar .stat-info {
+    text-align: right;
+}
+
+/* Notification RTL */
+body.lang-ar .notification {
+    direction: rtl;
+    text-align: right;
+    right: auto;
+    left: 20px;
+}
+
+/* Mobile-specific RTL fixes */
+@media screen and (max-width: 768px) {
+    body.lang-ar .navbar .container {
+        flex-direction: row !important; /* Keep hamburger on right */
+    }
+
+    body.lang-ar .mobile-toggle,
+    body.lang-ar #mobileToggle {
+        order: unset !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /* Open mobile menu RTL: links should be right-aligned */
+    body.lang-ar .nav-links.mobile-open {
+        text-align: right !important;
+        direction: rtl !important;
+    }
+
+    body.lang-ar .nav-auth.mobile-open {
+        text-align: right !important;
+        direction: rtl !important;
+    }
+
+    /* Fix rotating text overflow: keep direction LTR so overflow:hidden works symmetrically */
+    body.lang-ar [style*="display: flex"][style*="justify-content: space-between"] {
+        direction: ltr !important;
+        unicode-bidi: embed !important;
+    }
+
+    /* Product footer in RTL mobile */
+    body.lang-ar .product-footer {
+        flex-direction: row-reverse !important;
+    }
+
+    /* Dashboard header RTL */
+    body.lang-ar .dashboard-header {
+        flex-direction: column !important;
+        align-items: flex-end !important;
+    }
+}
