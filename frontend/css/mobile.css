@@ -292,80 +292,66 @@ body {
     }
 
     /* ---- ROTATING TEXT ANIMATION SECTION ---- */
-    /* Parent: stack vertically (column) and make fonts larger */
-    .rotating-text-wrapper-parent,
-    [style*="display: flex"][style*="justify-content: space-between"][style*="width: 100vw"],
-    [style*="display:flex"][style*="width:100vw"] {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 24px !important;
-        font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
-        padding: 40px 16px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        transform: none !important;
-        left: 0 !important;
-        position: relative !important;
-        box-sizing: border-box !important;
-        letter-spacing: -1px !important;
-        overflow: hidden !important;
-    }
-
-    /* EACH COLUMN: Revert width for generic columns */
-    [style*="display: flex"][style*="justify-content: space-between"][style*="width: 100vw"]>div {
-        width: 100% !important;
-        flex: unset !important;
-        height: 1.4em !important;
-        overflow: hidden !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    /* SPECIFIC TECH BARS: Force Horizontal */
     .rotating-text-columns {
         display: flex !important;
-        flex-direction: row !important;
+        flex-direction: column !important; /* Stack vertically on mobile */
+        height: auto !important; /* Allow height to expand for stacked elements */
         flex-wrap: nowrap !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 15px !important;
+        gap: 20px !important; /* Adjusted spacing */
         width: 100% !important;
         margin: 0 auto !important;
-        overflow: visible !important;
+        padding: 40px 0px !important;
+        font-size: clamp(2.2rem, 10vw, 3.5rem) !important; /* Massive font size, but small enough to fit 'JavaScript' */
+        letter-spacing: -1px !important; /* Bold look */
+        overflow: hidden !important; 
     }
 
     .rotating-text-columns > div {
-        flex: 1 !important;
-        min-width: 0 !important;
-        max-width: 180px !important;
+        flex: none !important; /* MUST BE NONE to prevent height collapse */
+        position: relative !important; /* Anchor for absolute wrapper */
+        width: 100% !important;
+        max-width: none !important;
+        height: 1.5em !important; /* EXACTLY MATCH translateY(-1.5em) */
+        overflow: hidden !important; /* Strictly clip outside lines */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        
+        /* Force strict GPU clipping for WebKit */
+        transform: translateZ(0) !important;
+        -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+        mask-image: radial-gradient(white, black) !important;
+        contain: paint !important;
     }
 
-    /* Hide columns 4 and 5 — show only 3 words */
-    [style*="display: flex"][style*="justify-content: space-between"][style*="width: 100vw"]>div:nth-child(n+4) {
+    /* Show only 3 columns on mobile (Hide 4 and 5) */
+    .rotating-text-columns > div:nth-child(n+4) {
         display: none !important;
     }
 
     /* Animated word-list inside each column */
     .rotating-text-wrapper {
-        line-height: 1.4em !important;
-        height: 1.4em !important;
-        animation: rotateWordsMobile 8s infinite cubic-bezier(0.16, 1, 0.3, 1) !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         position: absolute !important;
-        width: 100% !important;
+        left: 0 !important;
         top: 0 !important;
+        width: 100% !important;
+        height: auto !important; /* Allow natural expansion */
+        line-height: 1.5em !important;
+        animation: rotateWordsMobile 8s infinite cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     .rotating-text-wrapper span {
-        height: 1.4em !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        height: 1.5em !important; /* EXACTLY MATCH translateY(-1.5em) */
+        line-height: 1.5em !important;
+        flex: none !important; /* NEVER SHRINK */
         white-space: nowrap !important;
         width: 100% !important;
     }
@@ -762,29 +748,21 @@ body.lang-ar .hero-content {
     text-align: center;
 }
 
-/* Rotating text banner — prevent RTL clip on left side */
-body.lang-ar [style*="width: 100vw"],
-body.lang-ar [style*="width:100vw"] {
-    direction: ltr !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    -webkit-transform: translateX(-50%) !important;
-}
-
-/* Rotating text columns container — force LTR centering */
+/* Rotating text columns RTL optimization */
 body.lang-ar .rotating-text-columns {
-    direction: ltr !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
+    direction: ltr !important; /* Keep tech names in correct order */
+    left: 0 !important;
+    transform: none !important;
+    padding-right: 0 !important;
 }
 
-/* Rotating text columns — fix overflow clipping in RTL */
-body.lang-ar [style*="display: flex"][style*="justify-content: space-between"]>div,
-body.lang-ar [style*="display:flex"][style*="justify-content:space-between"]>div {
+/* Align vertically stacked text to the right for Arabic - REMOVED */
+/* It is better to keep the 100%-width stacked text centered in all languages to prevent asymmetric clipping */
+
+body.lang-ar .rotating-text-columns > div {
     direction: ltr !important;
 }
+
 
 /* Product cards RTL */
 body.lang-ar .product-content {
