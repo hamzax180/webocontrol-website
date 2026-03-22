@@ -50,7 +50,7 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Export the app for Serverless Hosting
+// Export the app for Vercel
 module.exports = app;
 
 // Initialize database and start server
@@ -58,7 +58,7 @@ module.exports = app;
     try {
         // Run database initialization (tables creation)
         await initDB();
-        
+
         // Start listening only if not in a serverless environment (VERCEL)
         if (!process.env.VERCEL) {
             app.listen(PORT, '127.0.0.1', () => {
@@ -67,7 +67,7 @@ module.exports = app;
         }
     } catch (err) {
         console.error('❌ Database initialization failed:', err);
-        // On local dev, exit if DB is critical. On Serverless Cloud, the function starts anyway.
+        // On local dev, exit if DB is critical. On Vercel, the function starts anyway.
         if (!process.env.VERCEL) process.exit(1);
     }
 })();

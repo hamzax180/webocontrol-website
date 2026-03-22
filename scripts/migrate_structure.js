@@ -29,7 +29,7 @@ mkdirSafe(path.join(ROOT, 'public'));
 
 // ─── STEP 2: Move HTML files → frontend/ ──────────────────────────────────────
 const htmlFiles = [
-  'home.html', 'login.html', 'register.html', 'dashboard.html',
+  'index.html', 'login.html', 'register.html', 'dashboard.html',
   'order.html', 'payment.html', 'about.html', 'about_payment.html',
   'products.html', 'privacy.html', 'terms.html', 'intro.html'
 ];
@@ -83,7 +83,7 @@ function copyDir(src, dest) {
       fs.renameSync(srcPath, destPath);
     }
   }
-  try { fs.rmdirSync(src); } catch(e) {}
+  try { fs.rmdirSync(src); } catch (e) { }
 }
 
 copyDir(path.join(ROOT, 'server'), path.join(ROOT, 'backend'));
@@ -109,7 +109,7 @@ for (const file of utilScripts) {
 // ─── STEP 7: Update path references in all HTML files ─────────────────────────
 // Pages that exist (for nav link updates)
 const pages = [
-  'home.html', 'login.html', 'register.html', 'dashboard.html',
+  'index.html', 'login.html', 'register.html', 'dashboard.html',
   'order.html', 'payment.html', 'about.html', 'about_payment.html',
   'products.html', 'privacy.html', 'terms.html', 'intro.html'
 ];
@@ -119,20 +119,20 @@ function updateHtmlPaths(filePath) {
   const original = content;
 
   // 1. CSS reference
-  content = content.replace(/href="\/index\.css"/g, 'href="/index.css"');
+  content = content.replace(/href="\/index\.css"/g, 'href="/frontend/index.css"');
 
   // 2. Images → public
   content = content.replace(/\/images\//g, '/public/');
 
-  // 3. Page nav links: href="/xxx.html" → href="/xxx"
-  //    But NOT external URLs, NOT #anchors, NOT already / prefixed
+  // 3. Page nav links: href="/xxx.html" → href="/frontend/xxx.html"
+  //    But NOT external URLs, NOT #anchors, NOT already /frontend/ prefixed
   content = content.replace(
     /href="\/(?!frontend\/)(?!api\/)(?!#)([\w-]+\.html(?:#[\w-]*)?)"/g,
-    (match, page) => `href="/${page}"`
+    (match, page) => `href="/frontend/${page}"`
   );
 
-  // 4. href="/" → href="/"
-  content = content.replace(/href="\/"/g, 'href="/"');
+  // 4. href="/" → href="/frontend/"
+  content = content.replace(/href="\/"/g, 'href="/frontend/"');
 
   // 5. source src="/images/..." → "/public/..."  (video sources)
   content = content.replace(/src="\/images\//g, 'src="/public/');
@@ -157,7 +157,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'frontend/home.html'),
+        main: resolve(__dirname, 'frontend/index.html'),
         login: resolve(__dirname, 'frontend/login.html'),
         register: resolve(__dirname, 'frontend/register.html'),
         dashboard: resolve(__dirname, 'frontend/dashboard.html'),

@@ -419,7 +419,7 @@ body {
     }
 
     .tech-logos-section {
-        background: #ffffff !important;
+        background: transparent !important;
         padding-top: 20px !important;
         padding-bottom: 40px !important;
         position: relative;
@@ -561,6 +561,92 @@ body {
         gap: 15px !important;
         justify-content: center !important;
     }
+
+    /* ---- TECHNOLOGY PAGE — Prevent zoom-out on mobile ---- */
+
+    /* Collapse 2-column grids to single column */
+    .about-grid,
+    .about-grid.reverse {
+        grid-template-columns: 1fr !important;
+        direction: ltr !important;
+        gap: 32px !important;
+    }
+
+    .about-grid > * {
+        direction: ltr !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Hide the wide preview windows that cause horizontal overflow */
+    .dsc-previews {
+        display: none !important;
+    }
+
+    /* Constrain all tech cards to mobile width */
+    .dev-stack-card,
+    .ai-hub-card,
+    .cloud-hub-card,
+    .sec-hub-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 24px 18px !important;
+        min-height: auto !important;
+    }
+
+    /* Pillar selector: 2 columns */
+    .select-pillar-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .pillar-select-card {
+        padding: 16px 10px !important;
+    }
+
+    .pillar-icon {
+        font-size: 1.6rem !important;
+    }
+
+    .pillar-title {
+        font-size: 0.75rem !important;
+    }
+
+    /* Feature items */
+    .feature-item {
+        padding: 20px 16px !important;
+        gap: 14px !important;
+    }
+
+    .feature-icon {
+        width: 50px !important;
+        height: 50px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .scaling-section {
+        padding: 40px 0 !important;
+    }
+
+    /* Node rows */
+    .dsc-node,
+    .ai-node-row,
+    .cloud-node-row,
+    .sec-node-row {
+        font-size: 0.75rem !important;
+        padding: 10px 12px !important;
+    }
+
+    .dsc-node-bar,
+    .ai-nd-bar,
+    .cloud-nd-bar {
+        width: 40px !important;
+    }
+
 }
 
 /* =============================================

@@ -1,32 +1,43 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
+const pageRewrites = {
+  '/': '/frontend/home.html',
+  '/home': '/frontend/home.html',
+  '/products': '/frontend/products.html',
+  '/order': '/frontend/order.html',
+  '/technology': '/frontend/technology.html',
+  '/about': '/frontend/about.html',
+  '/login': '/frontend/login.html',
+  '/register': '/frontend/register.html',
+  '/dashboard': '/frontend/dashboard.html',
+  '/payment': '/frontend/payment.html',
+  '/privacy': '/frontend/privacy.html',
+  '/terms': '/frontend/terms.html',
+  '/intro': '/frontend/intro.html',
+  '/about_payment': '/frontend/about_payment.html',
+};
+
 export default defineConfig({
+  root: '.',
   plugins: [
     {
-      name: 'clean-urls-dev',
+      name: 'html-rewrites',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url === '/') {
-            req.url = '/frontend/home.html';
-            return next();
-          }
-          if (req.url.startsWith('/css/') || req.url.startsWith('/assets/')) {
-            req.url = `/frontend${req.url}`;
-            return next();
-          }
-          if (!req.url.startsWith('/api') && !req.url.includes('.') && req.url.length > 1) {
-            req.url = `/frontend${req.url}.html`;
+          const pathname = req.url.split('?')[0].split('#')[0];
+          if (pageRewrites[pathname]) {
+            req.url = pageRewrites[pathname];
           }
           next();
         });
       }
     }
   ],
-  root: '.',
   build: {
     rollupOptions: {
       input: {
+        index: resolve(__dirname, 'index.html'),
         main: resolve(__dirname, 'frontend/home.html'),
         login: resolve(__dirname, 'frontend/login.html'),
         register: resolve(__dirname, 'frontend/register.html'),
@@ -40,7 +51,7 @@ export default defineConfig({
         intro: resolve(__dirname, 'frontend/intro.html'),
         about_payment: resolve(__dirname, 'frontend/about_payment.html'),
         about: resolve(__dirname, 'frontend/about.html'),
-        technology_fiverr: resolve(__dirname, 'frontend/technology_fiverr.html'),
+        technology_fiverr: resolve(__dirname, 'frontend/technology.html'),
       },
     },
   },

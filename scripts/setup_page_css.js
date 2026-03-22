@@ -26,18 +26,18 @@ if (fs.existsSync(sharedSrc)) {
 
 // Page → CSS file name mapping
 const pages = [
-  { html: 'home.html',          css: 'home.css',           comment: 'Home / Landing Page' },
-  { html: 'login.html',         css: 'login.css',          comment: 'Login Page' },
-  { html: 'register.html',      css: 'register.css',       comment: 'Register Page' },
-  { html: 'dashboard.html',     css: 'dashboard.css',      comment: 'Dashboard Page' },
-  { html: 'order.html',         css: 'order.css',          comment: 'Order / Support Page' },
-  { html: 'payment.html',       css: 'payment.css',        comment: 'Payment Page' },
-  { html: 'about.html',         css: 'about.css',          comment: 'About Us Page' },
-  { html: 'about_payment.html', css: 'about-payment.css',  comment: 'About Payment Page' },
-  { html: 'products.html',      css: 'products.css',       comment: 'Products Page' },
-  { html: 'privacy.html',       css: 'privacy.css',        comment: 'Privacy Policy Page' },
-  { html: 'terms.html',         css: 'terms.css',          comment: 'Terms of Service Page' },
-  { html: 'intro.html',         css: 'intro.css',          comment: 'Intro / Splash Page' },
+  { html: 'index.html', css: 'home.css', comment: 'Home / Landing Page' },
+  { html: 'login.html', css: 'login.css', comment: 'Login Page' },
+  { html: 'register.html', css: 'register.css', comment: 'Register Page' },
+  { html: 'dashboard.html', css: 'dashboard.css', comment: 'Dashboard Page' },
+  { html: 'order.html', css: 'order.css', comment: 'Order / Support Page' },
+  { html: 'payment.html', css: 'payment.css', comment: 'Payment Page' },
+  { html: 'about.html', css: 'about.css', comment: 'About Us Page' },
+  { html: 'about_payment.html', css: 'about-payment.css', comment: 'About Payment Page' },
+  { html: 'products.html', css: 'products.css', comment: 'Products Page' },
+  { html: 'privacy.html', css: 'privacy.css', comment: 'Privacy Policy Page' },
+  { html: 'terms.html', css: 'terms.css', comment: 'Terms of Service Page' },
+  { html: 'intro.html', css: 'intro.css', comment: 'Intro / Splash Page' },
 ];
 
 // Create individual CSS files
@@ -54,7 +54,7 @@ for (const { css, comment, html } of pages) {
   }
 }
 
-// Update each HTML file: replace /index.css with shared.css + page CSS
+// Update each HTML file: replace /frontend/index.css with shared.css + page CSS
 for (const { html, css } of pages) {
   const htmlPath = path.join(FRONTEND, html);
   if (!fs.existsSync(htmlPath)) continue;
@@ -63,16 +63,16 @@ for (const { html, css } of pages) {
   let changed = false;
 
   // Replace the old shared link and insert page link after it
-  const sharedLinkNew = `<link rel="stylesheet" href="/css/shared.css">`;
-  const pageLinkTag = `\n    <link rel="stylesheet" href="/css/${css}">`;
+  const sharedLinkNew = `<link rel="stylesheet" href="/frontend/css/shared.css">`;
+  const pageLinkTag = `\n    <link rel="stylesheet" href="/frontend/css/${css}">`;
 
-  if (content.includes('href="/index.css"')) {
+  if (content.includes('href="/frontend/index.css"')) {
     content = content.replace(
-      `<link rel="stylesheet" href="/index.css">`,
+      `<link rel="stylesheet" href="/frontend/index.css">`,
       sharedLinkNew + pageLinkTag
     );
     changed = true;
-  } else if (content.includes('href="/css/shared.css"') && !content.includes(`href="/css/${css}"`)) {
+  } else if (content.includes('href="/frontend/css/shared.css"') && !content.includes(`href="/frontend/css/${css}"`)) {
     content = content.replace(
       sharedLinkNew,
       sharedLinkNew + pageLinkTag

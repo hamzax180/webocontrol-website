@@ -390,6 +390,8 @@ img {
   -webkit-backdrop-filter: none;
   border-bottom: none;
   transition: background 0.3s ease, padding 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .navbar .container {

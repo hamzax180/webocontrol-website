@@ -13,20 +13,23 @@
       "use": "@vercel/node"
     }
   ],
-  "cleanUrls": true,
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/backend/index.js"
-    },
-    {
-      "source": "/",
-      "destination": "/frontend/home"
-    },
-    {
-      "source": "/(about|about_payment|dashboard|home|intro|login|order|payment|privacy|products|register|technology|technology_fiverr|terms)",
-      "destination": "/frontend/$1"
-    }
+    { "source": "/api/(.*)", "destination": "/backend/index.js" },
+    { "source": "/", "destination": "/frontend/home.html" },
+    { "source": "/home", "destination": "/frontend/home.html" },
+    { "source": "/frontend", "destination": "/frontend/home.html" },
+    { "source": "/products", "destination": "/frontend/products.html" },
+    { "source": "/order", "destination": "/frontend/order.html" },
+    { "source": "/technology", "destination": "/frontend/technology.html" },
+    { "source": "/about", "destination": "/frontend/about.html" },
+    { "source": "/login", "destination": "/frontend/login.html" },
+    { "source": "/register", "destination": "/frontend/register.html" },
+    { "source": "/dashboard", "destination": "/frontend/dashboard.html" },
+    { "source": "/payment", "destination": "/frontend/payment.html" },
+    { "source": "/privacy", "destination": "/frontend/privacy.html" },
+    { "source": "/terms", "destination": "/frontend/terms.html" },
+    { "source": "/intro", "destination": "/frontend/intro.html" },
+    { "source": "/about_payment", "destination": "/frontend/about_payment.html" }
   ],
   "env": {
     "NODE_ENV": "production"
