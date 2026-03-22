@@ -17,7 +17,7 @@ const translations = {
         about_fiverr_impact_text: "WeboControl helps businesses use freelance to flex in a whole new way. Speeding up growth. Changing the game. Making way for breakthroughs.",
         about_fiverr_cta: "How WeboControl works",
         about_new_hero_title: "Engineering the Digital Frontier",
-        about_new_hero_desc: "WEBO<span style=\"color: #ff0044;\">CONTROL</span> is where visionary design meets military-grade security. We empower global brands with architectures that defy expectations.",
+        about_new_hero_desc: "WEBO<span class=\"fire-text\">CONTROL</span> is where visionary design meets military-grade security. We empower global brands with architectures that defy expectations.",
         nav_tech: "Tech",
         nav_products: "Products",
         nav_dashboard: "Dashboard",
