@@ -407,6 +407,10 @@ body {
         gap: 12px !important;
     }
 
+    .product-footer .btn-sm {
+        margin-left: auto !important;
+    }
+
     #products {
         padding-bottom: 50px !important;
     }
