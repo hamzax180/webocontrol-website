@@ -148,8 +148,8 @@ body {
 
     /* Wrap the entire navbar with a solid background when toggled open so the links aren't transparent over content */
     .navbar:has(#navLinks.mobile-open) {
-        background: rgba(6, 6, 14, 0.98) !important;
-        backdrop-filter: blur(20px) !important;
+        background: rgba(6, 6, 14, 0.6) !important; /* more see-through */
+        backdrop-filter: blur(25px) !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
         height: 100vh !important;
         position: fixed !important;
@@ -171,7 +171,7 @@ body {
         position: static !important;
         height: auto !important;
         background: transparent !important;
-        margin-top: auto !important;
+        margin-top: 18vh !important; /* center it vertically relative to viewport */
     }
 
     .nav-auth.mobile-open {
@@ -957,5 +957,19 @@ body.lang-ar .tech-logos-title {
     body.lang-ar #techLogos {
         max-width: 100vw !important;
         overflow-x: hidden !important;
+    }
+}
+
+/* =============================================
+   AUTH PAGE MOBILE OVERLAP FIX
+   (make container dont hit top nav)
+   ============================================= */
+@media screen and (max-width: 768px) {
+    .auth-card {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin: 100px auto 40px !important;
     }
 }
