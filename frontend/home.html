@@ -100,15 +100,12 @@
 
   <!-- Technologies Showcase (Fiverr / OpenAI Style logo bar) -->
   <section
-    style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, #ffffff 100%); padding: 150px 20px 120px 20px; text-align: center; position: relative; z-index: 5; margin-top: -100px;">
+    style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, #ffffff 100%); padding: 150px 0 120px 0; text-align: center; position: relative; z-index: 5; margin-top: -100px;">
     <div class="container">
-
-
-
-
-      <!-- Rotating Animated Text 5 Columns -->
-      <div class="rotating-text-columns"
-        style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: space-between; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px;">
+    </div>
+    <!-- Rotating Animated Text 5 Columns - Moved out of container for better RTL centering -->
+    <div class="rotating-text-columns"
+      style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: center; width: 100%; position: relative; left: 0; transform: none; padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px; direction: ltr;">
 
         <!-- Column 1 -->
         <div
@@ -512,7 +509,8 @@
           </div>
         </div>
         <!-- AI Technologies Integration moved inside showcase-grid for precise positioning -->
-        <div class="tech-logos-section" id="aiTechLogos" style="margin-top: -40px; padding-top: 0; border-top: none; width: 100%;">
+        <div class="tech-logos-section" id="aiTechLogos"
+          style="margin-top: -40px; padding-top: 0; border-top: none; width: 100%;">
           <h3 class="tech-logos-title" style="margin-bottom: 15px; margin-top: 0;" data-i18n="footer_powered_by">POWERED
             BY</h3>
           <div class="tech-logos-grid" id="homeAiLogos" style="gap: 40px; justify-content: center;">
@@ -650,7 +648,7 @@
               </svg>
               <span>AWS</span>
             </div>
-            
+
             <div class="tech-logo-item">
               <svg viewBox="0 0 256 222" xmlns="http://www.w3.org/2000/svg" width="48" height="42">
                 <path d="M128 0L256 221.705H0z" fill="#FBBC05" />
@@ -740,11 +738,12 @@
   <!-- Footer -->
   <footer class="footer" style="padding-top: 0; position: relative;">
     <div
-      style="background: linear-gradient(180deg, #ffffff 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%); padding: 150px 20px 120px 20px; text-align: center; position: relative; z-index: 5; margin-top: -100px;">
+      style="background: linear-gradient(180deg, #ffffff 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%); padding: 150px 0 120px 0; text-align: center; position: relative; z-index: 5; margin-top: -100px;">
       <div class="container" style="max-width: 1300px; margin: 0 auto;">
-        <!-- Rotating Animated Text 5 Columns -->
-        <div
-          style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: space-between; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px;">
+      </div>
+      <!-- Rotating Animated Text 5 Columns - Moved out of container for better RTL centering -->
+      <div class="rotating-text-columns"
+        style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: center; width: 100%; position: relative; left: 0; transform: none; padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px; direction: ltr;">
 
           <!-- Column 1 -->
           <div

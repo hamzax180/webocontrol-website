@@ -2176,21 +2176,24 @@ class I18nManager {
 
         // Fix rotating words bar centering — inline style beats any CSS,
         // so we must override via JS when language changes
-        const rotatingBar = document.querySelector('.rotating-text-columns');
-        if (rotatingBar) {
-            if (this.currentLang === 'ar') {
-                rotatingBar.style.direction = 'ltr';
-                rotatingBar.style.left = '50%';
-                rotatingBar.style.right = 'auto';
-                rotatingBar.style.transform = 'translateX(-50%)';
-            } else {
-                // Restore original values
-                rotatingBar.style.direction = '';
-                rotatingBar.style.left = '50%';
-                rotatingBar.style.right = '';
-                rotatingBar.style.transform = 'translateX(-50%)';
-            }
-        }
+        const rotatingBars = document.querySelectorAll('.rotating-text-columns');
+        rotatingBars.forEach(bar => {
+            // Force horizontal layout for these tickers in both languages
+            bar.style.display = 'flex';
+            bar.style.flexDirection = 'row';
+            bar.style.flexWrap = 'nowrap';
+            bar.style.justifyContent = 'center';
+            bar.style.alignItems = 'center';
+            // Ticker words must always be LTR to prevent order reversal/truncation
+            bar.style.direction = 'ltr';
+
+            bar.style.width = '100%';
+            bar.style.left = '0';
+            bar.style.transform = 'none';
+
+
+
+        });
     }
 
     updateUI() {
