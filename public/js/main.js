@@ -1373,74 +1373,77 @@ function initVideoBackgrounds() {
     const videos = document.querySelectorAll('video');
     if (!videos.length) return;
 
-    const attemptPlay = (video) => {
-        // Ensure standard attributes are present
-        if (!video.hasAttribute('playsinline')) video.setAttribute('playsinline', '');
-        if (!video.hasAttribute('muted')) video.muted = true;
+    const forcePlay = (video) => {
+        // Standardize attributes for mobile compliance
+        video.setAttribute('muted', '');
+        video.muted = true;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+        video.setAttribute('autoplay', '');
         
-        // If not loaded at all, force a load
-        if (video.readyState === 0) {
-            video.load();
-        }
-
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                // Success! We can potentially stop some listeners here if we wanted.
-                video.classList.add('video-playing');
-            }).catch(error => {
-                // Autoplay was prevented or search for a user gesture
-                console.log("Autoplay prevented, waiting for interaction");
-            });
+        // If the video is not playing, try several methods
+        if (video.paused && video.autoplay) {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    video.classList.add('playing-verified');
+                }).catch(() => {
+                    // Try refreshing the source once as a last resort
+                    if (!video.dataset.refreshed) {
+                        video.dataset.refreshed = "true";
+                        const originalSrc = video.currentSrc || video.src;
+                        if (originalSrc) {
+                            video.src = originalSrc.split('?')[0] + '?v=' + Date.now();
+                            video.load();
+                            video.play().catch(() => {});
+                        }
+                    }
+                });
+            }
         }
     };
 
-    // 1. Initial attempt
-    videos.forEach(attemptPlay);
+    // 1. Immediate attempt and periodic heartbeat (aggressive 500ms for first 5s)
+    let checks = 0;
+    const interval = setInterval(() => {
+        videos.forEach(forcePlay);
+        checks++;
+        if (checks > 10) clearInterval(interval); // Stay aggressive only for the first 5 seconds
+    }, 500);
 
-    // 2. Continuous monitoring (be more aggressive)
-    const checkInterval = setInterval(() => {
-        let allPlaying = true;
-        videos.forEach(video => {
-            if (video.paused && video.autoplay) {
-                attemptPlay(video);
-                allPlaying = false;
-            }
+    // Continue checking at 2s interval for insurance
+    setInterval(() => {
+        videos.forEach(v => {
+            if (v.paused && v.autoplay) forcePlay(v);
         });
-        // If all are playing, we can slow down the interval but keep it for insurance
-    }, 1000);
+    }, 2000);
 
-    // 3. Robust Interaction Fallback
-    const interactionEvents = ['touchstart', 'mousedown', 'keydown', 'scroll', 'click'];
-    const onUserInteraction = () => {
+    // 2. Global "Wake Up" on first interaction (anywhere on the screen)
+    const wakeUp = () => {
         videos.forEach(v => {
             if (v.paused) v.play().catch(() => {});
         });
-        
-        // Check if we should remove listeners
-        const stillPaused = Array.from(videos).some(v => v.paused && v.autoplay);
-        if (!stillPaused) {
-            interactionEvents.forEach(evt => document.removeEventListener(evt, onUserInteraction));
-        }
+        // We don't remove this listener immediately in case multiple videos need different gestures
     };
 
-    interactionEvents.forEach(evt => {
-        document.addEventListener(evt, onUserInteraction, { passive: true });
+    ['touchstart', 'mousedown', 'scroll', 'click', 'keydown'].forEach(evt => {
+        window.addEventListener(evt, wakeUp, { passive: true, once: false });
     });
 
-    // 4. Persistence & Visibility
+    // 3. Document visibility change
     document.addEventListener('visibilitychange', () => {
         if (!document.hidden) {
             videos.forEach(v => {
-                if (v.paused && v.autoplay) v.play().catch(() => {});
+                if (v.paused && v.autoplay) forcePlay(v);
             });
         }
     });
 
-    // 5. Special events for each video
+    // 4. Per-video ready listeners
     videos.forEach(video => {
-        video.addEventListener('canplay', () => attemptPlay(video));
-        video.addEventListener('loadedmetadata', () => attemptPlay(video));
+        ['canplay', 'loadedmetadata', 'play'].forEach(evt => {
+            video.addEventListener(evt, () => forcePlay(video));
+        });
     });
 }
 
