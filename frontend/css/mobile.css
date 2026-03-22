@@ -104,9 +104,6 @@ body {
     header .navbar,
     .navbar {
         padding: 12px 0 !important;
-        background: rgba(0, 0, 0, 0.98) !important;
-        backdrop-filter: blur(25px) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
     .navbar .container {
@@ -419,7 +416,6 @@ body {
     }
 
     .tech-logos-section {
-        background: transparent !important;
         padding-top: 20px !important;
         padding-bottom: 40px !important;
         position: relative;
@@ -466,12 +462,6 @@ body {
 
     .price-label br {
         display: none !important;
-    }
-
-    /* Add a space when the <br> is hidden */
-    .price-label::after {
-        content: " ";
-        white-space: pre;
     }
 
     .price-value {
