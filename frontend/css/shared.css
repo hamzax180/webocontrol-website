@@ -2053,6 +2053,9 @@ body.auth-body .footer {
   color: #999;
   text-transform: uppercase;
   letter-spacing: 2px;
+  display: inline-block;
+  line-height: 1.2;
+  text-align: right;
 }
 
 .price-font,
