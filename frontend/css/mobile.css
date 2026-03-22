@@ -129,13 +129,6 @@ body {
         order: 10 !important;
     }
 
-    .nav-links.mobile-open {
-        display: flex !important;
-        position: static !important;
-        height: auto !important;
-        background: transparent !important;
-    }
-
     .nav-auth {
         display: none !important;
         width: 100% !important;
@@ -145,14 +138,6 @@ body {
         padding-bottom: 10px !important;
         text-align: center !important;
         order: 11 !important;
-    }
-
-    .nav-auth.mobile-open {
-        display: flex !important;
-        position: static !important;
-        transform: none !important;
-        left: auto !important;
-        bottom: auto !important;
     }
 
     /* Wrap the entire navbar with a solid background when toggled open so the links aren't transparent over content */
@@ -170,7 +155,26 @@ body {
     }
     
     .navbar:has(#navLinks.mobile-open) .container {
-        align-items: flex-start !important;
+        height: 100% !important;
+        align-content: flex-start !important;
+        padding-bottom: 40px !important;
+    }
+
+    .nav-links.mobile-open {
+        display: flex !important;
+        position: static !important;
+        height: auto !important;
+        background: transparent !important;
+        margin-top: auto !important;
+    }
+
+    .nav-auth.mobile-open {
+        display: flex !important;
+        position: static !important;
+        transform: none !important;
+        left: auto !important;
+        bottom: auto !important;
+        margin-bottom: auto !important;
     }
 
     .nav-center-group,
