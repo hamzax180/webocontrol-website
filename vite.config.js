@@ -23,6 +23,7 @@ export default defineConfig({
   plugins: [
     {
       name: 'html-rewrites',
+      enforce: 'pre',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           const pathname = req.url.split('?')[0].split('#')[0];
