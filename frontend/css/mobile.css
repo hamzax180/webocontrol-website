@@ -892,97 +892,19 @@ body.lang-ar .notification {
 }
 
 /* =============================================
-   ARABIC MODE — Dark-section overrides
-   Beat inline style="background:#ffffff" with !important
+   ARABIC MODE — Tech ticker / scrolling bar fix
+   (Only fix the scrolling words bar overflow)
    ============================================= */
 
-/* All the white sections become dark in AR mode */
-body.lang-ar #products,
-body.lang-ar #techLogos,
-body.lang-ar #ai-engine,
-body.lang-ar #addons,
-body.lang-ar #reviews {
-    background: #0a0a0f !important;
+/* Tech ticker: force LTR so the scroll animation
+   doesn't reverse or overflow in RTL mode */
+body.lang-ar .tech-logos-section,
+body.lang-ar #techLogos {
+    direction: ltr !important;
+    overflow: hidden !important;
 }
 
-/* Fix heading colors (inline style="color:#020202" / #000000) */
-body.lang-ar #products h2,
-body.lang-ar #products h3,
-body.lang-ar #ai-engine h2,
-body.lang-ar #ai-engine h3,
-body.lang-ar #addons h2,
-body.lang-ar #addons h3,
-body.lang-ar #reviews h2,
-body.lang-ar #reviews h3,
-body.lang-ar #techLogos h3 {
-    color: #ffffff !important;
-}
-
-/* Fix paragraph/subtitle text colors */
-body.lang-ar #products p,
-body.lang-ar #products span:not(.gradient-text):not([class*="tag"]):not([class*="badge"]):not([class*="btn"]),
-body.lang-ar #ai-engine p,
-body.lang-ar #addons p,
-body.lang-ar #reviews p {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-/* Product cards (card-like white boxes) — make them dark glass */
-body.lang-ar .product-card {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-body.lang-ar .product-card h3,
-body.lang-ar .product-card .product-name {
-    color: #ffffff !important;
-}
-
-body.lang-ar .product-card p,
-body.lang-ar .product-card .product-description {
-    color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* Review cards — dark glass */
-body.lang-ar .review-card {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-body.lang-ar .review-card p,
-body.lang-ar .review-card .review-text {
-    color: rgba(255, 255, 255, 0.75) !important;
-}
-
-body.lang-ar .review-author-name {
-    color: #ffffff !important;
-}
-
-body.lang-ar .review-date,
-body.lang-ar .review-location {
-    color: rgba(255, 255, 255, 0.45) !important;
-}
-
-/* Addon cards — dark glass */
-body.lang-ar .addon-card,
-body.lang-ar .addon-item {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Tech logos section: keep dark bg, ensure title is visible */
-body.lang-ar .tech-logos-title {
-    color: rgba(255, 255, 255, 0.5) !important;
-}
-
-body.lang-ar .tech-logo-item span {
-    color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* ── Tech logos: always horizontal row (desktop & mobile) ── */
+/* Keep grid horizontal on all screen sizes */
 body.lang-ar .tech-logos-grid {
     display: flex !important;
     flex-direction: row !important;
@@ -991,38 +913,37 @@ body.lang-ar .tech-logos-grid {
     align-items: center !important;
     gap: 24px !important;
     direction: ltr !important;
+    overflow: hidden !important;
 }
 
 body.lang-ar .tech-logo-item {
     flex-direction: column !important;
     align-items: center !important;
     gap: 8px !important;
+    flex-shrink: 0;
 }
 
-/* Transition: white→dark gradient between sections */
-body.lang-ar #products,
-body.lang-ar #ai-engine,
-body.lang-ar #addons,
-body.lang-ar #reviews {
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
+/* Ticker title stays readable */
+body.lang-ar .tech-logos-title {
+    direction: rtl;
+    text-align: center;
 }
 
-/* ── Mobile: tech grid stacking fix ── */
+/* Mobile: same horizontal layout, no stacking */
 @media screen and (max-width: 768px) {
     body.lang-ar .tech-logos-grid {
-        gap: 20px !important;
+        gap: 16px !important;
+        padding: 0 16px !important;
     }
 
     body.lang-ar .tech-logo-item {
-        min-width: 70px !important;
+        min-width: 64px !important;
     }
 
-    /* Ensure no horizontal scroll from AR sections */
-    body.lang-ar #products,
-    body.lang-ar #techLogos,
-    body.lang-ar #ai-engine,
-    body.lang-ar #addons,
-    body.lang-ar #reviews {
+    /* Prevent any horizontal scroll bleed */
+    body.lang-ar .tech-logos-section,
+    body.lang-ar #techLogos {
+        max-width: 100vw !important;
         overflow-x: hidden !important;
     }
 }
