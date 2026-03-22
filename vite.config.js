@@ -27,6 +27,23 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           const pathname = req.url.split('?')[0].split('#')[0];
+          
+          // Force clean URL if they visit the .html path or /home
+          const cleanPath = Object.keys(pageRewrites).find(key => pageRewrites[key] === pathname);
+          if (pathname === '/home') {
+            res.writeHead(301, { Location: '/' });
+            res.end();
+            return;
+          }
+          if (cleanPath && pathname.startsWith('/frontend/')) {
+            // If the user hit /frontend/home.html directly, redirect them to / (or the clean path)
+            // Use the shortest clean path (e.g. / for home)
+            const bestCleanPath = cleanPath === '/home' ? '/' : cleanPath;
+            res.writeHead(301, { Location: bestCleanPath });
+            res.end();
+            return;
+          }
+
           if (pageRewrites[pathname]) {
             req.url = pageRewrites[pathname];
           }

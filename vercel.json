@@ -1,35 +1,146 @@
 {
-  "version": 2,
-  "builds": [
+  "functions": {
+    "backend/index.js": {
+      "runtime": "vercel-node@latest"
+    }
+  },
+  "redirects": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "source": "/frontend/home.html",
+      "destination": "/",
+      "permanent": true
     },
     {
-      "src": "backend/index.js",
-      "use": "@vercel/node"
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/products.html",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/order.html",
+      "destination": "/order",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/technology.html",
+      "destination": "/technology",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/login.html",
+      "destination": "/login",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/register.html",
+      "destination": "/register",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/dashboard.html",
+      "destination": "/dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/payment.html",
+      "destination": "/payment",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/terms.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/intro.html",
+      "destination": "/intro",
+      "permanent": true
+    },
+    {
+      "source": "/frontend/about_payment.html",
+      "destination": "/about_payment",
+      "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend/index.js" },
-    { "source": "/", "destination": "/frontend/home.html" },
-    { "source": "/home", "destination": "/frontend/home.html" },
-    { "source": "/frontend", "destination": "/frontend/home.html" },
-    { "source": "/products", "destination": "/frontend/products.html" },
-    { "source": "/order", "destination": "/frontend/order.html" },
-    { "source": "/technology", "destination": "/frontend/technology.html" },
-    { "source": "/about", "destination": "/frontend/about.html" },
-    { "source": "/login", "destination": "/frontend/login.html" },
-    { "source": "/register", "destination": "/frontend/register.html" },
-    { "source": "/dashboard", "destination": "/frontend/dashboard.html" },
-    { "source": "/payment", "destination": "/frontend/payment.html" },
-    { "source": "/privacy", "destination": "/frontend/privacy.html" },
-    { "source": "/terms", "destination": "/frontend/terms.html" },
-    { "source": "/intro", "destination": "/frontend/intro.html" },
-    { "source": "/about_payment", "destination": "/frontend/about_payment.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/index.js"
+    },
+    {
+      "source": "/",
+      "destination": "/frontend/home.html"
+    },
+    {
+      "source": "/home",
+      "destination": "/frontend/home.html"
+    },
+    {
+      "source": "/frontend",
+      "destination": "/frontend/home.html"
+    },
+    {
+      "source": "/products",
+      "destination": "/frontend/products.html"
+    },
+    {
+      "source": "/order",
+      "destination": "/frontend/order.html"
+    },
+    {
+      "source": "/technology",
+      "destination": "/frontend/technology.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/frontend/about.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/frontend/login.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/frontend/register.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/frontend/dashboard.html"
+    },
+    {
+      "source": "/payment",
+      "destination": "/frontend/payment.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/frontend/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/frontend/terms.html"
+    },
+    {
+      "source": "/intro",
+      "destination": "/frontend/intro.html"
+    },
+    {
+      "source": "/about_payment",
+      "destination": "/frontend/about_payment.html"
+    }
   ],
   "env": {
     "NODE_ENV": "production"
