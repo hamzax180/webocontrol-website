@@ -1,174 +1,321 @@
 /* ============================================
-   WEBOCONTROL — About Payment Page
+   WEBOCONTROL — About Payment Page (Premium)
    ============================================ */
+
+/* ── Page wrapper ── */
+.payment-page {
+    position: relative;
+    z-index: 2;
+    padding-top: 140px;
+    padding-bottom: 100px;
+    min-height: 100vh;
+}
+
+/* ── Hero ── */
+.payment-hero {
+    text-align: center;
+    margin-bottom: 64px;
+    padding: 0 20px;
+}
+
+.payment-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.payment-hero p {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.75;
+}
 
 /* ── Grid ── */
 .payment-steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 60px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 900px) {
-  .payment-steps-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 15px;
-  }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* ── Cards ── */
 .payment-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 20px;
-  padding: 40px 32px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: var(--font-body);
-  overflow: hidden;
+    position: relative;
+    background: rgba(15, 15, 30, 0.55);
+    border-radius: 24px;
+    padding: 44px 36px 40px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s ease;
+
+    /* Gradient border via pseudo-element technique */
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Gradient border glow ring */
+.payment-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: var(--card-border-gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+}
+
+/* Ambient inner glow */
+.payment-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: var(--card-glow);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
 }
 
 .payment-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.16);
-  transform: translateY(-6px);
+    transform: translateY(-10px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.payment-card:hover::before { opacity: 1; }
+.payment-card:hover::after  { opacity: 1; }
+
+/* Phase 1 — Purple */
+.phase-1 {
+    --card-border-gradient: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.4));
+    --card-glow: radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.12), transparent 65%);
+    --card-shadow-hover: 0 32px 80px rgba(0,0,0,0.4), 0 0 60px rgba(139, 92, 246, 0.15);
+    --badge-bg: rgba(139, 92, 246, 0.15);
+    --badge-border: rgba(139, 92, 246, 0.45);
+    --badge-color: #c4a5ff;
+    --accent: #8b5cf6;
+    --check-color: #c4a5ff;
+}
+
+/* Phase 2 — Cyan */
+.phase-2 {
+    --card-border-gradient: linear-gradient(135deg, rgba(0, 240, 255, 0.7), rgba(0, 180, 255, 0.35));
+    --card-glow: radial-gradient(ellipse at top, rgba(0, 240, 255, 0.10), transparent 65%);
+    --card-shadow-hover: 0 32px 80px rgba(0,0,0,0.4), 0 0 60px rgba(0, 240, 255, 0.12);
+    --badge-bg: rgba(0, 240, 255, 0.10);
+    --badge-border: rgba(0, 240, 255, 0.40);
+    --badge-color: #00f0ff;
+    --accent: #00d2ff;
+    --check-color: #00f0ff;
+}
+
+/* Phase 3 — Pink */
+.phase-3 {
+    --card-border-gradient: linear-gradient(135deg, rgba(255, 45, 117, 0.7), rgba(255, 100, 60, 0.35));
+    --card-glow: radial-gradient(ellipse at top right, rgba(255, 45, 117, 0.10), transparent 65%);
+    --card-shadow-hover: 0 32px 80px rgba(0,0,0,0.4), 0 0 60px rgba(255, 45, 117, 0.12);
+    --badge-bg: rgba(255, 45, 117, 0.10);
+    --badge-border: rgba(255, 45, 117, 0.40);
+    --badge-color: #ff6b9d;
+    --accent: #ff2d75;
+    --check-color: #ff6b9d;
+}
+
+/* ── Top accent bar ── */
+.payment-card .card-accent-bar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: var(--card-border-gradient);
+    border-radius: 0 0 8px 8px;
 }
 
 /* ── Phase badge ── */
 .step-badge {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: 1px solid;
-}
-
-.phase-1 .step-badge {
-  background: rgba(139, 92, 246, 0.12);
-  border-color: rgba(139, 92, 246, 0.3);
-  color: #b48eff;
-}
-
-.phase-2 .step-badge {
-  background: rgba(0, 240, 255, 0.08);
-  border-color: rgba(0, 240, 255, 0.3);
-  color: #00f0ff;
-}
-
-.phase-3 .step-badge {
-  background: rgba(255, 45, 85, 0.08);
-  border-color: rgba(255, 45, 85, 0.3);
-  color: #ff4d75;
+    display: inline-block;
+    margin-bottom: 28px;
+    padding: 7px 20px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    background: var(--badge-bg);
+    border: 1px solid var(--badge-border);
+    color: var(--badge-color);
+    position: relative;
+    z-index: 1;
 }
 
 /* ── Icon ── */
 .payment-icon {
-  font-size: 3.5rem;
-  margin-bottom: 24px;
-  display: block;
-  transition: transform 0.4s ease;
+    font-size: 3.8rem;
+    margin-bottom: 24px;
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 16px color-mix(in srgb, var(--accent) 40%, transparent));
 }
 
 .payment-card:hover .payment-icon {
-  transform: scale(1.15) rotate(4deg);
+    transform: scale(1.18) rotate(5deg);
 }
 
 /* ── Card text ── */
 .payment-card h3 {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: #ffffff;
-  letter-spacing: -0.5px;
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
 }
 
 .payment-card p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1rem;
-  line-height: 1.75;
-  margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Feature divider ── */
+.features-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin-bottom: 20px;
 }
 
 /* ── Feature list ── */
 .step-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
 }
 
 .step-features li {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.6);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: color 0.3s ease;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.55);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
 }
 
 .payment-card:hover .step-features li {
-  color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
 }
 
-/* Unicode checkmark — no encoding issues */
 .step-features li::before {
-  content: "\2713";
-  font-weight: 800;
-  flex-shrink: 0;
+    content: "\2713";
+    font-weight: 900;
+    font-size: 0.85rem;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    color: var(--check-color);
+    transition: background 0.3s ease;
 }
 
-.phase-1 .step-features li::before { color: #b48eff; }
-.phase-2 .step-features li::before { color: #00f0ff; }
-.phase-3 .step-features li::before { color: #ff4d75; }
+.payment-card:hover .step-features li::before {
+    background: rgba(255,255,255,0.1);
+}
 
 /* ── CTA block ── */
 .cta-dark {
-  max-width: 640px;
-  margin: 60px auto 0;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 52px 44px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+    max-width: 680px;
+    margin: 60px auto 0;
+    text-align: center;
+    background: rgba(15, 15, 30, 0.6);
+    padding: 56px 48px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-dark::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(139, 92, 246, 0.12), transparent 70%);
+    pointer-events: none;
 }
 
 .cta-dark .section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
 }
 
 .cta-dark .section-subtitle {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+    .payment-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 520px;
+    }
 }
 
 @media (max-width: 768px) {
-  .cta-dark {
-    padding: 36px 24px;
-    margin: 40px 15px 0;
-  }
+    .payment-page { padding-top: 120px; }
+    .payment-steps-grid { padding: 0 16px; }
+    .payment-card { padding: 36px 28px 32px; }
+    .cta-dark { padding: 40px 24px; margin: 40px 16px 0; }
 }
