@@ -2173,6 +2173,24 @@ class I18nManager {
         } else {
             document.body.classList.remove('lang-ar');
         }
+
+        // Fix rotating words bar centering — inline style beats any CSS,
+        // so we must override via JS when language changes
+        const rotatingBar = document.querySelector('.rotating-text-columns');
+        if (rotatingBar) {
+            if (this.currentLang === 'ar') {
+                rotatingBar.style.direction = 'ltr';
+                rotatingBar.style.left = '50%';
+                rotatingBar.style.right = 'auto';
+                rotatingBar.style.transform = 'translateX(-50%)';
+            } else {
+                // Restore original values
+                rotatingBar.style.direction = '';
+                rotatingBar.style.left = '50%';
+                rotatingBar.style.right = '';
+                rotatingBar.style.transform = 'translateX(-50%)';
+            }
+        }
     }
 
     updateUI() {
