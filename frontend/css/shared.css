@@ -3603,14 +3603,62 @@ body.cart-open .scroll-indicator {
   z-index: -10;
   overflow: hidden;
   pointer-events: none;
+  background: linear-gradient(-45deg, #090e17, #151e32, #060913, #1a253a);
+  background-size: 400% 400%;
+  animation: bgPulseLoading 6s ease infinite;
+}
+
+@keyframes bgPulseLoading {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .video-background-container .bg-vid {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: brightness(0.6);
+  pointer-events: none !important;
   /* Darker for readability */
+}
+
+/* Hide native play buttons that iOS/Safari shows when autoplay is blocked by Low Power Mode */
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* Ensure background videos NEVER flash before JS initializes them */
+video.bg-vid,
+video.coin-vid,
+.video-background-container video,
+.video-bg-container video {
+  opacity: 0;
+}
+
+/* Fallback overlay to cover iOS native play button completely */
+.mobile-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: #0b0f19; /* Solid dark background to hide the player */
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  opacity: 1; /* Visible by default until video plays */
 }
 
 /* Ensure sections are above the fixed background */
@@ -3641,6 +3689,9 @@ body.auth-body .video-background-container {
 }
 
 body.auth-body .video-background-container .bg-vid {
+  position: absolute;
+  top: 0;
+  left: 0;
   filter: brightness(0.4);
   width: 100%;
   height: 100%;

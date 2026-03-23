@@ -38,9 +38,16 @@
   height: 100vh;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #090e17, #151e32, #060913, #1a253a);
+  background-size: 400% 400%;
+  animation: bgPulseLoading 6s ease infinite;
 }
 
 .hero-background-coin .coin-vid {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;

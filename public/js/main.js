@@ -1583,10 +1583,66 @@ function handleNoResults(cards) {
     // We could show a "No results" message here if needed.
 }
 
+// --- Mobile Video Autoplay Fallback ---
+function initMobileVideoOverlays() {
+    document.querySelectorAll('video').forEach(v => {
+        // Enforce muted and playsinline properties strictly
+        v.muted = true;
+        v.setAttribute('muted', '');
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+
+        // Hide the video completely until it is confirmed playing.
+        // This is the ONLY 100% reliable way to completely hide the Apple/Chrome 
+        // native giant play buttons when autoplay is blocked by Low Power Mode.
+        v.style.opacity = '0';
+        v.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        
+        // Put the poster on the parent container so they don't see a black screen
+        const poster = v.getAttribute('poster');
+        if (poster && v.parentElement) {
+            v.parentElement.style.backgroundImage = `url('${poster}')`;
+            v.parentElement.style.backgroundSize = 'cover';
+            v.parentElement.style.backgroundPosition = 'center';
+            v.parentElement.style.backgroundColor = '#0b0f19';
+        }
+        
+        // Remove 'controls' just in case
+        v.removeAttribute('controls');
+
+        // When the video successfully starts, show it
+        const revealVideo = () => { 
+            v.style.opacity = '1'; 
+        };
+        v.addEventListener('playing', revealVideo);
+        
+        // Try to play immediately
+        v.play().then(revealVideo).catch(() => {});
+    });
+
+    // Touch/interaction globally forces play on any blocked videos over time.
+    const kickVideos = () => {
+        document.querySelectorAll('video').forEach(v => {
+            // Rely on opacity='0' flag because iOS can maliciously set v.paused=false even if rejected
+            if (v.style.opacity === '0') {
+                v.muted = true;
+                const revealVideo = () => { v.style.opacity = '1'; };
+                v.play().then(revealVideo).catch(() => {});
+            }
+        });
+    };
+    
+    // Bind to common interactions
+    ['touchstart', 'mousedown', 'scroll', 'click'].forEach(e => {
+        window.addEventListener(e, kickVideos, { passive: true });
+    });
+}
+
 // --- Init All ---
 document.addEventListener('DOMContentLoaded', () => {
     initProductSearch();
     initVideoBackgrounds();
+    initMobileVideoOverlays();
     initAuroraBackground();
     initParticles();
     initNavbar();
