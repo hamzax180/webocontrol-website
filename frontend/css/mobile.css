@@ -977,13 +977,35 @@ body.lang-ar .notification {
         flex-direction: row !important;
     }
 
-    /* Footer Centering */
-    body.lang-ar .footer-content,
-    body.lang-ar .footer-section,
-    body.lang-ar .footer-bottom,
-    body.lang-ar .footer-brand-desc {
+    /* Perfect Footer Centering (All Languages) */
+    .footer-grid, 
+    .footer-links,
+    .footer-links ul,
+    .footer-bottom {
         text-align: center !important;
+        justify-content: center !important;
         align-items: center !important;
+    }
+
+    .footer-links h4 {
+        text-align: center !important;
+    }
+
+    .footer-contact-item {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .footer-contact-item svg {
+        margin-top: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    body.lang-ar .footer {
+        text-align: center !important;
     }
 
     /* Search & Menu RTL alignment */
