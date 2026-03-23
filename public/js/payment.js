@@ -188,33 +188,52 @@ function updateVisibility(types = []) {
 
     websiteElements.forEach(el => {
         el.style.display = showWebsite ? 'block' : 'none';
-        // Toggle required for all inputs/textareas/selects inside
+        // Toggle required for essential fields, but skip optional ones and checkboxes
         el.querySelectorAll('input, textarea, select').forEach(input => {
-            if (input.id === 'brandColors' || input.id === 'designStyle') return; // Optional fields
-            input.required = showWebsite;
+            const isOptional = ['brandColors', 'designStyle', 'logoFile'].includes(input.id);
+            const isChoice = input.type === 'checkbox' || input.type === 'radio';
+            
+            if (isOptional || isChoice) {
+                input.required = false;
+            } else {
+                input.required = showWebsite;
+            }
         });
     });
 
     aiElements.forEach(el => {
         el.style.display = hasAI ? 'block' : 'none';
         el.querySelectorAll('input, textarea').forEach(input => {
-            if (input.id === 'aiModel') return; // Optional fields
-            input.required = hasAI;
+            const isOptional = input.id === 'aiModel' || input.id === 'aiTrainingSources';
+            const isChoice = input.type === 'checkbox' || input.type === 'radio';
+
+            if (isOptional || isChoice) {
+                input.required = false;
+            } else {
+                input.required = hasAI;
+            }
         });
     });
 
     securityElements.forEach(el => {
         el.style.display = hasSecurity ? 'block' : 'none';
         el.querySelectorAll('input, textarea').forEach(input => {
-            if (input.id === 'reqAuthDetails') return; // Optional fields
-            input.required = hasSecurity;
+            const isOptional = input.id === 'reqAuthDetails';
+            const isChoice = input.type === 'checkbox' || input.type === 'radio';
+
+            if (isOptional || isChoice) {
+                input.required = false;
+            } else {
+                input.required = hasSecurity;
+            }
         });
     });
 
     devopsElements.forEach(el => {
         el.style.display = hasDevops ? 'block' : 'none';
         el.querySelectorAll('input, textarea').forEach(input => {
-            input.required = hasDevops;
+            const isChoice = input.type === 'checkbox' || input.type === 'radio';
+            input.required = hasDevops && !isChoice;
         });
     });
 }
