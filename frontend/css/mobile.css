@@ -23,31 +23,11 @@ body {
    ANIMATIONS
    ============================================= */
 @keyframes rotateWordsMobile {
-
-    0%,
-    15% {
-        transform: translateY(0);
-    }
-
-    20%,
-    35% {
-        transform: translateY(-1.5em);
-    }
-
-    40%,
-    55% {
-        transform: translateY(-3em);
-    }
-
-    60%,
-    75% {
-        transform: translateY(-4.5em);
-    }
-
-    80%,
-    100% {
-        transform: translateY(-6em);
-    }
+    0%, 20% { transform: translateY(0); }
+    25%, 45% { transform: translateY(-20%); }
+    50%, 70% { transform: translateY(-40%); }
+    75%, 95% { transform: translateY(-60%); }
+    100% { transform: translateY(-80%); }
 }
 
 @keyframes premiumPulseGlow {
@@ -393,21 +373,17 @@ video {
     }
 
     .rotating-text-columns > div {
-        flex: none !important; /* MUST BE NONE to prevent height collapse */
-        position: relative !important; /* Anchor for absolute wrapper */
+        flex: none !important;
+        position: relative !important;
         width: 100% !important;
         max-width: none !important;
-        height: 1.5em !important; /* EXACTLY MATCH translateY(-1.5em) */
-        overflow: hidden !important; /* Strictly clip outside lines */
+        height: 1.2em !important; /* MATCH DESKTOP PRECISION */
+        overflow: hidden !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        
-        /* Force strict GPU clipping for WebKit */
-        transform: translateZ(0) !important;
-        -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
-        mask-image: radial-gradient(white, black) !important;
         contain: paint !important;
+        transform: translateZ(0) !important;
     }
 
     /* Show only 3 columns on mobile (Hide 4 and 5) */
@@ -424,8 +400,8 @@ video {
         left: 0 !important;
         top: 0 !important;
         width: 100% !important;
-        height: auto !important; /* Allow natural expansion */
-        line-height: 1.5em !important;
+        height: auto !important;
+        line-height: 1.2em !important;
         animation: rotateWordsMobile 8s infinite cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
@@ -433,9 +409,9 @@ video {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        height: 1.5em !important; /* EXACTLY MATCH translateY(-1.5em) */
-        line-height: 1.5em !important;
-        flex: none !important; /* NEVER SHRINK */
+        height: 1.2em !important; /* MATCH DESKTOP PRECISION */
+        line-height: 1.2em !important;
+        flex: none !important;
         white-space: nowrap !important;
         width: 100% !important;
     }
@@ -837,14 +813,31 @@ body.lang-ar .rotating-text-columns {
     direction: ltr !important; /* Keep tech names in correct order */
     left: 0 !important;
     transform: none !important;
-    padding-right: 0 !important;
+}
+
+/* Desktop-specific Arabic fixes (Override mobile.css global behavior) */
+@media screen and (min-width: 769px) {
+    body.lang-ar .rotating-text-columns {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    
+    body.lang-ar .rotating-text-columns > div {
+        direction: ltr !important;
+        height: 1.2em !important;
+        max-height: 1.2em !important;
+        line-height: 1.2em !important;
+        overflow: hidden !important;
+    }
 }
 
 /* Align vertically stacked text to the right for Arabic - REMOVED */
 /* It is better to keep the 100%-width stacked text centered in all languages to prevent asymmetric clipping */
 
-body.lang-ar .rotating-text-columns > div {
-    direction: ltr !important;
+body.lang-ar .rotating-text-wrapper span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 
@@ -946,9 +939,23 @@ body.lang-ar .notification {
 
 /* Mobile-specific RTL fixes */
 @media screen and (max-width: 768px) {
+    /* Perfect Centering for Arabic Mobile */
+    body.lang-ar .section-header,
+    body.lang-ar .section-title,
+    body.lang-ar .section-subtitle,
+    body.lang-ar .hero-content {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Navbar UX: Logo Left, Menu Right (Standard for Arabic mobile) */
     body.lang-ar .navbar .container {
-        flex-direction: row !important;
-        /* Keep hamburger on right */
+        flex-direction: row-reverse !important;
+    }
+    
+    body.lang-ar .nav-center-group {
+        flex-direction: row !important; /* Keep icons like cart/search in logical LTR order */
     }
 
     body.lang-ar .mobile-toggle,
@@ -958,14 +965,34 @@ body.lang-ar .notification {
         margin-left: 0 !important;
     }
 
-    /* Open mobile menu RTL: links should be right-aligned */
+    /* Product Cards Centering */
+    body.lang-ar .product-card,
+    body.lang-ar .product-content {
+        text-align: center !important;
+    }
+    
+    body.lang-ar .product-footer {
+        justify-content: center !important;
+        flex-direction: row !important;
+    }
+
+    /* Footer Centering */
+    body.lang-ar .footer-content,
+    body.lang-ar .footer-section,
+    body.lang-ar .footer-bottom,
+    body.lang-ar .footer-brand-desc {
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    /* Search & Menu RTL alignment */
     body.lang-ar .nav-links.mobile-open {
-        text-align: right !important;
+        text-align: center !important;
         direction: rtl !important;
     }
 
     body.lang-ar .nav-auth.mobile-open {
-        text-align: right !important;
+        text-align: center !important;
         direction: rtl !important;
     }
 
@@ -973,11 +1000,6 @@ body.lang-ar .notification {
     body.lang-ar [style*="display: flex"][style*="justify-content: space-between"] {
         direction: ltr !important;
         unicode-bidi: embed !important;
-    }
-
-    /* Product footer in RTL mobile */
-    body.lang-ar .product-footer {
-        flex-direction: row-reverse !important;
     }
 
     /* Dashboard header RTL */

@@ -2188,13 +2188,13 @@ class I18nManager {
             bar.style.alignItems = 'center';
             // Ticker words must always be LTR to prevent order reversal/truncation
             bar.style.direction = 'ltr';
-
+            bar.style.textAlign = 'center';
             bar.style.width = '100%';
             bar.style.left = '0';
             bar.style.transform = 'none';
-
-
-
+            bar.style.paddingLeft = '40px';
+            bar.style.paddingRight = '40px';
+            bar.style.boxSizing = 'border-box';
         });
     }
 
