@@ -44,7 +44,7 @@ body.about-page {
 }
 
 .about-page main {
-    padding-top: 100px;
+    padding-top: 0; /* Removed 100px padding so hero section anchors to top of viewport perfectly */
     padding-bottom: 60px;
 }
 
@@ -54,7 +54,6 @@ body.about-page {
     padding: 0 20px;
 }
 
-/* New Hero Section */
 .about-hero {
     position: relative;
     min-height: 100svh;
@@ -65,7 +64,7 @@ body.about-page {
     margin-bottom: 80px;
     background: transparent;
     text-align: center;
-    padding: 80px 20px 40px;
+    padding: 0 20px; /* Symmetrical padding ensures perfect vertical centering */
 }
 
 .hero-content {
