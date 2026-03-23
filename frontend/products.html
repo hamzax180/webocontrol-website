@@ -40,12 +40,30 @@
             display: block;
         }
     </style>
+  <script id="autoplay-emergency-fix">
+    (function() {
+      var kick = function() {
+        document.querySelectorAll('video').forEach(function(v) {
+          v.muted = true;
+          v.setAttribute('muted', '');
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          if (v.paused) v.play().catch(function(){});
+        });
+      };
+      window.addEventListener('load', kick);
+      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
+        window.addEventListener(e, kick, {passive: true});
+      });
+      setInterval(kick, 300);
+    })();
+  </script>
 </head>
 
 <body class="home-page has-video-bg">
     <!-- Product Video Background -->
     <div class="video-background-container">
-        <video src="/product-bg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" class="bg-vid"></video>
+        <video src="/product-bg-v2.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" class="bg-vid"></video>
     </div>
 
     <!-- Navigation -->
@@ -688,7 +706,8 @@
         <img src="" alt="Full Preview" id="modalImg">
     </div>
 
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/main.js?v=2"></script>
 </body>
 
 </html>
+

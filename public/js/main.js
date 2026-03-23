@@ -1501,6 +1501,9 @@ function initProductSearch() {
 
         if (suggestionsContainer) {
             if (query.length > 0) {
+                if (e.target.id === 'productSearchMobile') {
+                    document.body.classList.add('searching');
+                }
                 const matches = Array.from(cards).filter(card => {
                     const title = card.querySelector('.product-title')?.textContent.toLowerCase() || '';
                     const tags = card.getAttribute('data-search-tags')?.toLowerCase() || '';
@@ -1545,13 +1548,16 @@ function initProductSearch() {
                             suggestionsContainer.classList.remove('active');
                             searchInputNav.value = targetTitle;
                             if (searchInputMobile) searchInputMobile.value = targetTitle;
+                            document.body.classList.remove('searching');
                         });
                     });
                 } else {
                     suggestionsContainer.classList.remove('active');
+                    document.body.classList.remove('searching');
                 }
             } else {
                 suggestionsContainer.classList.remove('active');
+                document.body.classList.remove('searching');
             }
         }
     };
@@ -1567,6 +1573,7 @@ function initProductSearch() {
         }
         if (suggMob && !e.target.closest('.mobile-menu-search')) {
             suggMob.classList.remove('active');
+            document.body.classList.remove('searching');
         }
     });
 }

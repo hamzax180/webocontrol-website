@@ -319,6 +319,24 @@
             box-shadow: inset 0 0 10px rgba(255,0,0,0.8), 0 0 25px rgba(255,0,0,1), 0 0 40px rgba(255,0,0,0.5);
         }
     </style>
+  <script id="autoplay-emergency-fix">
+    (function() {
+      var kick = function() {
+        document.querySelectorAll('video').forEach(function(v) {
+          v.muted = true;
+          v.setAttribute('muted', '');
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          if (v.paused) v.play().catch(function(){});
+        });
+      };
+      window.addEventListener('load', kick);
+      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
+        window.addEventListener(e, kick, {passive: true});
+      });
+      setInterval(kick, 300);
+    })();
+  </script>
 </head>
 
 <body>
@@ -453,3 +471,4 @@
 </body>
 
 </html>
+

@@ -56,6 +56,24 @@
             -webkit-text-fill-color: transparent;
         }
     </style>
+  <script id="autoplay-emergency-fix">
+    (function() {
+      var kick = function() {
+        document.querySelectorAll('video').forEach(function(v) {
+          v.muted = true;
+          v.setAttribute('muted', '');
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          if (v.paused) v.play().catch(function(){});
+        });
+      };
+      window.addEventListener('load', kick);
+      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
+        window.addEventListener(e, kick, {passive: true});
+      });
+      setInterval(kick, 300);
+    })();
+  </script>
 </head>
 
 <body class="about-page">
@@ -240,7 +258,7 @@
         </div>
     </div>
 
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/main.js?v=2"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof gsap !== 'undefined') {
@@ -253,3 +271,4 @@
 </body>
 
 </html>
+

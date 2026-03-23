@@ -14,11 +14,29 @@
     <script src="/js/i18n.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script id="autoplay-emergency-fix">
+    (function() {
+      var kick = function() {
+        document.querySelectorAll('video').forEach(function(v) {
+          v.muted = true;
+          v.setAttribute('muted', '');
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          if (v.paused) v.play().catch(function(){});
+        });
+      };
+      window.addEventListener('load', kick);
+      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
+        window.addEventListener(e, kick, {passive: true});
+      });
+      setInterval(kick, 300);
+    })();
+  </script>
 </head>
 
 <body class="home-page has-video-bg auth-body register-body">
     <div class="video-background-container">
-        <video src="/login-bg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" class="bg-vid" id="register-bg-vid"></video>
+        <video src="/login-bg-v2.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" class="bg-vid" id="register-bg-vid"></video>
     </div>
 
     <!-- Navigation -->
@@ -140,7 +158,7 @@
 
 
         <div class="footer-background-vid">
-            <video src="/home-bg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" class="coin-vid"></video>
+            <video src="/home-bg-v2.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" class="coin-vid"></video>
             <div class="footer-video-overlay"></div>
         </div>
         <div class="container">
@@ -198,8 +216,9 @@
         </div>
     </footer>
 
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/main.js?v=2"></script>
     <script type="module" src="/js/auth.js"></script>
 </body>
 
 </html>
+

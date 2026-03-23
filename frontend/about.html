@@ -13,11 +13,29 @@
     <script src="/js/i18n.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script id="autoplay-emergency-fix">
+    (function() {
+      var kick = function() {
+        document.querySelectorAll('video').forEach(function(v) {
+          v.muted = true;
+          v.setAttribute('muted', '');
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          if (v.paused) v.play().catch(function(){});
+        });
+      };
+      window.addEventListener('load', kick);
+      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
+        window.addEventListener(e, kick, {passive: true});
+      });
+      setInterval(kick, 300);
+    })();
+  </script>
 </head>
 
 <body class="about-page">
     <div class="video-bg-container">
-        <video src="/about-us-bg.mp4" autoplay loop muted playsinline webkit-playsinline></video>
+        <video src="/about-us-bg-v2.mp4" autoplay loop muted playsinline webkit-playsinline></video>
     </div>
 
     <!-- Navigation -->
@@ -188,7 +206,7 @@
         <img src="" alt="Full Preview" id="modalImg">
     </div>
 
-    <script src="/js/main.js" type="module"></script>
+    <script src="/js/main.js?v=2" type="module"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Let main.js handle the standard .reveal animations
@@ -207,3 +225,4 @@
 </body>
 
 </html>
+

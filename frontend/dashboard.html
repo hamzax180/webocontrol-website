@@ -13,12 +13,30 @@
     <script src="/js/i18n.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script id="autoplay-emergency-fix">
+    (function() {
+      var kick = function() {
+        document.querySelectorAll('video').forEach(function(v) {
+          v.muted = true;
+          v.setAttribute('muted', '');
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          if (v.paused) v.play().catch(function(){});
+        });
+      };
+      window.addEventListener('load', kick);
+      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
+        window.addEventListener(e, kick, {passive: true});
+      });
+      setInterval(kick, 300);
+    })();
+  </script>
 </head>
 
 <body>
     <div class="video-bg-container video-background-container"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
-        <video src="/dashboard-bg.mp4" autoplay muted playsinline webkit-playsinline loop class="bg-vid" style="width: 100%; height: 100%; object-fit: cover;"></video>
+        <video src="/dashboard-bg-v2.mp4" autoplay muted playsinline webkit-playsinline loop class="bg-vid" style="width: 100%; height: 100%; object-fit: cover;"></video>
     </div>
 
     <div class="bg-grid"></div>
@@ -166,8 +184,9 @@
         <img src="" alt="Full Preview" id="modalImg">
     </div>
 
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/main.js?v=2"></script>
     <script type="module" src="/js/dashboard.js"></script>
 </body>
 
 </html>
+
