@@ -853,6 +853,16 @@ const translations = {
         ai_section_subtitle: "Deploy autonomous neural models to automate complex workflows and handle customer logic with precision.",
         ai_home_title: "Neural AI Growth Engine",
         ai_home_subtitle: "The ultimate competitive advantage for startups. Deploy autonomous agents that live in your cloud and automate your logic 24/7.",
+        stack_security: "Security Stack",
+        stack_scaling: "Scaling Stack",
+        stack_intelligence: "Intelligence Engine",
+        tech_openai: "OpenAI",
+        tech_claude: "Claude",
+        tech_gemini: "Gemini",
+        tech_llama: "Llama",
+        tech_pinecone: "Pinecone",
+        tech_cloudflare: "Cloudflare",
+        tech_azure: "Azure",
     },
     ar: {
         nav_home: "الرئيسية",
@@ -2142,6 +2152,16 @@ const translations = {
         testimonial_2_role: "صاحب متجر إلكتروني، لندن",
         testimonial_3_text: '"سلّم WEBOCONTROL موقع محفظتي في 3 أيام. التصميم كان مذهلاً — أبعد مما تخيلت."',
         testimonial_3_role: "مصمم، ميلانو",
+        stack_security: "حزمة الأمان",
+        stack_scaling: "حزمة التوسع",
+        stack_intelligence: "محرك الذكاء",
+        tech_openai: "OpenAI",
+        tech_claude: "Claude",
+        tech_gemini: "Gemini",
+        tech_llama: "Llama",
+        tech_pinecone: "Pinecone",
+        tech_cloudflare: "Cloudflare",
+        tech_azure: "Azure",
     }
 
 
