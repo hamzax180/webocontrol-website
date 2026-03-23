@@ -567,7 +567,76 @@
   }
 }
 
-/* Arabic Centering Fixes */
+
+/* =============================================
+   COMPREHENSIVE LAYOUT REFINEMENTS (Desktop)
+   ============================================= */
+
+/* Centering and Balance (All Languages) */
+.form-section-title {
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.form-group label {
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.checkbox-consent {
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.checkbox-consent label {
+    text-align: center !important;
+}
+
+/* Arabic RTL Support */
+body.lang-ar .payment-layout,
+body.lang-ar .requirements-form-wrapper,
+body.lang-ar .form-sections-grid,
+body.lang-ar .form-row {
+    direction: rtl !important;
+}
+
+body.lang-ar .form-group input,
+body.lang-ar .form-group textarea,
+body.lang-ar .form-group select,
+body.lang-ar .payment-item-info,
+body.lang-ar .payment-secure-text,
+body.lang-ar .payment-item-name,
+body.lang-ar .payment-item-desc {
+    text-align: right !important;
+}
+
+body.lang-ar .form-section-title,
+body.lang-ar .checkbox-label,
+body.lang-ar .checkbox-consent,
+body.lang-ar .payment-option {
+    flex-direction: row-reverse !important;
+}
+
+body.lang-ar .checkbox-label {
+    justify-content: flex-start !important;
+}
+
+body.lang-ar .form-group select {
+    background-position: left 20px center !important;
+    padding-right: 20px !important;
+    padding-left: 45px !important;
+}
+
+body.lang-ar .payment-card-title {
+    flex-direction: row-reverse !important;
+}
+
+/* Ensure grids handle multiple categories gracefully */
+.form-sections-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+}
+
+/* Arabic Header/Section Centering */
 body.lang-ar .pay-header,
 body.lang-ar .section-header,
 body.lang-ar .section-title {
@@ -577,13 +646,6 @@ body.lang-ar .section-title {
     margin-right: auto !important;
 }
 
-body.lang-ar .payment-card-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
 body.lang-ar .payment-total-row {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse !important;
 }
