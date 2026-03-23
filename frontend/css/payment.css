@@ -189,23 +189,24 @@
 }
 
 .form-sections-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: stretch; /* Direct children will stretch to same height */
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+  gap: 32px !important;
+  align-items: stretch !important;
   margin-bottom: 40px;
 }
 
-/* Ensure wrappers like .website-only stretch and pass height to their children */
+/* Ensure wrappers like .website-only, .ai-only, etc. stretch and pass height to their children */
 .form-sections-grid > div {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-height: 100% !important;
 }
 
 .form-card {
   width: 100%;
-  flex: 1; /* Key: Make card grow to fill the stretched wrapper or grid cell */
+  flex: 1 1 auto !important; /* Force card to grow and fill the parent height */
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 24px;
@@ -215,10 +216,10 @@
   box-shadow: 
     0 15px 50px rgba(0, 0, 0, 0.2),
     inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 0 !important; /* Remove margin that breaks grid alignment */
+  margin-bottom: 0 !important;
 }
 
 .form-card:hover {
@@ -633,7 +634,7 @@ body.lang-ar .payment-card-title {
 
 /* Ensure grids handle multiple categories gracefully */
 .form-sections-grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+    align-items: stretch !important;
 }
 
 /* Arabic Header/Section Centering */
