@@ -711,6 +711,48 @@ video {
         width: 48% !important;
     }
 
+    /* ---- PRODUCTS.HTML ECOSYSTEM: 2-column grid matching home.html ---- */
+    #ecosystem [style*="display: grid"] {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 0 var(--mobile-padding) !important;
+    }
+
+    /* Cards: override inline min-height and padding to match home.html compact style */
+    #ecosystem .product-card {
+        min-height: 0 !important;
+        width: 100% !important;
+    }
+
+    #ecosystem .product-card .product-content {
+        padding: 8px !important;
+    }
+
+    /* Image container: match home.html height */
+    #ecosystem .product-card .product-image-container {
+        height: 110px !important;
+        min-height: unset !important;
+    }
+
+    /* Headers spanning above cards: collapse to single column row */
+    #ecosystem [style*="grid-column: 1 / span 2"],
+    #ecosystem [style*="grid-column: 4"] {
+        grid-column: 1 / -1 !important;
+    }
+
+    /* Stack labels / tech stacks below cards: full width */
+    #ecosystem [style*="grid-column: 1"],
+    #ecosystem [style*="grid-column: 2"] {
+        grid-column: 1 / -1 !important;
+    }
+
+    /* Hide spacer columns on mobile */
+    #ecosystem [style*="grid-column: 1"] ~ div:empty,
+    #ecosystem > .container > div > div:empty {
+        display: none !important;
+    }
+
     /* Tech logos inside grids: span full width below cards */
     .showcase-grid .tech-logos-section,
     .addons-showcase .tech-logos-section {
