@@ -491,15 +491,15 @@
             </div>
 
             <!-- Success State -->
-            <div id="paymentSuccess" style="display:none;">
-                <div class="payment-status-card payment-status-success">
+            <div id="paymentSuccess" style="display:none; text-align: center;">
+                <div class="payment-status-card payment-status-success" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div class="payment-status-icon" style="font-size: 4rem; margin-bottom: 20px;">✅</div>
                     <h2 data-i18n="pay_success_title" style="margin-bottom: 15px; font-size: 2rem;">Order Received Successfully!</h2>
                     <p data-i18n="pay_success_desc" style="color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.5; margin-bottom: 30px;">Thank you for your order! We have securely recorded your requirements and sent a detailed invoice breakdown and price estimation directly to your email.</p>
-                    <div id="successDetails" class="payment-status-details">
+                    <div id="successDetails" class="payment-status-details" style="width: 100%; max-width: 400px; text-align: center;">
                         <!-- Details injected by JS -->
                     </div>
-                    <div class="payment-status-actions">
+                    <div class="payment-status-actions" style="margin-top: 32px; display: flex; gap: 16px; justify-content: center; width: 100%;">
                         <a href="/dashboard" class="btn btn-primary" data-i18n="nav_dashboard">Go to
                             Dashboard
                             →</a>

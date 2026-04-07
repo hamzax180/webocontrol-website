@@ -115,6 +115,12 @@ async function handlePayment() {
         const result = await response.json();
 
         if (!response.ok) {
+            if (response.status === 401) {
+                localStorage.removeItem('webocontrol_token');
+                window.showNotification?.('Session expired. Please log in again.', 'warning');
+                setTimeout(() => { window.location.href = '/login.html'; }, 1500);
+                return;
+            }
             throw new Error(result.error || 'Order submission failed');
         }
 
@@ -123,7 +129,13 @@ async function handlePayment() {
 
     } catch (err) {
         console.error('Order error:', err);
-        window.showNotification?.(err.message || 'Failed to submit order request', 'error');
+        let errorMsg = err.message || 'Failed to submit order request';
+        
+        if (errorMsg === 'Failed to fetch') {
+            errorMsg = 'NETWORK ERROR: Unable to establish an explicit connection to the WEBOCONTROL secure servers. Please check your network and try again.';
+        }
+        
+        window.showNotification?.(errorMsg, 'error');
 
         // Reset button
         payBtn.disabled = false;
@@ -142,15 +154,15 @@ function handleOrderSuccess(totalAmount, customerEmail) {
 
     const amount = totalAmount.toLocaleString();
     detailsEl.innerHTML = `
-        <div class="payment-receipt">
-            <div class="payment-receipt-row">
-                <span>Estimated Total</span>
-                <span class="gradient-text price-font" style="font-size: 1.5rem;">$${amount}</span>
+        <div class="payment-receipt" style="display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: center; width: 100%;">
+            <div class="payment-receipt-row" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Estimated Total</span>
+                <span class="gradient-text price-font" style="font-size: 2rem;">$${amount}</span>
             </div>
             ${customerEmail ? `
-            <div class="payment-receipt-row">
-                <span>Confirmation Sent To</span>
-                <span>${customerEmail}</span>
+            <div class="payment-receipt-row" style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 10px;">
+                <span style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Confirmation Sent To</span>
+                <span style="font-weight: 500;">${customerEmail}</span>
             </div>` : ''}
         </div>
     `;
