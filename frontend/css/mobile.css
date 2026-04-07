@@ -507,7 +507,7 @@ video {
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
-        min-height: 300px !important; /* Slightly shorter card */
+        min-height: 320px !important; /* Adjusted height to fit 3 lines of text perfectly */
         height: 100% !important; /* Ensure all cards in row are same height */
         display: flex !important;
         flex-direction: column !important;
