@@ -548,9 +548,10 @@ video {
 
     .product-footer {
         display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 6px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 4px !important;
         margin-top: 6px !important;
         padding-top: 8px !important;
         border-top: 1px solid rgba(0,0,0,0.05) !important;
@@ -559,18 +560,19 @@ video {
     .product-price {
         display: flex !important;
         align-items: center !important;
-        gap: 4px !important;
+        gap: 3px !important;
     }
 
     .product-footer .btn-sm {
         flex: unset !important;
-        width: 100% !important;
+        width: auto !important;
         text-align: center !important;
-        margin-left: 0 !important;
-        font-size: 0.72rem !important;
-        padding: 8px 6px !important;
+        margin-left: auto !important;
+        font-size: 0.6rem !important;
+        padding: 5px 8px !important;
         min-height: unset !important;
         height: auto !important;
+        white-space: nowrap !important;
     }
 
     #products {
@@ -678,10 +680,15 @@ video {
     }
 
     /* ---- AI ENGINE SECTION ---- */
-    #ai-engine .showcase-grid,
+    #ai-engine .showcase-grid {
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+
     #ai-engine .showcase-grid .product-card {
-        max-width: 100% !important;
-        width: 100% !important;
+        max-width: 48% !important;
+        width: 48% !important;
     }
 
     /* Tech logos inside grids: span full width below cards */
@@ -689,6 +696,7 @@ video {
     .addons-showcase .tech-logos-section {
         grid-column: 1 / -1 !important;
         width: 100% !important;
+        flex-basis: 100% !important;
     }
 
     /* ---- FOOTER ROTATING TEXT ---- */
