@@ -422,87 +422,96 @@ video {
     .addons-showcase {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 16px !important;
         max-width: 100% !important;
         margin: 0 auto !important;
         padding: 0 var(--mobile-padding) !important;
         flex-direction: unset !important;
     }
 
+    /* ---- PRODUCTS.HTML ECOSYSTEM: Precise Grid Layout ---- */
     #ecosystem [style*="display: grid"] {
-        grid-template-columns: 1fr !important;
-        gap: 24px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
         max-width: 100% !important;
         margin: 0 auto !important;
         padding: 0 var(--mobile-padding) !important;
-        display: flex !important;
-        flex-direction: column !important;
     }
 
-    /* Force all ecosystem grid children to span full width and set logical visual order for mobile */
-    #ecosystem [style*="display: grid"]>div {
+    #ecosystem [style*="display: grid"] > div {
         width: 100% !important;
         margin-top: 0 !important;
     }
 
-    /* Hide the empty spacer columns in ecosystem grid */
-    #ecosystem [style*="display: grid"]>div:empty {
+    /* Hide desktop spacer columns */
+    #ecosystem [style*="display: grid"]>div:nth-child(2),
+    #ecosystem [style*="display: grid"]>div:nth-child(6),
+    #ecosystem [style*="display: grid"]>div:nth-child(10),
+    #ecosystem [style*="grid-column: 1"] ~ div:empty,
+    #ecosystem > .container > div > div:empty {
         display: none !important;
     }
 
-    /* Re-order elements logically since DOM order is horizontal for desktop grid */
+    /* Security/DevOps Header */
     #ecosystem [style*="display: grid"]>div:nth-child(1) {
-        order: 1;
-    }
-
-    /* Infra Card 1 (Security) */
-    #ecosystem [style*="display: grid"]>div:nth-child(4) {
-        order: 2;
-        margin-top: 10px !important;
-    }
-
-    /* Infra Card 2 (DevOps) */
-    #ecosystem [style*="display: grid"]>div:nth-child(5) {
-        order: 3;
-        margin-top: 10px !important;
-    }
-
-    /* Infra Stack 1 (Security Stack) */
-    #ecosystem [style*="display: grid"]>div:nth-child(8) {
-        order: 4;
+        grid-column: 1 / -1 !important;
+        order: 1 !important;
         margin-bottom: 20px !important;
     }
 
-    /* Infra Stack 2 (DevOps Stack) */
+    /* Security Card */
+    #ecosystem [style*="display: grid"]>div:nth-child(4) {
+        grid-column: 1 !important;
+        order: 2 !important;
+    }
+
+    /* DevOps Card */
+    #ecosystem [style*="display: grid"]>div:nth-child(5) {
+        grid-column: 2 !important;
+        order: 3 !important;
+    }
+
+    /* Security Stack */
+    #ecosystem [style*="display: grid"]>div:nth-child(8) {
+        grid-column: 1 !important;
+        order: 4 !important;
+    }
+
+    /* DevOps Stack */
     #ecosystem [style*="display: grid"]>div:nth-child(9) {
-        order: 5;
-        margin-bottom: 40px !important;
+        grid-column: 2 !important;
+        order: 5 !important;
+        margin-bottom: 20px !important;
     }
 
     /* AI Header */
     #ecosystem [style*="display: grid"]>div:nth-child(3) {
-        order: 6;
+        grid-column: 1 / -1 !important;
+        order: 6 !important;
         padding-top: 20px !important;
         border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        margin-bottom: 20px !important;
     }
 
-    /* AI Card (Center single card in row) */
+    /* AI Card (Centered, span full width but limited max-width) */
     #ecosystem [style*="display: grid"]>div:nth-child(7) {
-        order: 7;
-        margin-top: 20px !important;
-        margin-bottom: 20px !important;
         grid-column: 1 / -1 !important;
+        order: 7 !important;
         justify-self: center !important;
-        width: calc(50% - 6px) !important;
-        min-width: 250px !important;
+        width: calc(50% - 8px) !important;
+        max-width: none !important;
+        margin: 0 auto !important;
     }
 
     /* AI Stack */
     #ecosystem [style*="display: grid"]>div:nth-child(11) {
-        order: 8;
+        grid-column: 1 / -1 !important;
+        order: 8 !important;
+        justify-self: center !important;
+        margin-top: 10px !important;
     }
 
-    /* AI Stack */
 
     .product-card {
         margin: 0 !important;
@@ -520,7 +529,7 @@ video {
     }
 
     .product-card .product-image-container {
-        height: 110px !important;
+        height: 130px !important;
         min-height: unset !important;
         flex-shrink: 0 !important;
         overflow: hidden !important;
@@ -727,20 +736,15 @@ video {
         display: flex !important;
         justify-content: center !important;
         flex-wrap: wrap !important;
+        gap: 16px !important;
     }
 
     #ai-engine .showcase-grid .product-card {
-        max-width: 48% !important;
-        width: 48% !important;
+        max-width: calc(50% - 8px) !important;
+        width: calc(50% - 8px) !important;
     }
 
-    /* ---- PRODUCTS.HTML ECOSYSTEM: 2-column grid matching home.html ---- */
-    #ecosystem [style*="display: grid"] {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        padding: 0 var(--mobile-padding) !important;
-    }
+    /* ---- PRODUCTS.HTML ECOSYSTEM ---- */
 
     /* Cards: override inline min-height and padding to match home.html compact style */
     #ecosystem .product-card {
@@ -765,19 +769,7 @@ video {
         object-position: center !important;
     }
 
-    /* Headers spanning above cards: collapse to single column row */
-    #ecosystem [style*="grid-column: 1 / span 2"],
-    #ecosystem [style*="grid-column: 4"] {
-        grid-column: 1 / -1 !important;
-    }
-
-    /* Stack labels / tech stacks: allow natural grid column placement to sit under cards */
-
-    /* Hide spacer columns on mobile */
-    #ecosystem [style*="grid-column: 1"] ~ div:empty,
-    #ecosystem > .container > div > div:empty {
-        display: none !important;
-    }
+    /* Legacy overrides omitted */
 
     /* Tech logos inside grids: span full width below cards */
     .showcase-grid .tech-logos-section,
