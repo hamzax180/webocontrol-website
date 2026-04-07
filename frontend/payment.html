@@ -423,7 +423,7 @@
                                 ⚠️ Please read the Terms of Service before proceeding
                             </p>
                             <button type="submit" id="proceedToPaymentBtn" class="btn btn-primary btn-large" data-i18n="pay_proceed_btn">
-                                Proceed to Payment →
+                                Review & Submit →
                             </button>
                         </div>
 
@@ -475,54 +475,17 @@
 
                     <!-- Payment Action Card -->
                     <div class="payment-action-card">
-                        <h3 class="payment-card-title"><span class="icon">💳</span> <span
-                                data-i18n="pay_checkout_title">SECURE PAYMENT</span></h3>
-                        <p class="payment-secure-text" data-i18n="pay_secure_msg">
-                            Your payment is processed securely by <strong>Visa & PayPal</strong>. We never see or
-                            store your
-                            card or account details.
+                        <h3 class="payment-card-title"><span class="icon">📤</span> <span>SUBMIT REQUEST</span></h3>
+                        <p class="payment-secure-text" data-i18n="pay_secure_msg" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5;">
+                            Submit your project request and one of our dedicated experts will review your details. We will contact you at your email address to confirm pricing and project timelines.
                         </p>
-                        <div class="payment-badges">
-                            <span class="payment-badge" data-i18n="pay_badge_ssl">🔒 SSL Encrypted</span>
-                            <span class="payment-badge" data-i18n="pay_badge_visa">💳 Visa / Mastercard</span>
-                            <span class="payment-badge" data-i18n="pay_badge_paypal">🅿️ PayPal</span>
-                            <span class="payment-badge" data-i18n="pay_badge_intl">🌍 International</span>
-                        </div>
-
-                        <!-- Payment Method Selector -->
-                        <div class="payment-method-selector" style="margin: 24px 0;">
-                            <h4 style="font-size: 0.9rem; margin-bottom: 12px; color: var(--text-secondary); font-weight: 500;"
-                                data-i18n="pay_select_method">
-                                SELECT PAYMENT METHOD</h4>
-                            <div class="payment-options">
-                                <label class="payment-option">
-                                    <input type="radio" name="paymentMethod" value="card" checked
-                                        style="accent-color: var(--primary);">
-                                    <span style="display: flex; flex-direction: column;">
-                                        <span style="font-weight: 600; font-size: 0.95rem;"
-                                            data-i18n="pay_method_card">Credit Card</span>
-                                        <span style="font-size: 0.8rem; color: #666;"
-                                            data-i18n="pay_method_card_desc">Visa, Mastercard</span>
-                                    </span>
-                                </label>
-                                <label class="payment-option">
-                                    <input type="radio" name="paymentMethod" value="paypal"
-                                        style="accent-color: var(--primary);">
-                                    <span style="display: flex; flex-direction: column;">
-                                        <span style="font-weight: 600; font-size: 0.95rem;">PayPal</span>
-                                        <span style="font-size: 0.8rem; color: #666;"
-                                            data-i18n="pay_method_paypal_desc">Secure checkout</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
 
                         <button id="payBtn" class="btn btn-primary btn-large payment-btn" disabled
-                            data-i18n="pay_pay_btn">
-                            Confirm & Pay Now
+                            data-i18n="pay_pay_btn" style="width: 100%; margin-top: 20px;">
+                            <span class="payment-btn-text">Submit Order Details →</span>
+                            <span class="payment-btn-loading" style="display: none;">Processing...</span>
                         </button>
-                        <p class="payment-note" data-i18n="pay_note">You'll be redirected to a secure checkout
-                            page.</p>
+                        <p class="payment-note" style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.5); text-align: center;">You will receive an email confirmation containing your estimated total.</p>
                     </div>
                 </div>
             </div>
@@ -530,10 +493,9 @@
             <!-- Success State -->
             <div id="paymentSuccess" style="display:none;">
                 <div class="payment-status-card payment-status-success">
-                    <div class="payment-status-icon">✅</div>
-                    <h2 data-i18n="pay_success_title">Payment Successful!</h2>
-                    <p data-i18n="pay_success_desc">Thank you for your order. Your payment has been processed
-                        successfully.</p>
+                    <div class="payment-status-icon" style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+                    <h2 data-i18n="pay_success_title" style="margin-bottom: 15px; font-size: 2rem;">Order Received Successfully!</h2>
+                    <p data-i18n="pay_success_desc" style="color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.5; margin-bottom: 30px;">Thank you for your order! We have securely recorded your requirements and sent a detailed invoice breakdown and price estimation directly to your email.</p>
                     <div id="successDetails" class="payment-status-details">
                         <!-- Details injected by JS -->
                     </div>

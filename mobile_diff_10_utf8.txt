@@ -1,0 +1,179 @@
+﻿diff --git a/frontend/css/mobile.css b/frontend/css/mobile.css
+index acabce8..fa0ae54 100644
+--- a/frontend/css/mobile.css
++++ b/frontend/css/mobile.css
+@@ -455,44 +455,49 @@ video {
+         order: 1;
+     }
+ 
+-    /* Infra Header */
++    /* Infra Card 1 (Security) */
+     #ecosystem [style*="display: grid"]>div:nth-child(4) {
+         order: 2;
+         margin-top: 10px !important;
+     }
+ 
+-    /* Infra Card 1 */
+-    #ecosystem [style*="display: grid"]>div:nth-child(8) {
++    /* Infra Card 2 (DevOps) */
++    #ecosystem [style*="display: grid"]>div:nth-child(5) {
+         order: 3;
+-        margin-bottom: 20px !important;
++        margin-top: 10px !important;
+     }
+ 
+-    /* Infra Stack 1 */
+-    #ecosystem [style*="display: grid"]>div:nth-child(5) {
++    /* Infra Stack 1 (Security Stack) */
++    #ecosystem [style*="display: grid"]>div:nth-child(8) {
+         order: 4;
++        margin-bottom: 20px !important;
+     }
+ 
+-    /* Infra Card 2 */
++    /* Infra Stack 2 (DevOps Stack) */
+     #ecosystem [style*="display: grid"]>div:nth-child(9) {
+         order: 5;
+         margin-bottom: 40px !important;
+     }
+ 
+-    /* Infra Stack 2 */
+-
++    /* AI Header */
+     #ecosystem [style*="display: grid"]>div:nth-child(3) {
+         order: 6;
+         padding-top: 20px !important;
+         border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+     }
+ 
+-    /* AI Header */
++    /* AI Card (Center single card in row) */
+     #ecosystem [style*="display: grid"]>div:nth-child(7) {
+         order: 7;
+-        margin-top: 10px !important;
++        margin-top: 20px !important;
++        margin-bottom: 20px !important;
++        grid-column: 1 / -1 !important;
++        justify-self: center !important;
++        width: calc(50% - 6px) !important;
++        min-width: 250px !important;
+     }
+ 
+-    /* AI Card */
++    /* AI Stack */
+     #ecosystem [style*="display: grid"]>div:nth-child(11) {
+         order: 8;
+     }
+@@ -514,17 +519,35 @@ video {
+         overflow: hidden !important;
+     }
+ 
+-    /* Shrink image container so 2-column cards aren't too tall */
+     .product-card .product-image-container {
+         height: 110px !important;
+         min-height: unset !important;
+         flex-shrink: 0 !important;
++        overflow: hidden !important;
+     }
+ 
+     .product-card .product-image-container img {
+         height: 100% !important;
+         width: 100% !important;
+         object-fit: cover !important;
++        object-position: center top !important;
++    }
++
++    /* White-bg logo cards (ecosystem/addons): use contain so logos aren't clipped */
++    .product-card .product-image-container.white-bg-image {
++        height: 130px !important;
++        background: #fff !important;
++        display: flex !important;
++        align-items: center !important;
++        justify-content: center !important;
++    }
++
++    .product-card .product-image-container.white-bg-image img {
++        object-fit: contain !important;
++        object-position: center !important;
++        padding: 12px !important;
++        height: 100% !important;
++        width: 100% !important;
+     }
+ 
+     .product-content {
+@@ -711,6 +734,51 @@ video {
+         width: 48% !important;
+     }
+ 
++    /* ---- PRODUCTS.HTML ECOSYSTEM: 2-column grid matching home.html ---- */
++    #ecosystem [style*="display: grid"] {
++        display: grid !important;
++        grid-template-columns: repeat(2, 1fr) !important;
++        gap: 12px !important;
++        padding: 0 var(--mobile-padding) !important;
++    }
++
++    /* Cards: override inline min-height and padding to match home.html compact style */
++    #ecosystem .product-card {
++        min-height: 0 !important;
++        width: 100% !important;
++    }
++
++    #ecosystem .product-card .product-content {
++        padding: 8px !important;
++    }
++
++    /* Image container for ecosystem cards: taller to fit contain logos */
++    #ecosystem .product-card .product-image-container {
++        height: 130px !important;
++        min-height: unset !important;
++    }
++
++    /* Override inline img padding that causes clipping */
++    #ecosystem .product-card .product-image-container img {
++        padding: 10px !important;
++        object-fit: contain !important;
++        object-position: center !important;
++    }
++
++    /* Headers spanning above cards: collapse to single column row */
++    #ecosystem [style*="grid-column: 1 / span 2"],
++    #ecosystem [style*="grid-column: 4"] {
++        grid-column: 1 / -1 !important;
++    }
++
++    /* Stack labels / tech stacks: allow natural grid column placement to sit under cards */
++
++    /* Hide spacer columns on mobile */
++    #ecosystem [style*="grid-column: 1"] ~ div:empty,
++    #ecosystem > .container > div > div:empty {
++        display: none !important;
++    }
++
+     /* Tech logos inside grids: span full width below cards */
+     .showcase-grid .tech-logos-section,
+     .addons-showcase .tech-logos-section {
+@@ -841,6 +909,23 @@ video {
+         width: 40px !important;
+     }
+ 
++    /* ---- FOOTER BIG BRAND TEXT: fill full mobile screen ---- */
++    .big-brand-text {
++        font-size: 20vw !important; /* CONTROL fits fully including trailing L */
++        margin: 0 0 20px !important;
++        line-height: 0.85 !important;
++        letter-spacing: -0.07em !important;
++        width: 100vw !important;
++        margin-left: calc(-50vw + 50%) !important;
++        overflow: hidden !important;
++        padding: 0 !important;
++    }
++
++    /* Collapse the gradient div's huge padding above brand text */
++    .footer > div[style*="padding: 150px"] {
++        padding-bottom: 30px !important;
++    }
++
+ }
+ 
+ /* =============================================

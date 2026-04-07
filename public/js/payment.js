@@ -60,7 +60,7 @@ function renderOrderSummary(data) {
 // Handle Stripe checkout
 async function handlePayment() {
     const payBtn = document.getElementById('payBtn');
-    const btnText = payBtn.querySelector('.payment-btn-text');
+    const btnText = payBtn.querySelector('.payment-btn-text') || payBtn;
     const btnLoading = payBtn.querySelector('.payment-btn-loading');
 
     const token = getToken();
@@ -76,17 +76,30 @@ async function handlePayment() {
         return;
     }
 
+    // Retrieve customer requirements from step 1
+    const customerRequirementsRaw = localStorage.getItem('customerRequirements');
+    let customerRequirements = {};
+    if (customerRequirementsRaw) {
+        try {
+            customerRequirements = JSON.parse(customerRequirementsRaw);
+        } catch (e) {
+            console.error("Failed to parse customer requirements", e);
+        }
+    }
+
+    // Calculate total price
+    let total = 0;
+    data.items.forEach(item => {
+        total += (item.price || 0) * (item.quantity || 1);
+    });
+
     // Show loading state
     payBtn.disabled = true;
-    btnText.style.display = 'none';
-    btnLoading.style.display = 'inline';
+    if (btnText !== payBtn) btnText.style.display = 'none';
+    if (btnLoading) btnLoading.style.display = 'inline';
 
     try {
-        // Get selected payment method
-        const paymentMethodEl = document.querySelector('input[name="paymentMethod"]:checked');
-        const paymentMethod = paymentMethodEl ? paymentMethodEl.value : 'card';
-
-        const response = await fetch(`${API_URL}/payments/create-checkout-session`, {
+        const response = await fetch(`${API_URL}/orders/submit_request`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,75 +107,58 @@ async function handlePayment() {
             },
             body: JSON.stringify({
                 items: data.items,
-                orderId: data.orderId || null,
-                paymentMethod: paymentMethod // Send the selected method
+                estimated_total: total,
+                customer_requirements: customerRequirements
             }),
         });
 
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.error || 'Payment failed');
+            throw new Error(result.error || 'Order submission failed');
         }
 
-        // Redirect to Stripe Checkout
-        if (result.url) {
-            window.location.href = result.url;
-        } else {
-            throw new Error('No checkout URL returned');
-        }
+        // Show Success directly
+        handleOrderSuccess(total, customerRequirements.email);
+
     } catch (err) {
-        console.error('Payment error:', err);
-        window.showNotification?.(err.message || window.i18n.t('pay_failed'), 'error');
+        console.error('Order error:', err);
+        window.showNotification?.(err.message || 'Failed to submit order request', 'error');
 
         // Reset button
         payBtn.disabled = false;
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
+        if (btnText !== payBtn) btnText.style.display = 'inline';
+        if (btnLoading) btnLoading.style.display = 'none';
     }
 }
 
 // Handle success return
-async function handleSuccessReturn(sessionId) {
+// Handle success UI transition without Stripe redirects
+function handleOrderSuccess(totalAmount, customerEmail) {
     document.getElementById('paymentCheckout').style.display = 'none';
     document.getElementById('paymentSuccess').style.display = 'block';
 
     const detailsEl = document.getElementById('successDetails');
 
-    const token = getToken();
-    if (!token || !sessionId) {
-        detailsEl.innerHTML = `<p>${window.i18n.t('pay_confirmed')}</p>`;
-        return;
-    }
+    const amount = totalAmount.toLocaleString();
+    detailsEl.innerHTML = `
+        <div class="payment-receipt">
+            <div class="payment-receipt-row">
+                <span>Estimated Total</span>
+                <span class="gradient-text price-font" style="font-size: 1.5rem;">$${amount}</span>
+            </div>
+            ${customerEmail ? `
+            <div class="payment-receipt-row">
+                <span>Confirmation Sent To</span>
+                <span>${customerEmail}</span>
+            </div>` : ''}
+        </div>
+    `;
 
-    try {
-        const res = await fetch(`${API_URL}/payments/session/${sessionId}`, {
-            headers: { 'Authorization': `Bearer ${token}` },
-        });
-        const session = await res.json();
-
-        if (session.status === 'paid') {
-            const amount = (session.amountTotal / 100).toLocaleString();
-            detailsEl.innerHTML = `
-                <div class="payment-receipt">
-                    <div class="payment-receipt-row">
-                        <span>${window.i18n.t('pay_receipt_amount')}</span>
-                        <span class="gradient-text price-font" style="font-size: 1.5rem;">$${amount}</span>
-                    </div>
-                    ${session.customerEmail ? `
-                    <div class="payment-receipt-row">
-                        <span>${window.i18n.t('pay_receipt_conf')}</span>
-                        <span>${session.customerEmail}</span>
-                    </div>` : ''}
-                </div>
-            `;
-        }
-    } catch (err) {
-        console.error('Error fetching session:', err);
-    }
-
-    // Clear payment data from localStorage
+    // Clear payment and requirement data from localStorage
     localStorage.removeItem('webocontrol_payment_data');
+    localStorage.removeItem('webocontrol_cart');
+    localStorage.removeItem('customerRequirements');
 }
 
 // Handle cancel return
@@ -245,7 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sessionId = params.get('session_id');
 
     if (status === 'success' && sessionId) {
-        handleSuccessReturn(sessionId);
+        // Redundant since we don't redirect anymore, but kept for legacy/safety.
+        // handleOrderSuccess(0, '');
     } else if (status === 'cancelled') {
         handleCancelReturn();
     } else {
