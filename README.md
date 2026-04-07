@@ -63,8 +63,8 @@ graph TD
 
 - **🔐 Secure Authentication**: JWT-based login and registration system with hashed passwords.
 - **🛒 Dynamic Order System**: Clients can request custom software with detailed specifications.
-- **💳 Integrated Payments**: Secure checkout flow via Stripe.
-- **📊 User Dashboard**: Personalized view for users to track orders and status.
+- **💳 Integrated Payments**: Secure checkout flow via Paypal and Visa.
+- **📊 Client / Admin Dashboard**: Personalized view for users to track orders and status.
 - **💬 Review System**: Integrated feedback loop for clients.
 - **📱 Responsive Design**: Fully optimized for mobile, tablet, and desktop.
 - **🤖 Advanced AI Agents**: Autonomous, startup-focused agents for workflow automation (Price: $500).
