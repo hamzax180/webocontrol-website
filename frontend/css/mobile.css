@@ -543,6 +543,7 @@ video {
         display: -webkit-box !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
+        margin-bottom: 0 !important;
     }
 
     .product-footer {
@@ -550,21 +551,26 @@ video {
         flex-direction: column !important;
         align-items: stretch !important;
         gap: 6px !important;
-        margin-top: 8px !important;
+        margin-top: 6px !important;
+        padding-top: 8px !important;
+        border-top: 1px solid rgba(0,0,0,0.05) !important;
     }
 
     .product-price {
         display: flex !important;
         align-items: center !important;
-        gap: 6px !important;
+        gap: 4px !important;
     }
 
     .product-footer .btn-sm {
+        flex: unset !important;
         width: 100% !important;
         text-align: center !important;
         margin-left: 0 !important;
         font-size: 0.72rem !important;
-        padding: 7px 6px !important;
+        padding: 8px 6px !important;
+        min-height: unset !important;
+        height: auto !important;
     }
 
     #products {
