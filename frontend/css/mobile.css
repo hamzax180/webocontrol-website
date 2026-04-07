@@ -546,15 +546,25 @@ video {
     }
 
     .product-footer {
-        flex-wrap: wrap !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
         gap: 6px !important;
         margin-top: 8px !important;
     }
 
+    .product-price {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+
     .product-footer .btn-sm {
-        margin-left: auto !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-left: 0 !important;
         font-size: 0.72rem !important;
-        padding: 7px 10px !important;
+        padding: 7px 6px !important;
     }
 
     #products {
@@ -617,14 +627,14 @@ video {
     }
 
     .price-value {
-        font-size: 2rem !important;
+        font-size: 1.1rem !important;
         font-weight: 900 !important;
         display: block !important;
     }
 
     .btn-sm {
-        padding: 10px 20px !important;
-        font-size: 0.85rem !important;
+        padding: 8px 14px !important;
+        font-size: 0.78rem !important;
     }
 
     /* ---- TECH LOGOS GRIDS ---- */
