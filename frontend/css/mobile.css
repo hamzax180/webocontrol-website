@@ -419,7 +419,16 @@ video {
 
     /* ---- PRODUCT CARDS (Showcase grid) ---- */
     .showcase-grid,
-    .addons-showcase,
+    .addons-showcase {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 var(--mobile-padding) !important;
+        flex-direction: unset !important;
+    }
+
     #ecosystem [style*="display: grid"] {
         grid-template-columns: 1fr !important;
         gap: 24px !important;
@@ -494,23 +503,58 @@ video {
         margin: 0 !important;
         background: #fff !important;
         border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
+        min-height: unset !important;
+    }
+
+    /* Shrink image container so 2-column cards aren't too tall */
+    .product-card .product-image-container {
+        height: 140px !important;
+        min-height: unset !important;
+    }
+
+    .product-card .product-image-container img {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
     }
 
     .product-content {
-        padding: 16px !important;
+        padding: 10px !important;
+    }
+
+    .product-category {
+        font-size: 0.6rem !important;
+    }
+
+    .product-title {
+        font-size: 0.85rem !important;
+        margin-bottom: 4px !important;
+    }
+
+    .product-desc {
+        font-size: 0.72rem !important;
+        line-height: 1.4 !important;
+        -webkit-line-clamp: 3 !important;
+        line-clamp: 3 !important;
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
     }
 
     .product-footer {
         flex-wrap: wrap !important;
-        gap: 12px !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
     }
 
     .product-footer .btn-sm {
         margin-left: auto !important;
+        font-size: 0.72rem !important;
+        padding: 7px 10px !important;
     }
 
     #products {
@@ -619,9 +663,14 @@ video {
 
     /* ---- AI ENGINE SECTION ---- */
     #ai-engine .showcase-grid,
-    [style*="display: flex"][style*="flex-direction: column"] .product-card {
+    #ai-engine .showcase-grid .product-card {
         max-width: 100% !important;
         width: 100% !important;
+    }
+
+    /* Single AI card: spans both columns */
+    #ai-engine .showcase-grid {
+        grid-template-columns: 1fr !important;
     }
 
     /* ---- FOOTER ROTATING TEXT ---- */
