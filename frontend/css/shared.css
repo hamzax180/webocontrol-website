@@ -1736,11 +1736,14 @@ body.lang-ar .section-subtitle {
   border-top: none;
 }
 
-body.is-home .footer,
-body.auth-body .footer {
+body.is-home .footer {
   background: #000;
   border-top: none;
-  /* Removed the 1px white line */
+}
+
+body.auth-body .footer {
+  background: transparent;
+  border-top: none;
 }
 
 .footer-background-vid {
