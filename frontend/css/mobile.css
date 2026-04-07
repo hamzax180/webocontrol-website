@@ -629,7 +629,12 @@ video {
     /* Add bigger gap to nicely distribute logos */
     .tech-logos-grid,
     [id*="Logos"] {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
         gap: 20px !important;
+        padding: 0 var(--mobile-padding) !important;
     }
 
     /* Pricing */
@@ -658,16 +663,7 @@ video {
         font-size: 0.78rem !important;
     }
 
-    /* ---- TECH LOGOS GRIDS ---- */
-    .tech-logos-grid,
-    #homeAiLogos,
-    #homeInfraLogos {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 20px !important;
-        padding: 0 var(--mobile-padding) !important;
-        width: 100% !important;
-        justify-content: center !important;
-    }
+    /* ---- TECH LOGOS GRIDS - Flexbox override previously defined above ---- */
 
     /* ---- SCALING SECTION ---- */
     .scaling-grid {
