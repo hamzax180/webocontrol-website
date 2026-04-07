@@ -908,14 +908,16 @@ video {
         width: 40px !important;
     }
 
-    /* ---- FOOTER BIG BRAND TEXT: fill full width ---- */
+    /* ---- FOOTER BIG BRAND TEXT: fill full mobile screen ---- */
     .big-brand-text {
-        font-size: 27vw !important; /* CONTROL (7 chars) fills entire mobile screen width */
-        margin: 20px 0 30px !important;
+        font-size: 25vw !important; /* CONTROL fills edge-to-edge */
+        margin: 10px 0 20px !important;
         line-height: 0.85 !important;
-        letter-spacing: -0.04em !important;
-        width: 100% !important;
+        letter-spacing: -0.06em !important;
+        width: 100vw !important; /* Break out of container */
+        margin-left: calc(-50vw + 50%) !important; /* Center full-bleed */
         overflow: hidden !important;
+        padding: 0 !important;
     }
 
 }
