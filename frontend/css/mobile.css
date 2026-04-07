@@ -706,6 +706,7 @@ video {
         grid-column: 1 / -1 !important;
         width: 100% !important;
         flex-basis: 100% !important;
+        margin-top: 30px !important; /* Fix overlapping caused by inline -40px margin */
     }
 
     /* ---- FOOTER ROTATING TEXT ---- */
