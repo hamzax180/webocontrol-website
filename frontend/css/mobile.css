@@ -455,24 +455,25 @@ video {
         order: 1;
     }
 
-    /* Infra Header */
+    /* Infra Card 1 (Security) */
     #ecosystem [style*="display: grid"]>div:nth-child(4) {
         order: 2;
         margin-top: 10px !important;
     }
 
-    /* Infra Card 1 */
-    #ecosystem [style*="display: grid"]>div:nth-child(8) {
+    /* Infra Card 2 (DevOps) */
+    #ecosystem [style*="display: grid"]>div:nth-child(5) {
         order: 3;
+        margin-top: 10px !important;
+    }
+
+    /* Infra Stack 1 (Security Stack) */
+    #ecosystem [style*="display: grid"]>div:nth-child(8) {
+        order: 4;
         margin-bottom: 20px !important;
     }
 
-    /* Infra Stack 1 */
-    #ecosystem [style*="display: grid"]>div:nth-child(5) {
-        order: 4;
-    }
-
-    /* Infra Card 2 */
+    /* Infra Stack 2 (DevOps Stack) */
     #ecosystem [style*="display: grid"]>div:nth-child(9) {
         order: 5;
         margin-bottom: 40px !important;
@@ -766,11 +767,7 @@ video {
         grid-column: 1 / -1 !important;
     }
 
-    /* Stack labels / tech stacks below cards: full width */
-    #ecosystem [style*="grid-column: 1"],
-    #ecosystem [style*="grid-column: 2"] {
-        grid-column: 1 / -1 !important;
-    }
+    /* Stack labels / tech stacks: allow natural grid column placement to sit under cards */
 
     /* Hide spacer columns on mobile */
     #ecosystem [style*="grid-column: 1"] ~ div:empty,
