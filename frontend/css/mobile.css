@@ -684,11 +684,6 @@ video {
         width: 100% !important;
     }
 
-    /* Single AI card: spans both columns */
-    #ai-engine .showcase-grid {
-        grid-template-columns: 1fr !important;
-    }
-
     /* ---- FOOTER ROTATING TEXT ---- */
     footer .container [style*="width: 100vw"],
     footer [style*="width: 100vw"] {
