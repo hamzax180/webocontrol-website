@@ -514,17 +514,35 @@ video {
         overflow: hidden !important;
     }
 
-    /* Shrink image container so 2-column cards aren't too tall */
     .product-card .product-image-container {
         height: 110px !important;
         min-height: unset !important;
         flex-shrink: 0 !important;
+        overflow: hidden !important;
     }
 
     .product-card .product-image-container img {
         height: 100% !important;
         width: 100% !important;
         object-fit: cover !important;
+        object-position: center top !important;
+    }
+
+    /* White-bg logo cards (ecosystem/addons): use contain so logos aren't clipped */
+    .product-card .product-image-container.white-bg-image {
+        height: 130px !important;
+        background: #fff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .product-card .product-image-container.white-bg-image img {
+        object-fit: contain !important;
+        object-position: center !important;
+        padding: 12px !important;
+        height: 100% !important;
+        width: 100% !important;
     }
 
     .product-content {
@@ -729,10 +747,17 @@ video {
         padding: 8px !important;
     }
 
-    /* Image container: match home.html height */
+    /* Image container for ecosystem cards: taller to fit contain logos */
     #ecosystem .product-card .product-image-container {
-        height: 110px !important;
+        height: 130px !important;
         min-height: unset !important;
+    }
+
+    /* Override inline img padding that causes clipping */
+    #ecosystem .product-card .product-image-container img {
+        padding: 10px !important;
+        object-fit: contain !important;
+        object-position: center !important;
     }
 
     /* Headers spanning above cards: collapse to single column row */
