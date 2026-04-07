@@ -910,7 +910,7 @@ video {
 
     /* ---- FOOTER BIG BRAND TEXT: fill full mobile screen ---- */
     .big-brand-text {
-        font-size: 22vw !important; /* CONTROL fits edge-to-edge */
+        font-size: 20vw !important; /* CONTROL fits fully including trailing L */
         margin: 0 0 20px !important;
         line-height: 0.85 !important;
         letter-spacing: -0.07em !important;
