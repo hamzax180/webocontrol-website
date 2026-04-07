@@ -507,16 +507,18 @@ video {
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
-        min-height: 320px !important; /* Adjusted height to fit 3 lines of text perfectly */
+        min-height: 0 !important; /* Let content decide height */
         height: 100% !important; /* Ensure all cards in row are same height */
         display: flex !important;
         flex-direction: column !important;
+        overflow: hidden !important;
     }
 
     /* Shrink image container so 2-column cards aren't too tall */
     .product-card .product-image-container {
-        height: 140px !important;
+        height: 110px !important;
         min-height: unset !important;
+        flex-shrink: 0 !important;
     }
 
     .product-card .product-image-container img {
@@ -526,30 +528,34 @@ video {
     }
 
     .product-content {
-        padding: 10px !important;
+        padding: 8px !important;
         display: flex !important;
         flex-direction: column !important;
         flex-grow: 1 !important;
+        min-height: 0 !important;
     }
 
     .product-category {
-        font-size: 0.6rem !important;
+        font-size: 0.55rem !important;
+        margin-bottom: 2px !important;
     }
 
     .product-title {
-        font-size: 0.85rem !important;
-        margin-bottom: 4px !important;
+        font-size: 0.78rem !important;
+        margin-bottom: 3px !important;
+        line-height: 1.2 !important;
     }
 
     .product-desc {
-        font-size: 0.72rem !important;
-        line-height: 1.4 !important;
-        -webkit-line-clamp: 3 !important;
-        line-clamp: 3 !important;
+        font-size: 0.65rem !important;
+        line-height: 1.35 !important;
+        -webkit-line-clamp: 4 !important;
+        line-clamp: 4 !important;
         display: -webkit-box !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
         margin-bottom: 0 !important;
+        flex-shrink: 1 !important;
     }
 
     .product-footer {
@@ -559,8 +565,10 @@ video {
         justify-content: space-between !important;
         gap: 4px !important;
         margin-top: auto !important; /* Push footer to bottom */
-        padding-top: 8px !important;
+        padding-top: 6px !important;
+        padding-bottom: 2px !important;
         border-top: 1px solid rgba(0,0,0,0.05) !important;
+        flex-shrink: 0 !important; /* Never compress the footer */
     }
 
     .product-price {
@@ -569,21 +577,23 @@ video {
         align-items: flex-start !important;
         justify-content: center !important;
         gap: 0px !important;
+        flex-shrink: 0 !important;
     }
 
     .product-footer .btn-sm {
-        flex: unset !important;
+        flex: 0 0 auto !important;
         width: auto !important;
-        max-width: 55% !important; /* Ensure it leaves room for price */
+        max-width: 58% !important;
         text-align: center !important;
         margin-left: auto !important;
-        font-size: 0.55rem !important;
-        padding: 4px 6px !important;
+        font-size: 0.58rem !important;
+        padding: 5px 7px !important;
         min-height: unset !important;
         height: auto !important;
-        white-space: normal !important; /* Allow text wrapping */
+        white-space: normal !important;
         line-height: 1.2 !important;
         letter-spacing: 0 !important;
+        word-break: break-word !important;
     }
 
     #products {
@@ -609,7 +619,8 @@ video {
 
     #aiTechLogos,
     #infraTechLogos {
-        margin-top: -25px !important;
+        margin-top: 10px !important;
+        padding-top: 10px !important;
     }
 
     .tech-logos-title {
