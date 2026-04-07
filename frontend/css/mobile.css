@@ -559,20 +559,25 @@ video {
 
     .product-price {
         display: flex !important;
-        align-items: center !important;
-        gap: 3px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        gap: 0px !important;
     }
 
     .product-footer .btn-sm {
         flex: unset !important;
         width: auto !important;
+        max-width: 55% !important; /* Ensure it leaves room for price */
         text-align: center !important;
         margin-left: auto !important;
-        font-size: 0.6rem !important;
-        padding: 5px 8px !important;
+        font-size: 0.55rem !important;
+        padding: 4px 6px !important;
         min-height: unset !important;
         height: auto !important;
-        white-space: nowrap !important;
+        white-space: normal !important; /* Allow text wrapping */
+        line-height: 1.2 !important;
+        letter-spacing: 0 !important;
     }
 
     #products {
@@ -623,10 +628,11 @@ video {
 
     /* Pricing */
     .price-label {
-        font-size: 0.75rem !important;
+        font-size: 0.5rem !important;
+        letter-spacing: 0px !important;
         white-space: nowrap !important;
-        display: inline-block !important;
-        margin-bottom: 4px !important;
+        display: block !important;
+        margin-bottom: -3px !important;
         opacity: 0.8 !important;
     }
 
@@ -635,9 +641,10 @@ video {
     }
 
     .price-value {
-        font-size: 1.1rem !important;
+        font-size: 0.95rem !important;
         font-weight: 900 !important;
         display: block !important;
+        line-height: 1 !important;
     }
 
     .btn-sm {
