@@ -910,14 +910,19 @@ video {
 
     /* ---- FOOTER BIG BRAND TEXT: fill full mobile screen ---- */
     .big-brand-text {
-        font-size: 25vw !important; /* CONTROL fills edge-to-edge */
-        margin: 10px 0 20px !important;
+        font-size: 22vw !important; /* CONTROL fits edge-to-edge */
+        margin: 0 0 20px !important;
         line-height: 0.85 !important;
-        letter-spacing: -0.06em !important;
-        width: 100vw !important; /* Break out of container */
-        margin-left: calc(-50vw + 50%) !important; /* Center full-bleed */
+        letter-spacing: -0.07em !important;
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
         overflow: hidden !important;
         padding: 0 !important;
+    }
+
+    /* Collapse the gradient div's huge padding above brand text */
+    .footer > div[style*="padding: 150px"] {
+        padding-bottom: 30px !important;
     }
 
 }
