@@ -512,6 +512,7 @@ video {
     #ecosystem [style*="display: grid"] {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
+        grid-auto-rows: 1fr !important; /* Forces all cards in the grid to be the exact same height */
         gap: 16px !important;
         max-width: 100% !important;
         margin: 0 auto !important;
@@ -609,8 +610,8 @@ video {
         flex-direction: column !important;
         overflow: hidden !important;
         transform: none !important;
-        align-self: stretch !important; /* Force stretch to row height */
-        height: auto !important; /* Let grid control height via stretch */
+        align-self: stretch !important;
+        height: 100% !important; /* Fill the grid cell height perfectly */
     }
     
     /* Disable hover transforms on mobile so cards stick like a wall without glitching on tap/scroll */
@@ -839,14 +840,16 @@ video {
 
     /* ---- AI ENGINE SECTION ---- */
     #ai-engine .showcase-grid {
-        display: flex !important;
-        justify-content: center !important;
-        flex-wrap: wrap !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-auto-rows: 1fr !important;
         gap: 16px !important;
         width: 100% !important;
+        justify-items: center !important;
     }
 
     #ai-engine .showcase-grid .product-card {
+        grid-column: 1 / -1 !important;
         max-width: calc(50% - 8px) !important;
         width: calc(50% - 8px) !important;
         margin: 0 auto !important;
