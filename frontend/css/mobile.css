@@ -15,6 +15,24 @@ body {
     max-width: 100vw !important;
 }
 
+/* Custom Red Scrollbar for Mobile */
+* {
+    scrollbar-width: thin !important;
+    scrollbar-color: #ff3b3b rgba(0, 0, 0, 0.1) !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1) !important;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ff3b3b !important;
+    border-radius: 10px !important;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -490,17 +508,7 @@ video {
 
     /* ---- PRODUCT CARDS (Showcase grid) ---- */
     .showcase-grid,
-    .addons-showcase {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 16px !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
-        padding: 0 var(--mobile-padding) !important;
-        flex-direction: unset !important;
-    }
-
-    /* ---- PRODUCTS.HTML ECOSYSTEM: Precise Grid Layout ---- */
+    .addons-showcase,
     #ecosystem [style*="display: grid"] {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
@@ -508,9 +516,13 @@ video {
         max-width: 100% !important;
         margin: 0 auto !important;
         padding: 0 var(--mobile-padding) !important;
+        align-items: stretch !important; /* Crucial for matching card heights */
     }
 
+    /* Target specifically the children of ecosystem grid to ensure they remain grid items */
     #ecosystem [style*="display: grid"] > div {
+        display: flex !important;
+        flex-direction: column !important;
         width: 100% !important;
         margin-top: 0 !important;
     }
@@ -592,12 +604,13 @@ video {
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
-        min-height: 0 !important; /* Let content decide height */
-        height: 100% !important; /* Ensure all cards in row are same height */
+        min-height: 0 !important;
+        height: 100% !important; /* Fill the grid cell height */
         display: flex !important;
         flex-direction: column !important;
         overflow: hidden !important;
         transform: none !important;
+        flex: 1 1 auto !important;
     }
     
     /* Disable hover transforms on mobile so cards stick like a wall without glitching on tap/scroll */
@@ -655,7 +668,8 @@ video {
         padding: 8px !important;
         display: flex !important;
         flex-direction: column !important;
-        flex-grow: 1 !important;
+        flex-grow: 1 !important; /* Expand to fill remaining card height */
+        justify-content: space-between !important; /* Ensure footer stays at bottom */
         min-height: 0 !important;
     }
 
@@ -829,11 +843,13 @@ video {
         justify-content: center !important;
         flex-wrap: wrap !important;
         gap: 16px !important;
+        width: 100% !important;
     }
 
     #ai-engine .showcase-grid .product-card {
         max-width: calc(50% - 8px) !important;
         width: calc(50% - 8px) !important;
+        margin: 0 auto !important;
     }
 
     /* ---- PRODUCTS.HTML ECOSYSTEM ---- */
