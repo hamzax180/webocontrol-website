@@ -350,10 +350,66 @@ video {
         max-width: 90% !important;
     }
 
-    /* Scroll indicator */
+    /* Scroll indicator — premium mobile design */
     .scroll-indicator {
         display: flex !important;
-        bottom: 20px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        bottom: 28px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        gap: 8px !important;
+        background: rgba(255, 255, 255, 0.07) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        border: 1px solid rgba(255, 60, 60, 0.35) !important;
+        border-radius: 50px !important;
+        padding: 10px 22px !important;
+        box-shadow:
+            0 0 18px rgba(255, 0, 0, 0.2),
+            inset 0 0 10px rgba(255, 255, 255, 0.03) !important;
+        animation: scrollPillPulse 2.8s ease-in-out infinite !important;
+        cursor: pointer !important;
+    }
+
+    .scroll-indicator .scroll-text {
+        font-size: 0.62rem !important;
+        letter-spacing: 3px !important;
+        font-weight: 700 !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        text-transform: uppercase !important;
+        text-shadow: 0 0 8px rgba(255, 80, 80, 0.5) !important;
+    }
+
+    .scroll-indicator .scroll-arrow {
+        font-size: 1.4rem !important;
+        animation: bounceDownMobile 1.4s ease-in-out infinite !important;
+        color: #ff3b3b !important;
+        text-shadow:
+            0 0 8px rgba(255, 0, 0, 1),
+            0 0 20px rgba(255, 0, 0, 0.7) !important;
+        line-height: 1 !important;
+    }
+
+    @keyframes scrollPillPulse {
+        0%, 100% {
+            box-shadow:
+                0 0 14px rgba(255, 0, 0, 0.18),
+                inset 0 0 8px rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 60, 60, 0.35);
+        }
+        50% {
+            box-shadow:
+                0 0 28px rgba(255, 0, 0, 0.38),
+                inset 0 0 12px rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 80, 80, 0.6);
+        }
+    }
+
+    @keyframes bounceDownMobile {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(6px); }
     }
 
     /* ---- ROTATING TEXT ANIMATION SECTION ---- */
