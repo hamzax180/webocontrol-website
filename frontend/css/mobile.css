@@ -597,6 +597,27 @@ video {
         display: flex !important;
         flex-direction: column !important;
         overflow: hidden !important;
+        transform: none !important;
+    }
+    
+    /* Disable hover transforms on mobile so cards stick like a wall without glitching on tap/scroll */
+    .product-card:hover, .product-card:active {
+        transform: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    .product-card:hover .product-image-container img {
+        transform: none !important;
+    }
+    .product-card:hover .preview-zoom-btn {
+        display: none !important;
+        opacity: 0 !important;
+    }
+    
+    /* Disable tech logo hover animations on mobile */
+    .tech-logo-item:active, .tech-logo-item:hover {
+        transform: none !important;
+        filter: none !important;
     }
 
     .product-card .product-image-container {
