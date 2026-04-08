@@ -605,12 +605,12 @@ video {
         max-width: 100% !important;
         min-width: 0 !important;
         min-height: 0 !important;
-        height: 100% !important; /* Fill the grid cell height */
         display: flex !important;
         flex-direction: column !important;
         overflow: hidden !important;
         transform: none !important;
-        flex: 1 1 auto !important;
+        align-self: stretch !important; /* Force stretch to row height */
+        height: auto !important; /* Let grid control height via stretch */
     }
     
     /* Disable hover transforms on mobile so cards stick like a wall without glitching on tap/scroll */
@@ -668,8 +668,8 @@ video {
         padding: 8px !important;
         display: flex !important;
         flex-direction: column !important;
-        flex-grow: 1 !important; /* Expand to fill remaining card height */
-        justify-content: space-between !important; /* Ensure footer stays at bottom */
+        flex: 1 0 auto !important; /* Grow to fill card, don't shrink */
+        justify-content: space-between !important;
         min-height: 0 !important;
     }
 
