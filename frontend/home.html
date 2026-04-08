@@ -16,19 +16,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script id="autoplay-emergency-fix">
-    (function() {
-      var kick = function() {
-        document.querySelectorAll('video').forEach(function(v) {
+    (function () {
+      var kick = function () {
+        document.querySelectorAll('video').forEach(function (v) {
           v.muted = true;
           v.setAttribute('muted', '');
           v.setAttribute('playsinline', '');
           v.setAttribute('webkit-playsinline', '');
-          if (v.paused) v.play().catch(function(){});
+          if (v.paused) v.play().catch(function () { });
         });
       };
       window.addEventListener('load', kick);
-      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
-        window.addEventListener(e, kick, {passive: true});
+      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function (e) {
+        window.addEventListener(e, kick, { passive: true });
       });
       setInterval(kick, 300);
     })();
@@ -51,7 +51,8 @@
         <li class="mobile-search-item">
           <div class="search-wrapper mobile-menu-search">
 
-            <input type="text" class="search-input" id="productSearchMobile" data-i18n-placeholder="search_placeholder" placeholder="Search services...">
+            <input type="text" class="search-input" id="productSearchMobile" data-i18n-placeholder="search_placeholder"
+              placeholder="Search services...">
             <div class="search-suggestions" id="searchSuggestionsMobile"></div>
           </div>
         </li>
@@ -66,7 +67,8 @@
         <div class="nav-search-navbar">
           <div class="search-wrapper navbar-search">
 
-            <input type="text" class="search-input" id="productSearchNav" data-i18n-placeholder="search_placeholder" placeholder="Search services...">
+            <input type="text" class="search-input" id="productSearchNav" data-i18n-placeholder="search_placeholder"
+              placeholder="Search services...">
             <div class="search-suggestions" id="searchSuggestions"></div>
           </div>
         </div>
@@ -105,7 +107,8 @@
     <div class="hero-glow hero-glow-3"></div>
 
     <div class="hero-background-coin">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" class="coin-vid" poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <video autoplay loop muted playsinline webkit-playsinline preload="auto" class="coin-vid"
+        poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
         <source src="/home-bg-v2.mp4" type="video/mp4" />
       </video>
     </div>
@@ -141,123 +144,98 @@
     <div class="rotating-text-columns"
       style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: center; width: 100%; position: relative; left: 0; transform: none; padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px; direction: ltr;">
 
-        <!-- Column 1 -->
-        <div
-          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-          <div class="rotating-text-wrapper"
-            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1);">
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Vue.js</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Terraform</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >SQL</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Linux</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Vue.js</span>
-          </div>
+      <!-- Column 1 -->
+      <div
+        style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+        <div class="rotating-text-wrapper"
+          style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1);">
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vue.js</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Terraform</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">SQL</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Linux</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vue.js</span>
         </div>
+      </div>
 
-        <!-- Column 2 -->
-        <div
-          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-          <div class="rotating-text-wrapper"
-            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.1s;">
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >React</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Docker</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Terraform</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Next.js</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >React</span>
-          </div>
-
-        </div>
-
-        <!-- Column 3 -->
-        <div
-          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-          <div class="rotating-text-wrapper"
-            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.2s;">
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Node.js</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >JavaScript</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Kubernetes</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Postgres</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Node.js</span>
-          </div>
-        </div>
-
-        <!-- Column 4 -->
-        <div
-          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-          <div class="rotating-text-wrapper"
-            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.3s;">
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Python</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Golang</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >AWS</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Rust</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Python</span>
-          </div>
-        </div>
-
-        <!-- Column 5 -->
-        <div
-          style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-          <div class="rotating-text-wrapper"
-            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.4s;">
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Vite.js</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >MongoDB</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >MySQL</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Redis</span>
-            <span
-              style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-              >Vite.js</span>
-          </div>
+      <!-- Column 2 -->
+      <div
+        style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+        <div class="rotating-text-wrapper"
+          style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.1s;">
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">React</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Docker</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Terraform</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Next.js</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">React</span>
         </div>
 
       </div>
+
+      <!-- Column 3 -->
+      <div
+        style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+        <div class="rotating-text-wrapper"
+          style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.2s;">
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Node.js</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">JavaScript</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Kubernetes</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Postgres</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Node.js</span>
+        </div>
+      </div>
+
+      <!-- Column 4 -->
+      <div
+        style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+        <div class="rotating-text-wrapper"
+          style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.3s;">
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Python</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Golang</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">AWS</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Rust</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Python</span>
+        </div>
+      </div>
+
+      <!-- Column 5 -->
+      <div
+        style="position: relative; height: 1.2em; flex: 1; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+        <div class="rotating-text-wrapper"
+          style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.2em; animation: rotateWordsTheme 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.4s;">
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vite.js</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">MongoDB</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">MySQL</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Redis</span>
+          <span
+            style="height: 1.2em; display: flex; align-items: center; justify-content: center; white-space: nowrap;">Vite.js</span>
+        </div>
+      </div>
+
+    </div>
     </div>
   </section>
 
@@ -543,50 +521,50 @@
           </div>
         </div>
         <!-- AI Technologies Integration moved inside showcase-grid for precise positioning -->
-        
+
       </div>
-<div class="tech-logos-section" id="aiTechLogos"
-          style="padding-top: 0; border-top: none; width: 100%; margin-top: 20px;">
-          <h3 class="tech-logos-title" style="margin-bottom: 15px; margin-top: 0;" data-i18n="footer_powered_by">POWERED
-            BY</h3>
-          <div class="tech-logos-grid" id="homeAiLogos" style="gap: 40px; justify-content: center;">
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
-                <path
-                  d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5153-4.9108 6.0462 6.0462 0 0 0-4.7498-3.2147 5.9847 5.9847 0 0 0-5.4965 2.1453 5.9840 5.9840 0 0 0-5.4963-2.1453 6.0462 6.0462 0 0 0-4.7498 3.2147 5.9847 5.9847 0 0 0-.5153 4.9108 6.0462 6.0462 0 0 0 1.2947 5.1057 5.9847 5.9847 0 0 0 .5151 4.9108 6.0462 6.0462 0 0 0 4.7501 3.2147 5.9847 5.9847 0 0 0 5.4965-2.1453 5.9847 5.9847 0 0 0 5.4963 2.1453 6.0462 6.0462 0 0 0 4.7498-3.2147 5.9847 5.9847 0 0 0 .5153-4.9108 6.0462 6.0462 0 0 0-1.2947-5.1057zm-11.2319 9.8732a3.8444 3.8444 0 0 1-5.1818-1.5791l3.5862-2.0706 3.5862 2.0706-1.9906 1.5791zm-5.1818-11.5249a3.8444 3.8444 0 0 1 1.5791-5.1818l3.5862 2.0706-3.5862 2.0706-1.5791-1.2406zm10.3636 0a3.8444 3.8444 0 0 1 1.5791 5.1818l-3.5862-2.0706 3.5862-2.0706 1.5791 1.2406zm-5.1818 11.5249a3.8444 3.8444 0 0 1-5.1818-1.5791l3.5862-2.0706 3.5862 2.0706-1.9906 1.5791zm1.5791-5.1818a3.8444 3.8444 0 0 1 5.1818 1.5791l-3.5862 2.0706-3.5862-2.0706 1.9906-1.5791z"
-                  fill="#10a37f" />
-              </svg>
-              <span>OpenAI</span>
-            </div>
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
-                <path d="M12 3L2 21H22L12 3ZM12 7.5L19 20H5L12 7.5Z" fill="#D97757" />
-              </svg>
-              <span>Anthropic</span>
-            </div>
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
-                <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="#4285F4" />
-              </svg>
-              <span>Gemini</span>
-            </div>
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
-                <circle cx="12" cy="12" r="10" stroke="#0668E1" stroke-width="2" />
-                <path d="M7 12h10M12 7v10" stroke="#0668E1" stroke-width="2" />
-              </svg>
-              <span>Meta AI</span>
-            </div>
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563eb" />
-                <path d="M2 17L12 22L22 17L12 12L2 17Z" fill="#2563eb" />
-                <path d="M12 12L2 7V17L12 22V12Z" fill="#2563eb" opacity="0.5" />
-              </svg>
-              <span>Groq</span>
-            </div>
+      <div class="tech-logos-section" id="aiTechLogos"
+        style="padding-top: 0; border-top: none; width: 100%; margin-top: 20px;">
+        <h3 class="tech-logos-title" style="margin-bottom: 15px; margin-top: 0;" data-i18n="footer_powered_by">POWERED
+          BY</h3>
+        <div class="tech-logos-grid" id="homeAiLogos" style="gap: 40px; justify-content: center;">
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+              <path
+                d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5153-4.9108 6.0462 6.0462 0 0 0-4.7498-3.2147 5.9847 5.9847 0 0 0-5.4965 2.1453 5.9840 5.9840 0 0 0-5.4963-2.1453 6.0462 6.0462 0 0 0-4.7498 3.2147 5.9847 5.9847 0 0 0-.5153 4.9108 6.0462 6.0462 0 0 0 1.2947 5.1057 5.9847 5.9847 0 0 0 .5151 4.9108 6.0462 6.0462 0 0 0 4.7501 3.2147 5.9847 5.9847 0 0 0 5.4965-2.1453 5.9847 5.9847 0 0 0 5.4963 2.1453 6.0462 6.0462 0 0 0 4.7498-3.2147 5.9847 5.9847 0 0 0 .5153-4.9108 6.0462 6.0462 0 0 0-1.2947-5.1057zm-11.2319 9.8732a3.8444 3.8444 0 0 1-5.1818-1.5791l3.5862-2.0706 3.5862 2.0706-1.9906 1.5791zm-5.1818-11.5249a3.8444 3.8444 0 0 1 1.5791-5.1818l3.5862 2.0706-3.5862 2.0706-1.5791-1.2406zm10.3636 0a3.8444 3.8444 0 0 1 1.5791 5.1818l-3.5862-2.0706 3.5862-2.0706 1.5791 1.2406zm-5.1818 11.5249a3.8444 3.8444 0 0 1-5.1818-1.5791l3.5862-2.0706 3.5862 2.0706-1.9906 1.5791zm1.5791-5.1818a3.8444 3.8444 0 0 1 5.1818 1.5791l-3.5862 2.0706-3.5862-2.0706 1.9906-1.5791z"
+                fill="#10a37f" />
+            </svg>
+            <span>OpenAI</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+              <path d="M12 3L2 21H22L12 3ZM12 7.5L19 20H5L12 7.5Z" fill="#D97757" />
+            </svg>
+            <span>Anthropic</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+              <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" fill="#4285F4" />
+            </svg>
+            <span>Gemini</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+              <circle cx="12" cy="12" r="10" stroke="#0668E1" stroke-width="2" />
+              <path d="M7 12h10M12 7v10" stroke="#0668E1" stroke-width="2" />
+            </svg>
+            <span>Meta AI</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563eb" />
+              <path d="M2 17L12 22L22 17L12 12L2 17Z" fill="#2563eb" />
+              <path d="M12 12L2 7V17L12 22V12Z" fill="#2563eb" opacity="0.5" />
+            </svg>
+            <span>Groq</span>
           </div>
         </div>
+      </div>
 
 
 
@@ -659,60 +637,60 @@
         </div>
 
         <!-- Infrastructure Technologies Integration -->
-        
-      </div>
-<div class="tech-logos-section" id="infraTechLogos"
-          style="padding-top: 0; border-top: none; text-align: center; width: 100%; margin-top: 20px;">
-          <h3 class="tech-logos-title" style="margin-bottom: 15px; margin-top: 0;" data-i18n="footer_powered_by">POWERED
-            BY</h3>
-          <div class="tech-logos-grid" id="homeInfraLogos" style="gap: 40px; justify-content: center;">
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 256 153" xmlns="http://www.w3.org/2000/svg" width="56" height="34">
-                <path
-                  d="M72.392 55.438c0 3.137.34 5.68.933 7.545.68 1.866 1.527 3.908 2.717 6.12.425.68.595 1.36.595 1.952 0 .85-.51 1.7-1.615 2.55l-5.338 3.56c-.765.51-1.53.765-2.21.765-.85 0-1.7-.425-2.55-1.19a26.085 26.085 0 0 1-3.052-3.985c-.85-1.444-1.7-3.052-2.635-5.168-6.628 7.817-14.96 11.726-24.994 11.726-7.138 0-12.836-2.04-16.99-6.12-4.155-4.08-6.29-9.523-6.29-16.318 0-7.224 2.55-13.09 7.65-17.585 5.1-4.494 11.896-6.714 20.48-6.714 2.804 0 5.693.255 8.752.68 3.058.425 6.204 1.105 9.523 1.87V29.34c0-6.46-1.36-10.99-3.985-13.685-2.72-2.695-7.308-3.985-13.855-3.985-2.975 0-6.035.34-9.183 1.105-3.148.765-6.205 1.7-9.183 2.89-.68.34-1.275.51-1.7.595-.425.085-.765.17-.935.17-1.275 0-1.7-1.105-1.7-2.21v-4.155c0-1.275.17-2.21.51-2.72.34-.5 1.105-1.105 2.295-1.7 3.055-1.7 6.714-3.055 10.99-4.07C30.95 1.19 35.445.68 40.11.68c9.523 0 16.49 2.21 21.08 6.715 4.494 4.494 6.8 11.316 6.8 20.48v27.563h.4Zm-34.5 12.92c2.72 0 5.524-.51 8.497-1.53 2.975-1.02 5.61-2.89 7.82-5.44 1.275-1.53 2.21-3.225 2.635-5.185.425-1.955.68-4.324.68-7.054v-3.4c-2.38-.595-4.93-1.105-7.566-1.444-2.635-.34-5.185-.51-7.735-.51-5.608 0-9.693 1.105-12.582 3.4-2.89 2.296-4.24 5.608-4.24 9.95 0 4.07 1.02 7.054 3.14 9.013 2.04 2.04 5.015 3.055 8.752 3.055l-.4.255v-.11Z"
-                  fill="#232f3e" />
-                <path
-                  d="M120.963 73.678c-1.615 0-2.72-.255-3.4-.85-.68-.51-1.275-1.7-1.785-3.31L99.548 7.735c-.51-1.7-.765-2.804-.765-3.4 0-1.36.68-2.125 2.04-2.125h8.327c1.7 0 2.89.255 3.485.85.68.51 1.19 1.7 1.7 3.31l11.303 44.574L136.6 6.37c.425-1.7.935-2.804 1.615-3.31.68-.51 1.955-.85 3.57-.85h6.8c1.7 0 2.89.255 3.57.85.68.51 1.275 1.7 1.615 3.31l11.046 45.168L176.6 6.37c.51-1.7 1.105-2.804 1.7-3.31.68-.51 1.87-.85 3.485-.85h7.905c1.36 0 2.125.68 2.125 2.04 0 .425-.085.85-.17 1.36-.085.51-.255 1.19-.595 2.04L174.39 69.518c-.51 1.7-1.105-2.804-1.785 3.31-.68.51-1.87.85-3.4.85h-7.308c-1.7 0-2.89-.255-3.57-.85-.68-.595-1.275-1.7-1.615-3.395l-10.876-43.47-10.795 43.385c-.425 1.7-.935 2.804-1.615 3.395-.68.595-1.955.85-3.57.85h-7.308l-.595.085Z"
-                  fill="#232f3e" />
-                <path
-                  d="M213.452 75.8c-4.324 0-8.667-.51-12.92-1.53-4.24-1.02-7.565-2.125-9.78-3.4-1.36-.765-2.295-1.615-2.635-2.38a6.156 6.156 0 0 1-.51-2.38v-4.325c0-1.275.51-1.955 1.445-1.955.385 0 .765.085 1.19.17.425.085 1.02.34 1.7.595 2.295 1.02 4.76 1.87 7.48 2.465 2.635.595 5.27.85 7.82.85 4.155 0 7.395-.765 9.608-2.21 2.21-1.444 3.4-3.57 3.4-6.375 0-1.87-.595-3.4-1.785-4.665-1.19-1.275-3.4-2.38-6.63-3.485l-9.523-2.975c-4.76-1.53-8.327-3.74-10.54-6.715-2.21-2.89-3.4-6.12-3.4-9.523 0-2.72.595-5.185 1.785-7.308 1.19-2.125 2.804-3.985 4.845-5.44 2.04-1.53 4.324-2.635 7.054-3.4 2.72-.765 5.608-1.105 8.667-1.105 1.53 0 3.14.085 4.665.34 1.615.255 3.055.51 4.494.85 1.36.425 2.635.85 3.815 1.275 1.19.425 2.125.85 2.804 1.275.935.51 1.615 1.02 2.04 1.615.425.51.595 1.19.595 2.125v3.985c0 1.275-.51 1.955-1.445 1.955-.51 0-1.275-.255-2.295-.765-3.4-1.53-7.224-2.38-11.473-2.38-3.74 0-6.715.595-8.752 1.87-2.04 1.275-3.055 3.225-3.055 5.95 0 1.87.68 3.485 2.04 4.754 1.36 1.275 3.815 2.55 7.308 3.74l9.35 2.975c4.665 1.53 8.072 3.655 10.115 6.375 2.04 2.72 3.055 5.863 3.055 9.35 0 2.805-.595 5.355-1.7 7.565-1.19 2.21-2.804 4.155-4.845 5.78-2.04 1.7-4.495 2.89-7.308 3.74-2.975.935-6.035 1.36-9.353 1.36Z"
-                  fill="#232f3e" />
-                <path
-                  d="M230.993 120.964c-27.087 20.054-66.388 30.728-100.2 30.728-47.39 0-90.083-17.51-122.337-46.624-2.55-2.295-.255-5.44 2.72-3.655 34.862 20.31 77.895 32.462 122.337 32.462 29.984 0 62.98-6.205 93.372-19.125 4.58-1.955 8.412 2.975 4.108 6.214Z"
-                  fill="#FF9900" />
-                <path
-                  d="M240.448 110.104c-3.485-4.494-23.052-2.125-31.808-1.105-2.635.34-3.055-1.955-.68-3.655 15.555-10.96 41.085-7.82 44.053-4.155 2.975 3.74-.765 29.534-15.385 41.856-2.21 1.87-4.324.85-3.315-1.53 3.225-7.99 10.45-26.873 7.135-31.41Z"
-                  fill="#FF9900" />
-              </svg>
-              <span>AWS</span>
-            </div>
 
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 256 222" xmlns="http://www.w3.org/2000/svg" width="48" height="42">
-                <path d="M128 0L256 221.705H0z" fill="#FBBC05" />
-              </svg>
-              <span>Firebase</span>
-            </div>
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 32 32" width="30" height="30">
-                <path fill="#326CE5"
-                  d="m29.223 17.964l-3.304-.754a9.78 9.78 0 0 0-1.525-6.624l2.54-2.026l-1.247-1.564l-2.539 2.024A9.97 9.97 0 0 0 17 6.05V3h-2v3.05a9.97 9.97 0 0 0-6.148 2.97l-2.54-2.024L5.066 8.56l2.54 2.025a9.78 9.78 0 0 0-1.524 6.625l-3.304.754l.446 1.95l3.297-.753a10.04 10.04 0 0 0 4.269 5.358l-1.33 2.763l1.802.867l1.329-2.76a9.8 9.8 0 0 0 6.82 0l1.33 2.76l1.802-.868l-1.33-2.762a10.04 10.04 0 0 0 4.269-5.358l3.297.752ZM16 13a3 3 0 1 1 0 6a3 3 0 0 1 0-6" />
-              </svg>
-              <span>Kubernetes</span>
-            </div>
-            <div class="tech-logo-item">
-              <svg viewBox="0 0 256 185" xmlns="http://www.w3.org/2000/svg" width="56" height="40">
-                <path
-                  d="M250.716 70.497c-5.227-3.564-17.24-4.863-26.449-3.076-1.218-8.818-6.2-16.512-15.237-23.44l-5.188-3.564-3.56 5.192c-4.51 6.78-6.82 16.218-6.083 25.378.37 3.394 1.487 9.467 5.16 14.795-3.607 2.003-10.741 4.74-20.157 4.567H.313l-.314 1.795c-1.472 8.72-1.46 35.916 16.143 56.808 13.398 15.888 33.456 23.953 59.606 23.953 56.753 0 98.76-26.225 118.476-73.88 7.73.16 24.39.095 32.935-16.35.22-.38 2.97-6.17 3.557-7.984v-.243Z"
-                  fill="#2496ED" />
-                <path
-                  d="M38.738 44.622h24.818v24.818H38.738zM38.738 6.522h24.818V31.34H38.738zM76.838 44.622h24.818v24.818H76.838zM114.938 44.622h24.818v24.818h-24.818zM76.838 6.522h24.818V31.34H76.838zM0 44.622h24.818v24.818H0zM153.038 44.622h24.818v24.818h-24.818zM114.938 6.522h24.818V31.34h-24.818z"
-                  fill="#2496ED" />
-              </svg>
-              <span>Docker</span>
-            </div>
+      </div>
+      <div class="tech-logos-section" id="infraTechLogos"
+        style="padding-top: 0; border-top: none; text-align: center; width: 100%; margin-top: 20px;">
+        <h3 class="tech-logos-title" style="margin-bottom: 15px; margin-top: 0;" data-i18n="footer_powered_by">POWERED
+          BY</h3>
+        <div class="tech-logos-grid" id="homeInfraLogos" style="gap: 40px; justify-content: center;">
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 153" xmlns="http://www.w3.org/2000/svg" width="56" height="34">
+              <path
+                d="M72.392 55.438c0 3.137.34 5.68.933 7.545.68 1.866 1.527 3.908 2.717 6.12.425.68.595 1.36.595 1.952 0 .85-.51 1.7-1.615 2.55l-5.338 3.56c-.765.51-1.53.765-2.21.765-.85 0-1.7-.425-2.55-1.19a26.085 26.085 0 0 1-3.052-3.985c-.85-1.444-1.7-3.052-2.635-5.168-6.628 7.817-14.96 11.726-24.994 11.726-7.138 0-12.836-2.04-16.99-6.12-4.155-4.08-6.29-9.523-6.29-16.318 0-7.224 2.55-13.09 7.65-17.585 5.1-4.494 11.896-6.714 20.48-6.714 2.804 0 5.693.255 8.752.68 3.058.425 6.204 1.105 9.523 1.87V29.34c0-6.46-1.36-10.99-3.985-13.685-2.72-2.695-7.308-3.985-13.855-3.985-2.975 0-6.035.34-9.183 1.105-3.148.765-6.205 1.7-9.183 2.89-.68.34-1.275.51-1.7.595-.425.085-.765.17-.935.17-1.275 0-1.7-1.105-1.7-2.21v-4.155c0-1.275.17-2.21.51-2.72.34-.5 1.105-1.105 2.295-1.7 3.055-1.7 6.714-3.055 10.99-4.07C30.95 1.19 35.445.68 40.11.68c9.523 0 16.49 2.21 21.08 6.715 4.494 4.494 6.8 11.316 6.8 20.48v27.563h.4Zm-34.5 12.92c2.72 0 5.524-.51 8.497-1.53 2.975-1.02 5.61-2.89 7.82-5.44 1.275-1.53 2.21-3.225 2.635-5.185.425-1.955.68-4.324.68-7.054v-3.4c-2.38-.595-4.93-1.105-7.566-1.444-2.635-.34-5.185-.51-7.735-.51-5.608 0-9.693 1.105-12.582 3.4-2.89 2.296-4.24 5.608-4.24 9.95 0 4.07 1.02 7.054 3.14 9.013 2.04 2.04 5.015 3.055 8.752 3.055l-.4.255v-.11Z"
+                fill="#232f3e" />
+              <path
+                d="M120.963 73.678c-1.615 0-2.72-.255-3.4-.85-.68-.51-1.275-1.7-1.785-3.31L99.548 7.735c-.51-1.7-.765-2.804-.765-3.4 0-1.36.68-2.125 2.04-2.125h8.327c1.7 0 2.89.255 3.485.85.68.51 1.19 1.7 1.7 3.31l11.303 44.574L136.6 6.37c.425-1.7.935-2.804 1.615-3.31.68-.51 1.955-.85 3.57-.85h6.8c1.7 0 2.89.255 3.57.85.68.51 1.275 1.7 1.615 3.31l11.046 45.168L176.6 6.37c.51-1.7 1.105-2.804 1.7-3.31.68-.51 1.87-.85 3.485-.85h7.905c1.36 0 2.125.68 2.125 2.04 0 .425-.085.85-.17 1.36-.085.51-.255 1.19-.595 2.04L174.39 69.518c-.51 1.7-1.105-2.804-1.785 3.31-.68.51-1.87.85-3.4.85h-7.308c-1.7 0-2.89-.255-3.57-.85-.68-.595-1.275-1.7-1.615-3.395l-10.876-43.47-10.795 43.385c-.425 1.7-.935 2.804-1.615 3.395-.68.595-1.955.85-3.57.85h-7.308l-.595.085Z"
+                fill="#232f3e" />
+              <path
+                d="M213.452 75.8c-4.324 0-8.667-.51-12.92-1.53-4.24-1.02-7.565-2.125-9.78-3.4-1.36-.765-2.295-1.615-2.635-2.38a6.156 6.156 0 0 1-.51-2.38v-4.325c0-1.275.51-1.955 1.445-1.955.385 0 .765.085 1.19.17.425.085 1.02.34 1.7.595 2.295 1.02 4.76 1.87 7.48 2.465 2.635.595 5.27.85 7.82.85 4.155 0 7.395-.765 9.608-2.21 2.21-1.444 3.4-3.57 3.4-6.375 0-1.87-.595-3.4-1.785-4.665-1.19-1.275-3.4-2.38-6.63-3.485l-9.523-2.975c-4.76-1.53-8.327-3.74-10.54-6.715-2.21-2.89-3.4-6.12-3.4-9.523 0-2.72.595-5.185 1.785-7.308 1.19-2.125 2.804-3.985 4.845-5.44 2.04-1.53 4.324-2.635 7.054-3.4 2.72-.765 5.608-1.105 8.667-1.105 1.53 0 3.14.085 4.665.34 1.615.255 3.055.51 4.494.85 1.36.425 2.635.85 3.815 1.275 1.19.425 2.125.85 2.804 1.275.935.51 1.615 1.02 2.04 1.615.425.51.595 1.19.595 2.125v3.985c0 1.275-.51 1.955-1.445 1.955-.51 0-1.275-.255-2.295-.765-3.4-1.53-7.224-2.38-11.473-2.38-3.74 0-6.715.595-8.752 1.87-2.04 1.275-3.055 3.225-3.055 5.95 0 1.87.68 3.485 2.04 4.754 1.36 1.275 3.815 2.55 7.308 3.74l9.35 2.975c4.665 1.53 8.072 3.655 10.115 6.375 2.04 2.72 3.055 5.863 3.055 9.35 0 2.805-.595 5.355-1.7 7.565-1.19 2.21-2.804 4.155-4.845 5.78-2.04 1.7-4.495 2.89-7.308 3.74-2.975.935-6.035 1.36-9.353 1.36Z"
+                fill="#232f3e" />
+              <path
+                d="M230.993 120.964c-27.087 20.054-66.388 30.728-100.2 30.728-47.39 0-90.083-17.51-122.337-46.624-2.55-2.295-.255-5.44 2.72-3.655 34.862 20.31 77.895 32.462 122.337 32.462 29.984 0 62.98-6.205 93.372-19.125 4.58-1.955 8.412 2.975 4.108 6.214Z"
+                fill="#FF9900" />
+              <path
+                d="M240.448 110.104c-3.485-4.494-23.052-2.125-31.808-1.105-2.635.34-3.055-1.955-.68-3.655 15.555-10.96 41.085-7.82 44.053-4.155 2.975 3.74-.765 29.534-15.385 41.856-2.21 1.87-4.324.85-3.315-1.53 3.225-7.99 10.45-26.873 7.135-31.41Z"
+                fill="#FF9900" />
+            </svg>
+            <span>AWS</span>
+          </div>
+
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 222" xmlns="http://www.w3.org/2000/svg" width="48" height="42">
+              <path d="M128 0L256 221.705H0z" fill="#FBBC05" />
+            </svg>
+            <span>Firebase</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 32 32" width="30" height="30">
+              <path fill="#326CE5"
+                d="m29.223 17.964l-3.304-.754a9.78 9.78 0 0 0-1.525-6.624l2.54-2.026l-1.247-1.564l-2.539 2.024A9.97 9.97 0 0 0 17 6.05V3h-2v3.05a9.97 9.97 0 0 0-6.148 2.97l-2.54-2.024L5.066 8.56l2.54 2.025a9.78 9.78 0 0 0-1.524 6.625l-3.304.754l.446 1.95l3.297-.753a10.04 10.04 0 0 0 4.269 5.358l-1.33 2.763l1.802.867l1.329-2.76a9.8 9.8 0 0 0 6.82 0l1.33 2.76l1.802-.868l-1.33-2.762a10.04 10.04 0 0 0 4.269-5.358l3.297.752ZM16 13a3 3 0 1 1 0 6a3 3 0 0 1 0-6" />
+            </svg>
+            <span>Kubernetes</span>
+          </div>
+          <div class="tech-logo-item">
+            <svg viewBox="0 0 256 185" xmlns="http://www.w3.org/2000/svg" width="56" height="40">
+              <path
+                d="M250.716 70.497c-5.227-3.564-17.24-4.863-26.449-3.076-1.218-8.818-6.2-16.512-15.237-23.44l-5.188-3.564-3.56 5.192c-4.51 6.78-6.82 16.218-6.083 25.378.37 3.394 1.487 9.467 5.16 14.795-3.607 2.003-10.741 4.74-20.157 4.567H.313l-.314 1.795c-1.472 8.72-1.46 35.916 16.143 56.808 13.398 15.888 33.456 23.953 59.606 23.953 56.753 0 98.76-26.225 118.476-73.88 7.73.16 24.39.095 32.935-16.35.22-.38 2.97-6.17 3.557-7.984v-.243Z"
+                fill="#2496ED" />
+              <path
+                d="M38.738 44.622h24.818v24.818H38.738zM38.738 6.522h24.818V31.34H38.738zM76.838 44.622h24.818v24.818H76.838zM114.938 44.622h24.818v24.818h-24.818zM76.838 6.522h24.818V31.34H76.838zM0 44.622h24.818v24.818H0zM153.038 44.622h24.818v24.818h-24.818zM114.938 6.522h24.818V31.34h-24.818z"
+                fill="#2496ED" />
+            </svg>
+            <span>Docker</span>
           </div>
         </div>
+      </div>
 
     </div>
   </section>
@@ -783,123 +761,123 @@
       <div class="rotating-text-columns"
         style="font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.2vw, 4.2rem); font-weight: 700; color: #e2e8f0; margin-top: 0; display: flex; align-items: center; justify-content: center; width: 100%; position: relative; left: 0; transform: none; padding: 0 40px; box-sizing: border-box; letter-spacing: -1px; gap: 10px; direction: ltr;">
 
-          <!-- Column 1 -->
-          <div
-            style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center; direction: ltr;">
-            <div class="rotating-text-wrapper"
-              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1);">
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_vue">Vue.js</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_terraform">Terraform</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_sql">SQL</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_linux">Linux</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_vue">Vue.js</span>
-            </div>
+        <!-- Column 1 -->
+        <div
+          style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center; direction: ltr;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1);">
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_vue">Vue.js</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_terraform">Terraform</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_sql">SQL</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_linux">Linux</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_vue">Vue.js</span>
           </div>
-
-          <!-- Column 2 -->
-          <div
-            style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-            <div class="rotating-text-wrapper"
-              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.1s;">
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_react">React</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_terraform">Terraform</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_docker">Docker</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_nextjs">Next.js</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_react">React</span>
-            </div>
-          </div>
-
-          <!-- Column 3 -->
-          <div
-            style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-            <div class="rotating-text-wrapper"
-              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.2s;">
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_nodejs">Node.js</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_javascript">JavaScript</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_kubernetes">Kubernetes</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_postgres">Postgres</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_nodejs">Node.js</span>
-            </div>
-          </div>
-
-          <!-- Column 4 -->
-          <div
-            style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-            <div class="rotating-text-wrapper"
-              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.3s;">
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_python">Python</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_golang">Golang</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_aws">AWS</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_rust">Rust</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_python">Python</span>
-            </div>
-          </div>
-
-          <!-- Column 5 -->
-          <div
-            style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
-            <div class="rotating-text-wrapper"
-              style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.4s;">
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_vite">Vite.js</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_mongodb">MongoDB</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_mysql">MySQL</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_redis">Redis</span>
-              <span
-                style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
-                data-i18n="tech_vite">Vite.js</span>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Column 2 -->
+        <div
+          style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.1s;">
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_react">React</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_terraform">Terraform</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_docker">Docker</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_nextjs">Next.js</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_react">React</span>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div
+          style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.2s;">
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_nodejs">Node.js</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_javascript">JavaScript</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_kubernetes">Kubernetes</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_postgres">Postgres</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_nodejs">Node.js</span>
+          </div>
+        </div>
+
+        <!-- Column 4 -->
+        <div
+          style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.3s;">
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_python">Python</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_golang">Golang</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_aws">AWS</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_rust">Rust</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_python">Python</span>
+          </div>
+        </div>
+
+        <!-- Column 5 -->
+        <div
+          style="position: relative; height: 1.3em; flex: 1; min-width: 180px; overflow: hidden; text-align: center; display: flex; justify-content: center;">
+          <div class="rotating-text-wrapper"
+            style="position: absolute; width: 100%; top: 0; display: flex; flex-direction: column; align-items: center; line-height: 1.3em; animation: rotateWordsThemeFooter 8s infinite cubic-bezier(0.16, 1, 0.3, 1); animation-delay: 0.4s;">
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_vite">Vite.js</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_mongodb">MongoDB</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_mysql">MySQL</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_redis">Redis</span>
+            <span
+              style="height: 1.3em; display: flex; align-items: center; justify-content: center; white-space: nowrap;"
+              data-i18n="tech_vite">Vite.js</span>
+          </div>
+        </div>
+
       </div>
+    </div>
     </div>
 
 
@@ -987,4 +965,3 @@
 </body>
 
 </html>
-

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="WEBOCONTROL — We build stunning, futuristic websites for your business starting at $300. Based in Istanbul.">
-    <title>Products | WEBOCONTROL — Futuristic Web Development Studio</title>
+    <title>WEBOCONTROL - Advanced Startup Solution</title>
     <link rel="stylesheet" href="/frontend/css/shared.css">
     <link rel="stylesheet" href="/frontend/css/products.css">
     <link rel="stylesheet" href="/frontend/css/mobile.css">
@@ -40,30 +40,31 @@
             display: block;
         }
     </style>
-  <script id="autoplay-emergency-fix">
-    (function() {
-      var kick = function() {
-        document.querySelectorAll('video').forEach(function(v) {
-          v.muted = true;
-          v.setAttribute('muted', '');
-          v.setAttribute('playsinline', '');
-          v.setAttribute('webkit-playsinline', '');
-          if (v.paused) v.play().catch(function(){});
-        });
-      };
-      window.addEventListener('load', kick);
-      ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function(e) {
-        window.addEventListener(e, kick, {passive: true});
-      });
-      setInterval(kick, 300);
-    })();
-  </script>
+    <script id="autoplay-emergency-fix">
+        (function () {
+            var kick = function () {
+                document.querySelectorAll('video').forEach(function (v) {
+                    v.muted = true;
+                    v.setAttribute('muted', '');
+                    v.setAttribute('playsinline', '');
+                    v.setAttribute('webkit-playsinline', '');
+                    if (v.paused) v.play().catch(function () { });
+                });
+            };
+            window.addEventListener('load', kick);
+            ['touchstart', 'mousedown', 'scroll', 'click', 'pointermove', 'wheel'].forEach(function (e) {
+                window.addEventListener(e, kick, { passive: true });
+            });
+            setInterval(kick, 300);
+        })();
+    </script>
 </head>
 
 <body class="home-page has-video-bg">
     <!-- Product Video Background -->
     <div class="video-background-container">
-        <video autoplay loop muted playsinline webkit-playsinline preload="auto" class="bg-vid" poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <video autoplay loop muted playsinline webkit-playsinline preload="auto" class="bg-vid"
+            poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
             <source src="/product-bg-v2.mp4" type="video/mp4" />
         </video>
     </div>
@@ -80,7 +81,8 @@
                 <li class="mobile-search-item">
                     <div class="search-wrapper mobile-menu-search">
 
-                        <input type="text" class="search-input" id="productSearchMobile" data-i18n-placeholder="search_placeholder" placeholder="Search services...">
+                        <input type="text" class="search-input" id="productSearchMobile"
+                            data-i18n-placeholder="search_placeholder" placeholder="Search services...">
                         <div class="search-suggestions" id="searchSuggestionsMobile"></div>
                     </div>
                 </li>
@@ -95,7 +97,8 @@
                 <div class="nav-search-navbar">
                     <div class="search-wrapper navbar-search">
 
-                        <input type="text" class="search-input" id="productSearchNav" data-i18n-placeholder="search_placeholder" placeholder="Search...">
+                        <input type="text" class="search-input" id="productSearchNav"
+                            data-i18n-placeholder="search_placeholder" placeholder="Search...">
                         <div class="search-suggestions" id="searchSuggestions"></div>
                     </div>
                 </div>
@@ -482,7 +485,8 @@
                 <div style="grid-column: 1; margin-top: 0; text-align: center;">
                     <div style="margin-bottom: 15px;">
                         <span
-                            style="font-size: 0.75rem; letter-spacing: 0.4em; opacity: 0.5; text-transform: uppercase; font-weight: 900; color: #fff;" data-i18n="stack_security">Security Stack</span>
+                            style="font-size: 0.75rem; letter-spacing: 0.4em; opacity: 0.5; text-transform: uppercase; font-weight: 900; color: #fff;"
+                            data-i18n="stack_security">Security Stack</span>
                     </div>
                     <div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
                         <!-- Cloudflare -->
@@ -502,7 +506,8 @@
                 <div style="grid-column: 2; margin-top: 0; text-align: center;">
                     <div style="margin-bottom: 15px;">
                         <span
-                            style="font-size: 0.75rem; letter-spacing: 0.4em; opacity: 0.5; text-transform: uppercase; font-weight: 900; color: #fff;" data-i18n="stack_scaling">Scaling Stack</span>
+                            style="font-size: 0.75rem; letter-spacing: 0.4em; opacity: 0.5; text-transform: uppercase; font-weight: 900; color: #fff;"
+                            data-i18n="stack_scaling">Scaling Stack</span>
                     </div>
                     <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
                         <!-- AWS -->
@@ -566,7 +571,8 @@
                 <div style="grid-column: 4; margin-top: 0; text-align: center;">
                     <div style="margin-bottom: 15px;">
                         <span
-                            style="font-size: 0.75rem; letter-spacing: 0.4em; opacity: 0.5; text-transform: uppercase; font-weight: 900; color: #fff;" data-i18n="stack_intelligence">Intelligence Engine</span>
+                            style="font-size: 0.75rem; letter-spacing: 0.4em; opacity: 0.5; text-transform: uppercase; font-weight: 900; color: #fff;"
+                            data-i18n="stack_intelligence">Intelligence Engine</span>
                     </div>
                     <div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
                         <!-- OpenAI -->
@@ -709,4 +715,3 @@
 </body>
 
 </html>
-
