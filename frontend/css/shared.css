@@ -2129,6 +2129,7 @@ body.auth-body .footer {
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
   gap: 32px;
   margin-top: 48px;
 }
@@ -2160,6 +2161,8 @@ body.auth-body .footer {
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  align-self: stretch;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
