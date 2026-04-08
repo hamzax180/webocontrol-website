@@ -964,6 +964,7 @@ img {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  font-size: clamp(1.85rem, 3.35vw, 4.35rem); /* Micro-adjustment to prevent overlap perfectly */
 }
 
 /* Specific Font Enforcement for Tech Names */

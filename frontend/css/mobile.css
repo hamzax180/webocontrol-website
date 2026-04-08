@@ -356,77 +356,92 @@ video {
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
-        bottom: 28px !important;
+        bottom: 32px !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
-        gap: 8px !important;
-        background: rgba(255, 255, 255, 0.07) !important;
-        backdrop-filter: blur(14px) !important;
-        -webkit-backdrop-filter: blur(14px) !important;
-        border: 1px solid rgba(255, 60, 60, 0.35) !important;
-        border-radius: 50px !important;
-        padding: 10px 22px !important;
+        gap: 6px !important;
+        background: rgba(20, 10, 10, 0.55) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1.5px solid rgba(255, 50, 50, 0.75) !important;
+        border-radius: 60px !important;
+        padding: 14px 30px 12px !important;
         box-shadow:
-            0 0 18px rgba(255, 0, 0, 0.2),
-            inset 0 0 10px rgba(255, 255, 255, 0.03) !important;
-        animation: scrollPillPulse 2.8s ease-in-out infinite !important;
+            0 0 0 1px rgba(255, 0, 0, 0.1),
+            0 0 24px rgba(255, 0, 0, 0.35),
+            0 8px 32px rgba(0, 0, 0, 0.5) !important;
+        animation: scrollPillPulse 2.5s ease-in-out infinite !important;
         cursor: pointer !important;
+        white-space: nowrap !important;
     }
 
     .scroll-indicator .scroll-text {
-        font-size: 0.62rem !important;
-        letter-spacing: 3px !important;
-        font-weight: 700 !important;
-        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 4px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
         text-transform: uppercase !important;
-        text-shadow: 0 0 8px rgba(255, 80, 80, 0.5) !important;
+        text-shadow:
+            0 0 12px rgba(255, 100, 100, 0.7),
+            0 1px 3px rgba(0, 0, 0, 0.8) !important;
     }
 
     .scroll-indicator .scroll-arrow {
-        font-size: 1.4rem !important;
-        animation: bounceDownMobile 1.4s ease-in-out infinite !important;
-        color: #ff3b3b !important;
+        font-size: 1.6rem !important;
+        animation: bounceDownMobile 1.3s ease-in-out infinite !important;
+        color: #ff2222 !important;
         text-shadow:
-            0 0 8px rgba(255, 0, 0, 1),
-            0 0 20px rgba(255, 0, 0, 0.7) !important;
+            0 0 10px rgba(255, 0, 0, 1),
+            0 0 24px rgba(255, 0, 0, 0.8),
+            0 0 40px rgba(255, 0, 0, 0.4) !important;
         line-height: 1 !important;
+        display: block !important;
     }
 
     @keyframes scrollPillPulse {
         0%, 100% {
             box-shadow:
-                0 0 14px rgba(255, 0, 0, 0.18),
-                inset 0 0 8px rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 60, 60, 0.35);
+                0 0 0 1px rgba(255, 0, 0, 0.08),
+                0 0 18px rgba(255, 0, 0, 0.28),
+                0 8px 28px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 50, 50, 0.65);
         }
         50% {
             box-shadow:
-                0 0 28px rgba(255, 0, 0, 0.38),
-                inset 0 0 12px rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 80, 80, 0.6);
+                0 0 0 1px rgba(255, 0, 0, 0.15),
+                0 0 36px rgba(255, 0, 0, 0.55),
+                0 8px 36px rgba(0, 0, 0, 0.55);
+            border-color: rgba(255, 80, 80, 0.95);
         }
     }
 
     @keyframes bounceDownMobile {
         0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(6px); }
+        50% { transform: translateY(7px); }
+    }
+
+    /* Override inline section padding so words fill the dark band */
+    #tech-rotating-section,
+    #footer-rotating-section {
+        padding: 60px 0 80px !important;
+        margin-top: 0 !important;
     }
 
     /* ---- ROTATING TEXT ANIMATION SECTION ---- */
     .rotating-text-columns {
         display: flex !important;
-        flex-direction: column !important; /* Stack vertically on mobile */
-        height: auto !important; /* Allow height to expand for stacked elements */
+        flex-direction: column !important;
+        height: auto !important;
         flex-wrap: nowrap !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 20px !important; /* Adjusted spacing */
+        gap: 1rem !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding: 40px 0px !important;
-        font-size: clamp(2.2rem, 10vw, 3.5rem) !important; /* Massive font size, but small enough to fit 'JavaScript' */
-        letter-spacing: -1px !important; /* Bold look */
-        overflow: hidden !important; 
+        padding: 10px 0 !important;
+        font-size: clamp(3.2rem, 16vw, 6.5rem) !important;
+        letter-spacing: -2px !important;
+        overflow: hidden !important;
     }
 
     .rotating-text-columns > div {
@@ -434,7 +449,7 @@ video {
         position: relative !important;
         width: 100% !important;
         max-width: none !important;
-        height: 1.2em !important; /* MATCH DESKTOP PRECISION */
+        height: 1.25em !important;
         overflow: hidden !important;
         display: flex !important;
         justify-content: center !important;
@@ -458,7 +473,7 @@ video {
         top: 0 !important;
         width: 100% !important;
         height: auto !important;
-        line-height: 1.2em !important;
+        line-height: 1.25em !important;
         animation: rotateWordsMobile 8s infinite cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
@@ -466,8 +481,8 @@ video {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        height: 1.2em !important; /* MATCH DESKTOP PRECISION */
-        line-height: 1.2em !important;
+        height: 1.25em !important;
+        line-height: 1.25em !important;
         flex: none !important;
         white-space: nowrap !important;
         width: 100% !important;
@@ -853,7 +868,41 @@ video {
 
     /* ---- REVIEWS GRID ---- */
     .reviews-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .review-card {
+        padding: 12px 10px !important; /* Very tight padding */
+        font-size: 0.8rem !important; 
+    }
+
+    .review-stars {
+        font-size: 0.85rem !important;
+        margin-bottom: 8px !important;
+        letter-spacing: 0 !important;
+    }
+
+    .review-content {
+        font-size: 0.75rem !important; /* Smaller text for the review body */
+        line-height: 1.4 !important;
+        margin-bottom: 12px !important;
+        word-break: break-word !important; /* Ensure long links wrap nicely */
+    }
+
+    /* Wrap author info to prevent horizontal overflow */
+    .review-card .author-info {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 2px !important;
+    }
+
+    .review-card .author-name {
+        font-size: 0.75rem !important;
+    }
+
+    .review-card .review-date {
+        font-size: 0.65rem !important;
     }
 
     /* ---- TESTIMONIALS ---- */
